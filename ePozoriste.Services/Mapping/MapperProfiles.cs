@@ -13,8 +13,12 @@ namespace ePozoriste.Services.Mapping
         public MapperProfiles()
         {
             CreateMap<Database.Drzava, Model.Drzava>();
+            CreateMap<Database.Grad, Model.Grad>();
+
 
             CreateMap<DrzavaInsertRequest, Database.Drzava>();
+            CreateMap<GradInsertRequest, Database.Grad>();
+
         }
     }
 }

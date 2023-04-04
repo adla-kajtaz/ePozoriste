@@ -1,5 +1,5 @@
 using ePozoriste.Services.Database;
-using ePozoriste.Services.DrzavaService;
+using ePozoriste.Services;
 using ePozoriste.Services.Mapping;
 using Microsoft.EntityFrameworkCore;
 
@@ -18,6 +18,8 @@ builder.Services.AddDbContext<ePozoristeContext>(options =>
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddTransient<IDrzavaService, DrzavaService>();
+builder.Services.AddTransient<IGradService, GradService>();
+
 
 builder.Services.AddAutoMapper(typeof(Program), typeof(MapperProfiles));
 var app = builder.Build();

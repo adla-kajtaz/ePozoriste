@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace ePozoriste.Model.SearchObjects
 {
-    public class BaseSearchObject
+    public class GradSearchObject : BaseSearchObject
     {
-        public string?  Tekst { get; set; }
+        public int? DrzavaId { get; set; }
     }
 }

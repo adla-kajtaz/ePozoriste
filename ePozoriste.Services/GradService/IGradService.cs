@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace ePozoriste.Services
 {
-    public interface IDrzavaService : IBaseCRUDService<Model.Drzava, BaseSearchObject, DrzavaInsertRequest, DrzavaInsertRequest>
+    public interface IGradService : IBaseCRUDService <Model.Grad, GradSearchObject, GradInsertRequest, GradInsertRequest>
     {
 
     }

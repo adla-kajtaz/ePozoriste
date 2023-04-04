@@ -16,7 +16,7 @@ namespace ePozoriste.Services.BaseService
 
         }
 
-        public T Insert(TInsert insert)
+        public virtual T Insert(TInsert insert)
         {
             var set = _context.Set<TDb>();
 
@@ -30,7 +30,7 @@ namespace ePozoriste.Services.BaseService
 
         }
 
-        public T Update(int id, TUpdate update)
+        public virtual T Update(int id, TUpdate update)
         {
             var set = _context.Set<TDb>();
 
@@ -50,7 +50,7 @@ namespace ePozoriste.Services.BaseService
             return _mapper.Map<T>(entity);
         }
 
-        public T Delete(int id)
+        public virtual T Delete(int id)
         {
 
             var set = _context.Set<TDb>();

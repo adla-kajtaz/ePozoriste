@@ -19,7 +19,7 @@ namespace ePozoriste.Services.BaseService
             _mapper = mapper;
         }
 
-        public IEnumerable<T> GetAll(TSearch search = null)
+        public virtual IEnumerable<T> GetAll(TSearch search = null)
         {
             var entity = _context.Set<TDb>();
 
@@ -28,7 +28,7 @@ namespace ePozoriste.Services.BaseService
         }
         
 
-        public T GetById(int id)
+        public virtual T GetById(int id)
         {
             var set = _context.Set<TDb>();
 

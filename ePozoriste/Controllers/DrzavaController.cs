@@ -1,6 +1,6 @@
 ﻿using ePozoriste.Model.Requests;
 using ePozoriste.Model.SearchObjects;
-using ePozoriste.Services.DrzavaService;
+using ePozoriste.Services;
 
 namespace ePozoriste.Controllers
 {
