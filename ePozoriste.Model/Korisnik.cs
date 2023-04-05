@@ -6,10 +6,7 @@ using System.Threading.Tasks;
 
 namespace ePozoriste.Model
 {
-    public class Drzava
+    public class Korisnik
     {
-        public int DrzavaId { get; set; }
-        public string Naziv { get; set; }
-        public string Skracenica { get; set; }
     }
 }

@@ -4,12 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ePozoriste.Model
+namespace ePozoriste.Model.Requests
 {
-    public class Drzava
+    public class ObavijestKategorijaInsertRequest
     {
-        public int DrzavaId { get; set; }
         public string Naziv { get; set; }
-        public string Skracenica { get; set; }
     }
 }

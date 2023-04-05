@@ -14,10 +14,22 @@ namespace ePozoriste.Services.Mapping
         {
             CreateMap<Database.Drzava, Model.Drzava>();
             CreateMap<Database.Grad, Model.Grad>();
+            CreateMap<Database.Uloga, Model.Uloga>();
+            CreateMap<Database.ObavijestKategorija, Model.ObavijestKategorija>();
+            CreateMap<Database.Obavijest, Model.Obavijest>();
+            CreateMap<Database.Pozoriste, Model.Pozoriste>();
+            CreateMap<Database.Sala, Model.Sala>();
+
 
 
             CreateMap<DrzavaInsertRequest, Database.Drzava>();
             CreateMap<GradInsertRequest, Database.Grad>();
+            CreateMap<ObavijestKategorijaInsertRequest, Database.ObavijestKategorija>();
+            CreateMap<ObavijestInsertRequest, Database.Obavijest>();
+            CreateMap<PozoristeInsertRequest, Database.Pozoriste>();
+            CreateMap<SalaInsertRequest, Database.Sala>();
+
+
 
         }
     }

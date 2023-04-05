@@ -6,12 +6,9 @@ using System.Threading.Tasks;
 
 namespace ePozoriste.Model
 {
-    public class Grad
+    public class Uloga
     {
-        public int GradId { get; set; }
+        public int UlogaId { get; set; }
         public string Naziv { get; set; }
-        public string PostanskiBr { get; set; }
-        public int? DrzavaId { get; set; }
-        public virtual Drzava? Drzava { get; set; }
     }
 }

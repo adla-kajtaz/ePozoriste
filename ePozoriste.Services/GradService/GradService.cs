@@ -34,5 +34,23 @@ namespace ePozoriste.Services
             var list = entity.ToList();
             return _mapper.Map<IList<Model.Grad>>(list);
         }
+
+        public override Model.Grad Delete(int id)
+        {
+            var entity = _context.Grads.Find(id);
+            var pozorista = _context.Pozoristes.Where(e => e.GradId == id).ToList();
+
+            if (pozorista != null && pozorista.Any())
+            {
+                return null;
+            }
+            else
+            {
+                _context.Grads.Remove(entity);
+            }
+
+            _context.SaveChanges();
+            return _mapper.Map<Model.Grad>(entity);
+        }
     }
 }

@@ -21,4 +21,8 @@
     <ProjectReference Include="..\ePozoriste.Model\ePozoriste.Model.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="ObavijestService\" />
+  </ItemGroup>
+
 </Project>

@@ -24,7 +24,7 @@ namespace ePozoriste.Services
 
             if (!string.IsNullOrWhiteSpace(search.Tekst))
             {
-                entity = entity.Where(e => e.Naziv.Contains(search.Tekst));
+                entity = entity.Where(e => e.Naziv.ToLower().Contains(search.Tekst.ToLower()));
             }
 
             var list = entity.ToList();
