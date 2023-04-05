@@ -23,6 +23,9 @@ builder.Services.AddTransient<IUlogaService, UlogaService>();
 builder.Services.AddTransient<IObavijestKategorijaService, ObavijestKategorijaService>();
 builder.Services.AddTransient<IPozoristeService, PozoristeService>();
 builder.Services.AddTransient<ISalaService, SalaService>();
+builder.Services.AddTransient<IVrstaPredstaveService, VrstaPredstaveService>();
+builder.Services.AddTransient<IGlumacService, GlumacService>();
+
 
 
 

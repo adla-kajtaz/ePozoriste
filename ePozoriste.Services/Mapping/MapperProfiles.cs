@@ -19,6 +19,9 @@ namespace ePozoriste.Services.Mapping
             CreateMap<Database.Obavijest, Model.Obavijest>();
             CreateMap<Database.Pozoriste, Model.Pozoriste>();
             CreateMap<Database.Sala, Model.Sala>();
+            CreateMap<Database.VrstaPredstave, Model.VrstaPredstave>();
+            CreateMap<Database.Glumac, Model.Glumac>();
+
 
 
 
@@ -28,6 +31,10 @@ namespace ePozoriste.Services.Mapping
             CreateMap<ObavijestInsertRequest, Database.Obavijest>();
             CreateMap<PozoristeInsertRequest, Database.Pozoriste>();
             CreateMap<SalaInsertRequest, Database.Sala>();
+            CreateMap<VrstaPredstaveInsertRequest, Database.VrstaPredstave>();
+            CreateMap<GlumacInsertRequest, Database.Glumac>();
+
+
 
 
 

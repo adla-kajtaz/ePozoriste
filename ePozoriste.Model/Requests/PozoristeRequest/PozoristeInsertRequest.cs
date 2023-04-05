@@ -13,7 +13,7 @@ namespace ePozoriste.Model.Requests
         public string Webstranica { get; set; }
         public string Email { get; set; }
         public string BrTelefona { get; set; }
-        public string Logo { get; set; }
+        public string? Logo { get; set; }
         public bool Aktivan { get; set; }
         public int GradId { get; set; }
     }
