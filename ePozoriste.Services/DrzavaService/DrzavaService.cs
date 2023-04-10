@@ -40,6 +40,10 @@ namespace ePozoriste.Services
             {
                 return null;
             }
+            else if (entity == null)
+            {
+                return null;
+            }
             else
             {
                 _context.Drzavas.Remove(entity);

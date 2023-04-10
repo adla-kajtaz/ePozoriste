@@ -21,7 +21,12 @@ namespace ePozoriste.Services.Mapping
             CreateMap<Database.Sala, Model.Sala>();
             CreateMap<Database.VrstaPredstave, Model.VrstaPredstave>();
             CreateMap<Database.Glumac, Model.Glumac>();
-
+            CreateMap<Database.Predstava, Model.Predstava>();
+            CreateMap<Database.Termin, Model.Termin>();
+            CreateMap<Database.PredstavaGlumac, Model.PredstavaGlumac>();
+            CreateMap<Database.PredstavaVrstaPredstave, Model.PredstavaVrstaPredstave>();
+            CreateMap<Database.Kartum, Model.Karta>();
+            CreateMap<Database.Kupovina, Model.Kupovina>();
 
 
 
@@ -33,9 +38,12 @@ namespace ePozoriste.Services.Mapping
             CreateMap<SalaInsertRequest, Database.Sala>();
             CreateMap<VrstaPredstaveInsertRequest, Database.VrstaPredstave>();
             CreateMap<GlumacInsertRequest, Database.Glumac>();
-
-
-
+            CreateMap<PredstavaInsertRequest, Database.Predstava>();
+            CreateMap<TerminInsertRequest, Database.Termin>();
+            CreateMap<PredstavaGlumacInsertRequest, Database.PredstavaGlumac>();
+            CreateMap<PredstavaVrstaPredstaveInsertRequest, Database.PredstavaVrstaPredstave>();
+            CreateMap<KartaInsertRequest, Database.Kartum>();
+            CreateMap<KupovinaInsertRequest, Database.Kupovina>();
 
 
         }

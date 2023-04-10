@@ -25,6 +25,14 @@ builder.Services.AddTransient<IPozoristeService, PozoristeService>();
 builder.Services.AddTransient<ISalaService, SalaService>();
 builder.Services.AddTransient<IVrstaPredstaveService, VrstaPredstaveService>();
 builder.Services.AddTransient<IGlumacService, GlumacService>();
+builder.Services.AddTransient<IPredstavaService, PredstavaService>();
+builder.Services.AddTransient<ITerminService, TerminService>();
+builder.Services.AddTransient<IPredstavaGlumacService, PredstavaGlumacService>();
+builder.Services.AddTransient<IPredstavaVrstaPredstaveService, PredstavaVrstaPredstaveService>();
+builder.Services.AddTransient<IKartaService, KartaService>();
+builder.Services.AddTransient<IKupovinaService, KupovinaService>();
+
+
 
 
 
