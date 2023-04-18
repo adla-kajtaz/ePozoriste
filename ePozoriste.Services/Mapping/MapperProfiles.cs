@@ -27,6 +27,7 @@ namespace ePozoriste.Services.Mapping
             CreateMap<Database.PredstavaVrstaPredstave, Model.PredstavaVrstaPredstave>();
             CreateMap<Database.Kartum, Model.Karta>();
             CreateMap<Database.Kupovina, Model.Kupovina>();
+            CreateMap<Database.Korisnik, Model.Korisnik>();
 
 
 
@@ -44,6 +45,7 @@ namespace ePozoriste.Services.Mapping
             CreateMap<PredstavaVrstaPredstaveInsertRequest, Database.PredstavaVrstaPredstave>();
             CreateMap<KartaInsertRequest, Database.Kartum>();
             CreateMap<KupovinaInsertRequest, Database.Kupovina>();
+            CreateMap<KorisnikInsertRequest, Database.Korisnik>();
 
 
         }

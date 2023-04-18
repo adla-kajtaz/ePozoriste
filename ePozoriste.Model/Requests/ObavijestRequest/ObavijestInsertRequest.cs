@@ -14,10 +14,8 @@ namespace ePozoriste.Model.Requests
         public string Slika { get; set; }
         public DateTime DatumKreiranja { get; set; }
 
-        public int? ObavijestKategorijaId { get; set; }
-        public virtual ObavijestKategorija? ObavijestKategorija { get; set; }
+        public int ObavijestKategorijaId { get; set; }
 
-        public int? KorisnikId { get; set; }
-        public virtual Korisnik? Korisnik { get; set; }
+        public int KorisnikId { get; set; }
     }
 }

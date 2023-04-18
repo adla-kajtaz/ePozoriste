@@ -21,6 +21,7 @@ builder.Services.AddTransient<IDrzavaService, DrzavaService>();
 builder.Services.AddTransient<IGradService, GradService>();
 builder.Services.AddTransient<IUlogaService, UlogaService>();
 builder.Services.AddTransient<IObavijestKategorijaService, ObavijestKategorijaService>();
+builder.Services.AddTransient<IObavijestService, ObavijestService>();
 builder.Services.AddTransient<IPozoristeService, PozoristeService>();
 builder.Services.AddTransient<ISalaService, SalaService>();
 builder.Services.AddTransient<IVrstaPredstaveService, VrstaPredstaveService>();
@@ -31,6 +32,8 @@ builder.Services.AddTransient<IPredstavaGlumacService, PredstavaGlumacService>()
 builder.Services.AddTransient<IPredstavaVrstaPredstaveService, PredstavaVrstaPredstaveService>();
 builder.Services.AddTransient<IKartaService, KartaService>();
 builder.Services.AddTransient<IKupovinaService, KupovinaService>();
+builder.Services.AddTransient<IKorisnikService, KorisnikService>();
+
 
 
 
