@@ -119,6 +119,32 @@ namespace ePozoriste.Services
             return _mapper.Map<Model.Korisnik>(entity);
         }
 
+        public override Model.Korisnik Delete(int id)
+        {
+            var entity = _context.Korisniks.Find(id);
+            var korisnikUloge = _context.KorisnikUloges.Where(e => e.KorisnikId == id).ToList();
+
+            if (korisnikUloge != null && korisnikUloge.Any())
+            {
+                var uloga = _context.KorisnikUloges.Where(e => e.KorisnikId == id).ToList();
+                foreach(var ulogaUloge in uloga)
+                {
+                    _context.KorisnikUloges.Remove(ulogaUloge);
+                }
+                _context.Korisniks.Remove(entity);
+            }
+            else if (entity == null)
+            {
+                return null;
+            }
+            else
+            {
+                _context.Korisniks.Remove(entity);
+            }
+           
+            _context.SaveChanges();
+            return _mapper.Map<Model.Korisnik>(entity);
+        }
 
         public string GenerateHash(string input, string salt)
         {
