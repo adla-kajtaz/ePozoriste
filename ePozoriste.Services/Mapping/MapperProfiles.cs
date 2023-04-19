@@ -28,6 +28,7 @@ namespace ePozoriste.Services.Mapping
             CreateMap<Database.Kartum, Model.Karta>();
             CreateMap<Database.Kupovina, Model.Kupovina>();
             CreateMap<Database.Korisnik, Model.Korisnik>();
+            CreateMap<Database.KorisnikUloge, Model.KorisnikUloge>();
 
 
 

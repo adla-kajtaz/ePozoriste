@@ -34,15 +34,6 @@ builder.Services.AddTransient<IKartaService, KartaService>();
 builder.Services.AddTransient<IKupovinaService, KupovinaService>();
 builder.Services.AddTransient<IKorisnikService, KorisnikService>();
 
-
-
-
-
-
-
-
-
-
 builder.Services.AddAutoMapper(typeof(Program), typeof(MapperProfiles));
 var app = builder.Build();
 

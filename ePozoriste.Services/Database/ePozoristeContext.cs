@@ -226,7 +226,6 @@ namespace ePozoriste.Services.Database
 
             OnModelCreatingPartial(modelBuilder);
         }
-
         partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
     }
 }
