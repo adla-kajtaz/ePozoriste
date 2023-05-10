@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ePozoriste.Services.Database
 {
-    partial class ePozoristeContext
+    public partial class ePozoristeContext
     {
         partial void OnModelCreatingPartial(ModelBuilder modelBuilder)
         {
