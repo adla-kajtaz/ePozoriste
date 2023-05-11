@@ -1,4 +1,4 @@
-﻿namespace ePozoriste.WinUI.Drzave
+﻿namespace ePozoriste.WinUI
 {
     partial class frmDetaljiDrzave
     {

@@ -35,7 +35,7 @@
             this.Skracenica = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Uredi = new System.Windows.Forms.DataGridViewButtonColumn();
             this.Obrisi = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.btnAdd = new System.Windows.Forms.Button();
+            this.btnDodaj = new System.Windows.Forms.Button();
             this.txtPretraga = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDrzave)).BeginInit();
             this.SuspendLayout();
@@ -116,15 +116,15 @@
             this.Obrisi.Text = "Obrisi";
             this.Obrisi.UseColumnTextForButtonValue = true;
             // 
-            // btnAdd
+            // btnDodaj
             // 
-            this.btnAdd.Location = new System.Drawing.Point(528, 10);
-            this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(116, 29);
-            this.btnAdd.TabIndex = 5;
-            this.btnAdd.Text = "Dodaj";
-            this.btnAdd.UseVisualStyleBackColor = true;
-            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
+            this.btnDodaj.Location = new System.Drawing.Point(528, 10);
+            this.btnDodaj.Name = "btnDodaj";
+            this.btnDodaj.Size = new System.Drawing.Size(116, 29);
+            this.btnDodaj.TabIndex = 5;
+            this.btnDodaj.Text = "Dodaj";
+            this.btnDodaj.UseVisualStyleBackColor = true;
+            this.btnDodaj.Click += new System.EventHandler(this.btnDodaj_Click);
             // 
             // txtPretraga
             // 
@@ -140,7 +140,7 @@
             this.ClientSize = new System.Drawing.Size(671, 450);
             this.Controls.Add(this.btnPrikazi);
             this.Controls.Add(this.dgvDrzave);
-            this.Controls.Add(this.btnAdd);
+            this.Controls.Add(this.btnDodaj);
             this.Controls.Add(this.txtPretraga);
             this.Name = "frmPrikazDrzave";
             this.Text = "Drzava";
@@ -155,7 +155,7 @@
 
         private Button btnPrikazi;
         private DataGridView dgvDrzave;
-        private Button btnAdd;
+        private Button btnDodaj;
         private TextBox txtPretraga;
         private DataGridViewTextBoxColumn ID;
         private DataGridViewTextBoxColumn Naziv;

@@ -10,7 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace ePozoriste.WinUI.Drzave
+namespace ePozoriste.WinUI
 {
     public partial class frmDetaljiDrzave : Form
     {
@@ -47,7 +47,7 @@ namespace ePozoriste.WinUI.Drzave
                 }
                 else
                 {
-                    var teren = await _drzavaService.Update<Drzava>(_drzava.DrzavaId, drzavaInsertRequest);
+                    var drzava = await _drzavaService.Update<Drzava>(_drzava.DrzavaId, drzavaInsertRequest);
                 }
                 MessageBox.Show("Uspjesno sacuvano");
                 DialogResult = DialogResult.OK;

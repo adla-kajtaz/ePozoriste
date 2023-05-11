@@ -1,6 +1,5 @@
 using ePozoriste.Model;
 using ePozoriste.Model.SearchObjects;
-using ePozoriste.WinUI.Drzave;
 
 namespace ePozoriste.WinUI
 {
@@ -12,7 +11,7 @@ namespace ePozoriste.WinUI
             InitializeComponent();
             dgvDrzave.AutoGenerateColumns = false;
         }
-        private void btnAdd_Click(object sender, EventArgs e)
+        private void btnDodaj_Click(object sender, EventArgs e)
         {
             frmDetaljiDrzave frmDetalji = new frmDetaljiDrzave();
             if (frmDetalji.ShowDialog() == DialogResult.OK)
