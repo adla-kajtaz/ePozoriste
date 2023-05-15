@@ -40,5 +40,11 @@ namespace ePozoriste.WinUI
             frmPrikazObavijesti frmPrikazObavijesti = new frmPrikazObavijesti();
             frmPrikazObavijesti.Show();
         }
+
+        private void btnPozoriste_Click(object sender, EventArgs e)
+        {
+            frmPrikazPozorista frmPrikazPozorista = new frmPrikazPozorista();
+            frmPrikazPozorista.Show();
+        }
     }
 }

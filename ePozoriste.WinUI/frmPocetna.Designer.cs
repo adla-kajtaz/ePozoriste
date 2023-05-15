@@ -32,6 +32,7 @@
             this.btnGrad = new System.Windows.Forms.Button();
             this.btnObavijestKategorija = new System.Windows.Forms.Button();
             this.btnObavijest = new System.Windows.Forms.Button();
+            this.btnPozoriste = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnDrzava
@@ -74,11 +75,22 @@
             this.btnObavijest.UseVisualStyleBackColor = true;
             this.btnObavijest.Click += new System.EventHandler(this.btnObavijest_Click);
             // 
+            // btnPozoriste
+            // 
+            this.btnPozoriste.Location = new System.Drawing.Point(235, 12);
+            this.btnPozoriste.Name = "btnPozoriste";
+            this.btnPozoriste.Size = new System.Drawing.Size(100, 74);
+            this.btnPozoriste.TabIndex = 4;
+            this.btnPozoriste.Text = "Pozoriste";
+            this.btnPozoriste.UseVisualStyleBackColor = true;
+            this.btnPozoriste.Click += new System.EventHandler(this.btnPozoriste_Click);
+            // 
             // frmPocetna
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(252, 190);
+            this.ClientSize = new System.Drawing.Size(415, 209);
+            this.Controls.Add(this.btnPozoriste);
             this.Controls.Add(this.btnObavijest);
             this.Controls.Add(this.btnObavijestKategorija);
             this.Controls.Add(this.btnGrad);
@@ -95,5 +107,6 @@
         private Button btnGrad;
         private Button btnObavijestKategorija;
         private Button btnObavijest;
+        private Button btnPozoriste;
     }
 }
