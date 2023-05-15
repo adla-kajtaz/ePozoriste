@@ -70,7 +70,7 @@ namespace ePozoriste.WinUI
             GradSearchObject gradSearchRequest = new GradSearchObject
             {
                 Tekst = txtPretraga.Text,
-                DrzavaId = null
+                DrzavaId = (int)cmbDrzave.SelectedValue
             };
             dgvGradovi.DataSource = await _gradService.Get<List<Grad>>(gradSearchRequest);
         }
@@ -80,9 +80,9 @@ namespace ePozoriste.WinUI
             var grad = dgvGradovi.SelectedRows[0].DataBoundItem as Grad;
             if (e.ColumnIndex == 5)
             {
-                //var obrisanaDrazva=
+                //var obrisanGrad=
                 await _gradService.Delete<Grad>(grad.GradId);
-                //if (obrisanaDrazva != null){
+                //if (obrisanGrad != null){
                 dgvGradovi.DataSource = null;
                 frmPrikazGradova_Load(sender, e);
                 /*}
