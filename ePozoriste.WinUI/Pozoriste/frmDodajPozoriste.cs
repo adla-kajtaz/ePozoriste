@@ -1,5 +1,6 @@
 ﻿using ePozoriste.Model;
 using ePozoriste.Model.Requests;
+using ePozoriste.Model.SearchObjects;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -17,6 +18,7 @@ namespace ePozoriste.WinUI
         APIService _gradService { get; set; } = new APIService("Grad");
         APIService _pozoristeService { get; set; } = new APIService("Pozoriste");
         private Pozoriste _pozoriste;
+
         public frmDodajPozoriste(Pozoriste pozoriste= null)
         {
             InitializeComponent();

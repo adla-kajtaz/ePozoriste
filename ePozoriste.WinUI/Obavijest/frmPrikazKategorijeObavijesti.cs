@@ -23,8 +23,8 @@ namespace ePozoriste.WinUI
 
         private void btnDodaj_Click(object sender, EventArgs e)
         {
-            frmDodajKatergorijuObavijesti frmDetalji = new frmDodajKatergorijuObavijesti();
-            if (frmDetalji.ShowDialog() == DialogResult.OK)
+            frmDodajKatergorijuObavijesti frmDodajKatergorijuObavijesti = new frmDodajKatergorijuObavijesti();
+            if (frmDodajKatergorijuObavijesti.ShowDialog() == DialogResult.OK)
             {
                 dgvKategorijeObavijesti.DataSource = null;
                 frmPrikazKategorijeObavijesti_Load(sender, e);
@@ -74,8 +74,8 @@ namespace ePozoriste.WinUI
             }
             else if (e.ColumnIndex == 2)
             {
-                frmDodajKatergorijuObavijesti frmDetalji = new frmDodajKatergorijuObavijesti(obavijestKategorija);
-                if (frmDetalji.ShowDialog() == DialogResult.OK)
+                frmDodajKatergorijuObavijesti frmDodajKatergorijuObavijesti = new frmDodajKatergorijuObavijesti(obavijestKategorija);
+                if (frmDodajKatergorijuObavijesti.ShowDialog() == DialogResult.OK)
                 {
                     dgvKategorijeObavijesti.DataSource = null;
                     frmPrikazKategorijeObavijesti_Load(sender, e);

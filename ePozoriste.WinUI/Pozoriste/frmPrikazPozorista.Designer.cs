@@ -44,6 +44,7 @@
             this.Aktivan = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.Uredi = new System.Windows.Forms.DataGridViewButtonColumn();
             this.Obrisi = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.Sale = new System.Windows.Forms.DataGridViewButtonColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPozorista)).BeginInit();
             this.SuspendLayout();
             // 
@@ -79,7 +80,8 @@
             this.Logo,
             this.Aktivan,
             this.Uredi,
-            this.Obrisi});
+            this.Obrisi,
+            this.Sale});
             this.dgvPozorista.Location = new System.Drawing.Point(19, 60);
             this.dgvPozorista.Name = "dgvPozorista";
             this.dgvPozorista.RowHeadersWidth = 51;
@@ -87,7 +89,7 @@
             this.dgvPozorista.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvPozorista.Size = new System.Drawing.Size(1256, 417);
             this.dgvPozorista.TabIndex = 16;
-            this.dgvPozorista.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvGradovi_CellContentClick);
+            this.dgvPozorista.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPozorista_CellContentClick);
             // 
             // btnDodaj
             // 
@@ -109,7 +111,7 @@
             // ID
             // 
             this.ID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.ID.DataPropertyName = "GradId";
+            this.ID.DataPropertyName = "PozoristeId";
             this.ID.HeaderText = "ID";
             this.ID.MinimumWidth = 6;
             this.ID.Name = "ID";
@@ -210,6 +212,14 @@
             this.Obrisi.Text = "Obrisi";
             this.Obrisi.UseColumnTextForButtonValue = true;
             // 
+            // Sale
+            // 
+            this.Sale.HeaderText = "Prikaz sala";
+            this.Sale.MinimumWidth = 6;
+            this.Sale.Name = "Sale";
+            this.Sale.Text = "Prikaz sala";
+            this.Sale.Width = 125;
+            // 
             // frmPrikazPozorista
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -247,5 +257,6 @@
         private DataGridViewCheckBoxColumn Aktivan;
         private DataGridViewButtonColumn Uredi;
         private DataGridViewButtonColumn Obrisi;
+        private DataGridViewButtonColumn Sale;
     }
 }

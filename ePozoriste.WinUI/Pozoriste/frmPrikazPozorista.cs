@@ -74,7 +74,7 @@ namespace ePozoriste.WinUI
             dgvPozorista.DataSource = await _pozoristeService.Get<List<Pozoriste>>(pozoristeSearchRequest);
         }
 
-        private async void dgvGradovi_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private async void dgvPozorista_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             var pozoriste = dgvPozorista.SelectedRows[0].DataBoundItem as Pozoriste;
             if (e.ColumnIndex == 10)
@@ -94,6 +94,16 @@ namespace ePozoriste.WinUI
             {
                 frmDodajPozoriste frmDodajPozoriste = new frmDodajPozoriste(pozoriste);
                 if (frmDodajPozoriste.ShowDialog() == DialogResult.OK)
+                {
+                    dgvPozorista.DataSource = null;
+                    frmPrikazPozorista_Load(sender, e);
+                }
+            }
+            else if(e.ColumnIndex == 11)
+            {
+                //ucitati samo sale ovog pozorista
+                frmPrikazSala frmPrikazSala = new frmPrikazSala();
+                if (frmPrikazSala.ShowDialog() == DialogResult.OK)
                 {
                     dgvPozorista.DataSource = null;
                     frmPrikazPozorista_Load(sender, e);

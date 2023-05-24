@@ -46,5 +46,43 @@ namespace ePozoriste.WinUI
             frmPrikazPozorista frmPrikazPozorista = new frmPrikazPozorista();
             frmPrikazPozorista.Show();
         }
+
+        private void btnSala_Click(object sender, EventArgs e)
+        {
+            frmPrikazSala frmPrikazSala = new frmPrikazSala();
+            frmPrikazSala.Show();
+        }
+
+        private void btnVrstaPredstave_Click(object sender, EventArgs e)
+        {
+            frmPrikazVrstaPredstave frmPrikazVrstaPredstave = new frmPrikazVrstaPredstave();
+            frmPrikazVrstaPredstave.Show();
+        }
+
+        private void btnPredstava_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnGlumci_Click(object sender, EventArgs e)
+        {
+            frmPrikazGlumaca frmPrikazGlumaca = new frmPrikazGlumaca();
+            frmPrikazGlumaca.Show();
+        }
+
+        private void btnTermini_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnPredstavaGlumac_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnPredstavaVrstaP_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
