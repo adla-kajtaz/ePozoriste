@@ -16,38 +16,25 @@ namespace ePozoriste.WinUI
     {
         APIService _salaService { get; set; } = new APIService("Sala");
         APIService _pozoristeService { get; set; } = new APIService("Pozoriste");
+        private int _pozoristeId;
 
-        public frmPrikazSala()
+        public frmPrikazSala(int pozoristeId)
         {
             InitializeComponent();
             dgvSale.AutoGenerateColumns = false;
+            _pozoristeId = pozoristeId;
         }
 
         private async void frmPrikazSala_Load(object sender, EventArgs e)
         {
             try
             {
-                var searchRequest = new SalaSearchObject
+                SalaSearchObject salaSearchObject = new SalaSearchObject
                 {
-
+                    Tekst = null,
+                    PozoristeId = _pozoristeId
                 };
-                dgvSale.DataSource = await _salaService.Get<List<Sala>>();
-                UcitajPozorista();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-        }
-
-        private async void UcitajPozorista()
-        {
-            try
-            {
-                var pozorista = await _pozoristeService.Get<List<Pozoriste>>() as IList<Pozoriste>;
-                cmbPozorista.DataSource = pozorista;
-                cmbPozorista.DisplayMember = "Naziv";
-                cmbPozorista.ValueMember = "PozoristeId";
+                dgvSale.DataSource = await _salaService.Get<List<Sala>>(salaSearchObject);
             }
             catch (Exception ex)
             {
@@ -57,7 +44,7 @@ namespace ePozoriste.WinUI
 
         private void btnDodaj_Click(object sender, EventArgs e)
         {
-            frmDodajSalu frmDodajSalu = new frmDodajSalu();
+            frmDodajSalu frmDodajSalu = new frmDodajSalu(_pozoristeId);
             if (frmDodajSalu.ShowDialog() == DialogResult.OK)
             {
                 dgvSale.DataSource = null;
@@ -70,7 +57,7 @@ namespace ePozoriste.WinUI
             SalaSearchObject salaSearchObject = new SalaSearchObject
             {
                 Tekst = txtPretraga.Text,
-                PozoristeId = (int)cmbPozorista.SelectedValue
+                PozoristeId = _pozoristeId
             };
             dgvSale.DataSource = await _salaService.Get<List<Sala>>(salaSearchObject);
         }
@@ -93,7 +80,7 @@ namespace ePozoriste.WinUI
             }
             else if (e.ColumnIndex == 5)
             {
-                frmDodajSalu frmDodajSalu = new frmDodajSalu(sala);
+                frmDodajSalu frmDodajSalu = new frmDodajSalu(_pozoristeId, sala);
                 if (frmDodajSalu.ShowDialog() == DialogResult.OK)
                 {
                     dgvSale.DataSource = null;

@@ -30,9 +30,6 @@
         {
             this.btnPrikazi = new System.Windows.Forms.Button();
             this.dgvSale = new System.Windows.Forms.DataGridView();
-            this.btnDodaj = new System.Windows.Forms.Button();
-            this.txtPretraga = new System.Windows.Forms.TextBox();
-            this.cmbPozorista = new System.Windows.Forms.ComboBox();
             this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Naziv = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.BrSjedista = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -40,6 +37,8 @@
             this.BrSjedistaPoRedu = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Uredi = new System.Windows.Forms.DataGridViewButtonColumn();
             this.Obrisi = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.btnDodaj = new System.Windows.Forms.Button();
+            this.txtPretraga = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSale)).BeginInit();
             this.SuspendLayout();
             // 
@@ -72,31 +71,6 @@
             this.dgvSale.Size = new System.Drawing.Size(790, 417);
             this.dgvSale.TabIndex = 20;
             this.dgvSale.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvSale_CellContentClick);
-            // 
-            // btnDodaj
-            // 
-            this.btnDodaj.Location = new System.Drawing.Point(666, 10);
-            this.btnDodaj.Name = "btnDodaj";
-            this.btnDodaj.Size = new System.Drawing.Size(136, 29);
-            this.btnDodaj.TabIndex = 19;
-            this.btnDodaj.Text = "Dodaj";
-            this.btnDodaj.UseVisualStyleBackColor = true;
-            this.btnDodaj.Click += new System.EventHandler(this.btnDodaj_Click);
-            // 
-            // txtPretraga
-            // 
-            this.txtPretraga.Location = new System.Drawing.Point(12, 12);
-            this.txtPretraga.Name = "txtPretraga";
-            this.txtPretraga.Size = new System.Drawing.Size(252, 27);
-            this.txtPretraga.TabIndex = 18;
-            // 
-            // cmbPozorista
-            // 
-            this.cmbPozorista.FormattingEnabled = true;
-            this.cmbPozorista.Location = new System.Drawing.Point(268, 11);
-            this.cmbPozorista.Name = "cmbPozorista";
-            this.cmbPozorista.Size = new System.Drawing.Size(241, 28);
-            this.cmbPozorista.TabIndex = 22;
             // 
             // ID
             // 
@@ -162,12 +136,28 @@
             this.Obrisi.Text = "Obrisi";
             this.Obrisi.UseColumnTextForButtonValue = true;
             // 
+            // btnDodaj
+            // 
+            this.btnDodaj.Location = new System.Drawing.Point(666, 10);
+            this.btnDodaj.Name = "btnDodaj";
+            this.btnDodaj.Size = new System.Drawing.Size(136, 29);
+            this.btnDodaj.TabIndex = 19;
+            this.btnDodaj.Text = "Dodaj";
+            this.btnDodaj.UseVisualStyleBackColor = true;
+            this.btnDodaj.Click += new System.EventHandler(this.btnDodaj_Click);
+            // 
+            // txtPretraga
+            // 
+            this.txtPretraga.Location = new System.Drawing.Point(12, 12);
+            this.txtPretraga.Name = "txtPretraga";
+            this.txtPretraga.Size = new System.Drawing.Size(497, 27);
+            this.txtPretraga.TabIndex = 18;
+            // 
             // frmPrikazSala
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(821, 483);
-            this.Controls.Add(this.cmbPozorista);
             this.Controls.Add(this.btnPrikazi);
             this.Controls.Add(this.dgvSale);
             this.Controls.Add(this.btnDodaj);
@@ -187,7 +177,6 @@
         private DataGridView dgvSale;
         private Button btnDodaj;
         private TextBox txtPretraga;
-        private ComboBox cmbPozorista;
         private DataGridViewTextBoxColumn ID;
         private DataGridViewTextBoxColumn Naziv;
         private DataGridViewTextBoxColumn BrSjedista;

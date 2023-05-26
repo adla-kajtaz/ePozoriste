@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace ePozoriste.WinUI.Predstava
+namespace ePozoriste.WinUI
 {
     public partial class frmDodavanjeTermina : Form
     {

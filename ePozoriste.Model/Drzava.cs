@@ -12,5 +12,10 @@ namespace ePozoriste.Model
         public string Naziv { get; set; }
         public string Skracenica { get; set; }
 
+        public override string ToString()
+        {
+            return Naziv;
+        }
+
     }
 }

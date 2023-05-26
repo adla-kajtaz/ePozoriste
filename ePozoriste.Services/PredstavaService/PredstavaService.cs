@@ -38,8 +38,6 @@ namespace ePozoriste.Services
             var predGlumac = _context.PredstavaGlumacs.Where(e => e.PredstavaId == id).ToList();
             var predVrsta = _context.PredstavaVrstaPredstaves.Where(e => e.PredstavaId == id).ToList();
 
-
-
             if ((termini != null && termini.Any()) || (predGlumac != null && predGlumac.Any()) || (predVrsta != null && predVrsta.Any()))
             {
                 return null;

@@ -32,8 +32,6 @@
             this.txtBrSjedistaPoRedu = new System.Windows.Forms.TextBox();
             this.lblBrRedova = new System.Windows.Forms.Label();
             this.txtBrRedova = new System.Windows.Forms.TextBox();
-            this.lblPozoriste = new System.Windows.Forms.Label();
-            this.cmbPozorista = new System.Windows.Forms.ComboBox();
             this.lblNaziv = new System.Windows.Forms.Label();
             this.txtNaziv = new System.Windows.Forms.TextBox();
             this.btnSpremi = new System.Windows.Forms.Button();
@@ -73,23 +71,6 @@
             this.txtBrRedova.Size = new System.Drawing.Size(241, 27);
             this.txtBrRedova.TabIndex = 35;
             // 
-            // lblPozoriste
-            // 
-            this.lblPozoriste.AutoSize = true;
-            this.lblPozoriste.Location = new System.Drawing.Point(12, 62);
-            this.lblPozoriste.Name = "lblPozoriste";
-            this.lblPozoriste.Size = new System.Drawing.Size(69, 20);
-            this.lblPozoriste.TabIndex = 32;
-            this.lblPozoriste.Text = "Pozoriste";
-            // 
-            // cmbPozorista
-            // 
-            this.cmbPozorista.FormattingEnabled = true;
-            this.cmbPozorista.Location = new System.Drawing.Point(12, 85);
-            this.cmbPozorista.Name = "cmbPozorista";
-            this.cmbPozorista.Size = new System.Drawing.Size(241, 28);
-            this.cmbPozorista.TabIndex = 31;
-            // 
             // lblNaziv
             // 
             this.lblNaziv.AutoSize = true;
@@ -108,9 +89,9 @@
             // 
             // btnSpremi
             // 
-            this.btnSpremi.Location = new System.Drawing.Point(292, 137);
+            this.btnSpremi.Location = new System.Drawing.Point(12, 137);
             this.btnSpremi.Name = "btnSpremi";
-            this.btnSpremi.Size = new System.Drawing.Size(241, 29);
+            this.btnSpremi.Size = new System.Drawing.Size(521, 29);
             this.btnSpremi.TabIndex = 28;
             this.btnSpremi.Text = "Spremi";
             this.btnSpremi.UseVisualStyleBackColor = true;
@@ -119,7 +100,7 @@
             // lbBrSjedista
             // 
             this.lbBrSjedista.AutoSize = true;
-            this.lbBrSjedista.Location = new System.Drawing.Point(12, 116);
+            this.lbBrSjedista.Location = new System.Drawing.Point(12, 62);
             this.lbBrSjedista.Name = "lbBrSjedista";
             this.lbBrSjedista.Size = new System.Drawing.Size(90, 20);
             this.lbBrSjedista.TabIndex = 40;
@@ -127,7 +108,7 @@
             // 
             // txtBrSjedista
             // 
-            this.txtBrSjedista.Location = new System.Drawing.Point(12, 139);
+            this.txtBrSjedista.Location = new System.Drawing.Point(12, 85);
             this.txtBrSjedista.Name = "txtBrSjedista";
             this.txtBrSjedista.Size = new System.Drawing.Size(241, 27);
             this.txtBrSjedista.TabIndex = 39;
@@ -143,8 +124,6 @@
             this.Controls.Add(this.txtBrSjedistaPoRedu);
             this.Controls.Add(this.lblBrRedova);
             this.Controls.Add(this.txtBrRedova);
-            this.Controls.Add(this.lblPozoriste);
-            this.Controls.Add(this.cmbPozorista);
             this.Controls.Add(this.lblNaziv);
             this.Controls.Add(this.txtNaziv);
             this.Controls.Add(this.btnSpremi);
@@ -162,8 +141,6 @@
         private TextBox txtBrSjedistaPoRedu;
         private Label lblBrRedova;
         private TextBox txtBrRedova;
-        private Label lblPozoriste;
-        private ComboBox cmbPozorista;
         private Label lblNaziv;
         private TextBox txtNaziv;
         private Button btnSpremi;

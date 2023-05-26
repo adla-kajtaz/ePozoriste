@@ -101,8 +101,7 @@ namespace ePozoriste.WinUI
             }
             else if(e.ColumnIndex == 11)
             {
-                //ucitati samo sale ovog pozorista
-                frmPrikazSala frmPrikazSala = new frmPrikazSala();
+                frmPrikazSala frmPrikazSala = new frmPrikazSala(pozoriste.PozoristeId);
                 if (frmPrikazSala.ShowDialog() == DialogResult.OK)
                 {
                     dgvPozorista.DataSource = null;

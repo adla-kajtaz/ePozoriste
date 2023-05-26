@@ -3,6 +3,7 @@ using ePozoriste.Model.Requests;
 using ePozoriste.Model.SearchObjects;
 using ePozoriste.Services.BaseService;
 using ePozoriste.Services.Database;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,7 +21,7 @@ namespace ePozoriste.Services
 
         public override IEnumerable<Model.Karta> GetAll(KartaSearchObject search = null)
         {
-            var entity = _context.Set<Database.Kartum>().AsQueryable();
+            var entity = _context.Karta.Include(x=>x.Termin).AsQueryable();
 
             if (!string.IsNullOrWhiteSpace(search.Tekst) && search.TerminId != null && search.Aktivan != null)
             {

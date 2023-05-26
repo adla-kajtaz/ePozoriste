@@ -140,7 +140,7 @@
             // 
             // Grad
             // 
-            this.Grad.DataPropertyName = "GradId";
+            this.Grad.DataPropertyName = "Grad";
             this.Grad.HeaderText = "Grad";
             this.Grad.MinimumWidth = 6;
             this.Grad.Name = "Grad";
@@ -218,6 +218,7 @@
             this.Sale.MinimumWidth = 6;
             this.Sale.Name = "Sale";
             this.Sale.Text = "Prikaz sala";
+            this.Sale.UseColumnTextForButtonValue = true;
             this.Sale.Width = 125;
             // 
             // frmPrikazPozorista

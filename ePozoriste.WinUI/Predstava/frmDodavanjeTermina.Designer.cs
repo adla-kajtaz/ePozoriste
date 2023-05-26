@@ -1,4 +1,4 @@
-﻿namespace ePozoriste.WinUI.Predstava
+﻿namespace ePozoriste.WinUI
 {
     partial class frmDodavanjeTermina
     {

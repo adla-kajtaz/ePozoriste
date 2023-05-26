@@ -33,13 +33,10 @@
             this.btnObavijestKategorija = new System.Windows.Forms.Button();
             this.btnObavijest = new System.Windows.Forms.Button();
             this.btnPozoriste = new System.Windows.Forms.Button();
-            this.btnSala = new System.Windows.Forms.Button();
             this.btnTermini = new System.Windows.Forms.Button();
             this.btnGlumci = new System.Windows.Forms.Button();
             this.btnPredstava = new System.Windows.Forms.Button();
             this.btnVrstaPredstave = new System.Windows.Forms.Button();
-            this.btnPredstavaVrstaP = new System.Windows.Forms.Button();
-            this.btnPredstavaGlumac = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnDrzava
@@ -92,21 +89,11 @@
             this.btnPozoriste.UseVisualStyleBackColor = true;
             this.btnPozoriste.Click += new System.EventHandler(this.btnPozoriste_Click);
             // 
-            // btnSala
-            // 
-            this.btnSala.Location = new System.Drawing.Point(224, 91);
-            this.btnSala.Name = "btnSala";
-            this.btnSala.Size = new System.Drawing.Size(100, 85);
-            this.btnSala.TabIndex = 5;
-            this.btnSala.Text = "Sala";
-            this.btnSala.UseVisualStyleBackColor = true;
-            this.btnSala.Click += new System.EventHandler(this.btnSala_Click);
-            // 
             // btnTermini
             // 
-            this.btnTermini.Location = new System.Drawing.Point(436, 91);
+            this.btnTermini.Location = new System.Drawing.Point(436, 12);
             this.btnTermini.Name = "btnTermini";
-            this.btnTermini.Size = new System.Drawing.Size(100, 85);
+            this.btnTermini.Size = new System.Drawing.Size(100, 74);
             this.btnTermini.TabIndex = 9;
             this.btnTermini.Text = "Termini";
             this.btnTermini.UseVisualStyleBackColor = true;
@@ -114,7 +101,7 @@
             // 
             // btnGlumci
             // 
-            this.btnGlumci.Location = new System.Drawing.Point(436, 12);
+            this.btnGlumci.Location = new System.Drawing.Point(330, 12);
             this.btnGlumci.Name = "btnGlumci";
             this.btnGlumci.Size = new System.Drawing.Size(100, 74);
             this.btnGlumci.TabIndex = 8;
@@ -134,46 +121,23 @@
             // 
             // btnVrstaPredstave
             // 
-            this.btnVrstaPredstave.Location = new System.Drawing.Point(330, 12);
+            this.btnVrstaPredstave.Location = new System.Drawing.Point(224, 92);
             this.btnVrstaPredstave.Name = "btnVrstaPredstave";
-            this.btnVrstaPredstave.Size = new System.Drawing.Size(100, 74);
+            this.btnVrstaPredstave.Size = new System.Drawing.Size(100, 84);
             this.btnVrstaPredstave.TabIndex = 6;
             this.btnVrstaPredstave.Text = "Vrsta predstave";
             this.btnVrstaPredstave.UseVisualStyleBackColor = true;
             this.btnVrstaPredstave.Click += new System.EventHandler(this.btnVrstaPredstave_Click);
-            // 
-            // btnPredstavaVrstaP
-            // 
-            this.btnPredstavaVrstaP.Location = new System.Drawing.Point(542, 91);
-            this.btnPredstavaVrstaP.Name = "btnPredstavaVrstaP";
-            this.btnPredstavaVrstaP.Size = new System.Drawing.Size(100, 85);
-            this.btnPredstavaVrstaP.TabIndex = 11;
-            this.btnPredstavaVrstaP.Text = "PredstavaVrstaPred";
-            this.btnPredstavaVrstaP.UseVisualStyleBackColor = true;
-            this.btnPredstavaVrstaP.Click += new System.EventHandler(this.btnPredstavaVrstaP_Click);
-            // 
-            // btnPredstavaGlumac
-            // 
-            this.btnPredstavaGlumac.Location = new System.Drawing.Point(542, 12);
-            this.btnPredstavaGlumac.Name = "btnPredstavaGlumac";
-            this.btnPredstavaGlumac.Size = new System.Drawing.Size(100, 74);
-            this.btnPredstavaGlumac.TabIndex = 10;
-            this.btnPredstavaGlumac.Text = "PredstavaGlumac";
-            this.btnPredstavaGlumac.UseVisualStyleBackColor = true;
-            this.btnPredstavaGlumac.Click += new System.EventHandler(this.btnPredstavaGlumac_Click);
             // 
             // frmPocetna
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(662, 189);
-            this.Controls.Add(this.btnPredstavaVrstaP);
-            this.Controls.Add(this.btnPredstavaGlumac);
             this.Controls.Add(this.btnTermini);
             this.Controls.Add(this.btnGlumci);
             this.Controls.Add(this.btnPredstava);
             this.Controls.Add(this.btnVrstaPredstave);
-            this.Controls.Add(this.btnSala);
             this.Controls.Add(this.btnPozoriste);
             this.Controls.Add(this.btnObavijest);
             this.Controls.Add(this.btnObavijestKategorija);
@@ -192,12 +156,9 @@
         private Button btnObavijestKategorija;
         private Button btnObavijest;
         private Button btnPozoriste;
-        private Button btnSala;
         private Button btnTermini;
         private Button btnGlumci;
         private Button btnPredstava;
         private Button btnVrstaPredstave;
-        private Button btnPredstavaVrstaP;
-        private Button btnPredstavaGlumac;
     }
 }

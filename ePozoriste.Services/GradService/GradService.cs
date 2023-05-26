@@ -3,6 +3,7 @@ using ePozoriste.Model.Requests;
 using ePozoriste.Model.SearchObjects;
 using ePozoriste.Services.BaseService;
 using ePozoriste.Services.Database;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,7 +21,7 @@ namespace ePozoriste.Services
 
         public override IEnumerable<Model.Grad> GetAll(GradSearchObject search = null)
         {
-            var entity = _context.Set<Database.Grad>().AsQueryable();
+            var entity = _context.Grads.Include(x=>x.Drzava).AsQueryable();
 
             if (!string.IsNullOrWhiteSpace(search.Tekst) && search.DrzavaId != null)
             {

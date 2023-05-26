@@ -31,14 +31,14 @@
             this.cmbDrzave = new System.Windows.Forms.ComboBox();
             this.btnPrikazi = new System.Windows.Forms.Button();
             this.dgvGradovi = new System.Windows.Forms.DataGridView();
+            this.btnDodaj = new System.Windows.Forms.Button();
+            this.txtPretraga = new System.Windows.Forms.TextBox();
             this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Naziv = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PostanskiBroj = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NazivDrzave = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Uredi = new System.Windows.Forms.DataGridViewButtonColumn();
             this.Obrisi = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.btnDodaj = new System.Windows.Forms.Button();
-            this.txtPretraga = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvGradovi)).BeginInit();
             this.SuspendLayout();
             // 
@@ -79,6 +79,23 @@
             this.dgvGradovi.TabIndex = 11;
             this.dgvGradovi.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvGradovi_CellContentClick);
             // 
+            // btnDodaj
+            // 
+            this.btnDodaj.Location = new System.Drawing.Point(665, 16);
+            this.btnDodaj.Name = "btnDodaj";
+            this.btnDodaj.Size = new System.Drawing.Size(116, 29);
+            this.btnDodaj.TabIndex = 10;
+            this.btnDodaj.Text = "Dodaj";
+            this.btnDodaj.UseVisualStyleBackColor = true;
+            this.btnDodaj.Click += new System.EventHandler(this.btnDodaj_Click);
+            // 
+            // txtPretraga
+            // 
+            this.txtPretraga.Location = new System.Drawing.Point(19, 16);
+            this.txtPretraga.Name = "txtPretraga";
+            this.txtPretraga.Size = new System.Drawing.Size(295, 27);
+            this.txtPretraga.TabIndex = 9;
+            // 
             // ID
             // 
             this.ID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
@@ -107,11 +124,11 @@
             this.PostanskiBroj.MinimumWidth = 6;
             this.PostanskiBroj.Name = "PostanskiBroj";
             this.PostanskiBroj.ReadOnly = true;
-            this.PostanskiBroj.Width = 119;
+            this.PostanskiBroj.Width = 129;
             // 
             // NazivDrzave
             // 
-            this.NazivDrzave.DataPropertyName = "DrzavaId";
+            this.NazivDrzave.DataPropertyName = "Drzava";
             this.NazivDrzave.HeaderText = "Naziv drzave";
             this.NazivDrzave.MinimumWidth = 6;
             this.NazivDrzave.Name = "NazivDrzave";
@@ -134,23 +151,6 @@
             this.Obrisi.Name = "Obrisi";
             this.Obrisi.Text = "Obrisi";
             this.Obrisi.UseColumnTextForButtonValue = true;
-            // 
-            // btnDodaj
-            // 
-            this.btnDodaj.Location = new System.Drawing.Point(665, 16);
-            this.btnDodaj.Name = "btnDodaj";
-            this.btnDodaj.Size = new System.Drawing.Size(116, 29);
-            this.btnDodaj.TabIndex = 10;
-            this.btnDodaj.Text = "Dodaj";
-            this.btnDodaj.UseVisualStyleBackColor = true;
-            this.btnDodaj.Click += new System.EventHandler(this.btnDodaj_Click);
-            // 
-            // txtPretraga
-            // 
-            this.txtPretraga.Location = new System.Drawing.Point(19, 16);
-            this.txtPretraga.Name = "txtPretraga";
-            this.txtPretraga.Size = new System.Drawing.Size(295, 27);
-            this.txtPretraga.TabIndex = 9;
             // 
             // frmPrikazGradova
             // 

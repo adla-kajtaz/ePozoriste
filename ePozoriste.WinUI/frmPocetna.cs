@@ -47,12 +47,6 @@ namespace ePozoriste.WinUI
             frmPrikazPozorista.Show();
         }
 
-        private void btnSala_Click(object sender, EventArgs e)
-        {
-            frmPrikazSala frmPrikazSala = new frmPrikazSala();
-            frmPrikazSala.Show();
-        }
-
         private void btnVrstaPredstave_Click(object sender, EventArgs e)
         {
             frmPrikazVrstaPredstave frmPrikazVrstaPredstave = new frmPrikazVrstaPredstave();
@@ -61,7 +55,8 @@ namespace ePozoriste.WinUI
 
         private void btnPredstava_Click(object sender, EventArgs e)
         {
-
+            frmPrikazPredstava frmPrikazPredstava = new frmPrikazPredstava();
+            frmPrikazPredstava.Show();
         }
 
         private void btnGlumci_Click(object sender, EventArgs e)
@@ -71,16 +66,6 @@ namespace ePozoriste.WinUI
         }
 
         private void btnTermini_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnPredstavaGlumac_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnPredstavaVrstaP_Click(object sender, EventArgs e)
         {
 
         }

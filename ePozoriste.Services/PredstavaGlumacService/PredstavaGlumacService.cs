@@ -3,6 +3,7 @@ using ePozoriste.Model.Requests;
 using ePozoriste.Model.SearchObjects;
 using ePozoriste.Services.BaseService;
 using ePozoriste.Services.Database;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,7 +21,7 @@ namespace ePozoriste.Services
 
         public override IEnumerable<Model.PredstavaGlumac> GetAll(PredstavaGlumacSearchObject search = null)
         {
-            var entity = _context.Set<Database.PredstavaGlumac>().AsQueryable();
+            var entity = _context.PredstavaGlumacs.Include(x=>x.Glumac).Include(x=>x.Predstava).AsQueryable();
 
             if (!string.IsNullOrWhiteSpace(search.Tekst) && search.PredstavaId != null && search.GlumacId != null)
             {

@@ -17,12 +17,13 @@ namespace ePozoriste.WinUI
         APIService _salaService { get; set; } = new APIService("Sala");
         APIService _pozoristeService { get; set; } = new APIService("Pozoriste");
         private Sala _sala;
+        private int _pozoristeId;
 
-        public frmDodajSalu(Sala sala = null)
+        public frmDodajSalu(int pozoristeId, Sala sala = null)
         {
             InitializeComponent();
             _sala = sala;
-            UcitajPozorista();
+            _pozoristeId = pozoristeId; 
         }
 
         private async void frmDodajSalu_Load(object sender, EventArgs e)
@@ -35,23 +36,7 @@ namespace ePozoriste.WinUI
                     txtBrSjedista.Text = _sala.BrSjedista.ToString();
                     txtBrSjedistaPoRedu.Text = _sala.BrSjedistaPoRedu.ToString();
                     txtBrRedova.Text = _sala.BrRedova.ToString();
-                    cmbPozorista.SelectedValue = _sala.PozoristeId;
                 }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-        }
-
-        private async void UcitajPozorista()
-        {
-            try
-            {
-                var pozorista = await _pozoristeService.Get<List<Pozoriste>>() as IList<Pozoriste>;
-                cmbPozorista.DataSource = pozorista;
-                cmbPozorista.DisplayMember = "Naziv";
-                cmbPozorista.ValueMember = "PozoristeId";
             }
             catch (Exception ex)
             {
@@ -69,7 +54,7 @@ namespace ePozoriste.WinUI
                     BrSjedista = Int32.Parse(txtBrSjedista.Text),
                     BrSjedistaPoRedu = Int32.Parse(txtBrSjedistaPoRedu.Text),
                     BrRedova = Int32.Parse(txtBrRedova.Text),
-                    PozoristeId = (int)cmbPozorista.SelectedValue
+                    PozoristeId = _pozoristeId
                 };
 
                 if (_sala == null)

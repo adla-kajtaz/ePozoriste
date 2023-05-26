@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ePozoriste.Model;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -10,11 +11,13 @@ using System.Windows.Forms;
 
 namespace ePozoriste.WinUI
 {
-    public partial class frmPrikazTermina : Form
+    public partial class frmPredstavaVrstaPredstave : Form
     {
-        public frmPrikazTermina()
+        private Predstava _predstava;
+        public frmPredstavaVrstaPredstave(Predstava predstava = null)
         {
             InitializeComponent();
+            _predstava = predstava;
         }
     }
 }

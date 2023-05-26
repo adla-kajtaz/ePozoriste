@@ -3,6 +3,7 @@ using ePozoriste.Model.Requests;
 using ePozoriste.Model.SearchObjects;
 using ePozoriste.Services.BaseService;
 using ePozoriste.Services.Database;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,7 +21,7 @@ namespace ePozoriste.Services
 
         public override IEnumerable<Model.Termin> GetAll(TerminSearchObject search = null)
         {
-            var entity = _context.Set<Database.Termin>().AsQueryable();
+            var entity = _context.Termins.Include(x=>x.Predstava).Include(x=>x.Sala).AsQueryable();
 
             if (search.SalaId != null && search.PredstavaId != null && search.Premijera != null && search.Predpremijera != null)
             {

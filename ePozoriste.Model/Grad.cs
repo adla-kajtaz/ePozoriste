@@ -13,5 +13,10 @@ namespace ePozoriste.Model
         public string PostanskiBr { get; set; }
         public int? DrzavaId { get; set; }
         public virtual Drzava? Drzava { get; set; }
+
+        public override string ToString()
+        {
+            return Naziv;
+        }
     }
 }
