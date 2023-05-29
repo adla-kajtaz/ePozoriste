@@ -13,11 +13,22 @@ namespace ePozoriste.WinUI
 {
     public partial class frmGlumacPredstava : Form
     {
+        APIService _glumciService { get; set; } = new APIService("Glumac");
         private Predstava _predstava;
         public frmGlumacPredstava(Predstava predstava = null)
         {
             InitializeComponent();
             _predstava = predstava;
+            txtNazivPredstave.Text = _predstava.Naziv;
+            UcitajGlumce();
+        }
+
+        private async void UcitajGlumce()
+        {
+            var vrste = await _glumciService.Get<List<Glumac>>() as IList<Glumac>;
+            cblGlumci.DataSource = vrste;
+            cblGlumci.DisplayMember = "Ime";
+            cblGlumci.ValueMember = "GlumacId";
         }
     }
 }
