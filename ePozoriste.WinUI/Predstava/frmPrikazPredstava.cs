@@ -84,7 +84,16 @@ namespace ePozoriste.WinUI
                     frmPrikazPredstava_Load(sender, e);
                 }
             }
-            else if(e.ColumnIndex == 6)
+            else if (e.ColumnIndex == 6)
+            {
+                frmPrikazPredstavaGlumac frmPrikazPredstavaGlumac = new frmPrikazPredstavaGlumac(predstava);
+                if (frmPrikazPredstavaGlumac.ShowDialog() == DialogResult.OK)
+                {
+                    dgvPredstave.DataSource = null;
+                    frmPrikazPredstava_Load(sender, e);
+                }
+            }
+            else if(e.ColumnIndex == 7)
             {
                 frmPredstavaVrstaPredstave frmPredstavaVrstaPredstave = new frmPredstavaVrstaPredstave(predstava);
                 if (frmPredstavaVrstaPredstave.ShowDialog() == DialogResult.OK)
@@ -93,6 +102,15 @@ namespace ePozoriste.WinUI
                     frmPrikazPredstava_Load(sender, e);
                 }
 
+            }
+            else if (e.ColumnIndex == 8)
+            {
+                frmPrikazPredstavaVrstaPredstave frmPrikazPredstavaVrstaPredstave = new frmPrikazPredstavaVrstaPredstave(predstava);
+                if (frmPrikazPredstavaVrstaPredstave.ShowDialog() == DialogResult.OK)
+                {
+                    dgvPredstave.DataSource = null;
+                    frmPrikazPredstava_Load(sender, e);
+                }
             }
         }
     }

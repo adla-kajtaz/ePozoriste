@@ -15,7 +15,7 @@ namespace ePozoriste.Model
 
         public override string ToString()
         {
-            return Ime;
+            return $"{Ime} {Prezime}";
         }
     }
 }

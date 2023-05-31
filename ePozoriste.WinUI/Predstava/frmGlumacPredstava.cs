@@ -1,4 +1,5 @@
 ﻿using ePozoriste.Model;
+using ePozoriste.Model.Requests;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,6 +15,7 @@ namespace ePozoriste.WinUI
     public partial class frmGlumacPredstava : Form
     {
         APIService _glumciService { get; set; } = new APIService("Glumac");
+        APIService _predstavaGlumacService { get; set; } = new APIService("PredstavaGlumac");
         private Predstava _predstava;
         public frmGlumacPredstava(Predstava predstava = null)
         {
@@ -25,10 +27,40 @@ namespace ePozoriste.WinUI
 
         private async void UcitajGlumce()
         {
-            var vrste = await _glumciService.Get<List<Glumac>>() as IList<Glumac>;
-            cblGlumci.DataSource = vrste;
-            cblGlumci.DisplayMember = "Ime";
-            cblGlumci.ValueMember = "GlumacId";
+            try
+            {
+                var glumac = await _glumciService.Get<List<Glumac>>() as IList<Glumac>;
+                cmbGlumac.DataSource = glumac;
+                cmbGlumac.DisplayMember = "Ime";
+                cmbGlumac.ValueMember = "GlumacId";
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private async void btnSpremi_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                PredstavaGlumacInsertRequest predstavaGlumacInsertRequest = new PredstavaGlumacInsertRequest
+                {
+                    PredstavaId = _predstava.PredstavaId,
+                    NazivUloge = txtNazivUloge.Text,
+                    GlumacId = (int)cmbGlumac.SelectedValue
+                };
+                
+                var predstavaGlumac = await _predstavaGlumacService.Insert<PredstavaGlumac>(predstavaGlumacInsertRequest);
+                
+                MessageBox.Show("Uspjesno sacuvano");
+                DialogResult = DialogResult.OK;
+                this.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Greska");
+            }
         }
     }
 }

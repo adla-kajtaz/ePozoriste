@@ -10,5 +10,9 @@ namespace ePozoriste.Model
     {
         public int VrstaPredstaveId { get; set; }
         public string Naziv { get; set; }
+        public override string ToString()
+        {
+            return Naziv;
+        }
     }
 }

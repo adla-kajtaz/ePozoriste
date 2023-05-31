@@ -14,5 +14,6 @@ namespace ePozoriste.Model
 
         public virtual Predstava? Predstava { get; set; }
         public virtual VrstaPredstave? VrstaPredstave { get; set; }
+
     }
 }

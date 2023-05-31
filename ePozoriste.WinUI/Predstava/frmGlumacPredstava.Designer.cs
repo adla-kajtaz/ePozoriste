@@ -30,9 +30,11 @@
         {
             this.lblNaziv = new System.Windows.Forms.Label();
             this.txtNazivPredstave = new System.Windows.Forms.TextBox();
-            this.cblGlumci = new System.Windows.Forms.CheckedListBox();
-            this.lblGlumciPredstava = new System.Windows.Forms.Label();
             this.btnSpremi = new System.Windows.Forms.Button();
+            this.txtNazivUloge = new System.Windows.Forms.TextBox();
+            this.lblNazivUloge = new System.Windows.Forms.Label();
+            this.cmbGlumac = new System.Windows.Forms.ComboBox();
+            this.lblOdabirGlumca = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // lblNaziv
@@ -52,40 +54,59 @@
             this.txtNazivPredstave.Size = new System.Drawing.Size(332, 27);
             this.txtNazivPredstave.TabIndex = 22;
             // 
-            // cblGlumci
-            // 
-            this.cblGlumci.FormattingEnabled = true;
-            this.cblGlumci.Location = new System.Drawing.Point(12, 85);
-            this.cblGlumci.Name = "cblGlumci";
-            this.cblGlumci.Size = new System.Drawing.Size(332, 158);
-            this.cblGlumci.TabIndex = 24;
-            // 
-            // lblGlumciPredstava
-            // 
-            this.lblGlumciPredstava.AutoSize = true;
-            this.lblGlumciPredstava.Location = new System.Drawing.Point(12, 62);
-            this.lblGlumciPredstava.Name = "lblGlumciPredstava";
-            this.lblGlumciPredstava.Size = new System.Drawing.Size(285, 20);
-            this.lblGlumciPredstava.TabIndex = 25;
-            this.lblGlumciPredstava.Text = "Odaberite glumce za navedenu predstavu";
-            // 
             // btnSpremi
             // 
-            this.btnSpremi.Location = new System.Drawing.Point(12, 249);
+            this.btnSpremi.Location = new System.Drawing.Point(12, 172);
             this.btnSpremi.Name = "btnSpremi";
             this.btnSpremi.Size = new System.Drawing.Size(332, 29);
             this.btnSpremi.TabIndex = 26;
             this.btnSpremi.Text = "Spremi";
             this.btnSpremi.UseVisualStyleBackColor = true;
+            this.btnSpremi.Click += new System.EventHandler(this.btnSpremi_Click);
+            // 
+            // txtNazivUloge
+            // 
+            this.txtNazivUloge.Location = new System.Drawing.Point(12, 85);
+            this.txtNazivUloge.Name = "txtNazivUloge";
+            this.txtNazivUloge.Size = new System.Drawing.Size(332, 27);
+            this.txtNazivUloge.TabIndex = 27;
+            // 
+            // lblNazivUloge
+            // 
+            this.lblNazivUloge.AutoSize = true;
+            this.lblNazivUloge.Location = new System.Drawing.Point(12, 62);
+            this.lblNazivUloge.Name = "lblNazivUloge";
+            this.lblNazivUloge.Size = new System.Drawing.Size(88, 20);
+            this.lblNazivUloge.TabIndex = 28;
+            this.lblNazivUloge.Text = "Naziv uloge";
+            // 
+            // cmbGlumac
+            // 
+            this.cmbGlumac.FormattingEnabled = true;
+            this.cmbGlumac.Location = new System.Drawing.Point(12, 138);
+            this.cmbGlumac.Name = "cmbGlumac";
+            this.cmbGlumac.Size = new System.Drawing.Size(332, 28);
+            this.cmbGlumac.TabIndex = 29;
+            // 
+            // lblOdabirGlumca
+            // 
+            this.lblOdabirGlumca.AutoSize = true;
+            this.lblOdabirGlumca.Location = new System.Drawing.Point(12, 115);
+            this.lblOdabirGlumca.Name = "lblOdabirGlumca";
+            this.lblOdabirGlumca.Size = new System.Drawing.Size(129, 20);
+            this.lblOdabirGlumca.TabIndex = 30;
+            this.lblOdabirGlumca.Text = "Odaberite glumca";
             // 
             // frmGlumacPredstava
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(370, 305);
+            this.ClientSize = new System.Drawing.Size(353, 220);
+            this.Controls.Add(this.lblOdabirGlumca);
+            this.Controls.Add(this.cmbGlumac);
+            this.Controls.Add(this.lblNazivUloge);
+            this.Controls.Add(this.txtNazivUloge);
             this.Controls.Add(this.btnSpremi);
-            this.Controls.Add(this.lblGlumciPredstava);
-            this.Controls.Add(this.cblGlumci);
             this.Controls.Add(this.lblNaziv);
             this.Controls.Add(this.txtNazivPredstave);
             this.Name = "frmGlumacPredstava";
@@ -99,8 +120,10 @@
 
         private Label lblNaziv;
         private TextBox txtNazivPredstave;
-        private CheckedListBox cblGlumci;
-        private Label lblGlumciPredstava;
         private Button btnSpremi;
+        private TextBox txtNazivUloge;
+        private Label lblNazivUloge;
+        private ComboBox cmbGlumac;
+        private Label lblOdabirGlumca;
     }
 }
