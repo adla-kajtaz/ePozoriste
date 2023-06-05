@@ -38,7 +38,8 @@ namespace ePozoriste.WinUI
                 GlumacInsertRequest glumacInsertRequest = new GlumacInsertRequest
                 {
                     Ime = txtIme.Text,
-                    Prezime = txtPrezime.Text
+                    Prezime = txtPrezime.Text,
+                    ImePrezime = $"{txtIme.Text} {txtPrezime.Text}"
                 };
 
                 if (_glumac == null)

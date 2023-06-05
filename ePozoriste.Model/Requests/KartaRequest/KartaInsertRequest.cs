@@ -10,6 +10,9 @@ namespace ePozoriste.Model.Requests
     {
         public bool Aktivna { get; set; }
         public int? TerminId { get; set; }
+        public int BrojSjedista { get; set; }
+        public string BrojReda { get; set; }
         public string Sjediste { get; set; }
+
     }
 }

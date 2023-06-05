@@ -31,7 +31,7 @@ namespace ePozoriste.Services.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Ime = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Prezime = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Slika = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    ImePrezime = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -321,6 +321,8 @@ namespace ePozoriste.Services.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Aktivna = table.Column<bool>(type: "bit", nullable: true),
                     TerminId = table.Column<int>(type: "int", nullable: true),
+                    BrojSjedista = table.Column<int>(type: "int", nullable: true),
+                    BrojReda = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Sjediste = table.Column<string>(type: "varchar(max)", unicode: false, nullable: true)
                 },
                 constraints: table =>
@@ -359,6 +361,16 @@ namespace ePozoriste.Services.Migrations
                         principalTable: "Korisnik",
                         principalColumn: "KorisnikId");
                 });
+
+            migrationBuilder.InsertData(
+                table: "Drzava",
+                columns: new[] { "DrzavaId", "Naziv", "Skracenica" },
+                values: new object[] { 1, "Bosna i Hercegovina", "BiH" });
+
+            migrationBuilder.InsertData(
+                table: "Drzava",
+                columns: new[] { "DrzavaId", "Naziv", "Skracenica" },
+                values: new object[] { 2, "Hrvatska", "HR" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Grad_DrzavaId",

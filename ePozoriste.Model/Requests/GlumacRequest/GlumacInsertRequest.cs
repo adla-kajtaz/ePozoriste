@@ -11,5 +11,7 @@ namespace ePozoriste.Model.Requests
         public string Ime { get; set; }
         public string Prezime { get; set; }
         public string? Slika { get; set; }
+        public string ImePrezime { get; set; }
+
     }
 }

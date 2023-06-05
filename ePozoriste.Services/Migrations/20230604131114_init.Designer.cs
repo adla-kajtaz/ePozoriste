@@ -12,8 +12,8 @@ using ePozoriste.Services.Database;
 namespace ePozoriste.Services.Migrations
 {
     [DbContext(typeof(ePozoristeContext))]
-    [Migration("20230419132916_seed")]
-    partial class seed
+    [Migration("20230604131114_init")]
+    partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -68,10 +68,10 @@ namespace ePozoriste.Services.Migrations
                     b.Property<string>("Ime")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Prezime")
+                    b.Property<string>("ImePrezime")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Slika")
+                    b.Property<string>("Prezime")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("GlumacId");
@@ -113,6 +113,12 @@ namespace ePozoriste.Services.Migrations
 
                     b.Property<bool?>("Aktivna")
                         .HasColumnType("bit");
+
+                    b.Property<string>("BrojReda")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("BrojSjedista")
+                        .HasColumnType("int");
 
                     b.Property<string>("Sjediste")
                         .IsUnicode(false)

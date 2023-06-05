@@ -13,7 +13,7 @@ namespace ePozoriste.Services.Database
         public int GlumacId { get; set; }
         public string? Ime { get; set; }
         public string? Prezime { get; set; }
-        public string? Slika { get; set; }
+        public string? ImePrezime { get; set; }
 
         public virtual ICollection<PredstavaGlumac> PredstavaGlumacs { get; set; }
     }

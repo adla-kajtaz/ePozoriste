@@ -66,10 +66,10 @@ namespace ePozoriste.Services.Migrations
                     b.Property<string>("Ime")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Prezime")
+                    b.Property<string>("ImePrezime")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Slika")
+                    b.Property<string>("Prezime")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("GlumacId");
@@ -111,6 +111,12 @@ namespace ePozoriste.Services.Migrations
 
                     b.Property<bool?>("Aktivna")
                         .HasColumnType("bit");
+
+                    b.Property<string>("BrojReda")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("BrojSjedista")
+                        .HasColumnType("int");
 
                     b.Property<string>("Sjediste")
                         .IsUnicode(false)
