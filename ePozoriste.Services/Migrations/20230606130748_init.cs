@@ -365,12 +365,97 @@ namespace ePozoriste.Services.Migrations
             migrationBuilder.InsertData(
                 table: "Drzava",
                 columns: new[] { "DrzavaId", "Naziv", "Skracenica" },
-                values: new object[] { 1, "Bosna i Hercegovina", "BiH" });
+                values: new object[,]
+                {
+                    { 1, "Bosna i Hercegovina", "BiH" },
+                    { 2, "Hrvatska", "HR" }
+                });
 
             migrationBuilder.InsertData(
-                table: "Drzava",
-                columns: new[] { "DrzavaId", "Naziv", "Skracenica" },
-                values: new object[] { 2, "Hrvatska", "HR" });
+                table: "Glumac",
+                columns: new[] { "GlumacId", "Ime", "ImePrezime", "Prezime" },
+                values: new object[,]
+                {
+                    { 1, "Ajla", "Ajla Hamzić", "Hamzić" },
+                    { 2, "Emir", "Emir Spahić", "Spahić" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Korisnik",
+                columns: new[] { "KorisnikId", "Aktivan", "BrTelefona", "Email", "Ime", "KorisnickoIme", "LozinkaHash", "LozinkaSalt", "Prezime" },
+                values: new object[] { 1, true, "062 045-456", "admin@epozoriste.ba", "Admin", "admin", "/jgjzf1nC8YDuZMV5q0kYrRqIarjCDgWjBERaZiyyO0=", "DFQVcTkMv8qWjq/5ars8Eg==", "Admin" });
+
+            migrationBuilder.InsertData(
+                table: "ObavijestKategorija",
+                columns: new[] { "ObavijestKategorijaId", "Naziv" },
+                values: new object[] { 1, "Novosti" });
+
+            migrationBuilder.InsertData(
+                table: "Predstava",
+                columns: new[] { "PredstavaId", "Kostimografija", "Naziv", "Rezija", "Sadrzaj", "Scenografija", "Slika", "VrijemeTrajanje" },
+                values: new object[] { 1, "Sabina Trnka", "Ćelava pjevačica", "Lajla Kaikčija", "“Kao i Jonesko, mi, ekipa predstave željeli smo kroz 'Ćelavu pjevačicu' efektom 'čudnovatog', ironijom, non-sensom, karikaturom izraziti svoj protest protiv društva u kojem živimo i stanja u kome se nalazimo. 'Ćelava pjevačica' ismijava nepresušnu potrebu naroda da stalno govori, o svemu ima mišljenje i bude u toku svih dešavanja - najčešće i najbanalnijih. Govor se dovodi do apsurda. Riječi gube smisao. Misao devalvira. Sve dok glas izlazi iz grla govor ne prestaje. I tako u nedogled. A svaki vid akcije, djelovanja izostaje. I to neko koristi. Jedni iznutra, drugi izvana. Da li govorim o životu ili o predstavi? Svejedno. Na žalost, Joneskov besmisao nigdje nije smislenije postaviti nego u Mostaru. Vođena mišlju da će neki novi klinci po prvi put vidjeti Joneskov komad u teatru i možda biti isprovocirani njime (kakogod) te odluče se, konačno, na neki vid djelovanja... To je jedini način izlaska iz apsurda koji živimo”, zapisala je o predstavi rediteljica Lajla Kaikčija", "Sabina Trnka", null, 45 });
+
+            migrationBuilder.InsertData(
+                table: "Uloga",
+                columns: new[] { "UlogaId", "Naziv" },
+                values: new object[,]
+                {
+                    { 1, "Admin" },
+                    { 2, "Kupac" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "VrstaPredstave",
+                columns: new[] { "VrstaPredstaveId", "Naziv" },
+                values: new object[,]
+                {
+                    { 1, "Drama" },
+                    { 2, "Komedija" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Grad",
+                columns: new[] { "GradId", "DrzavaId", "Naziv", "PostanskiBr" },
+                values: new object[,]
+                {
+                    { 1, 1, "Mostar", "88104" },
+                    { 2, 1, "Sarajevo", "71000" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "KorisnikUloge",
+                columns: new[] { "KorisnikUlogeId", "KorisnikId", "UlogaId" },
+                values: new object[] { 1, 1, 1 });
+
+            migrationBuilder.InsertData(
+                table: "Obavijest",
+                columns: new[] { "ObavijestId", "DatumKreiranja", "KorisnikId", "Naslov", "ObavijestKategorijaId", "Podnaslov", "Sadrzaj", "Slika" },
+                values: new object[] { 1, new DateTime(2023, 6, 6, 15, 7, 47, 707, DateTimeKind.Local).AddTicks(9042), 1, "Uskoro u prodaji karte za predstavu Ćelava pjevačica", 1, "Uskoro u prodaji karte za predstavu Ćelava pjevačica", "Ulaznice su u prodaji na blagajni NPM-a od ponedjeljka, 5.6.2023. svakim radnim danom od 9 - 14 sati, na dan igranja predstave od 9 do 14 sati te od 18 do 20 sati. Rezervacije: na broj 036/550-128, mail: marketing@npm.ba, porukom u inbox na Facebook stranici Narodnog pozorišta Mostar.", null });
+
+            migrationBuilder.InsertData(
+                table: "PredstavaGlumac",
+                columns: new[] { "PredstavaGlumacId", "GlumacId", "NazivUloge", "PredstavaId" },
+                values: new object[] { 1, 2, "G. Smit", 1 });
+
+            migrationBuilder.InsertData(
+                table: "PredstavaVrstaPredstave",
+                columns: new[] { "PredstavaVPId", "PredstavaId", "VrstaPredstaveId" },
+                values: new object[] { 1, 1, 1 });
+
+            migrationBuilder.InsertData(
+                table: "Pozoriste",
+                columns: new[] { "PozoristeId", "Adresa", "Aktivan", "BrTelefona", "Email", "GradId", "Logo", "Naziv", "Webstranica" },
+                values: new object[] { 1, "Brkića br. 2", true, "036 550-128", "info@npm.ba", 1, null, "Narodno pozoriste Mostar", "https://www.npm.ba/" });
+
+            migrationBuilder.InsertData(
+                table: "Sala",
+                columns: new[] { "SalaId", "BrRedova", "BrSjedista", "BrSjedistaPoRedu", "Naziv", "PozoristeId" },
+                values: new object[] { 1, 15, 300, 15, "Velika sala", 1 });
+
+            migrationBuilder.InsertData(
+                table: "Sala",
+                columns: new[] { "SalaId", "BrRedova", "BrSjedista", "BrSjedistaPoRedu", "Naziv", "PozoristeId" },
+                values: new object[] { 2, 10, 100, 10, "Mala sala", 1 });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Grad_DrzavaId",

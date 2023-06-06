@@ -12,7 +12,7 @@ using ePozoriste.Services.Database;
 namespace ePozoriste.Services.Migrations
 {
     [DbContext(typeof(ePozoristeContext))]
-    [Migration("20230604131114_init")]
+    [Migration("20230606130748_init")]
     partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -77,6 +77,22 @@ namespace ePozoriste.Services.Migrations
                     b.HasKey("GlumacId");
 
                     b.ToTable("Glumac", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            GlumacId = 1,
+                            Ime = "Ajla",
+                            ImePrezime = "Ajla Hamzić",
+                            Prezime = "Hamzić"
+                        },
+                        new
+                        {
+                            GlumacId = 2,
+                            Ime = "Emir",
+                            ImePrezime = "Emir Spahić",
+                            Prezime = "Spahić"
+                        });
                 });
 
             modelBuilder.Entity("ePozoriste.Services.Database.Grad", b =>
@@ -101,6 +117,22 @@ namespace ePozoriste.Services.Migrations
                     b.HasIndex("DrzavaId");
 
                     b.ToTable("Grad", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            GradId = 1,
+                            DrzavaId = 1,
+                            Naziv = "Mostar",
+                            PostanskiBr = "88104"
+                        },
+                        new
+                        {
+                            GradId = 2,
+                            DrzavaId = 1,
+                            Naziv = "Sarajevo",
+                            PostanskiBr = "71000"
+                        });
                 });
 
             modelBuilder.Entity("ePozoriste.Services.Database.Kartum", b =>
@@ -170,6 +202,20 @@ namespace ePozoriste.Services.Migrations
                     b.HasKey("KorisnikId");
 
                     b.ToTable("Korisnik", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            KorisnikId = 1,
+                            Aktivan = true,
+                            BrTelefona = "062 045-456",
+                            Email = "admin@epozoriste.ba",
+                            Ime = "Admin",
+                            KorisnickoIme = "admin",
+                            LozinkaHash = "/jgjzf1nC8YDuZMV5q0kYrRqIarjCDgWjBERaZiyyO0=",
+                            LozinkaSalt = "DFQVcTkMv8qWjq/5ars8Eg==",
+                            Prezime = "Admin"
+                        });
                 });
 
             modelBuilder.Entity("ePozoriste.Services.Database.KorisnikUloge", b =>
@@ -193,6 +239,14 @@ namespace ePozoriste.Services.Migrations
                     b.HasIndex("UlogaId");
 
                     b.ToTable("KorisnikUloge", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            KorisnikUlogeId = 1,
+                            KorisnikId = 1,
+                            UlogaId = 1
+                        });
                 });
 
             modelBuilder.Entity("ePozoriste.Services.Database.Kupovina", b =>
@@ -263,6 +317,18 @@ namespace ePozoriste.Services.Migrations
                     b.HasIndex("ObavijestKategorijaId");
 
                     b.ToTable("Obavijest", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            ObavijestId = 1,
+                            DatumKreiranja = new DateTime(2023, 6, 6, 15, 7, 47, 707, DateTimeKind.Local).AddTicks(9042),
+                            KorisnikId = 1,
+                            Naslov = "Uskoro u prodaji karte za predstavu Ćelava pjevačica",
+                            ObavijestKategorijaId = 1,
+                            Podnaslov = "Uskoro u prodaji karte za predstavu Ćelava pjevačica",
+                            Sadrzaj = "Ulaznice su u prodaji na blagajni NPM-a od ponedjeljka, 5.6.2023. svakim radnim danom od 9 - 14 sati, na dan igranja predstave od 9 do 14 sati te od 18 do 20 sati. Rezervacije: na broj 036/550-128, mail: marketing@npm.ba, porukom u inbox na Facebook stranici Narodnog pozorišta Mostar."
+                        });
                 });
 
             modelBuilder.Entity("ePozoriste.Services.Database.ObavijestKategorija", b =>
@@ -279,6 +345,13 @@ namespace ePozoriste.Services.Migrations
                     b.HasKey("ObavijestKategorijaId");
 
                     b.ToTable("ObavijestKategorija", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            ObavijestKategorijaId = 1,
+                            Naziv = "Novosti"
+                        });
                 });
 
             modelBuilder.Entity("ePozoriste.Services.Database.Pozoriste", b =>
@@ -318,6 +391,19 @@ namespace ePozoriste.Services.Migrations
                     b.HasIndex("GradId");
 
                     b.ToTable("Pozoriste", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            PozoristeId = 1,
+                            Adresa = "Brkića br. 2",
+                            Aktivan = true,
+                            BrTelefona = "036 550-128",
+                            Email = "info@npm.ba",
+                            GradId = 1,
+                            Naziv = "Narodno pozoriste Mostar",
+                            Webstranica = "https://www.npm.ba/"
+                        });
                 });
 
             modelBuilder.Entity("ePozoriste.Services.Database.Predstava", b =>
@@ -352,6 +438,18 @@ namespace ePozoriste.Services.Migrations
                     b.HasKey("PredstavaId");
 
                     b.ToTable("Predstava", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            PredstavaId = 1,
+                            Kostimografija = "Sabina Trnka",
+                            Naziv = "Ćelava pjevačica",
+                            Rezija = "Lajla Kaikčija",
+                            Sadrzaj = "“Kao i Jonesko, mi, ekipa predstave željeli smo kroz 'Ćelavu pjevačicu' efektom 'čudnovatog', ironijom, non-sensom, karikaturom izraziti svoj protest protiv društva u kojem živimo i stanja u kome se nalazimo. 'Ćelava pjevačica' ismijava nepresušnu potrebu naroda da stalno govori, o svemu ima mišljenje i bude u toku svih dešavanja - najčešće i najbanalnijih. Govor se dovodi do apsurda. Riječi gube smisao. Misao devalvira. Sve dok glas izlazi iz grla govor ne prestaje. I tako u nedogled. A svaki vid akcije, djelovanja izostaje. I to neko koristi. Jedni iznutra, drugi izvana. Da li govorim o životu ili o predstavi? Svejedno. Na žalost, Joneskov besmisao nigdje nije smislenije postaviti nego u Mostaru. Vođena mišlju da će neki novi klinci po prvi put vidjeti Joneskov komad u teatru i možda biti isprovocirani njime (kakogod) te odluče se, konačno, na neki vid djelovanja... To je jedini način izlaska iz apsurda koji živimo”, zapisala je o predstavi rediteljica Lajla Kaikčija",
+                            Scenografija = "Sabina Trnka",
+                            VrijemeTrajanje = 45
+                        });
                 });
 
             modelBuilder.Entity("ePozoriste.Services.Database.PredstavaGlumac", b =>
@@ -378,6 +476,15 @@ namespace ePozoriste.Services.Migrations
                     b.HasIndex("PredstavaId");
 
                     b.ToTable("PredstavaGlumac", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            PredstavaGlumacId = 1,
+                            GlumacId = 2,
+                            NazivUloge = "G. Smit",
+                            PredstavaId = 1
+                        });
                 });
 
             modelBuilder.Entity("ePozoriste.Services.Database.PredstavaVrstaPredstave", b =>
@@ -403,6 +510,14 @@ namespace ePozoriste.Services.Migrations
                     b.HasIndex("VrstaPredstaveId");
 
                     b.ToTable("PredstavaVrstaPredstave", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            PredstavaVpid = 1,
+                            PredstavaId = 1,
+                            VrstaPredstaveId = 1
+                        });
                 });
 
             modelBuilder.Entity("ePozoriste.Services.Database.Sala", b =>
@@ -433,6 +548,26 @@ namespace ePozoriste.Services.Migrations
                     b.HasIndex("PozoristeId");
 
                     b.ToTable("Sala", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            SalaId = 1,
+                            BrRedova = 15,
+                            BrSjedista = 300,
+                            BrSjedistaPoRedu = 15,
+                            Naziv = "Velika sala",
+                            PozoristeId = 1
+                        },
+                        new
+                        {
+                            SalaId = 2,
+                            BrRedova = 10,
+                            BrSjedista = 100,
+                            BrSjedistaPoRedu = 10,
+                            Naziv = "Mala sala",
+                            PozoristeId = 1
+                        });
                 });
 
             modelBuilder.Entity("ePozoriste.Services.Database.Termin", b =>
@@ -484,6 +619,18 @@ namespace ePozoriste.Services.Migrations
                     b.HasKey("UlogaId");
 
                     b.ToTable("Uloga", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            UlogaId = 1,
+                            Naziv = "Admin"
+                        },
+                        new
+                        {
+                            UlogaId = 2,
+                            Naziv = "Kupac"
+                        });
                 });
 
             modelBuilder.Entity("ePozoriste.Services.Database.VrstaPredstave", b =>
@@ -500,6 +647,18 @@ namespace ePozoriste.Services.Migrations
                     b.HasKey("VrstaPredstaveId");
 
                     b.ToTable("VrstaPredstave", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            VrstaPredstaveId = 1,
+                            Naziv = "Drama"
+                        },
+                        new
+                        {
+                            VrstaPredstaveId = 2,
+                            Naziv = "Komedija"
+                        });
                 });
 
             modelBuilder.Entity("ePozoriste.Services.Database.Grad", b =>
