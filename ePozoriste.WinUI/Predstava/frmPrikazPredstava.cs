@@ -14,7 +14,7 @@ namespace ePozoriste.WinUI
 {
     public partial class frmPrikazPredstava : Form
     {
-        APIService _predstavaService { get; set; } = new APIService("predstava");
+        APIService _predstavaService { get; set; } = new APIService("Predstava");
         public frmPrikazPredstava()
         {
             InitializeComponent();

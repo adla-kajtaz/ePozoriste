@@ -67,7 +67,8 @@ namespace ePozoriste.WinUI
 
         private void btnTermini_Click(object sender, EventArgs e)
         {
-
+            frmPrikazTermina frmPrikazTermina = new frmPrikazTermina();
+            frmPrikazTermina.Show();
         }
     }
 }
