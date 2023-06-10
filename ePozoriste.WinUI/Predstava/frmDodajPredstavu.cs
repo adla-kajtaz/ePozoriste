@@ -14,9 +14,9 @@ namespace ePozoriste.WinUI
 {
     public partial class frmDodajPredstavu : Form
     {
-        APIService _predstavaService { get; set; } = new APIService("predstava");
+        APIService _predstavaService { get; set; } = new APIService("Predstava");
         private Predstava _predstava;
-        public frmDodajPredstavu(Predstava predstava = null )
+        public frmDodajPredstavu(Predstava predstava = null)
         {
             InitializeComponent();
             _predstava = predstava; 
@@ -60,11 +60,11 @@ namespace ePozoriste.WinUI
 
                 if (_predstava == null)
                 {
-                    var predstava = await _predstavaService.Insert<Pozoriste>(predstavaInsertRequest);
+                    var predstava = await _predstavaService.Insert<Predstava>(predstavaInsertRequest);
                 }
                 else
                 {
-                    var predstava = await _predstavaService.Update<Pozoriste>(_predstava.PredstavaId, predstavaInsertRequest);
+                    var predstava = await _predstavaService.Update<Predstava>(_predstava.PredstavaId, predstavaInsertRequest);
                 }
                 MessageBox.Show("Uspjesno sacuvano");
                 DialogResult = DialogResult.OK;

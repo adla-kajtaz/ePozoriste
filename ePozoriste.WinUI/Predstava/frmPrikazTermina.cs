@@ -103,8 +103,7 @@ namespace ePozoriste.WinUI
             }
             else if (e.ColumnIndex == 8)
             {
-                //popraviti
-                frmDodavanjeTermina frmDodavanjeTermina = new frmDodavanjeTermina();
+                frmDodavanjeTermina frmDodavanjeTermina = new frmDodavanjeTermina(termini);
                 if (frmDodavanjeTermina.ShowDialog() == DialogResult.OK)
                 {
                     dgvTermini.DataSource = null;
