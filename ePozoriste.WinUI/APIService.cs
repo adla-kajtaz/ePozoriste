@@ -13,7 +13,7 @@ namespace ePozoriste.WinUI
         private string _route = null;
 
         public static string KorisnickoIme { get; set; }
-        public static string Lozinka { get; set; }
+        public static string Lozinka { get; set; } 
 
         public APIService(string route)
         {
