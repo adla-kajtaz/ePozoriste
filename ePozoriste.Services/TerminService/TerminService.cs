@@ -23,15 +23,15 @@ namespace ePozoriste.Services
         {
             var entity = _context.Termins.Include(x=>x.Predstava).Include(x=>x.Sala).AsQueryable();
 
-            if (search.SalaId != null && search.PredstavaId != null && search.Premijera != null && search.Predpremijera != null)
+            if (search.SalaId != null && search.PredstavaId != null && search.Premijera != null && search.Predpremijera != null && search.DatumVrijemeOdrzavanja != null)
             {
                 entity = entity.Where(e => e.SalaId == search.SalaId && e.PredstavaId == search.PredstavaId 
-                                        && e.Premijera == search.Premijera && e.Predpremijera == search.Predpremijera);
+                                        && e.Premijera == search.Premijera && e.Predpremijera == search.Predpremijera && e.DatumVrijemeOdrzavanja == search.DatumVrijemeOdrzavanja);
             }
-            else if (search.SalaId != null || search.PredstavaId != null || search.Premijera != null || search.Predpremijera != null)
+            else if (search.SalaId != null || search.PredstavaId != null || search.Premijera != null || search.Predpremijera != null || search.DatumVrijemeOdrzavanja != null)
             {
                 entity = entity.Where(e => e.SalaId == search.SalaId || e.PredstavaId == search.PredstavaId
-                                        || e.Premijera == search.Premijera || e.Predpremijera == search.Predpremijera);
+                                        || e.Premijera == search.Premijera || e.Predpremijera == search.Predpremijera || e.DatumVrijemeOdrzavanja == search.DatumVrijemeOdrzavanja);
             }
 
             var list = entity.ToList();

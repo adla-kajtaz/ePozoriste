@@ -18,5 +18,10 @@ namespace ePozoriste.Model
         public virtual ICollection<KorisnikUloge> KorisnikUloges { get; set; }
         public string ImePrezime => $"{Ime} {Prezime}";
 
+        public override string ToString()
+        {
+            return KorisnickoIme;
+        }
+
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ePozoriste.Model;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,7 +13,7 @@ namespace ePozoriste.WinUI
 {
     public partial class frmDetaljiObavijesti : Form
     {
-        public frmDetaljiObavijesti()
+        public frmDetaljiObavijesti(Obavijest obavijest = null)
         {
             InitializeComponent();
         }

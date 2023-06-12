@@ -89,7 +89,8 @@ namespace ePozoriste.WinUI
                 Predpremijera = cbPredpremijera.Checked,
                 Premijera = cbPremijera.Checked,
                 SalaId = (int)cmbSale.SelectedValue,
-                PredstavaId = (int)cmbPredstave.SelectedValue
+                PredstavaId = (int)cmbPredstave.SelectedValue,
+                DatumVrijemeOdrzavanja = dtpDatumIzvodjenja.Value
             };
             dgvTermini.DataSource = await _terminService.Get<List<Termin>>(terminSearchObject);
         }
