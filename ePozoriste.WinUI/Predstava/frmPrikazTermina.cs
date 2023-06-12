@@ -86,7 +86,10 @@ namespace ePozoriste.WinUI
         {
             TerminSearchObject terminSearchObject = new TerminSearchObject
             {
-                
+                Predpremijera = cbPredpremijera.Checked,
+                Premijera = cbPremijera.Checked,
+                SalaId = (int)cmbSale.SelectedValue,
+                PredstavaId = (int)cmbPredstave.SelectedValue
             };
             dgvTermini.DataSource = await _terminService.Get<List<Termin>>(terminSearchObject);
         }
