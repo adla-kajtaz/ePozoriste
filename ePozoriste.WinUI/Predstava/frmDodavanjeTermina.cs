@@ -17,6 +17,8 @@ namespace ePozoriste.WinUI
         APIService _terminService { get; set; } = new APIService("Termin");
         APIService _predstavaService { get; set; } = new APIService("Predstava");
         APIService _salaService { get; set; } = new APIService("Sala");
+        APIService _kartaService { get; set; } = new APIService("Karta");
+
         private Termin _termin;
 
         public frmDodavanjeTermina(Termin termin = null)
@@ -95,6 +97,27 @@ namespace ePozoriste.WinUI
                 {
                     var termin = await _terminService.Insert<Termin>(terminInsertRequest);
                     //nakon sto se uspjesno doda termin kreirati određenji broj karata, koliko je sjedista u sali
+                    if (termin != null)
+                    {
+                        var sala = await _salaService.GetById<Sala>(termin.SalaId);
+                        for(int i = 0; i < sala.BrRedova; i++)
+                        {
+                            var red = (char)(i + 64);
+                            for (int j = 0; j < sala.BrSjedistaPoRedu; j++)
+                            {
+                                KartaInsertRequest kartaInsertRequest = new KartaInsertRequest
+                                {
+                                    Aktivna = true,
+                                    TerminId = termin.TerminId,
+                                    BrojSjedista = j,
+                                    BrojReda = red.ToString(),
+                                    Sjediste = $"{red.ToString()}{j.ToString()}"
+                                };
+
+                                var karta = await _kartaService.Insert<Karta>(kartaInsertRequest);
+                            }
+                        }
+                    }
                 }
                 else
                 {
