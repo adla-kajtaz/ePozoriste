@@ -70,7 +70,7 @@ namespace ePozoriste.WinUI
             var obavijest = dgvObavijesti.SelectedRows[0].DataBoundItem as Obavijest;
             if (e.ColumnIndex == 7)
             {
-                await _obavijestService.Delete<Obavijest>(obavijest.ObavijestKategorijaId);
+                await _obavijestService.Delete<Obavijest>(obavijest.ObavijestId);
                 
                 dgvObavijesti.DataSource = null;
                 frmPrikazObavijesti_Load(sender, e);

@@ -8,6 +8,7 @@ namespace ePozoriste.Model
 {
     public class Obavijest
     {
+        public int ObavijestId { get; set; }
         public string Naslov { get; set; }
         public string Podnaslov { get; set; }
         public string Sadrzaj { get; set; }
