@@ -102,16 +102,16 @@ namespace ePozoriste.WinUI
                         var sala = await _salaService.GetById<Sala>(termin.SalaId);
                         for(int i = 0; i < sala.BrRedova; i++)
                         {
-                            var red = (char)(i + 64);
+                            var red = (char)(i + 65);
                             for (int j = 0; j < sala.BrSjedistaPoRedu; j++)
                             {
                                 KartaInsertRequest kartaInsertRequest = new KartaInsertRequest
                                 {
                                     Aktivna = true,
                                     TerminId = termin.TerminId,
-                                    BrojSjedista = j,
+                                    BrojSjedista = j + 1,
                                     BrojReda = red.ToString(),
-                                    Sjediste = $"{red.ToString()}{j.ToString()}"
+                                    Sjediste = $"{red.ToString()}{(j+1).ToString()}"
                                 };
 
                                 var karta = await _kartaService.Insert<Karta>(kartaInsertRequest);

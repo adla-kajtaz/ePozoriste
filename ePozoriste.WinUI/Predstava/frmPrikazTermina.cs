@@ -115,7 +115,12 @@ namespace ePozoriste.WinUI
             }
             else if (e.ColumnIndex == 7)
             {
-               // karte
+                frmPrikazKarata frmPrikazKarata = new frmPrikazKarata(termini);
+                if (frmPrikazKarata.ShowDialog() == DialogResult.OK)
+                {
+                    dgvTermini.DataSource = null;
+                    frmPrikazTermina_Load(sender, e);
+                }
             }
         }
     }
