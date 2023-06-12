@@ -96,7 +96,7 @@ namespace ePozoriste.WinUI
                 if (_termin == null)
                 {
                     var termin = await _terminService.Insert<Termin>(terminInsertRequest);
-                    //nakon sto se uspjesno doda termin kreirati određenji broj karata, koliko je sjedista u sali
+                    //urediti dio sa kreiranjem karata
                     if (termin != null)
                     {
                         var sala = await _salaService.GetById<Sala>(termin.SalaId);

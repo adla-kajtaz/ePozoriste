@@ -16,5 +16,10 @@ namespace ePozoriste.Model
 
         public int? PozoristeId { get; set; }
         public virtual Pozoriste? Pozoriste { get; set; }
+
+        public override string ToString()
+        {
+            return Naziv;
+        }
     }
 }

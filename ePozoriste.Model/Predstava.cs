@@ -16,5 +16,10 @@ namespace ePozoriste.Model
         public string Rezija { get; set; }
         public string Scenografija { get; set; }
         public string Kostimografija { get; set; }
+
+        public override string ToString()
+        {
+            return Naziv;
+        }
     }
 }
