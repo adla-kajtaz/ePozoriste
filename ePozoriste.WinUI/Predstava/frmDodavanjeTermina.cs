@@ -63,7 +63,6 @@ namespace ePozoriste.WinUI
             {
                 if (_termin != null)
                 {
-                    //provjeriti za datum
                     cmbPredstave.SelectedValue = _termin.PredstavaId;
                     cmbSale.SelectedValue = _termin.SalaId;
                     txtCijenaKarte.Text = _termin.CijenaKarte.ToString();
