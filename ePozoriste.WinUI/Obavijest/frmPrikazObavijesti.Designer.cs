@@ -103,7 +103,7 @@
             // ID
             // 
             this.ID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.ID.DataPropertyName = "ObavijestKategorijaId";
+            this.ID.DataPropertyName = "ObavijestId";
             this.ID.HeaderText = "ID";
             this.ID.MinimumWidth = 6;
             this.ID.Name = "ID";
