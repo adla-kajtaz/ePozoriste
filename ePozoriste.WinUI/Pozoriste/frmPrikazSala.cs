@@ -87,6 +87,15 @@ namespace ePozoriste.WinUI
                     frmPrikazSala_Load(sender, e);
                 }
             }
+            else if (e.ColumnIndex == 7)
+            {
+                frmPrikazTermina frmPrikazTermina = new frmPrikazTermina(sala);
+                if (frmPrikazTermina.ShowDialog() == DialogResult.OK)
+                {
+                    dgvSale.DataSource = null;
+                    frmPrikazSala_Load(sender, e);
+                }
+            }
         }
     }
 }

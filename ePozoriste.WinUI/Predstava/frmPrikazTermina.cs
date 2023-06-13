@@ -17,11 +17,12 @@ namespace ePozoriste.WinUI
         APIService _terminService { get; set; } = new APIService("Termin");
         APIService _predstavaService { get; set; } = new APIService("Predstava");
         APIService _salaService { get; set; } = new APIService("Sala");
-
-        public frmPrikazTermina()
+        private Sala _sala;
+        public frmPrikazTermina(Sala sala = null)
         {
             InitializeComponent();
             dgvTermini.AutoGenerateColumns = false;
+            _sala = sala;
         }
 
         private async void frmPrikazTermina_Load(object sender, EventArgs e)
@@ -30,26 +31,10 @@ namespace ePozoriste.WinUI
             {
                 var searchRequest = new TerminSearchObject
                 {
-
+                    SalaId = _sala.SalaId
                 };
-                dgvTermini.DataSource = await _terminService.Get<List<Termin>>();
+                dgvTermini.DataSource = await _terminService.Get<List<Termin>>(searchRequest);
                 UcitajPredstave();
-                UcitajSale();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-        }
-
-        private async void UcitajSale()
-        {
-            try
-            {
-                var sale = await _salaService.Get<List<Sala>>() as IList<Sala>;
-                cmbSale.DataSource = sale;
-                cmbSale.DisplayMember = "Naziv";
-                cmbSale.ValueMember = "SalaId";
             }
             catch (Exception ex)
             {
@@ -88,7 +73,7 @@ namespace ePozoriste.WinUI
             {
                 Predpremijera = cbPredpremijera.Checked,
                 Premijera = cbPremijera.Checked,
-                SalaId = (int)cmbSale.SelectedValue,
+                SalaId = _sala.SalaId,
                 PredstavaId = (int)cmbPredstave.SelectedValue,
                 DatumVrijemeOdrzavanja = dtpDatumIzvodjenja.Value
             };

@@ -39,7 +39,6 @@
             this.btnGlumci = new System.Windows.Forms.Button();
             this.btnPredstave = new System.Windows.Forms.Button();
             this.btnVrstePredstave = new System.Windows.Forms.Button();
-            this.btnTermini = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
@@ -94,7 +93,7 @@
             // 
             // btnObavijesti
             // 
-            this.btnObavijesti.Location = new System.Drawing.Point(227, 393);
+            this.btnObavijesti.Location = new System.Drawing.Point(301, 319);
             this.btnObavijesti.Name = "btnObavijesti";
             this.btnObavijesti.Size = new System.Drawing.Size(138, 67);
             this.btnObavijesti.TabIndex = 13;
@@ -104,7 +103,7 @@
             // 
             // btnKategorijeObavijesti
             // 
-            this.btnKategorijeObavijesti.Location = new System.Drawing.Point(301, 320);
+            this.btnKategorijeObavijesti.Location = new System.Drawing.Point(301, 246);
             this.btnKategorijeObavijesti.Name = "btnKategorijeObavijesti";
             this.btnKategorijeObavijesti.Size = new System.Drawing.Size(138, 67);
             this.btnKategorijeObavijesti.TabIndex = 14;
@@ -152,16 +151,6 @@
             this.btnVrstePredstave.UseVisualStyleBackColor = true;
             this.btnVrstePredstave.Click += new System.EventHandler(this.btnVrstePredstave_Click);
             // 
-            // btnTermini
-            // 
-            this.btnTermini.Location = new System.Drawing.Point(301, 247);
-            this.btnTermini.Name = "btnTermini";
-            this.btnTermini.Size = new System.Drawing.Size(138, 67);
-            this.btnTermini.TabIndex = 19;
-            this.btnTermini.Text = "Termini";
-            this.btnTermini.UseVisualStyleBackColor = true;
-            this.btnTermini.Click += new System.EventHandler(this.btnTermini_Click);
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -176,9 +165,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(639, 476);
+            this.ClientSize = new System.Drawing.Size(639, 410);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.btnTermini);
             this.Controls.Add(this.btnVrstePredstave);
             this.Controls.Add(this.btnPredstave);
             this.Controls.Add(this.btnGlumci);
@@ -210,7 +198,6 @@
         private Button btnGlumci;
         private Button btnPredstave;
         private Button btnVrstePredstave;
-        private Button btnTermini;
         private Label label1;
     }
 }

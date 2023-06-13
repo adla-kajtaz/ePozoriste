@@ -30,12 +30,6 @@
         {
             this.btnPrikazi = new System.Windows.Forms.Button();
             this.dgvTermini = new System.Windows.Forms.DataGridView();
-            this.btnDodaj = new System.Windows.Forms.Button();
-            this.dtpDatumIzvodjenja = new System.Windows.Forms.DateTimePicker();
-            this.cmbPredstave = new System.Windows.Forms.ComboBox();
-            this.cmbSale = new System.Windows.Forms.ComboBox();
-            this.cbPremijera = new System.Windows.Forms.CheckBox();
-            this.cbPredpremijera = new System.Windows.Forms.CheckBox();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Predstava = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Sala = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -46,6 +40,11 @@
             this.Karte = new System.Windows.Forms.DataGridViewButtonColumn();
             this.Uredi = new System.Windows.Forms.DataGridViewButtonColumn();
             this.Obrisi = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.btnDodaj = new System.Windows.Forms.Button();
+            this.dtpDatumIzvodjenja = new System.Windows.Forms.DateTimePicker();
+            this.cmbPredstave = new System.Windows.Forms.ComboBox();
+            this.cbPremijera = new System.Windows.Forms.CheckBox();
+            this.cbPredpremijera = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTermini)).BeginInit();
             this.SuspendLayout();
             // 
@@ -81,59 +80,6 @@
             this.dgvTermini.Size = new System.Drawing.Size(1309, 424);
             this.dgvTermini.TabIndex = 14;
             this.dgvTermini.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvTermini_CellContentClick);
-            // 
-            // btnDodaj
-            // 
-            this.btnDodaj.Location = new System.Drawing.Point(1151, 10);
-            this.btnDodaj.Name = "btnDodaj";
-            this.btnDodaj.Size = new System.Drawing.Size(180, 29);
-            this.btnDodaj.TabIndex = 13;
-            this.btnDodaj.Text = "Dodaj";
-            this.btnDodaj.UseVisualStyleBackColor = true;
-            this.btnDodaj.Click += new System.EventHandler(this.btnDodaj_Click);
-            // 
-            // dtpDatumIzvodjenja
-            // 
-            this.dtpDatumIzvodjenja.Location = new System.Drawing.Point(22, 12);
-            this.dtpDatumIzvodjenja.Name = "dtpDatumIzvodjenja";
-            this.dtpDatumIzvodjenja.Size = new System.Drawing.Size(250, 27);
-            this.dtpDatumIzvodjenja.TabIndex = 16;
-            // 
-            // cmbPredstave
-            // 
-            this.cmbPredstave.FormattingEnabled = true;
-            this.cmbPredstave.Location = new System.Drawing.Point(278, 11);
-            this.cmbPredstave.Name = "cmbPredstave";
-            this.cmbPredstave.Size = new System.Drawing.Size(209, 28);
-            this.cmbPredstave.TabIndex = 17;
-            // 
-            // cmbSale
-            // 
-            this.cmbSale.FormattingEnabled = true;
-            this.cmbSale.Location = new System.Drawing.Point(493, 11);
-            this.cmbSale.Name = "cmbSale";
-            this.cmbSale.Size = new System.Drawing.Size(209, 28);
-            this.cmbSale.TabIndex = 18;
-            // 
-            // cbPremijera
-            // 
-            this.cbPremijera.AutoSize = true;
-            this.cbPremijera.Location = new System.Drawing.Point(708, 12);
-            this.cbPremijera.Name = "cbPremijera";
-            this.cbPremijera.Size = new System.Drawing.Size(94, 24);
-            this.cbPremijera.TabIndex = 19;
-            this.cbPremijera.Text = "Premijera";
-            this.cbPremijera.UseVisualStyleBackColor = true;
-            // 
-            // cbPredpremijera
-            // 
-            this.cbPredpremijera.AutoSize = true;
-            this.cbPredpremijera.Location = new System.Drawing.Point(808, 12);
-            this.cbPredpremijera.Name = "cbPredpremijera";
-            this.cbPredpremijera.Size = new System.Drawing.Size(125, 24);
-            this.cbPredpremijera.TabIndex = 20;
-            this.cbPredpremijera.Text = "Predpremijera";
-            this.cbPredpremijera.UseVisualStyleBackColor = true;
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -227,6 +173,51 @@
             this.Obrisi.UseColumnTextForButtonValue = true;
             this.Obrisi.Width = 125;
             // 
+            // btnDodaj
+            // 
+            this.btnDodaj.Location = new System.Drawing.Point(1151, 10);
+            this.btnDodaj.Name = "btnDodaj";
+            this.btnDodaj.Size = new System.Drawing.Size(180, 29);
+            this.btnDodaj.TabIndex = 13;
+            this.btnDodaj.Text = "Dodaj";
+            this.btnDodaj.UseVisualStyleBackColor = true;
+            this.btnDodaj.Click += new System.EventHandler(this.btnDodaj_Click);
+            // 
+            // dtpDatumIzvodjenja
+            // 
+            this.dtpDatumIzvodjenja.Location = new System.Drawing.Point(22, 12);
+            this.dtpDatumIzvodjenja.Name = "dtpDatumIzvodjenja";
+            this.dtpDatumIzvodjenja.Size = new System.Drawing.Size(305, 27);
+            this.dtpDatumIzvodjenja.TabIndex = 16;
+            // 
+            // cmbPredstave
+            // 
+            this.cmbPredstave.FormattingEnabled = true;
+            this.cmbPredstave.Location = new System.Drawing.Point(333, 10);
+            this.cmbPredstave.Name = "cmbPredstave";
+            this.cmbPredstave.Size = new System.Drawing.Size(369, 28);
+            this.cmbPredstave.TabIndex = 17;
+            // 
+            // cbPremijera
+            // 
+            this.cbPremijera.AutoSize = true;
+            this.cbPremijera.Location = new System.Drawing.Point(708, 12);
+            this.cbPremijera.Name = "cbPremijera";
+            this.cbPremijera.Size = new System.Drawing.Size(94, 24);
+            this.cbPremijera.TabIndex = 19;
+            this.cbPremijera.Text = "Premijera";
+            this.cbPremijera.UseVisualStyleBackColor = true;
+            // 
+            // cbPredpremijera
+            // 
+            this.cbPredpremijera.AutoSize = true;
+            this.cbPredpremijera.Location = new System.Drawing.Point(808, 12);
+            this.cbPredpremijera.Name = "cbPredpremijera";
+            this.cbPredpremijera.Size = new System.Drawing.Size(125, 24);
+            this.cbPredpremijera.TabIndex = 20;
+            this.cbPredpremijera.Text = "Predpremijera";
+            this.cbPredpremijera.UseVisualStyleBackColor = true;
+            // 
             // frmPrikazTermina
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -234,7 +225,6 @@
             this.ClientSize = new System.Drawing.Size(1358, 494);
             this.Controls.Add(this.cbPredpremijera);
             this.Controls.Add(this.cbPremijera);
-            this.Controls.Add(this.cmbSale);
             this.Controls.Add(this.cmbPredstave);
             this.Controls.Add(this.dtpDatumIzvodjenja);
             this.Controls.Add(this.btnPrikazi);
@@ -256,7 +246,6 @@
         private Button btnDodaj;
         private DateTimePicker dtpDatumIzvodjenja;
         private ComboBox cmbPredstave;
-        private ComboBox cmbSale;
         private CheckBox cbPremijera;
         private CheckBox cbPredpremijera;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
