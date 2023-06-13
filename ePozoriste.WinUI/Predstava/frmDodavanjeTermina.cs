@@ -68,7 +68,8 @@ namespace ePozoriste.WinUI
                     cmbPredstave.SelectedValue = _termin.PredstavaId;
                     cmbSale.SelectedValue = _termin.SalaId;
                     txtCijenaKarte.Text = _termin.CijenaKarte.ToString();
-                    dtpDatum.Value = _termin.DatumVrijemeOdrzavanja;
+                    dtpDatum.Value = _termin.DatumOdrzavanja;
+                    txtVrijemeOdrzavanja.Text = _termin.VrijemeOdrazvanja;
                     cbPredpremijera.Checked = _termin.Predpremijera;
                     cbPremijera.Checked = _termin.Premijera;
                 }
@@ -88,7 +89,8 @@ namespace ePozoriste.WinUI
                     PredstavaId = (int)cmbPredstave.SelectedValue,
                     SalaId = (int)cmbSale.SelectedValue,
                     CijenaKarte = Int32.Parse(txtCijenaKarte.Text),
-                    DatumVrijemeOdrzavanja = dtpDatum.Value,
+                    DatumOdrzavanja = dtpDatum.Value,
+                    VrijemeOdrazvanja = txtVrijemeOdrzavanja.Text,
                     Predpremijera = cbPredpremijera.Checked,
                     Premijera = cbPremijera.Checked
                 };

@@ -201,7 +201,7 @@ namespace ePozoriste.Services.Database
             {
                 entity.ToTable("Termin");
 
-                entity.Property(e => e.DatumVrijemeOdrzavanja).HasColumnType("datetime");
+                entity.Property(e => e.DatumOdrzavanja).HasColumnType("datetime");
 
                 entity.HasOne(d => d.Predstava)
                     .WithMany(p => p.Termins)

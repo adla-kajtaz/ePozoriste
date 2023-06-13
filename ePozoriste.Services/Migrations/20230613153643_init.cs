@@ -296,7 +296,8 @@ namespace ePozoriste.Services.Migrations
                     Premijera = table.Column<bool>(type: "bit", nullable: true),
                     Predpremijera = table.Column<bool>(type: "bit", nullable: true),
                     CijenaKarte = table.Column<int>(type: "int", nullable: true),
-                    DatumVrijemeOdrzavanja = table.Column<DateTime>(type: "datetime", nullable: true)
+                    DatumOdrzavanja = table.Column<DateTime>(type: "datetime", nullable: true),
+                    VrijemeOdrazvanja = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -430,7 +431,7 @@ namespace ePozoriste.Services.Migrations
             migrationBuilder.InsertData(
                 table: "Obavijest",
                 columns: new[] { "ObavijestId", "DatumKreiranja", "KorisnikId", "Naslov", "ObavijestKategorijaId", "Podnaslov", "Sadrzaj", "Slika" },
-                values: new object[] { 1, new DateTime(2023, 6, 6, 15, 7, 47, 707, DateTimeKind.Local).AddTicks(9042), 1, "Uskoro u prodaji karte za predstavu Ćelava pjevačica", 1, "Uskoro u prodaji karte za predstavu Ćelava pjevačica", "Ulaznice su u prodaji na blagajni NPM-a od ponedjeljka, 5.6.2023. svakim radnim danom od 9 - 14 sati, na dan igranja predstave od 9 do 14 sati te od 18 do 20 sati. Rezervacije: na broj 036/550-128, mail: marketing@npm.ba, porukom u inbox na Facebook stranici Narodnog pozorišta Mostar.", null });
+                values: new object[] { 1, new DateTime(2023, 6, 13, 17, 36, 42, 808, DateTimeKind.Local).AddTicks(1209), 1, "Uskoro u prodaji karte za predstavu Ćelava pjevačica", 1, "Uskoro u prodaji karte za predstavu Ćelava pjevačica", "Ulaznice su u prodaji na blagajni NPM-a od ponedjeljka, 5.6.2023. svakim radnim danom od 9 - 14 sati, na dan igranja predstave od 9 do 14 sati te od 18 do 20 sati. Rezervacije: na broj 036/550-128, mail: marketing@npm.ba, porukom u inbox na Facebook stranici Narodnog pozorišta Mostar.", null });
 
             migrationBuilder.InsertData(
                 table: "PredstavaGlumac",
@@ -456,6 +457,11 @@ namespace ePozoriste.Services.Migrations
                 table: "Sala",
                 columns: new[] { "SalaId", "BrRedova", "BrSjedista", "BrSjedistaPoRedu", "Naziv", "PozoristeId" },
                 values: new object[] { 2, 10, 100, 10, "Mala sala", 1 });
+
+            migrationBuilder.InsertData(
+                table: "Termin",
+                columns: new[] { "TerminId", "CijenaKarte", "DatumOdrzavanja", "Predpremijera", "PredstavaId", "Premijera", "SalaId", "VrijemeOdrazvanja" },
+                values: new object[] { 1, 20, new DateTime(2023, 6, 13, 0, 0, 0, 0, DateTimeKind.Local), true, 1, false, 1, "20:00" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Grad_DrzavaId",

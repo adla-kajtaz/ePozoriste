@@ -95,8 +95,7 @@ namespace ePozoriste.Services.Database
             });
 
             modelBuilder.Entity<Obavijest>().HasData(new Obavijest[]
-             {
-                //fali slika
+            {
                 new Obavijest()
                 {
                     ObavijestId = 1,
@@ -111,7 +110,6 @@ namespace ePozoriste.Services.Database
 
             modelBuilder.Entity<Pozoriste>().HasData(new Pozoriste[]
             {
-                //fali logo
                 new Pozoriste()
                 {
                     PozoristeId = 1,
@@ -181,7 +179,6 @@ namespace ePozoriste.Services.Database
 
             modelBuilder.Entity<Predstava>().HasData(new Predstava[]
             {
-                //fali slika
                 new Predstava()
                 {
                     PredstavaId = 1,
@@ -215,6 +212,20 @@ namespace ePozoriste.Services.Database
                 }
            });
 
+            modelBuilder.Entity<Termin>().HasData(new Termin[]
+            {
+                new Termin()
+                {
+                    TerminId = 1,
+                    SalaId = 1,
+                    PredstavaId = 1,
+                    Predpremijera = true,
+                    Premijera = false,
+                    CijenaKarte = 20,
+                    DatumOdrzavanja = DateTime.Now.Date,
+                    VrijemeOdrazvanja = "20:00"
+                }
+            });
         }
        
     }

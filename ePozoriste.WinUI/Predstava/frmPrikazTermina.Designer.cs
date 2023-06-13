@@ -30,21 +30,22 @@
         {
             this.btnPrikazi = new System.Windows.Forms.Button();
             this.dgvTermini = new System.Windows.Forms.DataGridView();
+            this.btnDodaj = new System.Windows.Forms.Button();
+            this.dtpDatumIzvodjenja = new System.Windows.Forms.DateTimePicker();
+            this.cmbPredstave = new System.Windows.Forms.ComboBox();
+            this.cbPremijera = new System.Windows.Forms.CheckBox();
+            this.cbPredpremijera = new System.Windows.Forms.CheckBox();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Predstava = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Sala = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DatumIzvodjenja = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.VrijemeOdrazvanja = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CijenaKarte = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Premijera = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.Predpremijera = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.Karte = new System.Windows.Forms.DataGridViewButtonColumn();
             this.Uredi = new System.Windows.Forms.DataGridViewButtonColumn();
             this.Obrisi = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.btnDodaj = new System.Windows.Forms.Button();
-            this.dtpDatumIzvodjenja = new System.Windows.Forms.DateTimePicker();
-            this.cmbPredstave = new System.Windows.Forms.ComboBox();
-            this.cbPremijera = new System.Windows.Forms.CheckBox();
-            this.cbPredpremijera = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTermini)).BeginInit();
             this.SuspendLayout();
             // 
@@ -66,6 +67,7 @@
             this.Predstava,
             this.Sala,
             this.DatumIzvodjenja,
+            this.VrijemeOdrazvanja,
             this.CijenaKarte,
             this.Premijera,
             this.Predpremijera,
@@ -80,6 +82,51 @@
             this.dgvTermini.Size = new System.Drawing.Size(1309, 424);
             this.dgvTermini.TabIndex = 14;
             this.dgvTermini.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvTermini_CellContentClick);
+            // 
+            // btnDodaj
+            // 
+            this.btnDodaj.Location = new System.Drawing.Point(1151, 10);
+            this.btnDodaj.Name = "btnDodaj";
+            this.btnDodaj.Size = new System.Drawing.Size(180, 29);
+            this.btnDodaj.TabIndex = 13;
+            this.btnDodaj.Text = "Dodaj";
+            this.btnDodaj.UseVisualStyleBackColor = true;
+            this.btnDodaj.Click += new System.EventHandler(this.btnDodaj_Click);
+            // 
+            // dtpDatumIzvodjenja
+            // 
+            this.dtpDatumIzvodjenja.Location = new System.Drawing.Point(22, 12);
+            this.dtpDatumIzvodjenja.Name = "dtpDatumIzvodjenja";
+            this.dtpDatumIzvodjenja.Size = new System.Drawing.Size(305, 27);
+            this.dtpDatumIzvodjenja.TabIndex = 16;
+            // 
+            // cmbPredstave
+            // 
+            this.cmbPredstave.FormattingEnabled = true;
+            this.cmbPredstave.Location = new System.Drawing.Point(333, 10);
+            this.cmbPredstave.Name = "cmbPredstave";
+            this.cmbPredstave.Size = new System.Drawing.Size(369, 28);
+            this.cmbPredstave.TabIndex = 17;
+            // 
+            // cbPremijera
+            // 
+            this.cbPremijera.AutoSize = true;
+            this.cbPremijera.Location = new System.Drawing.Point(708, 12);
+            this.cbPremijera.Name = "cbPremijera";
+            this.cbPremijera.Size = new System.Drawing.Size(94, 24);
+            this.cbPremijera.TabIndex = 19;
+            this.cbPremijera.Text = "Premijera";
+            this.cbPremijera.UseVisualStyleBackColor = true;
+            // 
+            // cbPredpremijera
+            // 
+            this.cbPredpremijera.AutoSize = true;
+            this.cbPredpremijera.Location = new System.Drawing.Point(808, 12);
+            this.cbPredpremijera.Name = "cbPredpremijera";
+            this.cbPredpremijera.Size = new System.Drawing.Size(125, 24);
+            this.cbPredpremijera.TabIndex = 20;
+            this.cbPredpremijera.Text = "Predpremijera";
+            this.cbPredpremijera.UseVisualStyleBackColor = true;
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -110,12 +157,21 @@
             // 
             // DatumIzvodjenja
             // 
-            this.DatumIzvodjenja.DataPropertyName = "DatumVrijemeOdrzavanja";
+            this.DatumIzvodjenja.DataPropertyName = "DatumOdrzavanja";
             this.DatumIzvodjenja.HeaderText = "Datum izvođenja";
             this.DatumIzvodjenja.MinimumWidth = 6;
             this.DatumIzvodjenja.Name = "DatumIzvodjenja";
             this.DatumIzvodjenja.ReadOnly = true;
             this.DatumIzvodjenja.Width = 125;
+            // 
+            // VrijemeOdrazvanja
+            // 
+            this.VrijemeOdrazvanja.DataPropertyName = "VrijemeOdrazvanja";
+            this.VrijemeOdrazvanja.HeaderText = "Vrijeme održavanja";
+            this.VrijemeOdrazvanja.MinimumWidth = 6;
+            this.VrijemeOdrazvanja.Name = "VrijemeOdrazvanja";
+            this.VrijemeOdrazvanja.ReadOnly = true;
+            this.VrijemeOdrazvanja.Width = 125;
             // 
             // CijenaKarte
             // 
@@ -173,51 +229,6 @@
             this.Obrisi.UseColumnTextForButtonValue = true;
             this.Obrisi.Width = 125;
             // 
-            // btnDodaj
-            // 
-            this.btnDodaj.Location = new System.Drawing.Point(1151, 10);
-            this.btnDodaj.Name = "btnDodaj";
-            this.btnDodaj.Size = new System.Drawing.Size(180, 29);
-            this.btnDodaj.TabIndex = 13;
-            this.btnDodaj.Text = "Dodaj";
-            this.btnDodaj.UseVisualStyleBackColor = true;
-            this.btnDodaj.Click += new System.EventHandler(this.btnDodaj_Click);
-            // 
-            // dtpDatumIzvodjenja
-            // 
-            this.dtpDatumIzvodjenja.Location = new System.Drawing.Point(22, 12);
-            this.dtpDatumIzvodjenja.Name = "dtpDatumIzvodjenja";
-            this.dtpDatumIzvodjenja.Size = new System.Drawing.Size(305, 27);
-            this.dtpDatumIzvodjenja.TabIndex = 16;
-            // 
-            // cmbPredstave
-            // 
-            this.cmbPredstave.FormattingEnabled = true;
-            this.cmbPredstave.Location = new System.Drawing.Point(333, 10);
-            this.cmbPredstave.Name = "cmbPredstave";
-            this.cmbPredstave.Size = new System.Drawing.Size(369, 28);
-            this.cmbPredstave.TabIndex = 17;
-            // 
-            // cbPremijera
-            // 
-            this.cbPremijera.AutoSize = true;
-            this.cbPremijera.Location = new System.Drawing.Point(708, 12);
-            this.cbPremijera.Name = "cbPremijera";
-            this.cbPremijera.Size = new System.Drawing.Size(94, 24);
-            this.cbPremijera.TabIndex = 19;
-            this.cbPremijera.Text = "Premijera";
-            this.cbPremijera.UseVisualStyleBackColor = true;
-            // 
-            // cbPredpremijera
-            // 
-            this.cbPredpremijera.AutoSize = true;
-            this.cbPredpremijera.Location = new System.Drawing.Point(808, 12);
-            this.cbPredpremijera.Name = "cbPredpremijera";
-            this.cbPredpremijera.Size = new System.Drawing.Size(125, 24);
-            this.cbPredpremijera.TabIndex = 20;
-            this.cbPredpremijera.Text = "Predpremijera";
-            this.cbPredpremijera.UseVisualStyleBackColor = true;
-            // 
             // frmPrikazTermina
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -252,6 +263,7 @@
         private DataGridViewTextBoxColumn Predstava;
         private DataGridViewTextBoxColumn Sala;
         private DataGridViewTextBoxColumn DatumIzvodjenja;
+        private DataGridViewTextBoxColumn VrijemeOdrazvanja;
         private DataGridViewTextBoxColumn CijenaKarte;
         private DataGridViewCheckBoxColumn Premijera;
         private DataGridViewCheckBoxColumn Predpremijera;

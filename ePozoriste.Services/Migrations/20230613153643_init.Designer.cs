@@ -12,7 +12,7 @@ using ePozoriste.Services.Database;
 namespace ePozoriste.Services.Migrations
 {
     [DbContext(typeof(ePozoristeContext))]
-    [Migration("20230606130748_init")]
+    [Migration("20230613153643_init")]
     partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -322,7 +322,7 @@ namespace ePozoriste.Services.Migrations
                         new
                         {
                             ObavijestId = 1,
-                            DatumKreiranja = new DateTime(2023, 6, 6, 15, 7, 47, 707, DateTimeKind.Local).AddTicks(9042),
+                            DatumKreiranja = new DateTime(2023, 6, 13, 17, 36, 42, 808, DateTimeKind.Local).AddTicks(1209),
                             KorisnikId = 1,
                             Naslov = "Uskoro u prodaji karte za predstavu Ćelava pjevačica",
                             ObavijestKategorijaId = 1,
@@ -581,7 +581,7 @@ namespace ePozoriste.Services.Migrations
                     b.Property<int?>("CijenaKarte")
                         .HasColumnType("int");
 
-                    b.Property<DateTime?>("DatumVrijemeOdrzavanja")
+                    b.Property<DateTime?>("DatumOdrzavanja")
                         .HasColumnType("datetime");
 
                     b.Property<bool?>("Predpremijera")
@@ -596,6 +596,9 @@ namespace ePozoriste.Services.Migrations
                     b.Property<int?>("SalaId")
                         .HasColumnType("int");
 
+                    b.Property<string>("VrijemeOdrazvanja")
+                        .HasColumnType("nvarchar(max)");
+
                     b.HasKey("TerminId");
 
                     b.HasIndex("PredstavaId");
@@ -603,6 +606,19 @@ namespace ePozoriste.Services.Migrations
                     b.HasIndex("SalaId");
 
                     b.ToTable("Termin", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            TerminId = 1,
+                            CijenaKarte = 20,
+                            DatumOdrzavanja = new DateTime(2023, 6, 13, 0, 0, 0, 0, DateTimeKind.Local),
+                            Predpremijera = true,
+                            PredstavaId = 1,
+                            Premijera = false,
+                            SalaId = 1,
+                            VrijemeOdrazvanja = "20:00"
+                        });
                 });
 
             modelBuilder.Entity("ePozoriste.Services.Database.Uloga", b =>

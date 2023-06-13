@@ -39,6 +39,8 @@
             this.dtpDatum = new System.Windows.Forms.DateTimePicker();
             this.lblDatum = new System.Windows.Forms.Label();
             this.btnDodaj = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.txtVrijemeOdrzavanja = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // cmbSale
@@ -94,7 +96,7 @@
             // cbPremijera
             // 
             this.cbPremijera.AutoSize = true;
-            this.cbPremijera.Location = new System.Drawing.Point(12, 245);
+            this.cbPremijera.Location = new System.Drawing.Point(12, 279);
             this.cbPremijera.Name = "cbPremijera";
             this.cbPremijera.Size = new System.Drawing.Size(94, 24);
             this.cbPremijera.TabIndex = 25;
@@ -104,7 +106,7 @@
             // cbPredpremijera
             // 
             this.cbPredpremijera.AutoSize = true;
-            this.cbPredpremijera.Location = new System.Drawing.Point(137, 245);
+            this.cbPredpremijera.Location = new System.Drawing.Point(137, 279);
             this.cbPredpremijera.Name = "cbPredpremijera";
             this.cbPredpremijera.Size = new System.Drawing.Size(125, 24);
             this.cbPredpremijera.TabIndex = 26;
@@ -113,7 +115,7 @@
             // 
             // dtpDatum
             // 
-            this.dtpDatum.Location = new System.Drawing.Point(12, 202);
+            this.dtpDatum.Location = new System.Drawing.Point(12, 193);
             this.dtpDatum.Name = "dtpDatum";
             this.dtpDatum.Size = new System.Drawing.Size(250, 27);
             this.dtpDatum.TabIndex = 27;
@@ -129,7 +131,7 @@
             // 
             // btnDodaj
             // 
-            this.btnDodaj.Location = new System.Drawing.Point(12, 290);
+            this.btnDodaj.Location = new System.Drawing.Point(12, 309);
             this.btnDodaj.Name = "btnDodaj";
             this.btnDodaj.Size = new System.Drawing.Size(250, 29);
             this.btnDodaj.TabIndex = 29;
@@ -137,11 +139,29 @@
             this.btnDodaj.UseVisualStyleBackColor = true;
             this.btnDodaj.Click += new System.EventHandler(this.btnDodaj_Click);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(12, 223);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(191, 20);
+            this.label1.TabIndex = 31;
+            this.label1.Text = "Unesite vrijeme održavanja:";
+            // 
+            // txtVrijemeOdrzavanja
+            // 
+            this.txtVrijemeOdrzavanja.Location = new System.Drawing.Point(12, 246);
+            this.txtVrijemeOdrzavanja.Name = "txtVrijemeOdrzavanja";
+            this.txtVrijemeOdrzavanja.Size = new System.Drawing.Size(250, 27);
+            this.txtVrijemeOdrzavanja.TabIndex = 30;
+            // 
             // frmDodavanjeTermina
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(290, 342);
+            this.ClientSize = new System.Drawing.Size(282, 356);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.txtVrijemeOdrzavanja);
             this.Controls.Add(this.btnDodaj);
             this.Controls.Add(this.lblDatum);
             this.Controls.Add(this.dtpDatum);
@@ -174,5 +194,7 @@
         private DateTimePicker dtpDatum;
         private Label lblDatum;
         private Button btnDodaj;
+        private Label label1;
+        private TextBox txtVrijemeOdrzavanja;
     }
 }
