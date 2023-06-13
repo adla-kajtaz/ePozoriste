@@ -76,6 +76,7 @@
             this.btnPrijava.TabIndex = 12;
             this.btnPrijava.Text = "Prijava";
             this.btnPrijava.UseVisualStyleBackColor = true;
+            this.btnPrijava.Click += new System.EventHandler(this.btnPrijava_Click);
             // 
             // lblLozinka
             // 

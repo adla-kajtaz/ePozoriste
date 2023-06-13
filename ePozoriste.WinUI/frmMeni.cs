@@ -81,6 +81,7 @@ namespace ePozoriste.WinUI
         {
             frmLogin frmLogin = new frmLogin();
             frmLogin.Show();
+            this.Hide();
         }
     }
 }

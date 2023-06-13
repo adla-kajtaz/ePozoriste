@@ -110,7 +110,7 @@ namespace ePozoriste.Services
                 return null;
             }
 
-            var hash = GenerateHash(entity.LozinkaSalt, lozinka);
+            var hash = GenerateHash(lozinka, entity.LozinkaSalt);
 
             if (hash != entity.LozinkaHash)
             {

@@ -73,7 +73,7 @@ namespace ePozoriste.Services.Database
                     LozinkaHash = "/jgjzf1nC8YDuZMV5q0kYrRqIarjCDgWjBERaZiyyO0=",
                     LozinkaSalt = "DFQVcTkMv8qWjq/5ars8Eg=="
                 }
-            });
+            });;
 
             modelBuilder.Entity<KorisnikUloge>().HasData(new KorisnikUloge[]
             {
