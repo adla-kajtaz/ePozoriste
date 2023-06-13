@@ -1,5 +1,6 @@
 ﻿using ePozoriste.Model;
 using ePozoriste.Model.Requests;
+using ePozoriste.WinUI.Helper;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -34,7 +35,8 @@ namespace ePozoriste.WinUI
                     txtRezija.Text = _predstava.Rezija;
                     txtScenografija.Text = _predstava.Scenografija.ToString();
                     txtKostimografija.Text = _predstava.Kostimografija.ToString();
-                 // pbSlikaPlakata
+                    if(_predstava.Slika != null)
+                        pbSlikaPlakata.Image = ImageHelper.ConvertStringToImage(_predstava.Slika);
                 }
             }
             catch (Exception ex)
@@ -54,8 +56,8 @@ namespace ePozoriste.WinUI
                     VrijemeTrajanje = Int32.Parse(txtVrijemeTrajanja.Text),
                     Rezija = txtRezija.Text,
                     Scenografija = txtScenografija.Text,
-                    Kostimografija = txtKostimografija.Text
-                 // Slika 
+                    Kostimografija = txtKostimografija.Text,
+                    Slika = ImageHelper.ConvertImageToString(pbSlikaPlakata.Image)
                 };
 
                 if (_predstava == null)
@@ -74,6 +76,12 @@ namespace ePozoriste.WinUI
             {
                 MessageBox.Show("Greska");
             }
+        }
+
+        private void btnUcitajSliku_Click(object sender, EventArgs e)
+        {
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+                pbSlikaPlakata.Image = Image.FromFile(openFileDialog1.FileName);
         }
     }
 }

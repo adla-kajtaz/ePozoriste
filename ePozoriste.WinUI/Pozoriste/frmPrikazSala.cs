@@ -67,16 +67,9 @@ namespace ePozoriste.WinUI
             var sala = dgvSale.SelectedRows[0].DataBoundItem as Sala;
             if (e.ColumnIndex == 6)
             {
-                //var obrisanoPozoriste=
                 await _salaService.Delete<Sala>(sala.SalaId);
-                //if (obrisanoPozoriste != null){
                 dgvSale.DataSource = null;
                 frmPrikazSala_Load(sender, e);
-                /*}
-                else
-                {
-                    MessageBox.Show("Greska");
-                }*/
             }
             else if (e.ColumnIndex == 5)
             {

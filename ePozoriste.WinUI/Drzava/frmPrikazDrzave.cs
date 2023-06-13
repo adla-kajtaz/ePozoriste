@@ -51,16 +51,10 @@ namespace ePozoriste.WinUI
             var drzava = dgvDrzave.SelectedRows[0].DataBoundItem as Drzava;
             if (e.ColumnIndex == 4)
             {
-                //var obrisanaDrazva=
+                
                 await _drzavaService.Delete<Drzava>(drzava.DrzavaId);
-                //if (obrisanaDrazva != null){
                 dgvDrzave.DataSource = null;
                 frmPrikazDrzava_Load(sender, e);
-                /*}
-                else
-                {
-                    MessageBox.Show("Greska");
-                }*/
             }
             else if (e.ColumnIndex == 3)
             {

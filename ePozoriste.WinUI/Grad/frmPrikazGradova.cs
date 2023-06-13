@@ -80,16 +80,9 @@ namespace ePozoriste.WinUI
             var grad = dgvGradovi.SelectedRows[0].DataBoundItem as Grad;
             if (e.ColumnIndex == 5)
             {
-                //var obrisanGrad=
                 await _gradService.Delete<Grad>(grad.GradId);
-                //if (obrisanGrad != null){
                 dgvGradovi.DataSource = null;
                 frmPrikazGradova_Load(sender, e);
-                /*}
-                else
-                {
-                    MessageBox.Show("Greska");
-                }*/
             }
             else if (e.ColumnIndex == 4)
             {

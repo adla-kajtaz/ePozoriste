@@ -42,6 +42,11 @@
             this.lblBrTelefona = new System.Windows.Forms.Label();
             this.txtBrTelefona = new System.Windows.Forms.TextBox();
             this.cbAktivan = new System.Windows.Forms.CheckBox();
+            this.pbLogo = new System.Windows.Forms.PictureBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.btnUcitajSliku = new System.Windows.Forms.Button();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            ((System.ComponentModel.ISupportInitialize)(this.pbLogo)).BeginInit();
             this.SuspendLayout();
             // 
             // lblGrad
@@ -79,9 +84,9 @@
             // 
             // btnSpremi
             // 
-            this.btnSpremi.Location = new System.Drawing.Point(439, 171);
+            this.btnSpremi.Location = new System.Drawing.Point(275, 296);
             this.btnSpremi.Name = "btnSpremi";
-            this.btnSpremi.Size = new System.Drawing.Size(94, 29);
+            this.btnSpremi.Size = new System.Drawing.Size(241, 29);
             this.btnSpremi.TabIndex = 17;
             this.btnSpremi.Text = "Spremi";
             this.btnSpremi.UseVisualStyleBackColor = true;
@@ -106,7 +111,7 @@
             // lblWebStranica
             // 
             this.lblWebStranica.AutoSize = true;
-            this.lblWebStranica.Location = new System.Drawing.Point(292, 9);
+            this.lblWebStranica.Location = new System.Drawing.Point(12, 169);
             this.lblWebStranica.Name = "lblWebStranica";
             this.lblWebStranica.Size = new System.Drawing.Size(94, 20);
             this.lblWebStranica.TabIndex = 25;
@@ -114,7 +119,7 @@
             // 
             // txtWebStranica
             // 
-            this.txtWebStranica.Location = new System.Drawing.Point(292, 32);
+            this.txtWebStranica.Location = new System.Drawing.Point(12, 192);
             this.txtWebStranica.Name = "txtWebStranica";
             this.txtWebStranica.Size = new System.Drawing.Size(241, 27);
             this.txtWebStranica.TabIndex = 24;
@@ -122,7 +127,7 @@
             // lblEmail
             // 
             this.lblEmail.AutoSize = true;
-            this.lblEmail.Location = new System.Drawing.Point(292, 62);
+            this.lblEmail.Location = new System.Drawing.Point(12, 222);
             this.lblEmail.Name = "lblEmail";
             this.lblEmail.Size = new System.Drawing.Size(46, 20);
             this.lblEmail.TabIndex = 27;
@@ -130,7 +135,7 @@
             // 
             // txtEmail
             // 
-            this.txtEmail.Location = new System.Drawing.Point(292, 85);
+            this.txtEmail.Location = new System.Drawing.Point(12, 245);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(241, 27);
             this.txtEmail.TabIndex = 26;
@@ -138,7 +143,7 @@
             // lblBrTelefona
             // 
             this.lblBrTelefona.AutoSize = true;
-            this.lblBrTelefona.Location = new System.Drawing.Point(292, 115);
+            this.lblBrTelefona.Location = new System.Drawing.Point(12, 275);
             this.lblBrTelefona.Name = "lblBrTelefona";
             this.lblBrTelefona.Size = new System.Drawing.Size(95, 20);
             this.lblBrTelefona.TabIndex = 29;
@@ -146,7 +151,7 @@
             // 
             // txtBrTelefona
             // 
-            this.txtBrTelefona.Location = new System.Drawing.Point(292, 138);
+            this.txtBrTelefona.Location = new System.Drawing.Point(12, 298);
             this.txtBrTelefona.Name = "txtBrTelefona";
             this.txtBrTelefona.Size = new System.Drawing.Size(241, 27);
             this.txtBrTelefona.TabIndex = 28;
@@ -154,18 +159,54 @@
             // cbAktivan
             // 
             this.cbAktivan.AutoSize = true;
-            this.cbAktivan.Location = new System.Drawing.Point(12, 172);
+            this.cbAktivan.Location = new System.Drawing.Point(12, 331);
             this.cbAktivan.Name = "cbAktivan";
             this.cbAktivan.Size = new System.Drawing.Size(80, 24);
             this.cbAktivan.TabIndex = 32;
             this.cbAktivan.Text = "Aktivan";
             this.cbAktivan.UseVisualStyleBackColor = true;
             // 
+            // pbLogo
+            // 
+            this.pbLogo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pbLogo.Location = new System.Drawing.Point(275, 32);
+            this.pbLogo.Name = "pbLogo";
+            this.pbLogo.Size = new System.Drawing.Size(241, 187);
+            this.pbLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbLogo.TabIndex = 33;
+            this.pbLogo.TabStop = false;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(275, 9);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(46, 20);
+            this.label1.TabIndex = 34;
+            this.label1.Text = "Logo:";
+            // 
+            // btnUcitajSliku
+            // 
+            this.btnUcitajSliku.Location = new System.Drawing.Point(275, 225);
+            this.btnUcitajSliku.Name = "btnUcitajSliku";
+            this.btnUcitajSliku.Size = new System.Drawing.Size(241, 29);
+            this.btnUcitajSliku.TabIndex = 36;
+            this.btnUcitajSliku.Text = "Ucitaj sliku";
+            this.btnUcitajSliku.UseVisualStyleBackColor = true;
+            this.btnUcitajSliku.Click += new System.EventHandler(this.btnUcitajSliku_Click);
+            // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog1";
+            // 
             // frmDodajPozoriste
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(552, 219);
+            this.ClientSize = new System.Drawing.Size(552, 375);
+            this.Controls.Add(this.btnUcitajSliku);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.pbLogo);
             this.Controls.Add(this.cbAktivan);
             this.Controls.Add(this.lblBrTelefona);
             this.Controls.Add(this.txtBrTelefona);
@@ -183,6 +224,7 @@
             this.Name = "frmDodajPozoriste";
             this.Text = "Dodaj Pozoriste";
             this.Load += new System.EventHandler(this.frmDodajPozoriste_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.pbLogo)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -204,5 +246,9 @@
         private Label lblBrTelefona;
         private TextBox txtBrTelefona;
         private CheckBox cbAktivan;
+        private PictureBox pbLogo;
+        private Label label1;
+        private Button btnUcitajSliku;
+        private OpenFileDialog openFileDialog1;
     }
 }

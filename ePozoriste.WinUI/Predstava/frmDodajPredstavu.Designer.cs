@@ -43,6 +43,8 @@
             this.lblKostimografija = new System.Windows.Forms.Label();
             this.txtKostimografija = new System.Windows.Forms.TextBox();
             this.btnSpremi = new System.Windows.Forms.Button();
+            this.btnUcitajSliku = new System.Windows.Forms.Button();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.pbSlikaPlakata)).BeginInit();
             this.SuspendLayout();
             // 
@@ -82,10 +84,11 @@
             // 
             // pbSlikaPlakata
             // 
-            this.pbSlikaPlakata.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.pbSlikaPlakata.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pbSlikaPlakata.Location = new System.Drawing.Point(389, 32);
             this.pbSlikaPlakata.Name = "pbSlikaPlakata";
             this.pbSlikaPlakata.Size = new System.Drawing.Size(146, 124);
+            this.pbSlikaPlakata.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbSlikaPlakata.TabIndex = 24;
             this.pbSlikaPlakata.TabStop = false;
             // 
@@ -172,11 +175,26 @@
             this.btnSpremi.UseVisualStyleBackColor = true;
             this.btnSpremi.Click += new System.EventHandler(this.btnSpremi_Click);
             // 
+            // btnUcitajSliku
+            // 
+            this.btnUcitajSliku.Location = new System.Drawing.Point(541, 127);
+            this.btnUcitajSliku.Name = "btnUcitajSliku";
+            this.btnUcitajSliku.Size = new System.Drawing.Size(137, 29);
+            this.btnUcitajSliku.TabIndex = 35;
+            this.btnUcitajSliku.Text = "Ucitaj sliku";
+            this.btnUcitajSliku.UseVisualStyleBackColor = true;
+            this.btnUcitajSliku.Click += new System.EventHandler(this.btnUcitajSliku_Click);
+            // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog1";
+            // 
             // frmDodajPredstavu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(747, 382);
+            this.Controls.Add(this.btnUcitajSliku);
             this.Controls.Add(this.btnSpremi);
             this.Controls.Add(this.lblKostimografija);
             this.Controls.Add(this.txtKostimografija);
@@ -218,5 +236,7 @@
         private Label lblKostimografija;
         private TextBox txtKostimografija;
         private Button btnSpremi;
+        private Button btnUcitajSliku;
+        private OpenFileDialog openFileDialog1;
     }
 }

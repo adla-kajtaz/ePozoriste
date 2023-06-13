@@ -77,20 +77,14 @@ namespace ePozoriste.WinUI
         private async void dgvPozorista_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             var pozoriste = dgvPozorista.SelectedRows[0].DataBoundItem as Pozoriste;
-            if (e.ColumnIndex == 10)
+            if (e.ColumnIndex == 9)
             {
-                //var obrisanoPozoriste=
+                
                 await _pozoristeService.Delete<Pozoriste>(pozoriste.PozoristeId);
-                //if (obrisanoPozoriste != null){
                 dgvPozorista.DataSource = null;
                 frmPrikazPozorista_Load(sender, e);
-                /*}
-                else
-                {
-                    MessageBox.Show("Greska");
-                }*/
             }
-            else if (e.ColumnIndex == 9)
+            else if (e.ColumnIndex == 8)
             {
                 frmDodajPozoriste frmDodajPozoriste = new frmDodajPozoriste(pozoriste);
                 if (frmDodajPozoriste.ShowDialog() == DialogResult.OK)
@@ -99,7 +93,7 @@ namespace ePozoriste.WinUI
                     frmPrikazPozorista_Load(sender, e);
                 }
             }
-            else if(e.ColumnIndex == 11)
+            else if(e.ColumnIndex == 10)
             {
                 frmPrikazSala frmPrikazSala = new frmPrikazSala(pozoriste.PozoristeId);
                 if (frmPrikazSala.ShowDialog() == DialogResult.OK)

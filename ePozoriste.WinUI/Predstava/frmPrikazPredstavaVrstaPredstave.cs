@@ -46,9 +46,7 @@ namespace ePozoriste.WinUI
             var predstavaVrsta = dgvVrstePredstave.SelectedRows[0].DataBoundItem as PredstavaVrstaPredstave;
             if (e.ColumnIndex == 1)
             {
-                //var obrisanaDrazva=
                 await _predstavaVrstaPredstaveService.Delete<PredstavaGlumac>(predstavaVrsta.PredstavaVpid);
-                //if (obrisanaDrazva != null){
                 dgvVrstePredstave.DataSource = null;
                 frmPrikazPredstavaGlumac_Load(sender, e);
             }

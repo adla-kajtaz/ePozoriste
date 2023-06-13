@@ -1,6 +1,7 @@
 ﻿using ePozoriste.Model;
 using ePozoriste.Model.Requests;
 using ePozoriste.Model.SearchObjects;
+using ePozoriste.WinUI.Helper;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -39,6 +40,8 @@ namespace ePozoriste.WinUI
                     txtWebStranica.Text = _pozoriste.Webstranica;
                     cbAktivan.Checked = _pozoriste.Aktivan;
                     cmbGradovi.SelectedValue = _pozoriste.GradId;
+                    if(_pozoriste.Logo != null)
+                        pbLogo.Image = ImageHelper.ConvertStringToImage(_pozoriste.Logo);
                 }
             }
             catch (Exception ex)
@@ -74,7 +77,8 @@ namespace ePozoriste.WinUI
                     Webstranica = txtWebStranica.Text,
                     BrTelefona = txtBrTelefona.Text,
                     Aktivan = cbAktivan.Checked,
-                    GradId = (int)cmbGradovi.SelectedValue
+                    GradId = (int)cmbGradovi.SelectedValue,
+                    Logo = ImageHelper.ConvertImageToString(pbLogo.Image)
                 };
 
                 if (_pozoriste == null)
@@ -93,6 +97,12 @@ namespace ePozoriste.WinUI
             {
                 MessageBox.Show("Greska");
             }
+        }
+
+        private void btnUcitajSliku_Click(object sender, EventArgs e)
+        {
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+                pbLogo.Image = Image.FromFile(openFileDialog1.FileName);
         }
     }
 }

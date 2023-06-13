@@ -40,7 +40,6 @@
             this.WebStranica = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Email = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.BrTelefona = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Logo = new System.Windows.Forms.DataGridViewImageColumn();
             this.Aktivan = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.Uredi = new System.Windows.Forms.DataGridViewButtonColumn();
             this.Obrisi = new System.Windows.Forms.DataGridViewButtonColumn();
@@ -77,7 +76,6 @@
             this.WebStranica,
             this.Email,
             this.BrTelefona,
-            this.Logo,
             this.Aktivan,
             this.Uredi,
             this.Obrisi,
@@ -176,15 +174,6 @@
             this.BrTelefona.ReadOnly = true;
             this.BrTelefona.Width = 125;
             // 
-            // Logo
-            // 
-            this.Logo.DataPropertyName = "Logo";
-            this.Logo.HeaderText = "Logo";
-            this.Logo.MinimumWidth = 6;
-            this.Logo.Name = "Logo";
-            this.Logo.ReadOnly = true;
-            this.Logo.Width = 125;
-            // 
             // Aktivan
             // 
             this.Aktivan.DataPropertyName = "Aktivan";
@@ -254,7 +243,6 @@
         private DataGridViewTextBoxColumn WebStranica;
         private DataGridViewTextBoxColumn Email;
         private DataGridViewTextBoxColumn BrTelefona;
-        private DataGridViewImageColumn Logo;
         private DataGridViewCheckBoxColumn Aktivan;
         private DataGridViewButtonColumn Uredi;
         private DataGridViewButtonColumn Obrisi;

@@ -60,17 +60,10 @@ namespace ePozoriste.WinUI
         {
             var obavijestKategorija = dgvKategorijeObavijesti.SelectedRows[0].DataBoundItem as ObavijestKategorija;
             if (e.ColumnIndex == 3)
-            {
-                //var obrisanaKategorija=
+            {  
                 await _obavijestKategorijaService.Delete<ObavijestKategorija>(obavijestKategorija.ObavijestKategorijaId);
-                //if (obrisanaKategorija != null){
                 dgvKategorijeObavijesti.DataSource = null;
                 frmPrikazKategorijeObavijesti_Load(sender, e);
-                /*}
-                else
-                {
-                    MessageBox.Show("Greska");
-                }*/
             }
             else if (e.ColumnIndex == 2)
             {

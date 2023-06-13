@@ -61,16 +61,9 @@ namespace ePozoriste.WinUI
             var vrstePredstave = dgvVrstePredstave.SelectedRows[0].DataBoundItem as VrstaPredstave;
             if (e.ColumnIndex == 3)
             {
-                //var obrisanaKategorija=
                 await _vrstaPredstaveService.Delete<VrstaPredstave>(vrstePredstave.VrstaPredstaveId);
-                //if (obrisanaKategorija != null){
                 dgvVrstePredstave.DataSource = null;
                 frmPrikazVrstaPredstave_Load(sender, e);
-                /*}
-                else
-                {
-                    MessageBox.Show("Greska");
-                }*/
             }
             else if (e.ColumnIndex == 2)
             {

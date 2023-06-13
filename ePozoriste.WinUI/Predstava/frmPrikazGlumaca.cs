@@ -61,16 +61,9 @@ namespace ePozoriste.WinUI
             var glumac = dgvGlumci.SelectedRows[0].DataBoundItem as Glumac;
             if (e.ColumnIndex == 4)
             {
-                //var obrisanaDrazva=
                 await _glumacService.Delete<Glumac>(glumac.GlumacId);
-                //if (obrisanaDrazva != null){
                 dgvGlumci.DataSource = null;
                 frmPrikazGlumaca_Load(sender, e);
-                /*}
-                else
-                {
-                    MessageBox.Show("Greska");
-                }*/
             }
             else if (e.ColumnIndex == 3)
             {
