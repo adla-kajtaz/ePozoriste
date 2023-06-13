@@ -57,12 +57,12 @@ namespace ePozoriste.WinUI
 
         private void btnDodaj_Click(object sender, EventArgs e)
         {
-            frmDetaljiObavijesti frmDetaljiObavijesti = new frmDetaljiObavijesti();
+            /*frmDetaljiObavijesti frmDetaljiObavijesti = new frmDetaljiObavijesti();
             if (frmDetaljiObavijesti.ShowDialog() == DialogResult.OK)
             {
                 dgvObavijesti.DataSource = null;
                 frmPrikazObavijesti_Load(sender, e);
-            }
+            }*/
         }
 
         private async void dgvObavijesti_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -77,12 +77,12 @@ namespace ePozoriste.WinUI
             }
             else if (e.ColumnIndex == 6)
             {
-                frmDetaljiObavijesti frmDetaljiObavijesti = new frmDetaljiObavijesti(obavijest);
+                /*frmDetaljiObavijesti frmDetaljiObavijesti = new frmDetaljiObavijesti(obavijest);
                 if (frmDetaljiObavijesti.ShowDialog() == DialogResult.OK)
                 {
                     dgvObavijesti.DataSource = null;
                     frmPrikazObavijesti_Load(sender, e);
-                }
+                }*/
             }
         }
 
