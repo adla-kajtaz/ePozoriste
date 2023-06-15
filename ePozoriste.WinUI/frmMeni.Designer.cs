@@ -47,7 +47,7 @@
             this.label4.BackColor = System.Drawing.Color.Black;
             this.label4.Location = new System.Drawing.Point(1, 87);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(801, 10);
+            this.label4.Size = new System.Drawing.Size(639, 10);
             this.label4.TabIndex = 8;
             // 
             // btnProfil
