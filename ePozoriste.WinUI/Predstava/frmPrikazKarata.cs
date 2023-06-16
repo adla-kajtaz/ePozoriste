@@ -52,7 +52,7 @@ namespace ePozoriste.WinUI
 
         private void btnSjedista_Click(object sender, EventArgs e)
         {
-            frmPrikazSjedista frmPrikazSjedista = new frmPrikazSjedista();
+            frmPrikazSjedista frmPrikazSjedista = new frmPrikazSjedista(_termin);
             if (frmPrikazSjedista.ShowDialog() == DialogResult.OK)
             {
                 dgvKarte.DataSource = null;
