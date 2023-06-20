@@ -14,8 +14,8 @@ namespace ePozoriste.WinUI
 {
     public partial class frmLogin : Form
     {
-        private readonly APIService _korisnikService = new APIService("Korisnik");
-        private readonly APIService _korisnikUlogeService = new APIService("KorisnikUloge");
+        private readonly APIService _korisnikService  = new APIService("Korisnik");
+        private readonly APIService _korisnikUlogeService   = new APIService("KorisnikUloge");
 
         public frmLogin()
         {

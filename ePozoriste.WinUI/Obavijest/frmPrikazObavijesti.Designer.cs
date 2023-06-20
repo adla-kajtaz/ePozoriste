@@ -30,9 +30,6 @@
         {
             this.btnPrikazi = new System.Windows.Forms.Button();
             this.dgvObavijesti = new System.Windows.Forms.DataGridView();
-            this.btnDodaj = new System.Windows.Forms.Button();
-            this.txtPretraga = new System.Windows.Forms.TextBox();
-            this.cmbKategorije = new System.Windows.Forms.ComboBox();
             this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Naslov = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Podnaslov = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -41,6 +38,9 @@
             this.Korisnik = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Uredi = new System.Windows.Forms.DataGridViewButtonColumn();
             this.Obrisi = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.btnDodaj = new System.Windows.Forms.Button();
+            this.txtPretraga = new System.Windows.Forms.TextBox();
+            this.cmbKategorije = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvObavijesti)).BeginInit();
             this.SuspendLayout();
             // 
@@ -74,31 +74,6 @@
             this.dgvObavijesti.Size = new System.Drawing.Size(1103, 373);
             this.dgvObavijesti.TabIndex = 14;
             this.dgvObavijesti.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvObavijesti_CellContentClick);
-            // 
-            // btnDodaj
-            // 
-            this.btnDodaj.Location = new System.Drawing.Point(948, 12);
-            this.btnDodaj.Name = "btnDodaj";
-            this.btnDodaj.Size = new System.Drawing.Size(167, 29);
-            this.btnDodaj.TabIndex = 13;
-            this.btnDodaj.Text = "Dodaj";
-            this.btnDodaj.UseVisualStyleBackColor = true;
-            this.btnDodaj.Click += new System.EventHandler(this.btnDodaj_Click);
-            // 
-            // txtPretraga
-            // 
-            this.txtPretraga.Location = new System.Drawing.Point(12, 11);
-            this.txtPretraga.Name = "txtPretraga";
-            this.txtPretraga.Size = new System.Drawing.Size(483, 27);
-            this.txtPretraga.TabIndex = 12;
-            // 
-            // cmbKategorije
-            // 
-            this.cmbKategorije.FormattingEnabled = true;
-            this.cmbKategorije.Location = new System.Drawing.Point(501, 11);
-            this.cmbKategorije.Name = "cmbKategorije";
-            this.cmbKategorije.Size = new System.Drawing.Size(247, 28);
-            this.cmbKategorije.TabIndex = 16;
             // 
             // ID
             // 
@@ -173,6 +148,32 @@
             this.Obrisi.Name = "Obrisi";
             this.Obrisi.Text = "Obrisi";
             this.Obrisi.UseColumnTextForButtonValue = true;
+            // 
+            // btnDodaj
+            // 
+            this.btnDodaj.Location = new System.Drawing.Point(948, 12);
+            this.btnDodaj.Name = "btnDodaj";
+            this.btnDodaj.Size = new System.Drawing.Size(167, 29);
+            this.btnDodaj.TabIndex = 13;
+            this.btnDodaj.Text = "Dodaj";
+            this.btnDodaj.UseVisualStyleBackColor = true;
+            this.btnDodaj.Click += new System.EventHandler(this.btnDodaj_Click);
+            // 
+            // txtPretraga
+            // 
+            this.txtPretraga.Location = new System.Drawing.Point(12, 11);
+            this.txtPretraga.Name = "txtPretraga";
+            this.txtPretraga.Size = new System.Drawing.Size(483, 27);
+            this.txtPretraga.TabIndex = 12;
+            // 
+            // cmbKategorije
+            // 
+            this.cmbKategorije.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbKategorije.FormattingEnabled = true;
+            this.cmbKategorije.Location = new System.Drawing.Point(501, 11);
+            this.cmbKategorije.Name = "cmbKategorije";
+            this.cmbKategorije.Size = new System.Drawing.Size(247, 28);
+            this.cmbKategorije.TabIndex = 16;
             // 
             // frmPrikazObavijesti
             // 

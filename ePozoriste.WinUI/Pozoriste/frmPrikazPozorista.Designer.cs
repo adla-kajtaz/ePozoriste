@@ -31,8 +31,6 @@
             this.cmbGradovi = new System.Windows.Forms.ComboBox();
             this.btnPrikazi = new System.Windows.Forms.Button();
             this.dgvPozorista = new System.Windows.Forms.DataGridView();
-            this.btnDodaj = new System.Windows.Forms.Button();
-            this.txtPretraga = new System.Windows.Forms.TextBox();
             this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Naziv = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Adresa = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -44,11 +42,14 @@
             this.Uredi = new System.Windows.Forms.DataGridViewButtonColumn();
             this.Obrisi = new System.Windows.Forms.DataGridViewButtonColumn();
             this.Sale = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.btnDodaj = new System.Windows.Forms.Button();
+            this.txtPretraga = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPozorista)).BeginInit();
             this.SuspendLayout();
             // 
             // cmbGradovi
             // 
+            this.cmbGradovi.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbGradovi.FormattingEnabled = true;
             this.cmbGradovi.Location = new System.Drawing.Point(606, 17);
             this.cmbGradovi.Name = "cmbGradovi";
@@ -88,23 +89,6 @@
             this.dgvPozorista.Size = new System.Drawing.Size(1256, 417);
             this.dgvPozorista.TabIndex = 16;
             this.dgvPozorista.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPozorista_CellContentClick);
-            // 
-            // btnDodaj
-            // 
-            this.btnDodaj.Location = new System.Drawing.Point(1073, 16);
-            this.btnDodaj.Name = "btnDodaj";
-            this.btnDodaj.Size = new System.Drawing.Size(202, 29);
-            this.btnDodaj.TabIndex = 15;
-            this.btnDodaj.Text = "Dodaj";
-            this.btnDodaj.UseVisualStyleBackColor = true;
-            this.btnDodaj.Click += new System.EventHandler(this.btnDodaj_Click);
-            // 
-            // txtPretraga
-            // 
-            this.txtPretraga.Location = new System.Drawing.Point(19, 16);
-            this.txtPretraga.Name = "txtPretraga";
-            this.txtPretraga.Size = new System.Drawing.Size(581, 27);
-            this.txtPretraga.TabIndex = 14;
             // 
             // ID
             // 
@@ -209,6 +193,23 @@
             this.Sale.Text = "Prikaz sala";
             this.Sale.UseColumnTextForButtonValue = true;
             this.Sale.Width = 125;
+            // 
+            // btnDodaj
+            // 
+            this.btnDodaj.Location = new System.Drawing.Point(1073, 16);
+            this.btnDodaj.Name = "btnDodaj";
+            this.btnDodaj.Size = new System.Drawing.Size(202, 29);
+            this.btnDodaj.TabIndex = 15;
+            this.btnDodaj.Text = "Dodaj";
+            this.btnDodaj.UseVisualStyleBackColor = true;
+            this.btnDodaj.Click += new System.EventHandler(this.btnDodaj_Click);
+            // 
+            // txtPretraga
+            // 
+            this.txtPretraga.Location = new System.Drawing.Point(19, 16);
+            this.txtPretraga.Name = "txtPretraga";
+            this.txtPretraga.Size = new System.Drawing.Size(581, 27);
+            this.txtPretraga.TabIndex = 14;
             // 
             // frmPrikazPozorista
             // 

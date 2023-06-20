@@ -82,6 +82,7 @@
             // 
             // cmbGlumac
             // 
+            this.cmbGlumac.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbGlumac.FormattingEnabled = true;
             this.cmbGlumac.Location = new System.Drawing.Point(12, 138);
             this.cmbGlumac.Name = "cmbGlumac";

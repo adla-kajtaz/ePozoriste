@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.label1 = new System.Windows.Forms.Label();
             this.txtNaslov = new System.Windows.Forms.TextBox();
             this.txtPodnaslov = new System.Windows.Forms.TextBox();
@@ -41,7 +42,17 @@
             this.pbSlika = new System.Windows.Forms.PictureBox();
             this.btnSpremi = new System.Windows.Forms.Button();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.errNaslov = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errPodnaslov = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errSadrzaj = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errKategorija = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errSlika = new System.Windows.Forms.ErrorProvider(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pbSlika)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errNaslov)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errPodnaslov)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errSadrzaj)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errKategorija)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errSlika)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -105,6 +116,7 @@
             // 
             // cmbKategorije
             // 
+            this.cmbKategorije.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbKategorije.FormattingEnabled = true;
             this.cmbKategorije.Location = new System.Drawing.Point(384, 32);
             this.cmbKategorije.Name = "cmbKategorije";
@@ -154,6 +166,26 @@
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
             // 
+            // errNaslov
+            // 
+            this.errNaslov.ContainerControl = this;
+            // 
+            // errPodnaslov
+            // 
+            this.errPodnaslov.ContainerControl = this;
+            // 
+            // errSadrzaj
+            // 
+            this.errSadrzaj.ContainerControl = this;
+            // 
+            // errKategorija
+            // 
+            this.errKategorija.ContainerControl = this;
+            // 
+            // errSlika
+            // 
+            this.errSlika.ContainerControl = this;
+            // 
             // frmDodajObavijest
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -175,6 +207,11 @@
             this.Text = "Dodaj obavijest";
             this.Load += new System.EventHandler(this.frmDodajObavijest_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pbSlika)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errNaslov)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errPodnaslov)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errSadrzaj)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errKategorija)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errSlika)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -195,5 +232,10 @@
         private PictureBox pbSlika;
         private Button btnSpremi;
         private OpenFileDialog openFileDialog1;
+        private ErrorProvider errNaslov;
+        private ErrorProvider errPodnaslov;
+        private ErrorProvider errSadrzaj;
+        private ErrorProvider errKategorija;
+        private ErrorProvider errSlika;
     }
 }

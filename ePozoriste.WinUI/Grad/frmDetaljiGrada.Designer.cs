@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.lblPostanskiBr = new System.Windows.Forms.Label();
             this.lblNaziv = new System.Windows.Forms.Label();
             this.txtPostanskiBr = new System.Windows.Forms.TextBox();
@@ -35,6 +36,12 @@
             this.btnSpremi = new System.Windows.Forms.Button();
             this.cmbDrzave = new System.Windows.Forms.ComboBox();
             this.lblDrzava = new System.Windows.Forms.Label();
+            this.errNaziv = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errPostanskiBr = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errDrzava = new System.Windows.Forms.ErrorProvider(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.errNaziv)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errPostanskiBr)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errDrzava)).BeginInit();
             this.SuspendLayout();
             // 
             // lblPostanskiBr
@@ -81,6 +88,7 @@
             // 
             // cmbDrzave
             // 
+            this.cmbDrzave.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbDrzave.FormattingEnabled = true;
             this.cmbDrzave.Location = new System.Drawing.Point(12, 164);
             this.cmbDrzave.Name = "cmbDrzave";
@@ -95,6 +103,18 @@
             this.lblDrzava.Size = new System.Drawing.Size(55, 20);
             this.lblDrzava.TabIndex = 16;
             this.lblDrzava.Text = "Drzava";
+            // 
+            // errNaziv
+            // 
+            this.errNaziv.ContainerControl = this;
+            // 
+            // errPostanskiBr
+            // 
+            this.errPostanskiBr.ContainerControl = this;
+            // 
+            // errDrzava
+            // 
+            this.errDrzava.ContainerControl = this;
             // 
             // frmDetaljiGrada
             // 
@@ -111,6 +131,9 @@
             this.Name = "frmDetaljiGrada";
             this.Text = "Detalji Grada";
             this.Load += new System.EventHandler(this.frmDetaljiGrada_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.errNaziv)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errPostanskiBr)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errDrzava)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -125,5 +148,8 @@
         private Button btnSpremi;
         private ComboBox cmbDrzave;
         private Label lblDrzava;
+        private ErrorProvider errNaziv;
+        private ErrorProvider errPostanskiBr;
+        private ErrorProvider errDrzava;
     }
 }

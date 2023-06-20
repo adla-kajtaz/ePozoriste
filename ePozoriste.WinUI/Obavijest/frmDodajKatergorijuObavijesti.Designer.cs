@@ -28,9 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.lblNaziv = new System.Windows.Forms.Label();
             this.txtNaziv = new System.Windows.Forms.TextBox();
             this.btnSpremi = new System.Windows.Forms.Button();
+            this.err = new System.Windows.Forms.ErrorProvider(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.err)).BeginInit();
             this.SuspendLayout();
             // 
             // lblNaziv
@@ -59,17 +62,22 @@
             this.btnSpremi.UseVisualStyleBackColor = true;
             this.btnSpremi.Click += new System.EventHandler(this.btnSpremi_Click);
             // 
+            // err
+            // 
+            this.err.ContainerControl = this;
+            // 
             // frmDodajKatergorijuObavijesti
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(356, 108);
+            this.ClientSize = new System.Drawing.Size(368, 108);
             this.Controls.Add(this.lblNaziv);
             this.Controls.Add(this.txtNaziv);
             this.Controls.Add(this.btnSpremi);
             this.Name = "frmDodajKatergorijuObavijesti";
             this.Text = "Dodaj Katergoriju Obavijesti";
             this.Load += new System.EventHandler(this.frmDodajKatergorijuObavijesti_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.err)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -80,5 +88,6 @@
         private Label lblNaziv;
         private TextBox txtNaziv;
         private Button btnSpremi;
+        private ErrorProvider err;
     }
 }

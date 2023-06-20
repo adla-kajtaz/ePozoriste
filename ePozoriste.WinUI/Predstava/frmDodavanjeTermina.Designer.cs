@@ -45,6 +45,7 @@
             // 
             // cmbSale
             // 
+            this.cmbSale.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbSale.FormattingEnabled = true;
             this.cmbSale.Location = new System.Drawing.Point(12, 86);
             this.cmbSale.Name = "cmbSale";
@@ -53,6 +54,7 @@
             // 
             // cmbPredstave
             // 
+            this.cmbPredstave.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbPredstave.FormattingEnabled = true;
             this.cmbPredstave.Location = new System.Drawing.Point(12, 32);
             this.cmbPredstave.Name = "cmbPredstave";

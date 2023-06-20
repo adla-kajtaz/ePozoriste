@@ -46,6 +46,7 @@
             // 
             // cmbVrstePredstave
             // 
+            this.cmbVrstePredstave.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbVrstePredstave.FormattingEnabled = true;
             this.cmbVrstePredstave.Location = new System.Drawing.Point(12, 85);
             this.cmbVrstePredstave.Name = "cmbVrstePredstave";

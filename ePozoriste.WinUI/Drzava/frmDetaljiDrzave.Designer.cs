@@ -28,11 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.lblSkracenica = new System.Windows.Forms.Label();
             this.lblNaziv = new System.Windows.Forms.Label();
             this.txtSkracenica = new System.Windows.Forms.TextBox();
             this.txtNaziv = new System.Windows.Forms.TextBox();
             this.btnSpremi = new System.Windows.Forms.Button();
+            this.errSkracenica = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errNaziv = new System.Windows.Forms.ErrorProvider(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.errSkracenica)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errNaziv)).BeginInit();
             this.SuspendLayout();
             // 
             // lblSkracenica
@@ -77,6 +82,14 @@
             this.btnSpremi.UseVisualStyleBackColor = true;
             this.btnSpremi.Click += new System.EventHandler(this.btnSpremi_Click);
             // 
+            // errSkracenica
+            // 
+            this.errSkracenica.ContainerControl = this;
+            // 
+            // errNaziv
+            // 
+            this.errNaziv.ContainerControl = this;
+            // 
             // frmDetaljiDrzave
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -90,6 +103,8 @@
             this.Name = "frmDetaljiDrzave";
             this.Text = "Detalji Drzave";
             this.Load += new System.EventHandler(this.frmDetaljiDrzave_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.errSkracenica)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errNaziv)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -102,5 +117,7 @@
         private TextBox txtSkracenica;
         private TextBox txtNaziv;
         private Button btnSpremi;
+        private ErrorProvider errSkracenica;
+        private ErrorProvider errNaziv;
     }
 }
