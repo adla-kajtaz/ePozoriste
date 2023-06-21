@@ -49,32 +49,45 @@ namespace ePozoriste.WinUI
         {
             try
             {
-                PredstavaInsertRequest predstavaInsertRequest = new PredstavaInsertRequest
+                if (ValidanUnos())
                 {
-                    Naziv = txtNaziv.Text,
-                    Sadrzaj = txtSadrzaj.Text,
-                    VrijemeTrajanje = Int32.Parse(txtVrijemeTrajanja.Text),
-                    Rezija = txtRezija.Text,
-                    Scenografija = txtScenografija.Text,
-                    Kostimografija = txtKostimografija.Text,
-                    Slika = ImageHelper.ConvertImageToString(pbSlikaPlakata.Image)
-                };
+                    PredstavaInsertRequest predstavaInsertRequest = new PredstavaInsertRequest
+                    {
+                        Naziv = txtNaziv.Text,
+                        Sadrzaj = txtSadrzaj.Text,
+                        VrijemeTrajanje = Int32.Parse(txtVrijemeTrajanja.Text),
+                        Rezija = txtRezija.Text,
+                        Scenografija = txtScenografija.Text,
+                        Kostimografija = txtKostimografija.Text,
+                        Slika = pbSlikaPlakata.Image != null ? ImageHelper.ConvertImageToString(pbSlikaPlakata.Image) : null
+                    };
 
-                if (_predstava == null)
-                {
-                    var predstava = await _predstavaService.Insert<Predstava>(predstavaInsertRequest);
+                    if (_predstava == null)
+                    {
+                        var predstava = await _predstavaService.Insert<Predstava>(predstavaInsertRequest);
+                        MessageBox.Show(Resursi.Get(Kljucevi.PodaciUspjesnoDodati),
+                                  Resursi.Get(Kljucevi.Informacija),
+                                  MessageBoxButtons.OK,
+                                  MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        var predstava = await _predstavaService.Update<Predstava>(_predstava.PredstavaId, predstavaInsertRequest);
+                        MessageBox.Show(Resursi.Get(Kljucevi.PodaciUspjesnoModifikovani),
+                                  Resursi.Get(Kljucevi.Informacija),
+                                  MessageBoxButtons.OK,
+                                  MessageBoxIcon.Information);
+                    }
+                    DialogResult = DialogResult.OK;
+                    this.Close();
                 }
-                else
-                {
-                    var predstava = await _predstavaService.Update<Predstava>(_predstava.PredstavaId, predstavaInsertRequest);
-                }
-                MessageBox.Show("Uspjesno sacuvano");
-                DialogResult = DialogResult.OK;
-                this.Close();
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Greska");
+                MessageBox.Show(Resursi.Get(Kljucevi.Greska),
+                                  Resursi.Get(Kljucevi.Informacija),
+                                  MessageBoxButtons.OK,
+                                  MessageBoxIcon.Error);
             }
         }
 
@@ -82,6 +95,13 @@ namespace ePozoriste.WinUI
         {
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
                 pbSlikaPlakata.Image = Image.FromFile(openFileDialog1.FileName);
+        }
+
+        private bool ValidanUnos()
+        {
+            return Validator.ValidirajKontrolu(txtNaziv, errNaziv, Kljucevi.ObaveznaVrijednost)
+                && Validator.ValidirajKontrolu(txtSadrzaj, errSadrzaj, Kljucevi.ObaveznaVrijednost)
+                && Validator.ValidirajKontrolu(txtVrijemeTrajanja, errVrijemeTrajanja, Kljucevi.ObaveznaVrijednost);
         }
     }
 }

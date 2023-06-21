@@ -28,11 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.lblIme = new System.Windows.Forms.Label();
             this.txtIme = new System.Windows.Forms.TextBox();
             this.btnSpremi = new System.Windows.Forms.Button();
             this.lblPrezime = new System.Windows.Forms.Label();
             this.txtPrezime = new System.Windows.Forms.TextBox();
+            this.errIme = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errPrezime = new System.Windows.Forms.ErrorProvider(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.errIme)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errPrezime)).BeginInit();
             this.SuspendLayout();
             // 
             // lblIme
@@ -77,11 +82,19 @@
             this.txtPrezime.Size = new System.Drawing.Size(332, 27);
             this.txtPrezime.TabIndex = 18;
             // 
+            // errIme
+            // 
+            this.errIme.ContainerControl = this;
+            // 
+            // errPrezime
+            // 
+            this.errPrezime.ContainerControl = this;
+            // 
             // frmDodajGlumca
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(365, 155);
+            this.ClientSize = new System.Drawing.Size(382, 155);
             this.Controls.Add(this.lblPrezime);
             this.Controls.Add(this.txtPrezime);
             this.Controls.Add(this.lblIme);
@@ -90,6 +103,8 @@
             this.Name = "frmDodajGlumca";
             this.Text = "Dodaj glumca";
             this.Load += new System.EventHandler(this.frmDodajGlumca_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.errIme)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errPrezime)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -102,5 +117,7 @@
         private Button btnSpremi;
         private Label lblPrezime;
         private TextBox txtPrezime;
+        private ErrorProvider errIme;
+        private ErrorProvider errPrezime;
     }
 }

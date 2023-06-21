@@ -1,5 +1,6 @@
 ﻿using ePozoriste.Model;
 using ePozoriste.Model.Requests;
+using ePozoriste.WinUI.Helper;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -48,31 +49,52 @@ namespace ePozoriste.WinUI
         {
             try
             {
-                SalaInsertRequest salaInsertRequest = new SalaInsertRequest
+                if (ValidanUnos())
                 {
-                    Naziv = txtNaziv.Text,
-                    BrSjedista = Int32.Parse(txtBrSjedista.Text),
-                    BrSjedistaPoRedu = Int32.Parse(txtBrSjedistaPoRedu.Text),
-                    BrRedova = Int32.Parse(txtBrRedova.Text),
-                    PozoristeId = _pozoristeId
-                };
+                    SalaInsertRequest salaInsertRequest = new SalaInsertRequest
+                    {
+                        Naziv = txtNaziv.Text,
+                        BrSjedista = Int32.Parse(txtBrSjedista.Text),
+                        BrSjedistaPoRedu = Int32.Parse(txtBrSjedistaPoRedu.Text),
+                        BrRedova = Int32.Parse(txtBrRedova.Text),
+                        PozoristeId = _pozoristeId
+                    };
 
-                if (_sala == null)
-                {
-                    var sala = await _salaService.Insert<Sala>(salaInsertRequest);
+                    if (_sala == null)
+                    {
+                        var sala = await _salaService.Insert<Sala>(salaInsertRequest);
+                        MessageBox.Show(Resursi.Get(Kljucevi.PodaciUspjesnoDodati),
+                                Resursi.Get(Kljucevi.Informacija),
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        var sala = await _salaService.Update<Sala>(_sala.SalaId, salaInsertRequest);
+                        MessageBox.Show(Resursi.Get(Kljucevi.PodaciUspjesnoModifikovani),
+                                  Resursi.Get(Kljucevi.Informacija),
+                                  MessageBoxButtons.OK,
+                                  MessageBoxIcon.Information);
+                    }
+                    DialogResult = DialogResult.OK;
+                    this.Close();
                 }
-                else
-                {
-                    var sala = await _salaService.Update<Sala>(_sala.SalaId, salaInsertRequest);
-                }
-                MessageBox.Show("Uspjesno sacuvano");
-                DialogResult = DialogResult.OK;
-                this.Close();
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Greska");
-            }
+                MessageBox.Show(Resursi.Get(Kljucevi.Greska),
+                                  Resursi.Get(Kljucevi.Informacija),
+                                  MessageBoxButtons.OK,
+                                  MessageBoxIcon.Error);
+            } 
+        }
+
+        private bool ValidanUnos()
+        {
+            return Validator.ValidirajKontrolu(txtNaziv, errNaziv, Kljucevi.ObaveznaVrijednost)
+                && Validator.ValidirajKontrolu(txtBrSjedista, errSjedista, Kljucevi.ObaveznaVrijednost)
+                && Validator.ValidirajKontrolu(txtBrRedova, errBrojRedova, Kljucevi.ObaveznaVrijednost)
+                && Validator.ValidirajKontrolu(txtBrSjedistaPoRedu, errSjPoRedu, Kljucevi.ObaveznaVrijednost);
         }
     }
 }

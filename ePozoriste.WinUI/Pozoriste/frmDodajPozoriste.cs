@@ -69,33 +69,46 @@ namespace ePozoriste.WinUI
         {
             try
             {
-                PozoristeInsertRequest pozoristeInsertRequest = new PozoristeInsertRequest
+                if (ValidanUnos())
                 {
-                    Naziv = txtNaziv.Text,
-                    Adresa = txtAdresa.Text, 
-                    Email = txtEmail.Text,
-                    Webstranica = txtWebStranica.Text,
-                    BrTelefona = txtBrTelefona.Text,
-                    Aktivan = cbAktivan.Checked,
-                    GradId = (int)cmbGradovi.SelectedValue,
-                    Logo = ImageHelper.ConvertImageToString(pbLogo.Image)
-                };
+                    PozoristeInsertRequest pozoristeInsertRequest = new PozoristeInsertRequest
+                    {
+                        Naziv = txtNaziv.Text,
+                        Adresa = txtAdresa.Text,
+                        Email = txtEmail.Text,
+                        Webstranica = txtWebStranica.Text,
+                        BrTelefona = txtBrTelefona.Text,
+                        Aktivan = cbAktivan.Checked,
+                        GradId = (int)cmbGradovi.SelectedValue,
+                        Logo = pbLogo.Image!=null ? ImageHelper.ConvertImageToString(pbLogo.Image) : null
+                    };
 
-                if (_pozoriste == null)
-                {
-                    var pozoriste = await _pozoristeService.Insert<Pozoriste>(pozoristeInsertRequest);
+                    if (_pozoriste == null)
+                    {
+                        var pozoriste = await _pozoristeService.Insert<Pozoriste>(pozoristeInsertRequest);
+                        MessageBox.Show(Resursi.Get(Kljucevi.PodaciUspjesnoDodati),
+                                  Resursi.Get(Kljucevi.Informacija),
+                                  MessageBoxButtons.OK,
+                                  MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        var pozoriste = await _pozoristeService.Update<Pozoriste>(_pozoriste.PozoristeId, pozoristeInsertRequest);
+                        MessageBox.Show(Resursi.Get(Kljucevi.PodaciUspjesnoModifikovani),
+                                  Resursi.Get(Kljucevi.Informacija),
+                                  MessageBoxButtons.OK,
+                                  MessageBoxIcon.Information);
+                    }
+                    DialogResult = DialogResult.OK;
+                    this.Close();
                 }
-                else
-                {
-                    var pozoriste = await _pozoristeService.Update<Pozoriste>(_pozoriste.PozoristeId, pozoristeInsertRequest);
-                }
-                MessageBox.Show("Uspjesno sacuvano");
-                DialogResult = DialogResult.OK;
-                this.Close();
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Greska");
+                MessageBox.Show(Resursi.Get(Kljucevi.Greska),
+                                  Resursi.Get(Kljucevi.Informacija),
+                                  MessageBoxButtons.OK,
+                                  MessageBoxIcon.Error);
             }
         }
 
@@ -103,6 +116,16 @@ namespace ePozoriste.WinUI
         {
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
                 pbLogo.Image = Image.FromFile(openFileDialog1.FileName);
+        }
+
+        private bool ValidanUnos()
+        {
+            return Validator.ValidirajKontrolu(txtNaziv, errNaziv, Kljucevi.ObaveznaVrijednost)
+                && Validator.ValidirajKontrolu(txtAdresa, errAdresa, Kljucevi.ObaveznaVrijednost)
+                && Validator.ValidirajKontrolu(cmbGradovi, errGrad, Kljucevi.ObaveznaVrijednost)
+                && Validator.ValidirajKontrolu(txtWebStranica, errWebStranica, Kljucevi.ObaveznaVrijednost)
+                && Validator.ValidirajKontrolu(txtEmail, errEmail, Kljucevi.ObaveznaVrijednost)
+                && Validator.ValidirajKontrolu(txtBrTelefona, errBrojTelefona, Kljucevi.ObaveznaVrijednost);
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using ePozoriste.Model;
 using ePozoriste.Model.Requests;
+using ePozoriste.WinUI.Helper;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -84,55 +85,78 @@ namespace ePozoriste.WinUI
         {
             try
             {
-                TerminInsertRequest terminInsertRequest = new TerminInsertRequest
+                if (ValidanUnos())
                 {
-                    PredstavaId = (int)cmbPredstave.SelectedValue,
-                    SalaId = (int)cmbSale.SelectedValue,
-                    CijenaKarte = Int32.Parse(txtCijenaKarte.Text),
-                    DatumOdrzavanja = dtpDatum.Value.Date,
-                    VrijemeOdrazvanja = txtVrijemeOdrzavanja.Text,
-                    Predpremijera = cbPredpremijera.Checked,
-                    Premijera = cbPremijera.Checked
-                };
-
-                if (_termin == null)
-                {
-                    var termin = await _terminService.Insert<Termin>(terminInsertRequest);
-                    //urediti dio sa kreiranjem karata
-                    if (termin != null)
+                    TerminInsertRequest terminInsertRequest = new TerminInsertRequest
                     {
-                        var sala = await _salaService.GetById<Sala>(termin.SalaId);
-                        for(int i = 0; i < sala.BrRedova; i++)
-                        {
-                            var red = (char)(i + 65);
-                            for (int j = 0; j < sala.BrSjedistaPoRedu; j++)
-                            {
-                                KartaInsertRequest kartaInsertRequest = new KartaInsertRequest
-                                {
-                                    Aktivna = true,
-                                    TerminId = termin.TerminId,
-                                    BrojSjedista = j + 1,
-                                    BrojReda = red.ToString(),
-                                    Sjediste = $"{red.ToString()}{(j+1).ToString()}"
-                                };
+                        PredstavaId = (int)cmbPredstave.SelectedValue,
+                        SalaId = (int)cmbSale.SelectedValue,
+                        CijenaKarte = Int32.Parse(txtCijenaKarte.Text),
+                        DatumOdrzavanja = dtpDatum.Value.Date,
+                        VrijemeOdrazvanja = txtVrijemeOdrzavanja.Text,
+                        Predpremijera = cbPredpremijera.Checked,
+                        Premijera = cbPremijera.Checked
+                    };
 
-                                var karta = await _kartaService.Insert<Karta>(kartaInsertRequest);
+                    if (_termin == null)
+                    {
+                        var termin = await _terminService.Insert<Termin>(terminInsertRequest);
+                        //urediti dio sa kreiranjem karata
+                        if (termin != null)
+                        {
+                            var sala = await _salaService.GetById<Sala>(termin.SalaId);
+                            for (int i = 0; i < sala.BrRedova; i++)
+                            {
+                                var red = (char)(i + 65);
+                                for (int j = 0; j < sala.BrSjedistaPoRedu; j++)
+                                {
+                                    KartaInsertRequest kartaInsertRequest = new KartaInsertRequest
+                                    {
+                                        Aktivna = true,
+                                        TerminId = termin.TerminId,
+                                        BrojSjedista = j + 1,
+                                        BrojReda = red.ToString(),
+                                        Sjediste = $"{red.ToString()}{(j + 1).ToString()}"
+                                    };
+
+                                    var karta = await _kartaService.Insert<Karta>(kartaInsertRequest);
+                                }
                             }
+                            MessageBox.Show(Resursi.Get(Kljucevi.PodaciUspjesnoDodati),
+                                  Resursi.Get(Kljucevi.Informacija),
+                                  MessageBoxButtons.OK,
+                                  MessageBoxIcon.Information);
                         }
                     }
+                    else
+                    {
+                        var termin = await _terminService.Update<Termin>(_termin.TerminId, terminInsertRequest);
+                        MessageBox.Show(Resursi.Get(Kljucevi.PodaciUspjesnoModifikovani),
+                                  Resursi.Get(Kljucevi.Informacija),
+                                  MessageBoxButtons.OK,
+                                  MessageBoxIcon.Information);
+                    }
+                    
+                    DialogResult = DialogResult.OK;
+                    this.Close();
                 }
-                else
-                {
-                    var termin = await _terminService.Update<Termin>(_termin.TerminId, terminInsertRequest);
-                }
-                MessageBox.Show("Uspjesno sacuvano");
-                DialogResult = DialogResult.OK;
-                this.Close();
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Greska");
+                MessageBox.Show(Resursi.Get(Kljucevi.Greska),
+                                 Resursi.Get(Kljucevi.Informacija),
+                                 MessageBoxButtons.OK,
+                                 MessageBoxIcon.Error);
             }
+        }
+
+
+        private bool ValidanUnos()
+        {
+            return Validator.ValidirajKontrolu(cmbPredstave, errPredstava, Kljucevi.ObaveznaVrijednost)
+                && Validator.ValidirajKontrolu(cmbSale, errSala, Kljucevi.ObaveznaVrijednost)
+                && Validator.ValidirajKontrolu(txtCijenaKarte,errCijena,Kljucevi.ObaveznaVrijednost)
+                && Validator.ValidirajKontrolu(txtVrijemeOdrzavanja,errVrijeme,Kljucevi.ObaveznaVrijednost);;
         }
     }
 }

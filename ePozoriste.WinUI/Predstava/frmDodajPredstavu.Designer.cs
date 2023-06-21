@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.lblSadrzaj = new System.Windows.Forms.Label();
             this.txtSadrzaj = new System.Windows.Forms.TextBox();
             this.lblNaziv = new System.Windows.Forms.Label();
@@ -45,7 +46,13 @@
             this.btnSpremi = new System.Windows.Forms.Button();
             this.btnUcitajSliku = new System.Windows.Forms.Button();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.errNaziv = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errSadrzaj = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errVrijemeTrajanja = new System.Windows.Forms.ErrorProvider(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pbSlikaPlakata)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errNaziv)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errSadrzaj)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errVrijemeTrajanja)).BeginInit();
             this.SuspendLayout();
             // 
             // lblSadrzaj
@@ -189,6 +196,18 @@
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
             // 
+            // errNaziv
+            // 
+            this.errNaziv.ContainerControl = this;
+            // 
+            // errSadrzaj
+            // 
+            this.errSadrzaj.ContainerControl = this;
+            // 
+            // errVrijemeTrajanja
+            // 
+            this.errVrijemeTrajanja.ContainerControl = this;
+            // 
             // frmDodajPredstavu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -214,6 +233,9 @@
             this.Text = "Dodaj Predstavu";
             this.Load += new System.EventHandler(this.frmDodajPredstavu_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pbSlikaPlakata)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errNaziv)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errSadrzaj)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errVrijemeTrajanja)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -238,5 +260,8 @@
         private Button btnSpremi;
         private Button btnUcitajSliku;
         private OpenFileDialog openFileDialog1;
+        private ErrorProvider errNaziv;
+        private ErrorProvider errSadrzaj;
+        private ErrorProvider errVrijemeTrajanja;
     }
 }

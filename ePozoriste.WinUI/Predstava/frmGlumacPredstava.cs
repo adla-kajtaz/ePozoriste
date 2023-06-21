@@ -1,5 +1,6 @@
 ﻿using ePozoriste.Model;
 using ePozoriste.Model.Requests;
+using ePozoriste.WinUI.Helper;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -44,23 +45,39 @@ namespace ePozoriste.WinUI
         {
             try
             {
-                PredstavaGlumacInsertRequest predstavaGlumacInsertRequest = new PredstavaGlumacInsertRequest
+                if (ValidanUnos())
                 {
-                    PredstavaId = _predstava.PredstavaId,
-                    NazivUloge = txtNazivUloge.Text,
-                    GlumacId = (int)cmbGlumac.SelectedValue
-                };
-                
-                var predstavaGlumac = await _predstavaGlumacService.Insert<PredstavaGlumac>(predstavaGlumacInsertRequest);
-                
-                MessageBox.Show("Uspjesno sacuvano");
-                DialogResult = DialogResult.OK;
-                this.Close();
+                    PredstavaGlumacInsertRequest predstavaGlumacInsertRequest = new PredstavaGlumacInsertRequest
+                    {
+                        PredstavaId = _predstava.PredstavaId,
+                        NazivUloge = txtNazivUloge.Text,
+                        GlumacId = (int)cmbGlumac.SelectedValue
+                    };
+
+                    var predstavaGlumac = await _predstavaGlumacService.Insert<PredstavaGlumac>(predstavaGlumacInsertRequest);
+                    MessageBox.Show(Resursi.Get(Kljucevi.PodaciUspjesnoDodati),
+                                  Resursi.Get(Kljucevi.Informacija),
+                                  MessageBoxButtons.OK,
+                                  MessageBoxIcon.Information);
+
+                    
+                    DialogResult = DialogResult.OK;
+                    this.Close();
+                }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Greska");
+                MessageBox.Show(Resursi.Get(Kljucevi.Greska),
+                                  Resursi.Get(Kljucevi.Informacija),
+                                  MessageBoxButtons.OK,
+                                  MessageBoxIcon.Error);
             }
+        }
+
+        private bool ValidanUnos()
+        {
+            return Validator.ValidirajKontrolu(txtNazivUloge, errNaziv, Kljucevi.ObaveznaVrijednost)
+                && Validator.ValidirajKontrolu(cmbGlumac, errGlumac, Kljucevi.ObaveznaVrijednost);
         }
     }
 }

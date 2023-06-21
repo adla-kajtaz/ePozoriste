@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.lblGrad = new System.Windows.Forms.Label();
             this.cmbGradovi = new System.Windows.Forms.ComboBox();
             this.lblNaziv = new System.Windows.Forms.Label();
@@ -46,7 +47,19 @@
             this.label1 = new System.Windows.Forms.Label();
             this.btnUcitajSliku = new System.Windows.Forms.Button();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.errNaziv = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errAdresa = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errGrad = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errWebStranica = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errEmail = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errBrojTelefona = new System.Windows.Forms.ErrorProvider(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pbLogo)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errNaziv)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errAdresa)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errGrad)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errWebStranica)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errEmail)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errBrojTelefona)).BeginInit();
             this.SuspendLayout();
             // 
             // lblGrad
@@ -85,7 +98,7 @@
             // 
             // btnSpremi
             // 
-            this.btnSpremi.Location = new System.Drawing.Point(275, 296);
+            this.btnSpremi.Location = new System.Drawing.Point(299, 296);
             this.btnSpremi.Name = "btnSpremi";
             this.btnSpremi.Size = new System.Drawing.Size(241, 29);
             this.btnSpremi.TabIndex = 17;
@@ -170,7 +183,7 @@
             // pbLogo
             // 
             this.pbLogo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pbLogo.Location = new System.Drawing.Point(275, 32);
+            this.pbLogo.Location = new System.Drawing.Point(299, 32);
             this.pbLogo.Name = "pbLogo";
             this.pbLogo.Size = new System.Drawing.Size(241, 187);
             this.pbLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -180,7 +193,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(275, 9);
+            this.label1.Location = new System.Drawing.Point(299, 9);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(46, 20);
             this.label1.TabIndex = 34;
@@ -188,7 +201,7 @@
             // 
             // btnUcitajSliku
             // 
-            this.btnUcitajSliku.Location = new System.Drawing.Point(275, 225);
+            this.btnUcitajSliku.Location = new System.Drawing.Point(299, 225);
             this.btnUcitajSliku.Name = "btnUcitajSliku";
             this.btnUcitajSliku.Size = new System.Drawing.Size(241, 29);
             this.btnUcitajSliku.TabIndex = 36;
@@ -200,11 +213,35 @@
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
             // 
+            // errNaziv
+            // 
+            this.errNaziv.ContainerControl = this;
+            // 
+            // errAdresa
+            // 
+            this.errAdresa.ContainerControl = this;
+            // 
+            // errGrad
+            // 
+            this.errGrad.ContainerControl = this;
+            // 
+            // errWebStranica
+            // 
+            this.errWebStranica.ContainerControl = this;
+            // 
+            // errEmail
+            // 
+            this.errEmail.ContainerControl = this;
+            // 
+            // errBrojTelefona
+            // 
+            this.errBrojTelefona.ContainerControl = this;
+            // 
             // frmDodajPozoriste
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(552, 375);
+            this.ClientSize = new System.Drawing.Size(578, 375);
             this.Controls.Add(this.btnUcitajSliku);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pbLogo);
@@ -226,6 +263,12 @@
             this.Text = "Dodaj Pozoriste";
             this.Load += new System.EventHandler(this.frmDodajPozoriste_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pbLogo)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errNaziv)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errAdresa)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errGrad)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errWebStranica)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errEmail)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errBrojTelefona)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -251,5 +294,11 @@
         private Label label1;
         private Button btnUcitajSliku;
         private OpenFileDialog openFileDialog1;
+        private ErrorProvider errNaziv;
+        private ErrorProvider errAdresa;
+        private ErrorProvider errGrad;
+        private ErrorProvider errWebStranica;
+        private ErrorProvider errEmail;
+        private ErrorProvider errBrojTelefona;
     }
 }

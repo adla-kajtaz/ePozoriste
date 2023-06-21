@@ -28,11 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.lblOdabirVrste = new System.Windows.Forms.Label();
             this.cmbVrstePredstave = new System.Windows.Forms.ComboBox();
             this.btnSpremi = new System.Windows.Forms.Button();
             this.lblNaziv = new System.Windows.Forms.Label();
             this.txtNazivPredstave = new System.Windows.Forms.TextBox();
+            this.err = new System.Windows.Forms.ErrorProvider(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.err)).BeginInit();
             this.SuspendLayout();
             // 
             // lblOdabirVrste
@@ -80,11 +83,15 @@
             this.txtNazivPredstave.Size = new System.Drawing.Size(332, 27);
             this.txtNazivPredstave.TabIndex = 31;
             // 
+            // err
+            // 
+            this.err.ContainerControl = this;
+            // 
             // frmPredstavaVrstaPredstave
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(364, 168);
+            this.ClientSize = new System.Drawing.Size(386, 168);
             this.Controls.Add(this.lblOdabirVrste);
             this.Controls.Add(this.cmbVrstePredstave);
             this.Controls.Add(this.btnSpremi);
@@ -92,6 +99,7 @@
             this.Controls.Add(this.txtNazivPredstave);
             this.Name = "frmPredstavaVrstaPredstave";
             this.Text = "Vrste predstave";
+            ((System.ComponentModel.ISupportInitialize)(this.err)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -104,5 +112,6 @@
         private Button btnSpremi;
         private Label lblNaziv;
         private TextBox txtNazivPredstave;
+        private ErrorProvider err;
     }
 }

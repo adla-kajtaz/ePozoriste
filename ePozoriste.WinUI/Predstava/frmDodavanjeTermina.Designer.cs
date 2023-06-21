@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.cmbSale = new System.Windows.Forms.ComboBox();
             this.cmbPredstave = new System.Windows.Forms.ComboBox();
             this.lblPredstava = new System.Windows.Forms.Label();
@@ -41,6 +42,14 @@
             this.btnDodaj = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.txtVrijemeOdrzavanja = new System.Windows.Forms.TextBox();
+            this.errPredstava = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errSala = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errCijena = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errVrijeme = new System.Windows.Forms.ErrorProvider(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.errPredstava)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errSala)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errCijena)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errVrijeme)).BeginInit();
             this.SuspendLayout();
             // 
             // cmbSale
@@ -157,11 +166,27 @@
             this.txtVrijemeOdrzavanja.Size = new System.Drawing.Size(250, 27);
             this.txtVrijemeOdrzavanja.TabIndex = 30;
             // 
+            // errPredstava
+            // 
+            this.errPredstava.ContainerControl = this;
+            // 
+            // errSala
+            // 
+            this.errSala.ContainerControl = this;
+            // 
+            // errCijena
+            // 
+            this.errCijena.ContainerControl = this;
+            // 
+            // errVrijeme
+            // 
+            this.errVrijeme.ContainerControl = this;
+            // 
             // frmDodavanjeTermina
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(282, 356);
+            this.ClientSize = new System.Drawing.Size(301, 356);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtVrijemeOdrzavanja);
             this.Controls.Add(this.btnDodaj);
@@ -178,6 +203,10 @@
             this.Name = "frmDodavanjeTermina";
             this.Text = "Dodavanje termina";
             this.Load += new System.EventHandler(this.frmDodavanjeTermina_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.errPredstava)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errSala)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errCijena)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errVrijeme)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -198,5 +227,9 @@
         private Button btnDodaj;
         private Label label1;
         private TextBox txtVrijemeOdrzavanja;
+        private ErrorProvider errPredstava;
+        private ErrorProvider errSala;
+        private ErrorProvider errCijena;
+        private ErrorProvider errVrijeme;
     }
 }

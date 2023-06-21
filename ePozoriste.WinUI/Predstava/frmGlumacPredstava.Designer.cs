@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.lblNaziv = new System.Windows.Forms.Label();
             this.txtNazivPredstave = new System.Windows.Forms.TextBox();
             this.btnSpremi = new System.Windows.Forms.Button();
@@ -35,6 +36,10 @@
             this.lblNazivUloge = new System.Windows.Forms.Label();
             this.cmbGlumac = new System.Windows.Forms.ComboBox();
             this.lblOdabirGlumca = new System.Windows.Forms.Label();
+            this.errNaziv = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errGlumac = new System.Windows.Forms.ErrorProvider(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.errNaziv)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errGlumac)).BeginInit();
             this.SuspendLayout();
             // 
             // lblNaziv
@@ -98,11 +103,19 @@
             this.lblOdabirGlumca.TabIndex = 30;
             this.lblOdabirGlumca.Text = "Odaberite glumca";
             // 
+            // errNaziv
+            // 
+            this.errNaziv.ContainerControl = this;
+            // 
+            // errGlumac
+            // 
+            this.errGlumac.ContainerControl = this;
+            // 
             // frmGlumacPredstava
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(353, 220);
+            this.ClientSize = new System.Drawing.Size(376, 220);
             this.Controls.Add(this.lblOdabirGlumca);
             this.Controls.Add(this.cmbGlumac);
             this.Controls.Add(this.lblNazivUloge);
@@ -112,6 +125,8 @@
             this.Controls.Add(this.txtNazivPredstave);
             this.Name = "frmGlumacPredstava";
             this.Text = "Glumci";
+            ((System.ComponentModel.ISupportInitialize)(this.errNaziv)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errGlumac)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -126,5 +141,7 @@
         private Label lblNazivUloge;
         private ComboBox cmbGlumac;
         private Label lblOdabirGlumca;
+        private ErrorProvider errNaziv;
+        private ErrorProvider errGlumac;
     }
 }

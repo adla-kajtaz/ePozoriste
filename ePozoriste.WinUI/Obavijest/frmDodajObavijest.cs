@@ -77,7 +77,7 @@ namespace ePozoriste.WinUI
                         Podnaslov = txtPodnaslov.Text,
                         Sadrzaj = txtSadrzaj.Text,
                         ObavijestKategorijaId = (int)cmbKategorije.SelectedValue,
-                        Slika = ImageHelper.ConvertImageToString(pbSlika.Image),
+                        Slika = pbSlika.Image != null ? ImageHelper.ConvertImageToString(pbSlika.Image) : null,
                         DatumKreiranja = DateTime.Now.Date,
                         KorisnikId = korisnik.KorisnikId
                     };

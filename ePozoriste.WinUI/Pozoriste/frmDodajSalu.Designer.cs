@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.lblBrSjedistaPoRedu = new System.Windows.Forms.Label();
             this.txtBrSjedistaPoRedu = new System.Windows.Forms.TextBox();
             this.lblBrRedova = new System.Windows.Forms.Label();
@@ -37,6 +38,14 @@
             this.btnSpremi = new System.Windows.Forms.Button();
             this.lbBrSjedista = new System.Windows.Forms.Label();
             this.txtBrSjedista = new System.Windows.Forms.TextBox();
+            this.errNaziv = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errSjedista = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errBrojRedova = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errSjPoRedu = new System.Windows.Forms.ErrorProvider(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.errNaziv)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errSjedista)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errBrojRedova)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errSjPoRedu)).BeginInit();
             this.SuspendLayout();
             // 
             // lblBrSjedistaPoRedu
@@ -113,6 +122,22 @@
             this.txtBrSjedista.Size = new System.Drawing.Size(241, 27);
             this.txtBrSjedista.TabIndex = 39;
             // 
+            // errNaziv
+            // 
+            this.errNaziv.ContainerControl = this;
+            // 
+            // errSjedista
+            // 
+            this.errSjedista.ContainerControl = this;
+            // 
+            // errBrojRedova
+            // 
+            this.errBrojRedova.ContainerControl = this;
+            // 
+            // errSjPoRedu
+            // 
+            this.errSjPoRedu.ContainerControl = this;
+            // 
             // frmDodajSalu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -130,6 +155,10 @@
             this.Name = "frmDodajSalu";
             this.Text = "Dodaj Salu";
             this.Load += new System.EventHandler(this.frmDodajSalu_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.errNaziv)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errSjedista)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errBrojRedova)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errSjPoRedu)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -146,5 +175,9 @@
         private Button btnSpremi;
         private Label lbBrSjedista;
         private TextBox txtBrSjedista;
+        private ErrorProvider errNaziv;
+        private ErrorProvider errSjedista;
+        private ErrorProvider errBrojRedova;
+        private ErrorProvider errSjPoRedu;
     }
 }

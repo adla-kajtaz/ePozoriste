@@ -1,5 +1,6 @@
 ﻿using ePozoriste.Model;
 using ePozoriste.Model.Requests;
+using ePozoriste.WinUI.Helper;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -35,29 +36,48 @@ namespace ePozoriste.WinUI
         {
             try
             {
-                GlumacInsertRequest glumacInsertRequest = new GlumacInsertRequest
+                if (ValidanUnos())
                 {
-                    Ime = txtIme.Text,
-                    Prezime = txtPrezime.Text,
-                    ImePrezime = $"{txtIme.Text} {txtPrezime.Text}"
-                };
+                    GlumacInsertRequest glumacInsertRequest = new GlumacInsertRequest
+                    {
+                        Ime = txtIme.Text,
+                        Prezime = txtPrezime.Text,
+                        ImePrezime = $"{txtIme.Text} {txtPrezime.Text}"
+                    };
 
-                if (_glumac == null)
-                {
-                    var glumac = await _glumacService.Insert<Glumac>(glumacInsertRequest);
+                    if (_glumac == null)
+                    {
+                        var glumac = await _glumacService.Insert<Glumac>(glumacInsertRequest);
+                        MessageBox.Show(Resursi.Get(Kljucevi.PodaciUspjesnoDodati),
+                                  Resursi.Get(Kljucevi.Informacija),
+                                  MessageBoxButtons.OK,
+                                  MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        var glumac = await _glumacService.Update<Glumac>(_glumac.GlumacId, glumacInsertRequest);
+                        MessageBox.Show(Resursi.Get(Kljucevi.PodaciUspjesnoModifikovani),
+                                  Resursi.Get(Kljucevi.Informacija),
+                                  MessageBoxButtons.OK,
+                                  MessageBoxIcon.Information);
+                    }
+                    DialogResult = DialogResult.OK;
+                    this.Close();
                 }
-                else
-                {
-                    var glumac = await _glumacService.Update<Glumac>(_glumac.GlumacId, glumacInsertRequest);
-                }
-                MessageBox.Show("Uspjesno sacuvano");
-                DialogResult = DialogResult.OK;
-                this.Close();
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Greska");
+                MessageBox.Show(Resursi.Get(Kljucevi.Greska),
+                                   Resursi.Get(Kljucevi.Informacija),
+                                   MessageBoxButtons.OK,
+                                   MessageBoxIcon.Error);
             }
+        }
+
+        private bool ValidanUnos()
+        {
+            return Validator.ValidirajKontrolu(txtIme, errIme, Kljucevi.ObaveznaVrijednost)
+                && Validator.ValidirajKontrolu(txtPrezime, errPrezime, Kljucevi.ObaveznaVrijednost);
         }
     }
 }
