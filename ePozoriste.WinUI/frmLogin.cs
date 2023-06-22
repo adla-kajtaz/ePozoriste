@@ -49,6 +49,7 @@ namespace ePozoriste.WinUI
                 }
                 if (admin)
                 {
+                    APIService.LogiraniKorisnikId = korisnik.KorisnikId;
                     frmMeni frmMeni = new frmMeni();
                     frmMeni.Show();
                     this.Hide();

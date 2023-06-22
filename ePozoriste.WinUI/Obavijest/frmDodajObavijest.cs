@@ -17,7 +17,6 @@ namespace ePozoriste.WinUI
     {
         APIService _obavijestKategorijaService { get; set; } = new APIService("ObavijestKategorija");
         APIService _obavijestService { get; set; } = new APIService("Obavijest");
-        private readonly APIService _korisnikService = new APIService("Korisnik");
         private Obavijest _obavijest;
 
 
@@ -69,8 +68,6 @@ namespace ePozoriste.WinUI
             {
                 if (ValidanUnos())
                 {
-                    var korisnici = await _korisnikService.Get<List<Korisnik>>();
-                    var korisnik = korisnici.First(x => x.KorisnickoIme == APIService.KorisnickoIme);
                     ObavijestInsertRequest obavijestInsertRequest = new ObavijestInsertRequest
                     {
                         Naslov = txtNaslov.Text,
@@ -79,7 +76,7 @@ namespace ePozoriste.WinUI
                         ObavijestKategorijaId = (int)cmbKategorije.SelectedValue,
                         Slika = pbSlika.Image != null ? ImageHelper.ConvertImageToString(pbSlika.Image) : null,
                         DatumKreiranja = DateTime.Now.Date,
-                        KorisnikId = korisnik.KorisnikId
+                        KorisnikId = APIService.LogiraniKorisnikId
                     };
 
                     if (_obavijest == null)

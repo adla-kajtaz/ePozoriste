@@ -16,6 +16,7 @@ namespace ePozoriste.Services
 {
     public class KorisnikService : BaseCRUDService<Model.Korisnik, Database.Korisnik, BaseSearchObject, KorisnikInsertRequest, KorisnikInsertRequest>, IKorisnikService
     {
+
         public KorisnikService(ePozoristeContext context, IMapper mapper) : base(context, mapper)
         {
 
@@ -103,18 +104,20 @@ namespace ePozoriste.Services
 
         public async Task<Model.Korisnik> Login(string korisnickoIme, string lozinka)
         {
-            var entity = await _context.Korisniks.Include("KorisnikUloges.Uloga").FirstOrDefaultAsync(x => x.KorisnickoIme == korisnickoIme);
+            var entity = await _context.Korisniks.Include("KorisnikUlogas.Uloga").FirstOrDefaultAsync(x => x.KorisnickoIme == korisnickoIme);
 
             if (entity == null)
             {
                 return null;
+                //throw new UserException("Kredencijali nisu ispravni");
             }
 
-            var hash = GenerateHash(lozinka, entity.LozinkaSalt);
+            var hash = GenerateHash(entity.LozinkaSalt, lozinka);
 
             if (hash != entity.LozinkaHash)
             {
                 return null;
+                //throw new UserException("Kredencijali nisu ispravni");
             }
             return _mapper.Map<Model.Korisnik>(entity);
         }
@@ -146,28 +149,25 @@ namespace ePozoriste.Services
             return _mapper.Map<Model.Korisnik>(entity);
         }
 
-        public string GenerateHash(string input, string salt)
+        public string GenerateHash(string salt, string lozinka)
         {
-            var valueBytes = KeyDerivation.Pbkdf2(
-                password: input,
-                salt: Encoding.UTF8.GetBytes(salt),
-                prf: KeyDerivationPrf.HMACSHA512,
-                iterationCount: 10000,
-                numBytesRequested: 256 / 8
-            );
+            byte[] src = Convert.FromBase64String(salt);
+            byte[] bytes = Encoding.Unicode.GetBytes(lozinka);
+            byte[] dst = new byte[src.Length + bytes.Length];
 
-            return Convert.ToBase64String(valueBytes);
+            System.Buffer.BlockCopy(src, 0, dst, 0, src.Length);
+            System.Buffer.BlockCopy(bytes, 0, dst, src.Length, bytes.Length);
+
+            HashAlgorithm algorithm = HashAlgorithm.Create("SHA1");
+            byte[] inArray = algorithm.ComputeHash(dst);
+            return Convert.ToBase64String(inArray);
         }
 
         public string GenerateSalt()
         {
-            byte[] randomBytes = new byte[128 / 8];
-
-            using (var generator = RandomNumberGenerator.Create())
-            {
-                generator.GetBytes(randomBytes);
-                return Convert.ToBase64String(randomBytes);
-            }
+            var buf = new byte[16];
+            (new RNGCryptoServiceProvider()).GetBytes(buf);
+            return Convert.ToBase64String(buf);
         }
     }
 }
