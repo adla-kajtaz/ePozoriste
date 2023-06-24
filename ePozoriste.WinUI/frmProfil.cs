@@ -1,5 +1,6 @@
 ﻿using ePozoriste.Model;
 using ePozoriste.Model.Requests;
+using ePozoriste.WinUI.Helper;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -57,25 +58,53 @@ namespace ePozoriste.WinUI
         {
             try
             {
-                KorisnikInsertRequest korisnikInsertRequest = new KorisnikInsertRequest
+                if (ValidanUnos())
                 {
-                    Ime = txtIme.Text,
-                    KorisnickoIme = txtKorisnickoIme.Text,
-                    Prezime = txtPrezime.Text,
-                    BrTelefona = txtBrTelefona.Text,
-                    Email = txtEmail.Text
-                };
+                    KorisnikInsertRequest korisnikInsertRequest = new KorisnikInsertRequest
+                    {
+                        Ime = txtIme.Text,
+                        KorisnickoIme = txtKorisnickoIme.Text,
+                        Prezime = txtPrezime.Text,
+                        BrTelefona = txtBrTelefona.Text,
+                        Email = txtEmail.Text,
+                        Lozinka = txtLozinka.Text,
+                        LozinkaProvjera = txtLozinkaProvjera.Text
+                    };
 
-                var update = await _korisnikService.Update<Korisnik>(_korisnik.KorisnikId, korisnikInsertRequest);
-                
-                MessageBox.Show("Uspjesno sacuvano");
-                DialogResult = DialogResult.OK;
-                this.Close();
+                    var update = await _korisnikService.Update<Korisnik>(_korisnik.KorisnikId, korisnikInsertRequest);
+                    if (_korisnik.KorisnikId == APIService.LogiraniKorisnikId &&
+                                !string.IsNullOrWhiteSpace(korisnikInsertRequest.Lozinka) && !string.IsNullOrWhiteSpace(korisnikInsertRequest.LozinkaProvjera))
+                    {
+                        APIService.Lozinka = korisnikInsertRequest.Lozinka;
+                    }
+
+                    MessageBox.Show(Resursi.Get(Kljucevi.PodaciUspjesnoModifikovani),
+                                      Resursi.Get(Kljucevi.Informacija),
+                                      MessageBoxButtons.OK,
+                                      MessageBoxIcon.Information);
+                    DialogResult = DialogResult.OK;
+                    this.Close();
+                }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Greska");
+                MessageBox.Show(Resursi.Get(Kljucevi.Greska),
+                                    Resursi.Get(Kljucevi.Informacija),
+                                    MessageBoxButtons.OK,
+                                    MessageBoxIcon.Error);
             }
+
+        }
+
+        private bool ValidanUnos()
+        {
+            return Validator.ValidirajKontrolu(txtIme, errIme, Kljucevi.ObaveznaVrijednost)
+                && Validator.ValidirajKontrolu(txtKorisnickoIme, errKorisnickoIme, Kljucevi.ObaveznaVrijednost)
+                && Validator.ValidirajKontrolu(txtPrezime, errPrezime, Kljucevi.ObaveznaVrijednost)
+                && Validator.ValidirajKontrolu(txtBrTelefona, errBrTelefona, Kljucevi.ObaveznaVrijednost)
+                && Validator.ValidirajBrTelefona(txtBrTelefona, errBrTelefona, Kljucevi.ObaveznaVrijednost)
+                && Validator.ValidirajKontrolu(txtEmail, errEmail, Kljucevi.ObaveznaVrijednost)
+                && Validator.ValidirajEmail(txtEmail, errEmail, Kljucevi.ObaveznaVrijednost);
         }
     }
 }

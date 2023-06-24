@@ -17,6 +17,7 @@ namespace ePozoriste.WinUI.Helper
         public const string Informacija = "Informacija";
         public const string Greska = "Greska";
         public const string PogresnaLozinkaIliMail = "PogresnaLozinkaIliMail";
-
+        public const string ValidacijaEmaila = "ValidacijaEmaila";
+        public const string ValidacijaBrTelefona = "ValidacijaBrTelefona";
     }
 }

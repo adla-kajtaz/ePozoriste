@@ -16,19 +16,19 @@ namespace ePozoriste.Model.Requests
         public string Prezime { get; set; }
 
         [Required(AllowEmptyStrings = false)]
-        //[MinLength(4)]
+        [MinLength(4)]
         public string KorisnickoIme { get; set; }
 
         [Required(AllowEmptyStrings = false)]
-        //[EmailAddress()]
+        [EmailAddress()]
         public string Email { get; set; }
 
-        //[RegularExpression("^\\d{3}-\\d{3}-(\\d{4}|\\d{3})$")]
+        [RegularExpression("^\\d{3}-\\d{3}-(\\d{4}|\\d{3})$")]
         public string BrTelefona { get; set; }
 
         public bool? Aktivan { get; set; }
 
-        //[RegularExpression("^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$")]
+        [RegularExpression("^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$")]
         public string? Lozinka { get; set; }
 
         [Compare("Lozinka")]

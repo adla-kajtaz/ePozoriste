@@ -127,9 +127,9 @@
             this.lblWebStranica.AutoSize = true;
             this.lblWebStranica.Location = new System.Drawing.Point(12, 169);
             this.lblWebStranica.Name = "lblWebStranica";
-            this.lblWebStranica.Size = new System.Drawing.Size(257, 20);
+            this.lblWebStranica.Size = new System.Drawing.Size(97, 20);
             this.lblWebStranica.TabIndex = 25;
-            this.lblWebStranica.Text = "Web stranica (Npr.www.pozoriste.ba):";
+            this.lblWebStranica.Text = "Web stranica:";
             // 
             // txtWebStranica
             // 
@@ -143,9 +143,9 @@
             this.lblEmail.AutoSize = true;
             this.lblEmail.Location = new System.Drawing.Point(12, 222);
             this.lblEmail.Name = "lblEmail";
-            this.lblEmail.Size = new System.Drawing.Size(237, 20);
+            this.lblEmail.Size = new System.Drawing.Size(49, 20);
             this.lblEmail.TabIndex = 27;
-            this.lblEmail.Text = "Email (Npr.admin@epozoriste.ba):";
+            this.lblEmail.Text = "Email:";
             // 
             // txtEmail
             // 
@@ -159,9 +159,9 @@
             this.lblBrTelefona.AutoSize = true;
             this.lblBrTelefona.Location = new System.Drawing.Point(12, 275);
             this.lblBrTelefona.Name = "lblBrTelefona";
-            this.lblBrTelefona.Size = new System.Drawing.Size(224, 20);
+            this.lblBrTelefona.Size = new System.Drawing.Size(98, 20);
             this.lblBrTelefona.TabIndex = 29;
-            this.lblBrTelefona.Text = "Broj telefona (Npr.036-550-550):";
+            this.lblBrTelefona.Text = "Broj telefona:";
             // 
             // txtBrTelefona
             // 

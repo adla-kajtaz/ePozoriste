@@ -144,4 +144,10 @@
   <data name="PogresnaLozinkaIliMail" xml:space="preserve">
     <value>Unijeli ste pogresno korisičko ime ili lozinku.</value>
   </data>
+  <data name="ValidacijaBrTelefona" xml:space="preserve">
+    <value>Broj telefona treba biti u formatu 000-000-000 ili 000-000-0000.</value>
+  </data>
+  <data name="ValidacijaEmaila" xml:space="preserve">
+    <value>Email treba biti u formatu "naziv@emailadresa.domena".</value>
+  </data>
 </root>

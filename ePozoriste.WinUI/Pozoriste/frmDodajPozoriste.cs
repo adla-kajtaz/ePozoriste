@@ -125,7 +125,9 @@ namespace ePozoriste.WinUI
                 && Validator.ValidirajKontrolu(cmbGradovi, errGrad, Kljucevi.ObaveznaVrijednost)
                 && Validator.ValidirajKontrolu(txtWebStranica, errWebStranica, Kljucevi.ObaveznaVrijednost)
                 && Validator.ValidirajKontrolu(txtEmail, errEmail, Kljucevi.ObaveznaVrijednost)
-                && Validator.ValidirajKontrolu(txtBrTelefona, errBrojTelefona, Kljucevi.ObaveznaVrijednost);
+                && Validator.ValidirajEmail(txtEmail,errEmail,Kljucevi.ValidacijaEmaila)
+                && Validator.ValidirajKontrolu(txtBrTelefona, errBrojTelefona, Kljucevi.ObaveznaVrijednost)
+                && Validator.ValidirajBrTelefona(txtBrTelefona,errBrojTelefona,Kljucevi.ValidacijaBrTelefona);
         }
     }
 }

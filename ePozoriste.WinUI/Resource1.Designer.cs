@@ -140,5 +140,23 @@ namespace ePozoriste.WinUI {
                 return ResourceManager.GetString("PogresnaLozinkaIliMail", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Broj telefona treba biti u formatu 000-000-000 ili 000-000-0000..
+        /// </summary>
+        internal static string ValidacijaBrTelefona {
+            get {
+                return ResourceManager.GetString("ValidacijaBrTelefona", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Email treba biti u formatu &quot;naziv@emailadresa.domena&quot;..
+        /// </summary>
+        internal static string ValidacijaEmaila {
+            get {
+                return ResourceManager.GetString("ValidacijaEmaila", resourceCulture);
+            }
+        }
     }
 }

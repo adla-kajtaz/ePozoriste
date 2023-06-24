@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.label1 = new System.Windows.Forms.Label();
             this.txtIme = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -42,6 +43,21 @@
             this.label7 = new System.Windows.Forms.Label();
             this.btnSpremi = new System.Windows.Forms.Button();
             this.btnOdjaviSe = new System.Windows.Forms.Button();
+            this.txtLozinkaProvjera = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.txtLozinka = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.errIme = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errPrezime = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errKorisnickoIme = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errBrTelefona = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errEmail = new System.Windows.Forms.ErrorProvider(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.errIme)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errPrezime)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errKorisnickoIme)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errBrTelefona)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errEmail)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -49,9 +65,9 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(12, 106);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(34, 20);
+            this.label1.Size = new System.Drawing.Size(37, 20);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Ime";
+            this.label1.Text = "Ime:";
             // 
             // txtIme
             // 
@@ -90,9 +106,9 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(12, 159);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(62, 20);
+            this.label3.Size = new System.Drawing.Size(65, 20);
             this.label3.TabIndex = 23;
-            this.label3.Text = "Prezime";
+            this.label3.Text = "Prezime:";
             // 
             // txtKorisnickoIme
             // 
@@ -106,9 +122,9 @@
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(12, 212);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(106, 20);
+            this.label5.Size = new System.Drawing.Size(109, 20);
             this.label5.TabIndex = 25;
-            this.label5.Text = "Korisničko ime";
+            this.label5.Text = "Korisničko ime:";
             // 
             // txtBrTelefona
             // 
@@ -122,9 +138,9 @@
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(338, 106);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(95, 20);
+            this.label6.Size = new System.Drawing.Size(98, 20);
             this.label6.TabIndex = 27;
-            this.label6.Text = "Broj telefona";
+            this.label6.Text = "Broj telefona:";
             // 
             // txtEmail
             // 
@@ -138,15 +154,15 @@
             this.label7.AutoSize = true;
             this.label7.Location = new System.Drawing.Point(338, 159);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(46, 20);
+            this.label7.Size = new System.Drawing.Size(49, 20);
             this.label7.TabIndex = 29;
-            this.label7.Text = "Email";
+            this.label7.Text = "Email:";
             // 
             // btnSpremi
             // 
-            this.btnSpremi.Location = new System.Drawing.Point(338, 235);
+            this.btnSpremi.Location = new System.Drawing.Point(338, 355);
             this.btnSpremi.Name = "btnSpremi";
-            this.btnSpremi.Size = new System.Drawing.Size(126, 29);
+            this.btnSpremi.Size = new System.Drawing.Size(225, 29);
             this.btnSpremi.TabIndex = 31;
             this.btnSpremi.Text = "Spremi izmjene";
             this.btnSpremi.UseVisualStyleBackColor = true;
@@ -154,19 +170,86 @@
             // 
             // btnOdjaviSe
             // 
-            this.btnOdjaviSe.Location = new System.Drawing.Point(470, 235);
+            this.btnOdjaviSe.Location = new System.Drawing.Point(12, 355);
             this.btnOdjaviSe.Name = "btnOdjaviSe";
-            this.btnOdjaviSe.Size = new System.Drawing.Size(119, 29);
+            this.btnOdjaviSe.Size = new System.Drawing.Size(204, 29);
             this.btnOdjaviSe.TabIndex = 32;
             this.btnOdjaviSe.Text = "Odjavi se";
             this.btnOdjaviSe.UseVisualStyleBackColor = true;
             this.btnOdjaviSe.Click += new System.EventHandler(this.btnOdjaviSe_Click);
             // 
+            // txtLozinkaProvjera
+            // 
+            this.txtLozinkaProvjera.Location = new System.Drawing.Point(338, 288);
+            this.txtLozinkaProvjera.Name = "txtLozinkaProvjera";
+            this.txtLozinkaProvjera.Size = new System.Drawing.Size(225, 27);
+            this.txtLozinkaProvjera.TabIndex = 36;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(338, 265);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(121, 20);
+            this.label8.TabIndex = 35;
+            this.label8.Text = "Lozinka provjera:";
+            // 
+            // txtLozinka
+            // 
+            this.txtLozinka.Location = new System.Drawing.Point(12, 288);
+            this.txtLozinka.Name = "txtLozinka";
+            this.txtLozinka.Size = new System.Drawing.Size(204, 27);
+            this.txtLozinka.TabIndex = 34;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(12, 265);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(62, 20);
+            this.label9.TabIndex = 33;
+            this.label9.Text = "Lozinka:";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.ForeColor = System.Drawing.Color.Red;
+            this.label10.Location = new System.Drawing.Point(12, 318);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(391, 20);
+            this.label10.TabIndex = 37;
+            this.label10.Text = "Napomena: Unesite lozinku samo ako je zelite promijeniti";
+            // 
+            // errIme
+            // 
+            this.errIme.ContainerControl = this;
+            // 
+            // errPrezime
+            // 
+            this.errPrezime.ContainerControl = this;
+            // 
+            // errKorisnickoIme
+            // 
+            this.errKorisnickoIme.ContainerControl = this;
+            // 
+            // errBrTelefona
+            // 
+            this.errBrTelefona.ContainerControl = this;
+            // 
+            // errEmail
+            // 
+            this.errEmail.ContainerControl = this;
+            // 
             // frmProfil
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(601, 291);
+            this.ClientSize = new System.Drawing.Size(590, 398);
+            this.Controls.Add(this.label10);
+            this.Controls.Add(this.txtLozinkaProvjera);
+            this.Controls.Add(this.label8);
+            this.Controls.Add(this.txtLozinka);
+            this.Controls.Add(this.label9);
             this.Controls.Add(this.btnOdjaviSe);
             this.Controls.Add(this.btnSpremi);
             this.Controls.Add(this.txtEmail);
@@ -184,6 +267,11 @@
             this.Name = "frmProfil";
             this.Text = "Profil";
             this.Load += new System.EventHandler(this.frmProfil_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.errIme)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errPrezime)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errKorisnickoIme)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errBrTelefona)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errEmail)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -205,5 +293,15 @@
         private Label label7;
         private Button btnSpremi;
         private Button btnOdjaviSe;
+        private TextBox txtLozinkaProvjera;
+        private Label label8;
+        private TextBox txtLozinka;
+        private Label label9;
+        private Label label10;
+        private ErrorProvider errIme;
+        private ErrorProvider errPrezime;
+        private ErrorProvider errKorisnickoIme;
+        private ErrorProvider errBrTelefona;
+        private ErrorProvider errEmail;
     }
 }

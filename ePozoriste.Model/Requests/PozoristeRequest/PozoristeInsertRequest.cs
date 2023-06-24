@@ -15,14 +15,14 @@ namespace ePozoriste.Model.Requests
         [Required(AllowEmptyStrings = false)]
         public string Adresa { get; set; }
 
-        //[RegularExpression("^(https?://)?([A-Za-z0-9-]+\\.)+[A-Za-z]{2,}(\\:\\d+)?(/.*)?$")]
+        [Required(AllowEmptyStrings = false)]
         public string Webstranica { get; set; }
 
         [Required(AllowEmptyStrings = false)]
-        //[EmailAddress()]
+        [EmailAddress()]
         public string Email { get; set; }
 
-        //[RegularExpression("^\\d{3}-\\d{3}-(\\d{4}|\\d{3})$")]
+        [RegularExpression("^\\d{3}-\\d{3}-(\\d{4}|\\d{3})$")]
         public string BrTelefona { get; set; }
 
         public string? Logo { get; set; }
