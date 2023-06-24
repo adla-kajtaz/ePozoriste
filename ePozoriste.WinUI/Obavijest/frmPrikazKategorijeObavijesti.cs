@@ -59,13 +59,13 @@ namespace ePozoriste.WinUI
         private async void dgvKategorijeObavijesti_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             var obavijestKategorija = dgvKategorijeObavijesti.SelectedRows[0].DataBoundItem as ObavijestKategorija;
-            if (e.ColumnIndex == 3)
+            if (e.ColumnIndex == 2)
             {  
                 await _obavijestKategorijaService.Delete<ObavijestKategorija>(obavijestKategorija.ObavijestKategorijaId);
                 dgvKategorijeObavijesti.DataSource = null;
                 frmPrikazKategorijeObavijesti_Load(sender, e);
             }
-            else if (e.ColumnIndex == 2)
+            else if (e.ColumnIndex == 1)
             {
                 frmDodajKatergorijuObavijesti frmDodajKatergorijuObavijesti = new frmDodajKatergorijuObavijesti(obavijestKategorija);
                 if (frmDodajKatergorijuObavijesti.ShowDialog() == DialogResult.OK)

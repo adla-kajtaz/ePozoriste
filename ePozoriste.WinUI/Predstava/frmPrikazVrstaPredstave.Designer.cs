@@ -30,18 +30,21 @@
         {
             this.btnPrikazi = new System.Windows.Forms.Button();
             this.dgvVrstePredstave = new System.Windows.Forms.DataGridView();
-            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnDodaj = new System.Windows.Forms.Button();
+            this.txtPretraga = new System.Windows.Forms.TextBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.Naziv = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Uredi = new System.Windows.Forms.DataGridViewButtonColumn();
             this.Obrisi = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.btnDodaj = new System.Windows.Forms.Button();
-            this.txtPretraga = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvVrstePredstave)).BeginInit();
+            this.groupBox1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnPrikazi
             // 
-            this.btnPrikazi.Location = new System.Drawing.Point(398, 12);
+            this.btnPrikazi.Location = new System.Drawing.Point(334, 37);
             this.btnPrikazi.Name = "btnPrikazi";
             this.btnPrikazi.Size = new System.Drawing.Size(124, 29);
             this.btnPrikazi.TabIndex = 15;
@@ -53,38 +56,65 @@
             // 
             this.dgvVrstePredstave.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvVrstePredstave.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.ID,
             this.Naziv,
             this.Uredi,
             this.Obrisi});
-            this.dgvVrstePredstave.Location = new System.Drawing.Point(12, 56);
+            this.dgvVrstePredstave.Location = new System.Drawing.Point(6, 36);
             this.dgvVrstePredstave.Name = "dgvVrstePredstave";
             this.dgvVrstePredstave.RowHeadersWidth = 51;
             this.dgvVrstePredstave.RowTemplate.Height = 29;
             this.dgvVrstePredstave.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvVrstePredstave.Size = new System.Drawing.Size(632, 339);
+            this.dgvVrstePredstave.Size = new System.Drawing.Size(669, 339);
             this.dgvVrstePredstave.TabIndex = 14;
             this.dgvVrstePredstave.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvVrstePredstave_CellContentClick);
             // 
-            // ID
+            // btnDodaj
             // 
-            this.ID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.ID.DataPropertyName = "VrstaPredstaveId";
-            this.ID.HeaderText = "ID";
-            this.ID.MinimumWidth = 6;
-            this.ID.Name = "ID";
-            this.ID.ReadOnly = true;
-            this.ID.Width = 53;
+            this.btnDodaj.Location = new System.Drawing.Point(464, 37);
+            this.btnDodaj.Name = "btnDodaj";
+            this.btnDodaj.Size = new System.Drawing.Size(211, 29);
+            this.btnDodaj.TabIndex = 13;
+            this.btnDodaj.Text = "Nova vrsta predstave";
+            this.btnDodaj.UseVisualStyleBackColor = true;
+            this.btnDodaj.Click += new System.EventHandler(this.btnDodaj_Click);
+            // 
+            // txtPretraga
+            // 
+            this.txtPretraga.Location = new System.Drawing.Point(6, 39);
+            this.txtPretraga.Name = "txtPretraga";
+            this.txtPretraga.Size = new System.Drawing.Size(322, 27);
+            this.txtPretraga.TabIndex = 12;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.txtPretraga);
+            this.groupBox1.Controls.Add(this.btnPrikazi);
+            this.groupBox1.Controls.Add(this.btnDodaj);
+            this.groupBox1.Location = new System.Drawing.Point(12, 12);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(690, 82);
+            this.groupBox1.TabIndex = 16;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Pretraga vrsta predstave";
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.dgvVrstePredstave);
+            this.groupBox2.Location = new System.Drawing.Point(12, 100);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(690, 390);
+            this.groupBox2.TabIndex = 17;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Vrste predstave";
             // 
             // Naziv
             // 
-            this.Naziv.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.Naziv.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.Naziv.DataPropertyName = "Naziv";
             this.Naziv.HeaderText = "Naziv";
             this.Naziv.MinimumWidth = 6;
             this.Naziv.Name = "Naziv";
             this.Naziv.ReadOnly = true;
-            this.Naziv.Width = 75;
             // 
             // Uredi
             // 
@@ -104,38 +134,21 @@
             this.Obrisi.Text = "Obrisi";
             this.Obrisi.UseColumnTextForButtonValue = true;
             // 
-            // btnDodaj
-            // 
-            this.btnDodaj.Location = new System.Drawing.Point(528, 10);
-            this.btnDodaj.Name = "btnDodaj";
-            this.btnDodaj.Size = new System.Drawing.Size(116, 29);
-            this.btnDodaj.TabIndex = 13;
-            this.btnDodaj.Text = "Dodaj";
-            this.btnDodaj.UseVisualStyleBackColor = true;
-            this.btnDodaj.Click += new System.EventHandler(this.btnDodaj_Click);
-            // 
-            // txtPretraga
-            // 
-            this.txtPretraga.Location = new System.Drawing.Point(12, 12);
-            this.txtPretraga.Name = "txtPretraga";
-            this.txtPretraga.Size = new System.Drawing.Size(380, 27);
-            this.txtPretraga.TabIndex = 12;
-            // 
             // frmPrikazVrstaPredstave
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(664, 405);
-            this.Controls.Add(this.btnPrikazi);
-            this.Controls.Add(this.dgvVrstePredstave);
-            this.Controls.Add(this.btnDodaj);
-            this.Controls.Add(this.txtPretraga);
+            this.ClientSize = new System.Drawing.Size(719, 509);
+            this.Controls.Add(this.groupBox2);
+            this.Controls.Add(this.groupBox1);
             this.Name = "frmPrikazVrstaPredstave";
             this.Text = "Prikaz vrsta predstave";
             this.Load += new System.EventHandler(this.frmPrikazVrstaPredstave_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvVrstePredstave)).EndInit();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -143,11 +156,12 @@
 
         private Button btnPrikazi;
         private DataGridView dgvVrstePredstave;
-        private DataGridViewTextBoxColumn ID;
+        private Button btnDodaj;
+        private TextBox txtPretraga;
         private DataGridViewTextBoxColumn Naziv;
         private DataGridViewButtonColumn Uredi;
         private DataGridViewButtonColumn Obrisi;
-        private Button btnDodaj;
-        private TextBox txtPretraga;
+        private GroupBox groupBox1;
+        private GroupBox groupBox2;
     }
 }

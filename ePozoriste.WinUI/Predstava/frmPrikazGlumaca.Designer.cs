@@ -32,17 +32,20 @@
             this.dgvGlumci = new System.Windows.Forms.DataGridView();
             this.btnDodaj = new System.Windows.Forms.Button();
             this.txtPretraga = new System.Windows.Forms.TextBox();
-            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.Ime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Prezime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Uredi = new System.Windows.Forms.DataGridViewButtonColumn();
             this.Obrisi = new System.Windows.Forms.DataGridViewButtonColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvGlumci)).BeginInit();
+            this.groupBox1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnPrikazi
             // 
-            this.btnPrikazi.Location = new System.Drawing.Point(398, 12);
+            this.btnPrikazi.Location = new System.Drawing.Point(448, 51);
             this.btnPrikazi.Name = "btnPrikazi";
             this.btnPrikazi.Size = new System.Drawing.Size(124, 29);
             this.btnPrikazi.TabIndex = 11;
@@ -54,64 +57,75 @@
             // 
             this.dgvGlumci.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvGlumci.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.ID,
             this.Ime,
             this.Prezime,
             this.Uredi,
             this.Obrisi});
-            this.dgvGlumci.Location = new System.Drawing.Point(12, 56);
+            this.dgvGlumci.Location = new System.Drawing.Point(6, 41);
             this.dgvGlumci.Name = "dgvGlumci";
             this.dgvGlumci.RowHeadersWidth = 51;
             this.dgvGlumci.RowTemplate.Height = 29;
             this.dgvGlumci.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvGlumci.Size = new System.Drawing.Size(632, 376);
+            this.dgvGlumci.Size = new System.Drawing.Size(720, 424);
             this.dgvGlumci.TabIndex = 10;
             this.dgvGlumci.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvGlumci_CellContentClick);
             // 
             // btnDodaj
             // 
-            this.btnDodaj.Location = new System.Drawing.Point(528, 10);
+            this.btnDodaj.Location = new System.Drawing.Point(578, 51);
             this.btnDodaj.Name = "btnDodaj";
-            this.btnDodaj.Size = new System.Drawing.Size(116, 29);
+            this.btnDodaj.Size = new System.Drawing.Size(148, 29);
             this.btnDodaj.TabIndex = 9;
-            this.btnDodaj.Text = "Dodaj";
+            this.btnDodaj.Text = "Novi glumac";
             this.btnDodaj.UseVisualStyleBackColor = true;
             this.btnDodaj.Click += new System.EventHandler(this.btnDodaj_Click);
             // 
             // txtPretraga
             // 
-            this.txtPretraga.Location = new System.Drawing.Point(12, 12);
+            this.txtPretraga.Location = new System.Drawing.Point(6, 51);
             this.txtPretraga.Name = "txtPretraga";
-            this.txtPretraga.Size = new System.Drawing.Size(380, 27);
+            this.txtPretraga.Size = new System.Drawing.Size(305, 27);
             this.txtPretraga.TabIndex = 8;
             // 
-            // ID
+            // groupBox1
             // 
-            this.ID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.ID.DataPropertyName = "GlumacId";
-            this.ID.HeaderText = "ID";
-            this.ID.MinimumWidth = 6;
-            this.ID.Name = "ID";
-            this.ID.ReadOnly = true;
-            this.ID.Width = 53;
+            this.groupBox1.Controls.Add(this.txtPretraga);
+            this.groupBox1.Controls.Add(this.btnPrikazi);
+            this.groupBox1.Controls.Add(this.btnDodaj);
+            this.groupBox1.Location = new System.Drawing.Point(12, 12);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(750, 101);
+            this.groupBox1.TabIndex = 12;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Pretraga glumaca";
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.dgvGlumci);
+            this.groupBox2.Location = new System.Drawing.Point(12, 119);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(750, 490);
+            this.groupBox2.TabIndex = 13;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Glumci";
             // 
             // Ime
             // 
+            this.Ime.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.Ime.DataPropertyName = "Ime";
             this.Ime.HeaderText = "Ime";
             this.Ime.MinimumWidth = 6;
             this.Ime.Name = "Ime";
             this.Ime.ReadOnly = true;
-            this.Ime.Width = 125;
             // 
             // Prezime
             // 
+            this.Prezime.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.Prezime.DataPropertyName = "Prezime";
             this.Prezime.HeaderText = "Prezime";
             this.Prezime.MinimumWidth = 6;
             this.Prezime.Name = "Prezime";
             this.Prezime.ReadOnly = true;
-            this.Prezime.Width = 125;
             // 
             // Uredi
             // 
@@ -135,17 +149,17 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(660, 440);
-            this.Controls.Add(this.btnPrikazi);
-            this.Controls.Add(this.dgvGlumci);
-            this.Controls.Add(this.btnDodaj);
-            this.Controls.Add(this.txtPretraga);
+            this.ClientSize = new System.Drawing.Size(785, 624);
+            this.Controls.Add(this.groupBox2);
+            this.Controls.Add(this.groupBox1);
             this.Name = "frmPrikazGlumaca";
             this.Text = "Prikaz glumaca";
             this.Load += new System.EventHandler(this.frmPrikazGlumaca_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvGlumci)).EndInit();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -153,12 +167,13 @@
 
         private Button btnPrikazi;
         private DataGridView dgvGlumci;
-        private DataGridViewTextBoxColumn ID;
+        private Button btnDodaj;
+        private TextBox txtPretraga;
+        private GroupBox groupBox1;
         private DataGridViewTextBoxColumn Ime;
         private DataGridViewTextBoxColumn Prezime;
         private DataGridViewButtonColumn Uredi;
         private DataGridViewButtonColumn Obrisi;
-        private Button btnDodaj;
-        private TextBox txtPretraga;
+        private GroupBox groupBox2;
     }
 }

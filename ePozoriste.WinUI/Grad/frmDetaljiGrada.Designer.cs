@@ -49,18 +49,18 @@
             this.lblPostanskiBr.AutoSize = true;
             this.lblPostanskiBr.Location = new System.Drawing.Point(12, 76);
             this.lblPostanskiBr.Name = "lblPostanskiBr";
-            this.lblPostanskiBr.Size = new System.Drawing.Size(100, 20);
+            this.lblPostanskiBr.Size = new System.Drawing.Size(103, 20);
             this.lblPostanskiBr.TabIndex = 14;
-            this.lblPostanskiBr.Text = "Postanski broj";
+            this.lblPostanskiBr.Text = "Postanski broj:";
             // 
             // lblNaziv
             // 
             this.lblNaziv.AutoSize = true;
             this.lblNaziv.Location = new System.Drawing.Point(12, 9);
             this.lblNaziv.Name = "lblNaziv";
-            this.lblNaziv.Size = new System.Drawing.Size(46, 20);
+            this.lblNaziv.Size = new System.Drawing.Size(49, 20);
             this.lblNaziv.TabIndex = 13;
-            this.lblNaziv.Text = "Naziv";
+            this.lblNaziv.Text = "Naziv:";
             // 
             // txtPostanskiBr
             // 
@@ -100,9 +100,9 @@
             this.lblDrzava.AutoSize = true;
             this.lblDrzava.Location = new System.Drawing.Point(12, 141);
             this.lblDrzava.Name = "lblDrzava";
-            this.lblDrzava.Size = new System.Drawing.Size(55, 20);
+            this.lblDrzava.Size = new System.Drawing.Size(58, 20);
             this.lblDrzava.TabIndex = 16;
-            this.lblDrzava.Text = "Drzava";
+            this.lblDrzava.Text = "Drzava:";
             // 
             // errNaziv
             // 
@@ -129,7 +129,7 @@
             this.Controls.Add(this.txtNaziv);
             this.Controls.Add(this.btnSpremi);
             this.Name = "frmDetaljiGrada";
-            this.Text = "Detalji Grada";
+            this.Text = "Grad";
             this.Load += new System.EventHandler(this.frmDetaljiGrada_Load);
             ((System.ComponentModel.ISupportInitialize)(this.errNaziv)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errPostanskiBr)).EndInit();

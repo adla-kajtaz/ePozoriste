@@ -67,9 +67,9 @@
             this.lblGrad.AutoSize = true;
             this.lblGrad.Location = new System.Drawing.Point(12, 115);
             this.lblGrad.Name = "lblGrad";
-            this.lblGrad.Size = new System.Drawing.Size(41, 20);
+            this.lblGrad.Size = new System.Drawing.Size(44, 20);
             this.lblGrad.TabIndex = 21;
-            this.lblGrad.Text = "Grad";
+            this.lblGrad.Text = "Grad:";
             // 
             // cmbGradovi
             // 
@@ -77,7 +77,7 @@
             this.cmbGradovi.FormattingEnabled = true;
             this.cmbGradovi.Location = new System.Drawing.Point(12, 138);
             this.cmbGradovi.Name = "cmbGradovi";
-            this.cmbGradovi.Size = new System.Drawing.Size(241, 28);
+            this.cmbGradovi.Size = new System.Drawing.Size(257, 28);
             this.cmbGradovi.TabIndex = 20;
             // 
             // lblNaziv
@@ -85,15 +85,15 @@
             this.lblNaziv.AutoSize = true;
             this.lblNaziv.Location = new System.Drawing.Point(12, 9);
             this.lblNaziv.Name = "lblNaziv";
-            this.lblNaziv.Size = new System.Drawing.Size(46, 20);
+            this.lblNaziv.Size = new System.Drawing.Size(49, 20);
             this.lblNaziv.TabIndex = 19;
-            this.lblNaziv.Text = "Naziv";
+            this.lblNaziv.Text = "Naziv:";
             // 
             // txtNaziv
             // 
             this.txtNaziv.Location = new System.Drawing.Point(12, 32);
             this.txtNaziv.Name = "txtNaziv";
-            this.txtNaziv.Size = new System.Drawing.Size(241, 27);
+            this.txtNaziv.Size = new System.Drawing.Size(257, 27);
             this.txtNaziv.TabIndex = 18;
             // 
             // btnSpremi
@@ -111,15 +111,15 @@
             this.lblAdresa.AutoSize = true;
             this.lblAdresa.Location = new System.Drawing.Point(12, 62);
             this.lblAdresa.Name = "lblAdresa";
-            this.lblAdresa.Size = new System.Drawing.Size(55, 20);
+            this.lblAdresa.Size = new System.Drawing.Size(58, 20);
             this.lblAdresa.TabIndex = 23;
-            this.lblAdresa.Text = "Adresa";
+            this.lblAdresa.Text = "Adresa:";
             // 
             // txtAdresa
             // 
             this.txtAdresa.Location = new System.Drawing.Point(12, 85);
             this.txtAdresa.Name = "txtAdresa";
-            this.txtAdresa.Size = new System.Drawing.Size(241, 27);
+            this.txtAdresa.Size = new System.Drawing.Size(257, 27);
             this.txtAdresa.TabIndex = 22;
             // 
             // lblWebStranica
@@ -127,15 +127,15 @@
             this.lblWebStranica.AutoSize = true;
             this.lblWebStranica.Location = new System.Drawing.Point(12, 169);
             this.lblWebStranica.Name = "lblWebStranica";
-            this.lblWebStranica.Size = new System.Drawing.Size(94, 20);
+            this.lblWebStranica.Size = new System.Drawing.Size(257, 20);
             this.lblWebStranica.TabIndex = 25;
-            this.lblWebStranica.Text = "Web stranica";
+            this.lblWebStranica.Text = "Web stranica (Npr.www.pozoriste.ba):";
             // 
             // txtWebStranica
             // 
             this.txtWebStranica.Location = new System.Drawing.Point(12, 192);
             this.txtWebStranica.Name = "txtWebStranica";
-            this.txtWebStranica.Size = new System.Drawing.Size(241, 27);
+            this.txtWebStranica.Size = new System.Drawing.Size(257, 27);
             this.txtWebStranica.TabIndex = 24;
             // 
             // lblEmail
@@ -143,15 +143,15 @@
             this.lblEmail.AutoSize = true;
             this.lblEmail.Location = new System.Drawing.Point(12, 222);
             this.lblEmail.Name = "lblEmail";
-            this.lblEmail.Size = new System.Drawing.Size(46, 20);
+            this.lblEmail.Size = new System.Drawing.Size(237, 20);
             this.lblEmail.TabIndex = 27;
-            this.lblEmail.Text = "Email";
+            this.lblEmail.Text = "Email (Npr.admin@epozoriste.ba):";
             // 
             // txtEmail
             // 
             this.txtEmail.Location = new System.Drawing.Point(12, 245);
             this.txtEmail.Name = "txtEmail";
-            this.txtEmail.Size = new System.Drawing.Size(241, 27);
+            this.txtEmail.Size = new System.Drawing.Size(257, 27);
             this.txtEmail.TabIndex = 26;
             // 
             // lblBrTelefona
@@ -159,15 +159,15 @@
             this.lblBrTelefona.AutoSize = true;
             this.lblBrTelefona.Location = new System.Drawing.Point(12, 275);
             this.lblBrTelefona.Name = "lblBrTelefona";
-            this.lblBrTelefona.Size = new System.Drawing.Size(95, 20);
+            this.lblBrTelefona.Size = new System.Drawing.Size(224, 20);
             this.lblBrTelefona.TabIndex = 29;
-            this.lblBrTelefona.Text = "Broj telefona";
+            this.lblBrTelefona.Text = "Broj telefona (Npr.036-550-550):";
             // 
             // txtBrTelefona
             // 
             this.txtBrTelefona.Location = new System.Drawing.Point(12, 298);
             this.txtBrTelefona.Name = "txtBrTelefona";
-            this.txtBrTelefona.Size = new System.Drawing.Size(241, 27);
+            this.txtBrTelefona.Size = new System.Drawing.Size(257, 27);
             this.txtBrTelefona.TabIndex = 28;
             // 
             // cbAktivan
@@ -260,7 +260,7 @@
             this.Controls.Add(this.txtNaziv);
             this.Controls.Add(this.btnSpremi);
             this.Name = "frmDodajPozoriste";
-            this.Text = "Dodaj Pozoriste";
+            this.Text = "Pozoriste";
             this.Load += new System.EventHandler(this.frmDodajPozoriste_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pbLogo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errNaziv)).EndInit();

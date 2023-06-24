@@ -43,9 +43,9 @@
             this.lblOdabirVrste.AutoSize = true;
             this.lblOdabirVrste.Location = new System.Drawing.Point(12, 62);
             this.lblOdabirVrste.Name = "lblOdabirVrste";
-            this.lblOdabirVrste.Size = new System.Drawing.Size(180, 20);
+            this.lblOdabirVrste.Size = new System.Drawing.Size(113, 20);
             this.lblOdabirVrste.TabIndex = 35;
-            this.lblOdabirVrste.Text = "Odaberite vrstu predstave";
+            this.lblOdabirVrste.Text = "Vrsta predstave:";
             // 
             // cmbVrstePredstave
             // 
@@ -71,9 +71,9 @@
             this.lblNaziv.AutoSize = true;
             this.lblNaziv.Location = new System.Drawing.Point(12, 9);
             this.lblNaziv.Name = "lblNaziv";
-            this.lblNaziv.Size = new System.Drawing.Size(115, 20);
+            this.lblNaziv.Size = new System.Drawing.Size(76, 20);
             this.lblNaziv.TabIndex = 32;
-            this.lblNaziv.Text = "Naziv predstave";
+            this.lblNaziv.Text = "Predstava:";
             // 
             // txtNazivPredstave
             // 
@@ -98,7 +98,7 @@
             this.Controls.Add(this.lblNaziv);
             this.Controls.Add(this.txtNazivPredstave);
             this.Name = "frmPredstavaVrstaPredstave";
-            this.Text = "Vrste predstave";
+            this.Text = "Vrsta predstave";
             ((System.ComponentModel.ISupportInitialize)(this.err)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

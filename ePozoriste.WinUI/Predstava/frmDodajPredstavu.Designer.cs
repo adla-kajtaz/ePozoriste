@@ -60,9 +60,9 @@
             this.lblSadrzaj.AutoSize = true;
             this.lblSadrzaj.Location = new System.Drawing.Point(12, 62);
             this.lblSadrzaj.Name = "lblSadrzaj";
-            this.lblSadrzaj.Size = new System.Drawing.Size(58, 20);
+            this.lblSadrzaj.Size = new System.Drawing.Size(61, 20);
             this.lblSadrzaj.TabIndex = 23;
-            this.lblSadrzaj.Text = "Sadržaj";
+            this.lblSadrzaj.Text = "Sadržaj:";
             // 
             // txtSadrzaj
             // 
@@ -78,9 +78,9 @@
             this.lblNaziv.AutoSize = true;
             this.lblNaziv.Location = new System.Drawing.Point(12, 9);
             this.lblNaziv.Name = "lblNaziv";
-            this.lblNaziv.Size = new System.Drawing.Size(46, 20);
+            this.lblNaziv.Size = new System.Drawing.Size(49, 20);
             this.lblNaziv.TabIndex = 21;
-            this.lblNaziv.Text = "Naziv";
+            this.lblNaziv.Text = "Naziv:";
             // 
             // txtNaziv
             // 
@@ -104,18 +104,18 @@
             this.lblSlika.AutoSize = true;
             this.lblSlika.Location = new System.Drawing.Point(389, 9);
             this.lblSlika.Name = "lblSlika";
-            this.lblSlika.Size = new System.Drawing.Size(40, 20);
+            this.lblSlika.Size = new System.Drawing.Size(43, 20);
             this.lblSlika.TabIndex = 25;
-            this.lblSlika.Text = "Slika";
+            this.lblSlika.Text = "Slika:";
             // 
             // lblVrijemeTrajanja
             // 
             this.lblVrijemeTrajanja.AutoSize = true;
             this.lblVrijemeTrajanja.Location = new System.Drawing.Point(12, 259);
             this.lblVrijemeTrajanja.Name = "lblVrijemeTrajanja";
-            this.lblVrijemeTrajanja.Size = new System.Drawing.Size(113, 20);
+            this.lblVrijemeTrajanja.Size = new System.Drawing.Size(155, 20);
             this.lblVrijemeTrajanja.TabIndex = 27;
-            this.lblVrijemeTrajanja.Text = "Vrijeme trajanja";
+            this.lblVrijemeTrajanja.Text = "Vrijeme trajanja (min):";
             // 
             // txtVrijemeTrajanja
             // 
@@ -129,9 +129,9 @@
             this.lblRezija.AutoSize = true;
             this.lblRezija.Location = new System.Drawing.Point(12, 312);
             this.lblRezija.Name = "lblRezija";
-            this.lblRezija.Size = new System.Drawing.Size(49, 20);
+            this.lblRezija.Size = new System.Drawing.Size(52, 20);
             this.lblRezija.TabIndex = 29;
-            this.lblRezija.Text = "Režija";
+            this.lblRezija.Text = "Režija:";
             // 
             // txtRezija
             // 
@@ -145,9 +145,9 @@
             this.lblScenografija.AutoSize = true;
             this.lblScenografija.Location = new System.Drawing.Point(389, 159);
             this.lblScenografija.Name = "lblScenografija";
-            this.lblScenografija.Size = new System.Drawing.Size(92, 20);
+            this.lblScenografija.Size = new System.Drawing.Size(95, 20);
             this.lblScenografija.TabIndex = 31;
-            this.lblScenografija.Text = "Scenografija";
+            this.lblScenografija.Text = "Scenografija:";
             // 
             // txtScenografija
             // 
@@ -161,9 +161,9 @@
             this.lblKostimografija.AutoSize = true;
             this.lblKostimografija.Location = new System.Drawing.Point(389, 212);
             this.lblKostimografija.Name = "lblKostimografija";
-            this.lblKostimografija.Size = new System.Drawing.Size(107, 20);
+            this.lblKostimografija.Size = new System.Drawing.Size(110, 20);
             this.lblKostimografija.TabIndex = 33;
-            this.lblKostimografija.Text = "Kostimografija";
+            this.lblKostimografija.Text = "Kostimografija:";
             // 
             // txtKostimografija
             // 
@@ -230,7 +230,7 @@
             this.Controls.Add(this.lblNaziv);
             this.Controls.Add(this.txtNaziv);
             this.Name = "frmDodajPredstavu";
-            this.Text = "Dodaj Predstavu";
+            this.Text = "Predstava";
             this.Load += new System.EventHandler(this.frmDodajPredstavu_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pbSlikaPlakata)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errNaziv)).EndInit();

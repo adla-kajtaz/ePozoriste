@@ -75,18 +75,18 @@
             this.lblPredstava.AutoSize = true;
             this.lblPredstava.Location = new System.Drawing.Point(12, 9);
             this.lblPredstava.Name = "lblPredstava";
-            this.lblPredstava.Size = new System.Drawing.Size(148, 20);
+            this.lblPredstava.Size = new System.Drawing.Size(76, 20);
             this.lblPredstava.TabIndex = 21;
-            this.lblPredstava.Text = "Odaberite predstavu:";
+            this.lblPredstava.Text = "Predstava:";
             // 
             // lblSala
             // 
             this.lblSala.AutoSize = true;
             this.lblSala.Location = new System.Drawing.Point(12, 63);
             this.lblSala.Name = "lblSala";
-            this.lblSala.Size = new System.Drawing.Size(109, 20);
+            this.lblSala.Size = new System.Drawing.Size(40, 20);
             this.lblSala.TabIndex = 22;
-            this.lblSala.Text = "Odaberite salu:";
+            this.lblSala.Text = "Sala:";
             // 
             // txtCijenaKarte
             // 
@@ -100,9 +100,9 @@
             this.lblKarta.AutoSize = true;
             this.lblKarta.Location = new System.Drawing.Point(12, 117);
             this.lblKarta.Name = "lblKarta";
-            this.lblKarta.Size = new System.Drawing.Size(141, 20);
+            this.lblKarta.Size = new System.Drawing.Size(126, 20);
             this.lblKarta.TabIndex = 24;
-            this.lblKarta.Text = "Unesite cijenu karte:";
+            this.lblKarta.Text = "Cijena karte (KM):";
             // 
             // cbPremijera
             // 
@@ -136,9 +136,9 @@
             this.lblDatum.AutoSize = true;
             this.lblDatum.Location = new System.Drawing.Point(12, 170);
             this.lblDatum.Name = "lblDatum";
-            this.lblDatum.Size = new System.Drawing.Size(194, 20);
+            this.lblDatum.Size = new System.Drawing.Size(125, 20);
             this.lblDatum.TabIndex = 28;
-            this.lblDatum.Text = "Odaberite datum izvođenja:";
+            this.lblDatum.Text = "Datum izvođenja:";
             // 
             // btnDodaj
             // 
@@ -155,9 +155,9 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(12, 223);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(191, 20);
+            this.label1.Size = new System.Drawing.Size(137, 20);
             this.label1.TabIndex = 31;
-            this.label1.Text = "Unesite vrijeme održavanja:";
+            this.label1.Text = "Satnica održavanja:";
             // 
             // txtVrijemeOdrzavanja
             // 

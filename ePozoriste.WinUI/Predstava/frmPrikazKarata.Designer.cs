@@ -29,86 +29,41 @@
         private void InitializeComponent()
         {
             this.dgvKarte = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Aktivna = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.BrojSjedista = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.BrojReda = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Sjedište = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cbAktivna = new System.Windows.Forms.CheckBox();
             this.btnPrikazi = new System.Windows.Forms.Button();
             this.btnSjedista = new System.Windows.Forms.Button();
             this.btnObrisi = new System.Windows.Forms.Button();
+            this.BrojSjedista = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.BrojReda = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Sjedište = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Aktivna = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvKarte)).BeginInit();
+            this.groupBox1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // dgvKarte
             // 
             this.dgvKarte.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvKarte.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn1,
-            this.Aktivna,
             this.BrojSjedista,
             this.BrojReda,
-            this.Sjedište});
-            this.dgvKarte.Location = new System.Drawing.Point(12, 42);
+            this.Sjedište,
+            this.Aktivna});
+            this.dgvKarte.Location = new System.Drawing.Point(6, 26);
             this.dgvKarte.Name = "dgvKarte";
             this.dgvKarte.RowHeadersWidth = 51;
             this.dgvKarte.RowTemplate.Height = 29;
             this.dgvKarte.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvKarte.Size = new System.Drawing.Size(678, 369);
+            this.dgvKarte.Size = new System.Drawing.Size(678, 524);
             this.dgvKarte.TabIndex = 15;
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.DataPropertyName = "KartaId";
-            this.dataGridViewTextBoxColumn1.HeaderText = "ID";
-            this.dataGridViewTextBoxColumn1.MinimumWidth = 6;
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
-            this.dataGridViewTextBoxColumn1.Width = 125;
-            // 
-            // Aktivna
-            // 
-            this.Aktivna.DataPropertyName = "Aktivna";
-            this.Aktivna.HeaderText = "Aktivna";
-            this.Aktivna.MinimumWidth = 6;
-            this.Aktivna.Name = "Aktivna";
-            this.Aktivna.ReadOnly = true;
-            this.Aktivna.Width = 125;
-            // 
-            // BrojSjedista
-            // 
-            this.BrojSjedista.DataPropertyName = "BrojSjedista";
-            this.BrojSjedista.HeaderText = "Broj sjedišta";
-            this.BrojSjedista.MinimumWidth = 6;
-            this.BrojSjedista.Name = "BrojSjedista";
-            this.BrojSjedista.ReadOnly = true;
-            this.BrojSjedista.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.BrojSjedista.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.BrojSjedista.Width = 125;
-            // 
-            // BrojReda
-            // 
-            this.BrojReda.DataPropertyName = "BrojReda";
-            this.BrojReda.HeaderText = "Broj reda";
-            this.BrojReda.MinimumWidth = 6;
-            this.BrojReda.Name = "BrojReda";
-            this.BrojReda.ReadOnly = true;
-            this.BrojReda.Width = 125;
-            // 
-            // Sjedište
-            // 
-            this.Sjedište.DataPropertyName = "Sjediste";
-            this.Sjedište.HeaderText = "Sjedište";
-            this.Sjedište.MinimumWidth = 6;
-            this.Sjedište.Name = "Sjedište";
-            this.Sjedište.ReadOnly = true;
-            this.Sjedište.Width = 125;
             // 
             // cbAktivna
             // 
             this.cbAktivna.AutoSize = true;
-            this.cbAktivna.Location = new System.Drawing.Point(12, 12);
+            this.cbAktivna.Location = new System.Drawing.Point(6, 39);
             this.cbAktivna.Name = "cbAktivna";
             this.cbAktivna.Size = new System.Drawing.Size(80, 24);
             this.cbAktivna.TabIndex = 16;
@@ -117,7 +72,7 @@
             // 
             // btnPrikazi
             // 
-            this.btnPrikazi.Location = new System.Drawing.Point(98, 7);
+            this.btnPrikazi.Location = new System.Drawing.Point(92, 36);
             this.btnPrikazi.Name = "btnPrikazi";
             this.btnPrikazi.Size = new System.Drawing.Size(191, 29);
             this.btnPrikazi.TabIndex = 17;
@@ -127,7 +82,7 @@
             // 
             // btnSjedista
             // 
-            this.btnSjedista.Location = new System.Drawing.Point(492, 7);
+            this.btnSjedista.Location = new System.Drawing.Point(486, 36);
             this.btnSjedista.Name = "btnSjedista";
             this.btnSjedista.Size = new System.Drawing.Size(198, 29);
             this.btnSjedista.TabIndex = 18;
@@ -137,7 +92,7 @@
             // 
             // btnObrisi
             // 
-            this.btnObrisi.Location = new System.Drawing.Point(295, 7);
+            this.btnObrisi.Location = new System.Drawing.Point(289, 36);
             this.btnObrisi.Name = "btnObrisi";
             this.btnObrisi.Size = new System.Drawing.Size(191, 29);
             this.btnObrisi.TabIndex = 19;
@@ -145,22 +100,82 @@
             this.btnObrisi.UseVisualStyleBackColor = true;
             this.btnObrisi.Click += new System.EventHandler(this.btnObrisi_Click);
             // 
+            // BrojSjedista
+            // 
+            this.BrojSjedista.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.BrojSjedista.DataPropertyName = "BrojSjedista";
+            this.BrojSjedista.HeaderText = "Broj sjedišta";
+            this.BrojSjedista.MinimumWidth = 6;
+            this.BrojSjedista.Name = "BrojSjedista";
+            this.BrojSjedista.ReadOnly = true;
+            this.BrojSjedista.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.BrojSjedista.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // BrojReda
+            // 
+            this.BrojReda.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.BrojReda.DataPropertyName = "BrojReda";
+            this.BrojReda.HeaderText = "Broj reda";
+            this.BrojReda.MinimumWidth = 6;
+            this.BrojReda.Name = "BrojReda";
+            this.BrojReda.ReadOnly = true;
+            // 
+            // Sjedište
+            // 
+            this.Sjedište.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Sjedište.DataPropertyName = "Sjediste";
+            this.Sjedište.HeaderText = "Sjedište";
+            this.Sjedište.MinimumWidth = 6;
+            this.Sjedište.Name = "Sjedište";
+            this.Sjedište.ReadOnly = true;
+            // 
+            // Aktivna
+            // 
+            this.Aktivna.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Aktivna.DataPropertyName = "Aktivna";
+            this.Aktivna.HeaderText = "Aktivna";
+            this.Aktivna.MinimumWidth = 6;
+            this.Aktivna.Name = "Aktivna";
+            this.Aktivna.ReadOnly = true;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.cbAktivna);
+            this.groupBox1.Controls.Add(this.btnSjedista);
+            this.groupBox1.Controls.Add(this.btnObrisi);
+            this.groupBox1.Controls.Add(this.btnPrikazi);
+            this.groupBox1.Location = new System.Drawing.Point(12, 12);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(701, 81);
+            this.groupBox1.TabIndex = 20;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Pretraga karata";
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.dgvKarte);
+            this.groupBox2.Location = new System.Drawing.Point(12, 99);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(701, 571);
+            this.groupBox2.TabIndex = 21;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Karte";
+            // 
             // frmPrikazKarata
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(706, 430);
-            this.Controls.Add(this.btnObrisi);
-            this.Controls.Add(this.btnSjedista);
-            this.Controls.Add(this.btnPrikazi);
-            this.Controls.Add(this.cbAktivna);
-            this.Controls.Add(this.dgvKarte);
+            this.ClientSize = new System.Drawing.Size(748, 702);
+            this.Controls.Add(this.groupBox2);
+            this.Controls.Add(this.groupBox1);
             this.Name = "frmPrikazKarata";
-            this.Text = "Prikaz Karata";
+            this.Text = "Prikaz karata";
             this.Load += new System.EventHandler(this.frmPrikazKarata_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvKarte)).EndInit();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -170,11 +185,12 @@
         private CheckBox cbAktivna;
         private Button btnPrikazi;
         private Button btnSjedista;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private DataGridViewCheckBoxColumn Aktivna;
+        private Button btnObrisi;
         private DataGridViewTextBoxColumn BrojSjedista;
         private DataGridViewTextBoxColumn BrojReda;
         private DataGridViewTextBoxColumn Sjedište;
-        private Button btnObrisi;
+        private DataGridViewCheckBoxColumn Aktivna;
+        private GroupBox groupBox1;
+        private GroupBox groupBox2;
     }
 }

@@ -47,9 +47,9 @@
             this.lblNaziv.AutoSize = true;
             this.lblNaziv.Location = new System.Drawing.Point(12, 9);
             this.lblNaziv.Name = "lblNaziv";
-            this.lblNaziv.Size = new System.Drawing.Size(115, 20);
+            this.lblNaziv.Size = new System.Drawing.Size(76, 20);
             this.lblNaziv.TabIndex = 23;
-            this.lblNaziv.Text = "Naziv predstave";
+            this.lblNaziv.Text = "Predstava:";
             // 
             // txtNazivPredstave
             // 
@@ -81,9 +81,9 @@
             this.lblNazivUloge.AutoSize = true;
             this.lblNazivUloge.Location = new System.Drawing.Point(12, 62);
             this.lblNazivUloge.Name = "lblNazivUloge";
-            this.lblNazivUloge.Size = new System.Drawing.Size(88, 20);
+            this.lblNazivUloge.Size = new System.Drawing.Size(91, 20);
             this.lblNazivUloge.TabIndex = 28;
-            this.lblNazivUloge.Text = "Naziv uloge";
+            this.lblNazivUloge.Text = "Naziv uloge:";
             // 
             // cmbGlumac
             // 
@@ -99,9 +99,9 @@
             this.lblOdabirGlumca.AutoSize = true;
             this.lblOdabirGlumca.Location = new System.Drawing.Point(12, 115);
             this.lblOdabirGlumca.Name = "lblOdabirGlumca";
-            this.lblOdabirGlumca.Size = new System.Drawing.Size(129, 20);
+            this.lblOdabirGlumca.Size = new System.Drawing.Size(62, 20);
             this.lblOdabirGlumca.TabIndex = 30;
-            this.lblOdabirGlumca.Text = "Odaberite glumca";
+            this.lblOdabirGlumca.Text = "Glumac:";
             // 
             // errNaziv
             // 
@@ -124,7 +124,7 @@
             this.Controls.Add(this.lblNaziv);
             this.Controls.Add(this.txtNazivPredstave);
             this.Name = "frmGlumacPredstava";
-            this.Text = "Glumci";
+            this.Text = "Glumac";
             ((System.ComponentModel.ISupportInitialize)(this.errNaziv)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errGlumac)).EndInit();
             this.ResumeLayout(false);

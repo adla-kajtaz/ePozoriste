@@ -77,14 +77,14 @@ namespace ePozoriste.WinUI
         private async void dgvPozorista_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             var pozoriste = dgvPozorista.SelectedRows[0].DataBoundItem as Pozoriste;
-            if (e.ColumnIndex == 9)
+            if (e.ColumnIndex == 8)
             {
                 
                 await _pozoristeService.Delete<Pozoriste>(pozoriste.PozoristeId);
                 dgvPozorista.DataSource = null;
                 frmPrikazPozorista_Load(sender, e);
             }
-            else if (e.ColumnIndex == 8)
+            else if (e.ColumnIndex == 7)
             {
                 frmDodajPozoriste frmDodajPozoriste = new frmDodajPozoriste(pozoriste);
                 if (frmDodajPozoriste.ShowDialog() == DialogResult.OK)
@@ -93,7 +93,7 @@ namespace ePozoriste.WinUI
                     frmPrikazPozorista_Load(sender, e);
                 }
             }
-            else if(e.ColumnIndex == 10)
+            else if(e.ColumnIndex == 9)
             {
                 frmPrikazSala frmPrikazSala = new frmPrikazSala(pozoriste.PozoristeId);
                 if (frmPrikazSala.ShowDialog() == DialogResult.OK)

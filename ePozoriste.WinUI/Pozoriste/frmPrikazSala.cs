@@ -65,13 +65,13 @@ namespace ePozoriste.WinUI
         private async void dgvSale_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             var sala = dgvSale.SelectedRows[0].DataBoundItem as Sala;
-            if (e.ColumnIndex == 6)
+            if (e.ColumnIndex == 5)
             {
                 await _salaService.Delete<Sala>(sala.SalaId);
                 dgvSale.DataSource = null;
                 frmPrikazSala_Load(sender, e);
             }
-            else if (e.ColumnIndex == 5)
+            else if (e.ColumnIndex == 4)
             {
                 frmDodajSalu frmDodajSalu = new frmDodajSalu(_pozoristeId, sala);
                 if (frmDodajSalu.ShowDialog() == DialogResult.OK)
@@ -80,7 +80,7 @@ namespace ePozoriste.WinUI
                     frmPrikazSala_Load(sender, e);
                 }
             }
-            else if (e.ColumnIndex == 7)
+            else if (e.ColumnIndex == 6)
             {
                 frmPrikazTermina frmPrikazTermina = new frmPrikazTermina(sala);
                 if (frmPrikazTermina.ShowDialog() == DialogResult.OK)

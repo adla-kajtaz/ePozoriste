@@ -83,14 +83,14 @@ namespace ePozoriste.WinUI
         private async void dgvTermini_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             var termini = dgvTermini.SelectedRows[0].DataBoundItem as Termin;
-            if (e.ColumnIndex == 10)
+            if (e.ColumnIndex == 9)
             {
                 await _terminService.Delete<Termin>(termini.TerminId);
                 dgvTermini.DataSource = null;
                 frmPrikazTermina_Load(sender, e);
 
             }
-            else if (e.ColumnIndex == 9)
+            else if (e.ColumnIndex == 8)
             {
                 frmDodavanjeTermina frmDodavanjeTermina = new frmDodavanjeTermina(termini);
                 if (frmDodavanjeTermina.ShowDialog() == DialogResult.OK)
@@ -99,7 +99,7 @@ namespace ePozoriste.WinUI
                     frmPrikazTermina_Load(sender, e);
                 }
             }
-            else if (e.ColumnIndex == 8)
+            else if (e.ColumnIndex == 7)
             {
                 frmPrikazKarata frmPrikazKarata = new frmPrikazKarata(termini);
                 if (frmPrikazKarata.ShowDialog() == DialogResult.OK)

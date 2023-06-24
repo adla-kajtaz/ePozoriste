@@ -49,14 +49,14 @@ namespace ePozoriste.WinUI
         private async void dgvDrzava_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             var drzava = dgvDrzave.SelectedRows[0].DataBoundItem as Drzava;
-            if (e.ColumnIndex == 4)
+            if (e.ColumnIndex == 3)
             {
                 
                 await _drzavaService.Delete<Drzava>(drzava.DrzavaId);
                 dgvDrzave.DataSource = null;
                 frmPrikazDrzava_Load(sender, e);
             }
-            else if (e.ColumnIndex == 3)
+            else if (e.ColumnIndex == 2)
             {
                 frmDetaljiDrzave frmDetalji = new frmDetaljiDrzave(drzava);
                 if (frmDetalji.ShowDialog() == DialogResult.OK)

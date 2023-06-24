@@ -78,13 +78,13 @@ namespace ePozoriste.WinUI
         private async void dgvGradovi_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             var grad = dgvGradovi.SelectedRows[0].DataBoundItem as Grad;
-            if (e.ColumnIndex == 5)
+            if (e.ColumnIndex == 4)
             {
                 await _gradService.Delete<Grad>(grad.GradId);
                 dgvGradovi.DataSource = null;
                 frmPrikazGradova_Load(sender, e);
             }
-            else if (e.ColumnIndex == 4)
+            else if (e.ColumnIndex == 3)
             {
                 frmDetaljiGrada frmDetalji = new frmDetaljiGrada(grad);
                 if (frmDetalji.ShowDialog() == DialogResult.OK)

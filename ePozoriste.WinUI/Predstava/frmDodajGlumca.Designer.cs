@@ -45,9 +45,9 @@
             this.lblIme.AutoSize = true;
             this.lblIme.Location = new System.Drawing.Point(12, 9);
             this.lblIme.Name = "lblIme";
-            this.lblIme.Size = new System.Drawing.Size(34, 20);
+            this.lblIme.Size = new System.Drawing.Size(37, 20);
             this.lblIme.TabIndex = 17;
-            this.lblIme.Text = "Ime";
+            this.lblIme.Text = "Ime:";
             // 
             // txtIme
             // 
@@ -71,9 +71,9 @@
             this.lblPrezime.AutoSize = true;
             this.lblPrezime.Location = new System.Drawing.Point(12, 62);
             this.lblPrezime.Name = "lblPrezime";
-            this.lblPrezime.Size = new System.Drawing.Size(62, 20);
+            this.lblPrezime.Size = new System.Drawing.Size(65, 20);
             this.lblPrezime.TabIndex = 19;
-            this.lblPrezime.Text = "Prezime";
+            this.lblPrezime.Text = "Prezime:";
             // 
             // txtPrezime
             // 
@@ -101,7 +101,7 @@
             this.Controls.Add(this.txtIme);
             this.Controls.Add(this.btnSpremi);
             this.Name = "frmDodajGlumca";
-            this.Text = "Dodaj glumca";
+            this.Text = "Glumac";
             this.Load += new System.EventHandler(this.frmDodajGlumca_Load);
             ((System.ComponentModel.ISupportInitialize)(this.errIme)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errPrezime)).EndInit();

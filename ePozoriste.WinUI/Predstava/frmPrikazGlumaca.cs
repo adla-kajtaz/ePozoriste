@@ -59,13 +59,13 @@ namespace ePozoriste.WinUI
         private async void dgvGlumci_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             var glumac = dgvGlumci.SelectedRows[0].DataBoundItem as Glumac;
-            if (e.ColumnIndex == 4)
+            if (e.ColumnIndex == 3)
             {
                 await _glumacService.Delete<Glumac>(glumac.GlumacId);
                 dgvGlumci.DataSource = null;
                 frmPrikazGlumaca_Load(sender, e);
             }
-            else if (e.ColumnIndex == 3)
+            else if (e.ColumnIndex == 2)
             {
                 frmDodajGlumca frmDodajGlumca = new frmDodajGlumca(glumac);
                 if (frmDodajGlumca.ShowDialog() == DialogResult.OK)

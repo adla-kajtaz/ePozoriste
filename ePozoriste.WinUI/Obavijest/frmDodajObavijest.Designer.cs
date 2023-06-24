@@ -138,9 +138,9 @@
             this.lblSlika.AutoSize = true;
             this.lblSlika.Location = new System.Drawing.Point(384, 63);
             this.lblSlika.Name = "lblSlika";
-            this.lblSlika.Size = new System.Drawing.Size(40, 20);
+            this.lblSlika.Size = new System.Drawing.Size(43, 20);
             this.lblSlika.TabIndex = 37;
-            this.lblSlika.Text = "Slika";
+            this.lblSlika.Text = "Slika:";
             // 
             // pbSlika
             // 
@@ -204,7 +204,7 @@
             this.Controls.Add(this.txtNaslov);
             this.Controls.Add(this.label1);
             this.Name = "frmDodajObavijest";
-            this.Text = "Dodaj obavijest";
+            this.Text = "Obavijest";
             this.Load += new System.EventHandler(this.frmDodajObavijest_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pbSlika)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errNaslov)).EndInit();

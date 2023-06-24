@@ -59,13 +59,13 @@ namespace ePozoriste.WinUI
         private async void dgvVrstePredstave_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             var vrstePredstave = dgvVrstePredstave.SelectedRows[0].DataBoundItem as VrstaPredstave;
-            if (e.ColumnIndex == 3)
+            if (e.ColumnIndex == 2)
             {
                 await _vrstaPredstaveService.Delete<VrstaPredstave>(vrstePredstave.VrstaPredstaveId);
                 dgvVrstePredstave.DataSource = null;
                 frmPrikazVrstaPredstave_Load(sender, e);
             }
-            else if (e.ColumnIndex == 2)
+            else if (e.ColumnIndex == 1)
             {
                 frmDodajVrstuPredstave frmDodajVrstuPredstave = new frmDodajVrstuPredstave(vrstePredstave);
                 if (frmDodajVrstuPredstave.ShowDialog() == DialogResult.OK)

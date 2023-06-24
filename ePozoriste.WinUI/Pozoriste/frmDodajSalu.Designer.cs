@@ -53,9 +53,9 @@
             this.lblBrSjedistaPoRedu.AutoSize = true;
             this.lblBrSjedistaPoRedu.Location = new System.Drawing.Point(292, 62);
             this.lblBrSjedistaPoRedu.Name = "lblBrSjedistaPoRedu";
-            this.lblBrSjedistaPoRedu.Size = new System.Drawing.Size(146, 20);
+            this.lblBrSjedistaPoRedu.Size = new System.Drawing.Size(149, 20);
             this.lblBrSjedistaPoRedu.TabIndex = 38;
-            this.lblBrSjedistaPoRedu.Text = "Broj sjedista po redu";
+            this.lblBrSjedistaPoRedu.Text = "Broj sjedista po redu:";
             // 
             // txtBrSjedistaPoRedu
             // 
@@ -69,9 +69,9 @@
             this.lblBrRedova.AutoSize = true;
             this.lblBrRedova.Location = new System.Drawing.Point(292, 9);
             this.lblBrRedova.Name = "lblBrRedova";
-            this.lblBrRedova.Size = new System.Drawing.Size(86, 20);
+            this.lblBrRedova.Size = new System.Drawing.Size(89, 20);
             this.lblBrRedova.TabIndex = 36;
-            this.lblBrRedova.Text = "Broj redova";
+            this.lblBrRedova.Text = "Broj redova:";
             // 
             // txtBrRedova
             // 
@@ -85,9 +85,9 @@
             this.lblNaziv.AutoSize = true;
             this.lblNaziv.Location = new System.Drawing.Point(12, 9);
             this.lblNaziv.Name = "lblNaziv";
-            this.lblNaziv.Size = new System.Drawing.Size(46, 20);
+            this.lblNaziv.Size = new System.Drawing.Size(49, 20);
             this.lblNaziv.TabIndex = 30;
-            this.lblNaziv.Text = "Naziv";
+            this.lblNaziv.Text = "Naziv:";
             // 
             // txtNaziv
             // 
@@ -111,9 +111,9 @@
             this.lbBrSjedista.AutoSize = true;
             this.lbBrSjedista.Location = new System.Drawing.Point(12, 62);
             this.lbBrSjedista.Name = "lbBrSjedista";
-            this.lbBrSjedista.Size = new System.Drawing.Size(90, 20);
+            this.lbBrSjedista.Size = new System.Drawing.Size(93, 20);
             this.lbBrSjedista.TabIndex = 40;
-            this.lbBrSjedista.Text = "Broj sjedista";
+            this.lbBrSjedista.Text = "Broj sjedista:";
             // 
             // txtBrSjedista
             // 
@@ -153,7 +153,7 @@
             this.Controls.Add(this.txtNaziv);
             this.Controls.Add(this.btnSpremi);
             this.Name = "frmDodajSalu";
-            this.Text = "Dodaj Salu";
+            this.Text = "Sala";
             this.Load += new System.EventHandler(this.frmDodajSalu_Load);
             ((System.ComponentModel.ISupportInitialize)(this.errNaziv)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errSjedista)).EndInit();

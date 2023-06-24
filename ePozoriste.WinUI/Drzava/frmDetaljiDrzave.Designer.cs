@@ -45,18 +45,18 @@
             this.lblSkracenica.AutoSize = true;
             this.lblSkracenica.Location = new System.Drawing.Point(12, 76);
             this.lblSkracenica.Name = "lblSkracenica";
-            this.lblSkracenica.Size = new System.Drawing.Size(79, 20);
+            this.lblSkracenica.Size = new System.Drawing.Size(82, 20);
             this.lblSkracenica.TabIndex = 9;
-            this.lblSkracenica.Text = "Skracenica";
+            this.lblSkracenica.Text = "Skracenica:";
             // 
             // lblNaziv
             // 
             this.lblNaziv.AutoSize = true;
             this.lblNaziv.Location = new System.Drawing.Point(12, 9);
             this.lblNaziv.Name = "lblNaziv";
-            this.lblNaziv.Size = new System.Drawing.Size(46, 20);
+            this.lblNaziv.Size = new System.Drawing.Size(49, 20);
             this.lblNaziv.TabIndex = 8;
-            this.lblNaziv.Text = "Naziv";
+            this.lblNaziv.Text = "Naziv:";
             // 
             // txtSkracenica
             // 
@@ -101,7 +101,7 @@
             this.Controls.Add(this.txtNaziv);
             this.Controls.Add(this.btnSpremi);
             this.Name = "frmDetaljiDrzave";
-            this.Text = "Detalji Drzave";
+            this.Text = "Drzava";
             this.Load += new System.EventHandler(this.frmDetaljiDrzave_Load);
             ((System.ComponentModel.ISupportInitialize)(this.errSkracenica)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errNaziv)).EndInit();

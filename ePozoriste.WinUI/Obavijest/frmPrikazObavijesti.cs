@@ -68,14 +68,14 @@ namespace ePozoriste.WinUI
         private async void dgvObavijesti_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             var obavijest = dgvObavijesti.SelectedRows[0].DataBoundItem as Obavijest;
-            if (e.ColumnIndex == 7)
+            if (e.ColumnIndex == 6)
             {
                 await _obavijestService.Delete<Obavijest>(obavijest.ObavijestId);
                 
                 dgvObavijesti.DataSource = null;
                 frmPrikazObavijesti_Load(sender, e);
             }
-            else if (e.ColumnIndex == 6)
+            else if (e.ColumnIndex == 5)
             {
                 frmDodajObavijest frmDodajObavijest = new frmDodajObavijest(obavijest);
                 if (frmDodajObavijest.ShowDialog() == DialogResult.OK)

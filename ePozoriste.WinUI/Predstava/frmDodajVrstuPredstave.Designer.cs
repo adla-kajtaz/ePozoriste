@@ -41,9 +41,9 @@
             this.lblNaziv.AutoSize = true;
             this.lblNaziv.Location = new System.Drawing.Point(12, 9);
             this.lblNaziv.Name = "lblNaziv";
-            this.lblNaziv.Size = new System.Drawing.Size(46, 20);
+            this.lblNaziv.Size = new System.Drawing.Size(49, 20);
             this.lblNaziv.TabIndex = 14;
-            this.lblNaziv.Text = "Naziv";
+            this.lblNaziv.Text = "Naziv:";
             // 
             // txtNaziv
             // 
@@ -75,7 +75,7 @@
             this.Controls.Add(this.txtNaziv);
             this.Controls.Add(this.btnSpremi);
             this.Name = "frmDodajVrstuPredstave";
-            this.Text = "Dodaj vrstu predstave";
+            this.Text = "Vrsta predstave";
             this.Load += new System.EventHandler(this.frmDodajVrstuPredstave_Load);
             ((System.ComponentModel.ISupportInitialize)(this.err)).EndInit();
             this.ResumeLayout(false);
