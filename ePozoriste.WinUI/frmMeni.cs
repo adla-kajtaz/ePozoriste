@@ -79,6 +79,9 @@ namespace ePozoriste.WinUI
 
         private void btnOdjaviSe_Click(object sender, EventArgs e)
         {
+            APIService.KorisnickoIme = "";
+            APIService.Lozinka = "";
+            APIService.LogiraniKorisnikId = 0;
             frmLogin frmLogin = new frmLogin();
             frmLogin.Show();
             this.Hide();
