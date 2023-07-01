@@ -5,6 +5,8 @@ import 'package:provider/provider.dart';
 
 
 class Login extends StatefulWidget{
+  const Login({super.key});
+  
   @override
   _LoginState createState() => _LoginState();
 }
@@ -105,7 +107,7 @@ class _LoginState extends State<Login>{
                     try{
                       //Authorization.username = username;
                       //Authorization.password = passworrd;
-                      Navigator.pushNamed(context, '/register');
+                      Navigator.pushNamed(context, '/');
 
                       //await _userProvider?.get();
 

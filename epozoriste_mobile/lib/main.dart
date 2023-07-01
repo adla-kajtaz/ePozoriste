@@ -1,9 +1,17 @@
-import 'package:epozoriste_mobile/screens/login.dart';
-import 'package:epozoriste_mobile/screens/register.dart';
+import 'package:epozoriste_mobile/providers/termin_provider.dart';
+import 'package:epozoriste_mobile/screens/screens.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(
+    /*MultiProvider(providers: [
+      //ChangeNotifierProvider(create: (_) => TerminProvider()),
+    ],
+    child:*/
+    const MyApp(),
+    //),
+    );
 }
 
 class MyApp extends StatelessWidget {
@@ -15,14 +23,16 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'ePozoriste',
       theme: ThemeData(
-        
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        colorScheme: ColorScheme.fromSeed(seedColor: const Color.fromARGB(255, 57, 53, 53)),
         useMaterial3: true,
       ),
       initialRoute: '/login',
       routes: {
-        '/login': (context) => Login(),
-        '/register': (context) => Register(),
+        '/login': (context) => const Login(),
+        '/register': (context) => const Register(),
+        '/': (context) => const Navigacija(),
+
+
       },
       /*home: const MyHomePage(title: 'Flutter Demo Home Page'),*/
     );

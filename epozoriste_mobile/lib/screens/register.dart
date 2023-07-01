@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 class Register extends StatefulWidget{
+  const Register({super.key});
+
   @override
   _RegisterState createState() => _RegisterState();
 }
@@ -20,7 +22,8 @@ class _RegisterState extends State<Register>{
   return Scaffold(
     backgroundColor: const Color.fromARGB(255, 86, 81, 81),
     resizeToAvoidBottomInset: false,
-    body: SafeArea(
+    body: SingleChildScrollView(
+      child: SafeArea(
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20),
         child: Column(
@@ -40,50 +43,58 @@ class _RegisterState extends State<Register>{
               Form(
                 child: Column(
                   children: [
+                    Row(
+                        children: [
+                          Flexible(
+                        child: TextFormField(
+                        onSaved: (newValue) => ime = newValue,
+                        validator: (value) {
+                          if(value!.isEmpty){
+                           return "Ovo polje je obavezno";
+                          }
+                        },
+                        style: const TextStyle(
+                          color: Color.fromARGB(225, 195, 178, 178)
+                        ),
+                        decoration: InputDecoration(
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(15)
+                          ),
+                          labelText: 'Ime',
+                          hintText: 'Ime',
+                          labelStyle: const TextStyle(
+                            color: Color.fromARGB(225, 195, 178, 178)
+                          ),
+                        ),
+                      ),
+                      ),
+                      const SizedBox(width: 5),
+                      Flexible(child: 
                       TextFormField(
-                      onSaved: (newValue) => ime = newValue,
-                      validator: (value) {
-                        if(value!.isEmpty){
-                         return "Ovo polje je obavezno";
-                        }
-                      },
-                      style: const TextStyle(
-                        color: Color.fromARGB(225, 195, 178, 178)
-                      ),
-                      decoration: InputDecoration(
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(15)
-                        ),
-                        labelText: 'Ime',
-                        hintText: 'Ime',
-                        labelStyle: const TextStyle(
+                        onSaved: (newValue) => prezime = newValue,
+                        validator: (value) {
+                          if(value!.isEmpty){
+                           return "Ovo polje je obavezno";
+                          }
+                        },
+                        style: const TextStyle(
                           color: Color.fromARGB(225, 195, 178, 178)
                         ),
-                      ),
-                    ),
-                    const SizedBox(height: 5),
-                    TextFormField(
-                      onSaved: (newValue) => prezime = newValue,
-                      validator: (value) {
-                        if(value!.isEmpty){
-                         return "Ovo polje je obavezno";
-                        }
-                      },
-                      style: const TextStyle(
-                        color: Color.fromARGB(225, 195, 178, 178)
-                      ),
-                      decoration: InputDecoration(
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(15)
-                        ),
-                        labelText: 'Prezime',
-                        hintText: 'Prezime',
-                        labelStyle: const TextStyle(
-                          color: Color.fromARGB(225, 195, 178, 178)
+                        decoration: InputDecoration(
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(15)
+                          ),
+                          labelText: 'Prezime',
+                          hintText: 'Prezime',
+                          labelStyle: const TextStyle(
+                            color: Color.fromARGB(225, 195, 178, 178)
+                          ),
                         ),
                       ),
+                      ),
+                      ]
                     ),
-                    const SizedBox(height: 5),
+                    const SizedBox(height: 10),
                     TextFormField(
                       onSaved: (newValue) => email = newValue,
                       validator: (value) {
@@ -105,7 +116,7 @@ class _RegisterState extends State<Register>{
                         ),
                       ),
                     ),
-                    const SizedBox(height: 5),
+                    const SizedBox(height: 10),
                     TextFormField(
                       onSaved: (newValue) => brTelefona = newValue,
                       validator: (value) {
@@ -127,7 +138,7 @@ class _RegisterState extends State<Register>{
                         ),
                       ),
                     ),
-                    const SizedBox(height: 5),
+                    const SizedBox(height: 10),
                     TextFormField(
                       onSaved: (newValue) => korisnickoIme = newValue,
                       validator: (value) {
@@ -149,7 +160,7 @@ class _RegisterState extends State<Register>{
                         ),
                       ),
                     ),
-                    const SizedBox(height: 5),
+                    const SizedBox(height: 10),
                     TextFormField(
                       onSaved: (newValue) => lozinka = newValue,
                       validator: (value) {
@@ -171,7 +182,7 @@ class _RegisterState extends State<Register>{
                         ),
                       ),
                     ),
-                    const SizedBox(height: 5),
+                    const SizedBox(height: 10),
                     TextFormField(
                       onSaved: (newValue) => lozinkaProvjera = newValue,
                       validator: (value) {
@@ -200,7 +211,7 @@ class _RegisterState extends State<Register>{
                           formKey.currentState!.save();
                         }*/
                         try{
-                          Navigator.pushNamed(context, '/login');
+                          Navigator.pushNamed(context, '/');
 
                         } on Exception catch(err){
                           print(err.toString());
@@ -252,7 +263,8 @@ class _RegisterState extends State<Register>{
                   ),
           ],
           ),
-        ),
+      ),
+    ),
     ),
   );
   }
