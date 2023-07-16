@@ -5,8 +5,8 @@ import 'package:provider/provider.dart';
 
 void main() {
   runApp(
-    /*MultiProvider(providers: [
-      //ChangeNotifierProvider(create: (_) => TerminProvider()),
+   /* MultiProvider(providers: [
+      ChangeNotifierProvider(create: (_) => TerminProvider()),
     ],
     child:*/
     const MyApp(),
@@ -31,6 +31,7 @@ class MyApp extends StatelessWidget {
         '/login': (context) => const Login(),
         '/register': (context) => const Register(),
         '/': (context) => const Navigacija(),
+        '/detaljiPredstave': (context) => const DetaljiPredstave(),
 
 
       },

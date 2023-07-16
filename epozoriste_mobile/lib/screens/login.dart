@@ -22,7 +22,7 @@ class _LoginState extends State<Login>{
   return Scaffold(
     backgroundColor: const Color.fromARGB(255, 86, 81, 81),
     body:  Padding(
-      padding: EdgeInsets.symmetric(horizontal: 20),
+      padding: const EdgeInsets.symmetric(horizontal: 20),
       child: SingleChildScrollView(
         child: Column(
         children: [
@@ -107,7 +107,7 @@ class _LoginState extends State<Login>{
                     try{
                       //Authorization.username = username;
                       //Authorization.password = passworrd;
-                      Navigator.pushNamed(context, '/');
+                      Navigator.pushNamed(context, '/detaljiPredstave');
 
                       //await _userProvider?.get();
 
@@ -124,7 +124,7 @@ class _LoginState extends State<Login>{
                   'Prijavi se',
                   style: TextStyle(
                     color: Colors.white,
-                  fontSize: 20
+                  fontSize: 20,
                   ),
                 ),
               ),

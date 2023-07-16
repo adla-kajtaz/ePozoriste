@@ -17,10 +17,10 @@ class PerformanceList extends StatelessWidget{
         final termin = termini[index];
         return GestureDetector(
           onTap: () => {
-            Navigator.push(context, MaterialPageRoute(
-              builder: (context) => DetaljiPredstave(id: termin.terminId),
-              ),
-              )
+            //Navigator.push(context, MaterialPageRoute(
+              //builder: (context) => DetaljiPredstave(id: termin.terminId),
+              //),
+             // )
           },
           child: Container(
             margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
