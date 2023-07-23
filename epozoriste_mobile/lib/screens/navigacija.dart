@@ -10,9 +10,9 @@ class Navigacija extends StatefulWidget {
 
 class _NavigacijaState extends State<Navigacija> {
   final List<Widget> _screens = [
-    const Home(),
-    const News(),
-    const Account()
+    const Pocetna(),
+    const Novosti(),
+    const Profil()
   ];
   final List<IconData> _icons = const [
     Icons.home,

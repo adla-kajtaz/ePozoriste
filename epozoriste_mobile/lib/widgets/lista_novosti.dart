@@ -1,24 +1,23 @@
 import 'package:flutter/material.dart';
 import '../models/models.dart';
-import '../screens/screens.dart';
 
-class PerformanceList extends StatelessWidget{
-  final List<Termin> termini;
-  const PerformanceList({super.key, required this.termini});
+class ListaNovosti extends StatelessWidget{
+  final List<Obavijest> obavijesti;
+  const ListaNovosti({super.key, required this.obavijesti});
 
   @override
   Widget build(BuildContext context){
     return ListView.builder(
-      itemCount: termini.length,
+      itemCount: obavijesti.length,
       scrollDirection: Axis.vertical,
       shrinkWrap: true,
       physics: const NeverScrollableScrollPhysics(),
       itemBuilder: (BuildContext context, int index){
-        final termin = termini[index];
+        final obavijest = obavijesti[index];
         return GestureDetector(
           onTap: () => {
             //Navigator.push(context, MaterialPageRoute(
-              //builder: (context) => DetaljiPredstave(id: termin.terminId),
+              //builder: (context) => DetaljiNovosti(id: obavijest.obavijestId),
               //),
              // )
           },
@@ -34,13 +33,13 @@ class PerformanceList extends StatelessWidget{
                 Container(
                   decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),),
-                  child: Image.network(termin.predstava.slika as String),
+                  child: Image.network(obavijest.slika),
                 ),
                 Column(
                   children: [
-                    Text(termin.datumOdrzavanja.toString()+', '+termin.vrijemeOdrzavanja),
-                    Text(termin.predstava.naziv),
-                    Text(termin.predstava.sadrzaj)
+                    Text(obavijest.datumKreiranja.toString()),
+                    Text(obavijest.naslov),
+                    Text(obavijest.podnaslov)
                   ],
                 ),
              ],

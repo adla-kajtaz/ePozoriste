@@ -1,7 +1,7 @@
-import 'package:epozoriste_mobile/providers/termin_provider.dart';
+//import 'package:epozoriste_mobile/providers/termin_provider.dart';
 import 'package:epozoriste_mobile/screens/screens.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
+//import 'package:provider/provider.dart';
 
 void main() {
   runApp(
@@ -32,6 +32,8 @@ class MyApp extends StatelessWidget {
         '/register': (context) => const Register(),
         '/': (context) => const Navigacija(),
         '/detaljiPredstave': (context) => const DetaljiPredstave(),
+        '/detaljiNovosti': (context) => const DetaljiNovosti(),
+        '/detaljiProfil': (context) => const DetaljiProfila(),
 
 
       },

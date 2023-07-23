@@ -107,7 +107,7 @@ class _LoginState extends State<Login>{
                     try{
                       //Authorization.username = username;
                       //Authorization.password = passworrd;
-                      Navigator.pushNamed(context, '/detaljiPredstave');
+                      Navigator.pushNamed(context, '/');
 
                       //await _userProvider?.get();
 

@@ -1,17 +1,17 @@
-import 'package:epozoriste_mobile/widgets/performanceList.dart';
+import 'package:epozoriste_mobile/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../models/models.dart';
 import '../providers/termin_provider.dart';
 
 
-class Home extends StatefulWidget{
-  const Home({super.key});
+class Pocetna extends StatefulWidget{
+  const Pocetna({super.key});
   @override
-  State<Home> createState() => _HomeState();
+  State<Pocetna> createState() => _PocetnaState();
 }
 
-class _HomeState extends State<Home>{
+class _PocetnaState extends State<Pocetna>{
   List<Termin>termini =[];
   TerminProvider? _terminProvider;
   final List<Tab>myTabs=<Tab>[
@@ -62,7 +62,7 @@ class _HomeState extends State<Home>{
             padding: const EdgeInsets.all(16),
              child:TabBarView(
             children: [
-              //PerformanceList(termini: termini),
+              //ListaPredstava(termini: termini),
 
               ListView.builder(
                 itemCount: 105,

@@ -5,4 +5,7 @@ export 'termin.dart';
 export 'pozoriste.dart';
 export 'grad.dart';
 export 'drzava.dart';
+export 'obavijestKategorija.dart';
+export 'obavijest.dart';
+
 
