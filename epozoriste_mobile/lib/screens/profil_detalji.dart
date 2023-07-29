@@ -36,26 +36,41 @@ class _DetaljiProfilaState extends State<DetaljiProfila>{
           body: SingleChildScrollView(
       child: SafeArea(
       child: Padding(
-        padding: const EdgeInsets.all(50),
+        padding: const EdgeInsets.all(20),
         child: Form(
           child: Column(
-            children:[
-              TextFormField(
-                      onSaved: (newValue) => korisnickoIme = newValue,
-                      style: const TextStyle(
-                        color: Color.fromARGB(225, 195, 178, 178)
-                      ),
-                      decoration: InputDecoration(
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(15)
-                        ),
-                        labelStyle: const TextStyle(
-                          color: Color.fromARGB(225, 195, 178, 178)
-                        ),
-                      ),
-                    ),
-                    const SizedBox(height: 10),
+        children: [
+          const Text(
+            'Korisničko ime:',
+            style: TextStyle(
+              color: Color.fromARGB(225, 195, 178, 178),
+            ),
+          ),
+          const SizedBox(height: 5),
           TextFormField(
+              onSaved: (newValue) => korisnickoIme = newValue,
+              style: const TextStyle(
+                color: Color.fromARGB(225, 195, 178, 178),
+              ),
+              decoration: InputDecoration(
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(15),
+                ),
+                labelStyle: const TextStyle(
+                  color: Color.fromARGB(225, 195, 178, 178),
+                ),
+              ),
+            ),
+                  const SizedBox(height: 10),
+                  
+          const Text(
+            'Email:',
+            style: TextStyle(
+              color: Color.fromARGB(225, 195, 178, 178),
+            ),
+          ),
+          const SizedBox(height: 5),
+     TextFormField(
                       onSaved: (newValue) => email = newValue,
                       style: const TextStyle(
                         color: Color.fromARGB(225, 195, 178, 178)
@@ -70,6 +85,13 @@ class _DetaljiProfilaState extends State<DetaljiProfila>{
                       ),
                     ),
                     const SizedBox(height: 10),
+                    const Text(
+            'Ime:',
+            style: TextStyle(
+              color: Color.fromARGB(225, 195, 178, 178),
+            ),
+          ),
+          const SizedBox(height: 5),
                     TextFormField(
                       onSaved: (newValue) => ime = newValue,
                       style: const TextStyle(
@@ -84,6 +106,13 @@ class _DetaljiProfilaState extends State<DetaljiProfila>{
                         ),
                       ),
                     ),
+                    const Text(
+            'Prezime:',
+            style: TextStyle(
+              color: Color.fromARGB(225, 195, 178, 178),
+            ),
+          ),
+          const SizedBox(height: 5),
                     const SizedBox(height: 10),
                     TextFormField(
                       onSaved: (newValue) => prezime = newValue,
@@ -100,6 +129,13 @@ class _DetaljiProfilaState extends State<DetaljiProfila>{
                       ),
                     ),
                     const SizedBox(height: 10),
+                    const Text(
+            'Broj telefona:',
+            style: TextStyle(
+              color: Color.fromARGB(225, 195, 178, 178),
+            ),
+          ),
+          const SizedBox(height: 5),
                     TextFormField(
                       onSaved: (newValue) => brTelefona = newValue,
                       style: const TextStyle(

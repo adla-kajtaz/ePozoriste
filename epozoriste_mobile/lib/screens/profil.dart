@@ -29,6 +29,7 @@ class _ProfilState extends State<Profil>{
         padding: const EdgeInsets.all(50),
         child: Column(
           children: [
+            // ucitati historiju kupovine
             Container(
                   height: 50,
                       width: double.infinity,
