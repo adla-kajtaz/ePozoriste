@@ -41,7 +41,7 @@
             this.Predstava = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Sala = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DatumIzvodjenja = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.VrijemeOdrazvanja = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.VrijemeOdrzavanja = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CijenaKarte = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Premijera = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.Predpremijera = new System.Windows.Forms.DataGridViewCheckBoxColumn();
@@ -70,7 +70,7 @@
             this.Predstava,
             this.Sala,
             this.DatumIzvodjenja,
-            this.VrijemeOdrazvanja,
+            this.VrijemeOdrzavanja,
             this.CijenaKarte,
             this.Premijera,
             this.Predpremijera,
@@ -194,14 +194,14 @@
             this.DatumIzvodjenja.Name = "DatumIzvodjenja";
             this.DatumIzvodjenja.ReadOnly = true;
             // 
-            // VrijemeOdrazvanja
+            // VrijemeOdrzavanja
             // 
-            this.VrijemeOdrazvanja.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.VrijemeOdrazvanja.DataPropertyName = "VrijemeOdrazvanja";
-            this.VrijemeOdrazvanja.HeaderText = "Vrijeme održavanja";
-            this.VrijemeOdrazvanja.MinimumWidth = 6;
-            this.VrijemeOdrazvanja.Name = "VrijemeOdrazvanja";
-            this.VrijemeOdrazvanja.ReadOnly = true;
+            this.VrijemeOdrzavanja.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.VrijemeOdrzavanja.DataPropertyName = "VrijemeOdrzavanja";
+            this.VrijemeOdrzavanja.HeaderText = "Vrijeme održavanja";
+            this.VrijemeOdrzavanja.MinimumWidth = 6;
+            this.VrijemeOdrzavanja.Name = "VrijemeOdrzavanja";
+            this.VrijemeOdrzavanja.ReadOnly = true;
             // 
             // CijenaKarte
             // 
@@ -288,17 +288,17 @@
         private CheckBox cbPremijera;
         private CheckBox cbPredpremijera;
         private GroupBox groupBox1;
+        private Label label1;
+        private GroupBox groupBox2;
         private DataGridViewTextBoxColumn Predstava;
         private DataGridViewTextBoxColumn Sala;
         private DataGridViewTextBoxColumn DatumIzvodjenja;
-        private DataGridViewTextBoxColumn VrijemeOdrazvanja;
+        private DataGridViewTextBoxColumn VrijemeOdrzavanja;
         private DataGridViewTextBoxColumn CijenaKarte;
         private DataGridViewCheckBoxColumn Premijera;
         private DataGridViewCheckBoxColumn Predpremijera;
         private DataGridViewButtonColumn Karte;
         private DataGridViewButtonColumn Uredi;
         private DataGridViewButtonColumn Obrisi;
-        private Label label1;
-        private GroupBox groupBox2;
     }
 }

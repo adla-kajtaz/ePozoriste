@@ -223,7 +223,7 @@ namespace ePozoriste.Services.Database
                     Premijera = false,
                     CijenaKarte = 20,
                     DatumOdrzavanja = DateTime.Now.Date,
-                    VrijemeOdrazvanja = "20:00"
+                    VrijemeOdrzavanja = "20:00"
                 }
             });
         }
