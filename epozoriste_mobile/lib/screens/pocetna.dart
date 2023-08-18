@@ -4,26 +4,25 @@ import 'package:provider/provider.dart';
 import '../models/models.dart';
 import '../providers/termin_provider.dart';
 
-
-class Pocetna extends StatefulWidget{
+class Pocetna extends StatefulWidget {
   const Pocetna({super.key});
   @override
   State<Pocetna> createState() => _PocetnaState();
 }
 
-class _PocetnaState extends State<Pocetna>{
-  List<Termin>termini =[];
+class _PocetnaState extends State<Pocetna> {
+  List<Termin> termini = [];
   TerminProvider? _terminProvider;
-  final List<Tab>myTabs=<Tab>[
+  final List<Tab> myTabs = <Tab>[
     const Tab(text: 'Trenutno se prikazuje'),
     const Tab(text: 'Preporučeno')
   ];
 
   @override
-  void initState(){
+  void initState() {
     super.initState();
-    //_terminProvider = context.read<TerminProvider>();
-    //loadData();
+    _terminProvider = context.read<TerminProvider>();
+    loadData();
   }
 
   Future loadData() async {
@@ -33,50 +32,40 @@ class _PocetnaState extends State<Pocetna>{
     });
   }
 
-
-
   @override
-  Widget build(BuildContext context){
+  Widget build(BuildContext context) {
     return DefaultTabController(
-      length: 2, 
+      length: 2,
       child: SafeArea(
         child: Scaffold(
           backgroundColor: const Color.fromARGB(255, 86, 81, 81),
           appBar: AppBar(
             automaticallyImplyLeading: false,
-             backgroundColor: const Color.fromARGB(255, 57, 53, 53),
+            backgroundColor: const Color.fromARGB(255, 57, 53, 53),
             title: const Text(
-              'ePozorište', 
-              style: TextStyle(
-                color: Color.fromARGB(225, 195, 178, 178)
-                ),
-                ),
+              'ePozorište',
+              style: TextStyle(color: Color.fromARGB(225, 195, 178, 178)),
+            ),
             bottom: TabBar(
-              labelColor: const Color.fromARGB(225, 195, 178, 178),
-              unselectedLabelColor: Colors.white,
-              indicatorColor: const Color.fromARGB(255, 116, 108, 108),
-              tabs: myTabs
-              ),
+                labelColor: const Color.fromARGB(225, 195, 178, 178),
+                unselectedLabelColor: Colors.white,
+                indicatorColor: const Color.fromARGB(255, 116, 108, 108),
+                tabs: myTabs),
           ),
-           body:  Padding(
+          body: Padding(
             padding: const EdgeInsets.all(16),
-             child:TabBarView(
-            children: [
-              //ListaPredstava(termini: termini),
-
-              ListView.builder(
-                itemCount: 105,
-                itemBuilder: (context, index) =>  Text("Test $index"),
-                
-              ),
-              const Center(
-                child: Text('sadrzaj 2'),
-              ),
-            ],
-           ),
-           ),
+            child: TabBarView(
+              children: [
+                ListaPredstava(
+                    termini: [...termini, ...termini, ...termini, ...termini]),
+                const Center(
+                  child: Text('sadrzaj 2'),
+                ),
+              ],
+            ),
+          ),
         ),
-        ),
-      );
+      ),
+    );
   }
 }

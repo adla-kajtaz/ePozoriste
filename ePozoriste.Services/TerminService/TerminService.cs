@@ -21,7 +21,7 @@ namespace ePozoriste.Services
 
         public override IEnumerable<Model.Termin> GetAll(TerminSearchObject search = null)
         {
-            var entity = _context.Termins.Include(x=>x.Predstava).Include(x=>x.Sala).AsQueryable();
+            var entity = _context.Termins.Include(x=>x.Predstava).Include(x=>x.Sala).Include(x=>x.Sala.Pozoriste).Include(x=>x.Sala.Pozoriste.Grad).Include(x => x.Sala.Pozoriste.Grad.Drzava).AsQueryable();
 
             if (search.SalaId != null && search.PredstavaId != null && search.Premijera != null && search.Predpremijera != null && search.DatumOdrzavanja != null)
             {

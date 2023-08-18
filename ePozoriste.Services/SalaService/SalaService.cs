@@ -21,7 +21,7 @@ namespace ePozoriste.Services
 
         public override IEnumerable<Model.Sala> GetAll(SalaSearchObject search = null)
         {
-            var entity = _context.Salas.Include(x=>x.Pozoriste).AsQueryable();
+            var entity = _context.Salas.Include(x=>x.Pozoriste).Include(x=>x.Pozoriste.Grad).Include(x=>x.Pozoriste.Grad.Drzava).AsQueryable();
 
             if (!string.IsNullOrWhiteSpace(search.Tekst) && search.PozoristeId != null)
             {

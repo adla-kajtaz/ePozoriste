@@ -7,7 +7,7 @@ class KorisnikProvider extends BaseProvider<Korisnik> {
 
   Korisnik? get user => _user;
 
-  void setUser(Korisnik? user){
+  void setUser(Korisnik? user) {
     _user = user;
     notifyListeners();
   }

@@ -4,20 +4,19 @@ import 'package:json_annotation/json_annotation.dart';
 part 'grad.g.dart';
 
 @JsonSerializable()
-class Grad{
+class Grad {
   int gradId;
   String naziv;
   String postanskiBr;
   int? drzavaId;
   Drzava drzava;
 
-  Grad({
-    required this.gradId,
-    required this.naziv,
-    required this.postanskiBr,
-    this.drzavaId,
-    required this.drzava
-  });
+  Grad(
+      {required this.gradId,
+      required this.naziv,
+      required this.postanskiBr,
+      this.drzavaId,
+      required this.drzava});
 
   factory Grad.fromJson(Map<String, dynamic> json) => _$GradFromJson(json);
   Map<String, dynamic> toJson() => _$GradToJson(this);

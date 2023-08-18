@@ -5,7 +5,7 @@ import 'package:http/io_client.dart';
 
 import '../models/models.dart';
 
-class TerminProvider extends BaseProvider<Termin>{
+class TerminProvider extends BaseProvider<Termin> {
   HttpClient client = HttpClient();
   IOClient? http;
   TerminProvider() : super("Termin");
@@ -13,5 +13,4 @@ class TerminProvider extends BaseProvider<Termin>{
   Termin fromJson(data) {
     return Termin.fromJson(data);
   }
-  
 }

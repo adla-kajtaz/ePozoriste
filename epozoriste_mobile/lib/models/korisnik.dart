@@ -13,18 +13,17 @@ class Korisnik {
   String? lozinka;
   String? lozinkaProvjera;
 
-  Korisnik({
-    this.korisnikId,
-    this.ime,
-    this.prezime,
-    this.korisnickoIme,
-    this.email,
-    this.brTelefona,
-    this.lozinka,
-    this.lozinkaProvjera
-  });
+  Korisnik(
+      {this.korisnikId,
+      this.ime,
+      this.prezime,
+      this.korisnickoIme,
+      this.email,
+      this.brTelefona,
+      this.lozinka,
+      this.lozinkaProvjera});
 
-  factory Korisnik.fromJson(Map<String, dynamic> json) => _$KorisnikFromJson(json);
+  factory Korisnik.fromJson(Map<String, dynamic> json) =>
+      _$KorisnikFromJson(json);
   Map<String, dynamic> toJson() => _$KorisnikToJson(this);
-
 }

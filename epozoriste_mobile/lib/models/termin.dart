@@ -4,11 +4,11 @@ import 'package:json_annotation/json_annotation.dart';
 part 'termin.g.dart';
 
 @JsonSerializable()
-class Termin{
+class Termin {
   int terminId;
   bool premijera;
   bool predpremijera;
-  int  cijenaKarte;
+  int cijenaKarte;
   DateTime datumOdrzavanja;
   String vrijemeOdrzavanja;
   int? salaId;
@@ -16,23 +16,18 @@ class Termin{
   int? predstavaId;
   Predstava predstava;
 
-  Termin({
-    required this.terminId,
-    required this.premijera,
-    required this.predpremijera,
-    required this.cijenaKarte,
-    required this.datumOdrzavanja,
-    required this.vrijemeOdrzavanja,
-    this.salaId,
-    required this.sala,
-    this.predstavaId,
-    required this.predstava
-  });
-  
+  Termin(
+      {required this.terminId,
+      required this.premijera,
+      required this.predpremijera,
+      required this.cijenaKarte,
+      required this.datumOdrzavanja,
+      required this.vrijemeOdrzavanja,
+      this.salaId,
+      required this.sala,
+      this.predstavaId,
+      required this.predstava});
+
   factory Termin.fromJson(Map<String, dynamic> json) => _$TerminFromJson(json);
   Map<String, dynamic> toJson() => _$TerminToJson(this);
-
-
-
-
 }

@@ -4,7 +4,7 @@ import 'package:json_annotation/json_annotation.dart';
 part 'sala.g.dart';
 
 @JsonSerializable()
-class Sala{
+class Sala {
   int salaId;
   String naziv;
   int brSjedista;
@@ -13,15 +13,14 @@ class Sala{
   int? pozoristeId;
   Pozoriste pozoriste;
 
-  Sala({
-    required this.salaId,
-    required this.naziv,
-    required this.brSjedista,
-    required this.brRedova,
-    required this.brSjedistaPoRedu,
-    this.pozoristeId,
-    required this.pozoriste
-  });
+  Sala(
+      {required this.salaId,
+      required this.naziv,
+      required this.brSjedista,
+      required this.brRedova,
+      required this.brSjedistaPoRedu,
+      this.pozoristeId,
+      required this.pozoriste});
 
   factory Sala.fromJson(Map<String, dynamic> json) => _$SalaFromJson(json);
   Map<String, dynamic> toJson() => _$SalaToJson(this);
