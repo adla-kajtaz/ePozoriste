@@ -1,8 +1,9 @@
+import 'package:epozoriste_mobile/models/obavijest.dart';
 import 'package:flutter/material.dart';
 
 class DetaljiNovosti extends StatefulWidget {
-  //final int? id;
-  const DetaljiNovosti({super.key});
+  final Obavijest? obavijest;
+  const DetaljiNovosti({super.key, this.obavijest});
 
   @override
   State<DetaljiNovosti> createState() => _DetaljiNovostiState();
@@ -11,6 +12,7 @@ class DetaljiNovosti extends StatefulWidget {
 class _DetaljiNovostiState extends State<DetaljiNovosti> {
   @override
   Widget build(BuildContext context) {
+    Obavijest? _obavijest = widget.obavijest;
     return Scaffold(
       backgroundColor: const Color.fromARGB(255, 86, 81, 81),
       resizeToAvoidBottomInset: false,
@@ -27,34 +29,39 @@ class _DetaljiNovostiState extends State<DetaljiNovosti> {
           child: Padding(
             padding: const EdgeInsets.all(50),
             child: Column(children: [
+              Container(
+                height: 50,
+                width: double.infinity,
+                child: Transform.scale(
+                  scale: 3.0,
+                  child: Image.network(
+                      "https://www.npm.ba/images/celavapjevacica/npm-celava-pjevacica-naslovna.jpg"), //dodati atribut
+                ),
+              ),
+              const SizedBox(height: 60),
               Column(
                 children: [
-                  Container(
-                    height: 50,
-                    width: double.infinity,
-                    child: Transform.scale(
-                      scale: 3.0,
-                      child: Image.network(
-                          "https://www.npm.ba/images/celavapjevacica/npm-celava-pjevacica-naslovna.jpg"), //dodati atribut
-                    ),
-                  ),
-                  const SizedBox(height: 60),
-                  const Row(
-                    children: [
-                      Text("Autor"),
-                      Text("|"),
-                      Text("Datum"),
-                    ],
-                  ),
-                  const Column(
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        "Naslov",
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold, fontSize: 25),
-                      ), //dodati atribute za sve
-                      Text("Podnaslov"),
-                      Text("Sadržaj"),
+                        _obavijest!.naslov,
+                        style: const TextStyle(
+                            fontWeight: FontWeight.bold, fontSize: 20),
+                      ),
+                      Row(
+                        children: [
+                          Text(_obavijest.korisnik.korisnickoIme.toString()),
+                          const Text(" | "),
+                          Text(_obavijest.datumKreiranja
+                              .toString()
+                              .substring(0, 10)),
+                        ],
+                      ),
+                      const SizedBox(height: 5),
+                      Text(_obavijest.podnaslov),
+                      const SizedBox(height: 10),
+                      Text(_obavijest.sadrzaj),
                     ],
                   ),
                   const SizedBox(

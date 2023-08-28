@@ -11,7 +11,7 @@ Obavijest _$ObavijestFromJson(Map<String, dynamic> json) => Obavijest(
       naslov: json['naslov'] as String,
       podnaslov: json['podnaslov'] as String,
       sadrzaj: json['sadrzaj'] as String,
-      slika: json['slika'] as String,
+      slika: json['slika'] as String?,
       datumKreiranja: DateTime.parse(json['datumKreiranja'] as String),
       obavijestKategorijaId: json['obavijestKategorijaId'] as int?,
       obavijestKategorija: ObavijestKategorija.fromJson(

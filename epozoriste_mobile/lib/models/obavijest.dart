@@ -9,7 +9,7 @@ class Obavijest {
   String naslov;
   String podnaslov;
   String sadrzaj;
-  String slika;
+  String? slika;
   DateTime datumKreiranja;
   int? obavijestKategorijaId;
   ObavijestKategorija obavijestKategorija;
@@ -21,7 +21,7 @@ class Obavijest {
       required this.naslov,
       required this.podnaslov,
       required this.sadrzaj,
-      required this.slika,
+      this.slika,
       required this.datumKreiranja,
       this.obavijestKategorijaId,
       required this.obavijestKategorija,

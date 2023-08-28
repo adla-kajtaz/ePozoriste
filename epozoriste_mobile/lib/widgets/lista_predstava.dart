@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../models/models.dart';
+import '../screens/detalji_predstave.dart';
 
 class ListaPredstava extends StatelessWidget {
   final List<Termin> termini;
@@ -13,12 +14,6 @@ class ListaPredstava extends StatelessWidget {
         itemBuilder: (BuildContext context, int index) {
           final termin = termini[index];
           return GestureDetector(
-            onTap: () => {
-              //Navigator.push(context, MaterialPageRoute(
-              //builder: (context) => DetaljiPredstave(id: termin.terminId),
-              //),
-              // )
-            },
             child: Container(
               margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
               height: 150,
@@ -65,10 +60,23 @@ class ListaPredstava extends StatelessWidget {
                           const SizedBox(height: 30),
                           Center(
                             child: ElevatedButton(
-                              onPressed: () => null,
+                              onPressed: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) =>
+                                        DetaljiPredstave(termin: termin),
+                                  ),
+                                );
+                              },
+                              style: ElevatedButton.styleFrom(
+                                  backgroundColor:
+                                      const Color.fromARGB(255, 181, 176, 176)),
                               child: const Text(
                                 'Procitaj vise',
-                                style: TextStyle(fontSize: 12),
+                                style: TextStyle(
+                                    fontSize: 12,
+                                    color: Color.fromARGB(255, 103, 103, 103)),
                               ),
                             ),
                           ),

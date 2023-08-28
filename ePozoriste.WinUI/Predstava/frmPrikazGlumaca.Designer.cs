@@ -170,10 +170,10 @@
         private Button btnDodaj;
         private TextBox txtPretraga;
         private GroupBox groupBox1;
+        private GroupBox groupBox2;
         private DataGridViewTextBoxColumn Ime;
         private DataGridViewTextBoxColumn Prezime;
         private DataGridViewButtonColumn Uredi;
         private DataGridViewButtonColumn Obrisi;
-        private GroupBox groupBox2;
     }
 }

@@ -58,9 +58,8 @@ class _PocetnaState extends State<Pocetna> {
               children: [
                 ListaPredstava(
                     termini: [...termini, ...termini, ...termini, ...termini]),
-                const Center(
-                  child: Text('sadrzaj 2'),
-                ),
+                ListaPredstava(
+                    termini: [...termini, ...termini, ...termini, ...termini]),
               ],
             ),
           ),

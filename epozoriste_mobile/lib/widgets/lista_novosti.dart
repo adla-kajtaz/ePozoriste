@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../models/models.dart';
+import '../screens/detalji_novosti.dart';
 
 class ListaNovosti extends StatelessWidget {
   final List<Obavijest> obavijesti;
@@ -10,38 +11,80 @@ class ListaNovosti extends StatelessWidget {
     return ListView.builder(
         itemCount: obavijesti.length,
         scrollDirection: Axis.vertical,
-        shrinkWrap: true,
-        physics: const NeverScrollableScrollPhysics(),
         itemBuilder: (BuildContext context, int index) {
           final obavijest = obavijesti[index];
           return GestureDetector(
-            onTap: () => {
-              //Navigator.push(context, MaterialPageRoute(
-              //builder: (context) => DetaljiNovosti(id: obavijest.obavijestId),
-              //),
-              // )
-            },
             child: Container(
               margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
               height: 150,
               decoration: BoxDecoration(
-                color: const Color.fromARGB(255, 86, 81, 81),
-                borderRadius: BorderRadius.circular(30),
+                color: const Color.fromARGB(255, 95, 94, 94),
+                borderRadius: BorderRadius.circular(15),
               ),
               child: Row(
                 children: [
                   Container(
+                    height: 150,
+                    width: 120,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
                     ),
-                    child: Image.network(obavijest.slika),
+                    child: ClipRRect(
+                      borderRadius: const BorderRadius.only(
+                        topLeft: Radius.circular(10),
+                        bottomLeft: Radius.circular(10),
+                      ),
+                      child: Image.network(
+                          "https://www.npm.ba/images/celavapjevacica/npm-celava-pjevacica-naslovna.jpg",
+                          fit: BoxFit.cover),
+                      //Image.network(termin.predstava.slika as String),
+                    ),
                   ),
-                  Column(
-                    children: [
-                      Text(obavijest.datumKreiranja.toString()),
-                      Text(obavijest.naslov),
-                      Text(obavijest.podnaslov)
-                    ],
+                  Expanded(
+                    child: Padding(
+                      padding: const EdgeInsets.all(10.0),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            obavijest.naslov,
+                            style: const TextStyle(
+                                fontWeight: FontWeight.bold, fontSize: 12),
+                          ),
+                          Text(
+                            obavijest.korisnik.korisnickoIme.toString() +
+                                ', ' +
+                                obavijest.datumKreiranja
+                                    .toString()
+                                    .substring(0, 10),
+                            style: const TextStyle(fontSize: 12),
+                          ),
+                          const SizedBox(height: 30),
+                          Center(
+                            child: ElevatedButton(
+                              onPressed: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) =>
+                                        DetaljiNovosti(obavijest: obavijest),
+                                  ),
+                                );
+                              },
+                              style: ElevatedButton.styleFrom(
+                                  backgroundColor:
+                                      const Color.fromARGB(255, 181, 176, 176)),
+                              child: const Text(
+                                'Procitaj vise',
+                                style: TextStyle(
+                                    fontSize: 12,
+                                    color: Color.fromARGB(255, 103, 103, 103)),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
                   ),
                 ],
               ),
