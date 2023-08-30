@@ -1,3 +1,4 @@
+import 'package:epozoriste_mobile/providers/auth_provider.dart';
 import 'package:epozoriste_mobile/providers/obavijest_provider.dart';
 import 'package:epozoriste_mobile/providers/termin_provider.dart';
 import 'package:epozoriste_mobile/screens/screens.dart';
@@ -8,6 +9,7 @@ void main() {
   runApp(
     MultiProvider(
       providers: [
+        ChangeNotifierProvider(create: (_) => AuthProvider()),
         ChangeNotifierProvider(create: (_) => TerminProvider()),
         ChangeNotifierProvider(create: (_) => ObavijestProvider()),
       ],

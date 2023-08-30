@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
+import '../providers/auth_provider.dart';
 
 class Register extends StatefulWidget {
   const Register({super.key});
@@ -7,7 +10,13 @@ class Register extends StatefulWidget {
   _RegisterState createState() => _RegisterState();
 }
 
+bool isPasswordValid(String value) {
+  RegExp regex = RegExp(r'^.{8,}$');
+  return regex.hasMatch(value);
+}
+
 class _RegisterState extends State<Register> {
+  AuthProvider? _authProvider;
   final formKey = GlobalKey<FormState>();
   String? ime;
   String? prezime;
@@ -16,6 +25,13 @@ class _RegisterState extends State<Register> {
   String? brTelefona;
   String? lozinka;
   String? lozinkaProvjera;
+  List<int> uloge = [2];
+  List<String> errors = [];
+  @override
+  void initState() {
+    super.initState();
+    _authProvider = context.read<AuthProvider>();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -41,6 +57,7 @@ class _RegisterState extends State<Register> {
                   height: 10,
                 ),
                 Form(
+                  key: formKey,
                   child: Column(
                     children: [
                       Row(children: [
@@ -184,14 +201,28 @@ class _RegisterState extends State<Register> {
                       const SizedBox(height: 10),
                       InkWell(
                         onTap: () async {
-                          /*if(formKey.currentState!.validate()){
-                          formKey.currentState!.save();
-                        }*/
+                          if (formKey.currentState!.validate()) {
+                            formKey.currentState!.save();
+                          }
+                          Map newUser = {
+                            'ime': ime,
+                            'prezime': prezime,
+                            'korisnickoIme': korisnickoIme,
+                            'email': email,
+                            'brTelefona': brTelefona,
+                            'aktivan': true,
+                            'lozinka': lozinka,
+                            'lozinkaProvjera': lozinkaProvjera,
+                            'uloge': [2]
+                          };
                           try {
-                            Navigator.pushNamed(context, '/');
+                            var data = await _authProvider!.register(newUser);
+                            if (context.mounted) {
+                              Navigator.popAndPushNamed(context, '/');
+                            }
                           } on Exception catch (err) {
                             print(err.toString());
-                            //formKey.currentState!.validate();
+                            formKey.currentState!.validate();
                           }
                         },
                         child: Container(

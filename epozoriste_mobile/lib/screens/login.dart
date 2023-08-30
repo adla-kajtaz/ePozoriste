@@ -1,7 +1,5 @@
 import 'package:epozoriste_mobile/providers/korisnik_provider.dart';
-import 'package:epozoriste_mobile/utils/util.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
 class Login extends StatefulWidget {
   const Login({super.key});

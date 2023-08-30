@@ -104,7 +104,7 @@ namespace ePozoriste.Services
 
         public async Task<Model.Korisnik> Login(string korisnickoIme, string lozinka)
         {
-            var entity = await _context.Korisniks.Include("KorisnikUlogas.Uloga").FirstOrDefaultAsync(x => x.KorisnickoIme == korisnickoIme);
+            var entity = await _context.Korisniks.Include(x=>x.KorisnikUloges).FirstOrDefaultAsync(x => x.KorisnickoIme == korisnickoIme);
 
             if (entity == null)
             {
