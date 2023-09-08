@@ -3,6 +3,7 @@ import 'package:epozoriste_mobile/providers/korisnik_provider.dart';
 import 'package:epozoriste_mobile/providers/obavijest_provider.dart';
 import 'package:epozoriste_mobile/providers/termin_provider.dart';
 import 'package:epozoriste_mobile/screens/screens.dart';
+import 'package:epozoriste_mobile/screens/sjedista.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -40,6 +41,7 @@ class MyApp extends StatelessWidget {
         '/detaljiPredstave': (context) => const DetaljiPredstave(),
         '/detaljiNovosti': (context) => const DetaljiNovosti(),
         '/detaljiProfil': (context) => const DetaljiProfila(),
+        '/sjedista': (context) => const Sjedista(),
       },
       /*home: const MyHomePage(title: 'Flutter Demo Home Page'),*/
     );

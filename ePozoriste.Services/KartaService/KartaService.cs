@@ -21,7 +21,7 @@ namespace ePozoriste.Services
 
         public override IEnumerable<Model.Karta> GetAll(KartaSearchObject search = null)
         {
-            var entity = _context.Karta.Include(x=>x.Termin).AsQueryable();
+            var entity = _context.Karta.Include(x=>x.Termin).Include(x => x.Termin.Predstava).Include(x => x.Termin.Sala).Include(x => x.Termin.Sala.Pozoriste).Include(x => x.Termin.Sala.Pozoriste.Grad).Include(x => x.Termin.Sala.Pozoriste.Grad.Drzava).AsQueryable();
 
             if (!string.IsNullOrWhiteSpace(search.Tekst) && search.TerminId != null && search.Aktivan != null)
             {

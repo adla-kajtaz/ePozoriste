@@ -96,7 +96,7 @@ class _DetaljiPredstaveState extends State<DetaljiPredstave> {
                         child: InkWell(
                           onTap: () async {
                             try {
-                              Navigator.pushNamed(context, '/');
+                              Navigator.pushNamed(context, '/sjedista');
                             } catch (e) {
                               print(e.toString());
                             }
