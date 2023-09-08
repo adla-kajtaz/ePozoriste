@@ -67,7 +67,7 @@ class _DetaljiPredstaveState extends State<DetaljiPredstave> {
                     height: 20,
                   ),
                   Container(
-                    height: 80,
+                    height: 170,
                     width: double.infinity,
                     decoration: BoxDecoration(
                       color: const Color.fromARGB(255, 102, 98, 98),
@@ -79,39 +79,40 @@ class _DetaljiPredstaveState extends State<DetaljiPredstave> {
                       ),
                       Text(_termin.datumOdrzavanja.toString().substring(0, 10) +
                           ', ' +
-                          _termin.vrijemeOdrzavanja), //dodati atribute za sve
+                          _termin.vrijemeOdrzavanja),
                       Text(_termin.sala.pozoriste.naziv),
                       Text(_termin.sala.naziv),
-                    ]),
-                  ),
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  Container(
-                    height: 50,
-                    width: double.infinity,
-                    decoration: BoxDecoration(
-                      color: const Color.fromARGB(223, 117, 117, 98),
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    child: InkWell(
-                      onTap: () async {
-                        try {
-                          Navigator.pushNamed(context, '/');
-                        } catch (e) {
-                          print(e.toString());
-                        }
-                      },
-                      child: const Center(
-                        child: Text(
-                          'Kupi',
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 20,
+                      Text('Cijena karte: ${_termin.cijenaKarte} KM'),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      Container(
+                        height: 50,
+                        width: 200,
+                        decoration: BoxDecoration(
+                          color: const Color.fromARGB(223, 117, 117, 98),
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        child: InkWell(
+                          onTap: () async {
+                            try {
+                              Navigator.pushNamed(context, '/');
+                            } catch (e) {
+                              print(e.toString());
+                            }
+                          },
+                          child: const Center(
+                            child: Text(
+                              'Kupi',
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 20,
+                              ),
+                            ),
                           ),
                         ),
                       ),
-                    ),
+                    ]),
                   ),
                 ],
               )),

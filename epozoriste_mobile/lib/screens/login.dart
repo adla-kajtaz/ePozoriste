@@ -1,5 +1,6 @@
-import 'package:epozoriste_mobile/providers/korisnik_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import '../providers/auth_provider.dart';
 
 class Login extends StatefulWidget {
   const Login({super.key});
@@ -10,9 +11,15 @@ class Login extends StatefulWidget {
 
 class _LoginState extends State<Login> {
   final formKey = GlobalKey<FormState>();
-  String? username;
-  String? passworrd;
-  KorisnikProvider? _userProvider;
+  String? korisnickoIme;
+  String? lozinka;
+  AuthProvider? _authProvider;
+
+  @override
+  void initState() {
+    super.initState();
+    _authProvider = context.read<AuthProvider>();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -42,7 +49,7 @@ class _LoginState extends State<Login> {
                 child: Column(
                   children: [
                     TextFormField(
-                      onSaved: (newValue) => username = newValue,
+                      onSaved: (newValue) => korisnickoIme = newValue,
                       validator: (value) {
                         if (value!.isEmpty) {
                           return "Ovo polje je obavezno";
@@ -63,7 +70,7 @@ class _LoginState extends State<Login> {
                       height: 20,
                     ),
                     TextFormField(
-                      onSaved: (newValue) => passworrd = newValue,
+                      onSaved: (newValue) => lozinka = newValue,
                       validator: (value) {
                         if (value!.isEmpty) {
                           return "Ovo polje je obavezno";
@@ -99,15 +106,20 @@ class _LoginState extends State<Login> {
                   onTap: () async {
                     if (formKey.currentState!.validate()) {
                       formKey.currentState!.save();
+                      Map user = {
+                        'korisnickoIme': korisnickoIme,
+                        'lozinka': lozinka
+                      };
                       try {
-                        //Authorization.username = username;
-                        //Authorization.password = passworrd;
-                        Navigator.pushNamed(context, '/');
-
-                        //await _userProvider?.get();
-                      } catch (e) {
-                        print(e.toString());
-                        if (e.toString().contains("Bad request")) {
+                        /* var data = await _authProvider!.login(user);
+                                            _authProvider._username = data.korisnickoIme;
+                    _authProvider._loggedUserId =data.korisnikId
+                        if (context.mounted) {*/
+                        Navigator.popAndPushNamed(context, '/');
+                        // }
+                      } on Exception catch (error) {
+                        print(error.toString());
+                        if (error.toString().contains("Bad request")) {
                           formKey.currentState!.validate();
                         }
                       }

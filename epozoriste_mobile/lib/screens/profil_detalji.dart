@@ -1,7 +1,10 @@
+import 'package:epozoriste_mobile/models/korisnik.dart';
+import 'package:epozoriste_mobile/providers/korisnik_provider.dart';
+// import '../providers/auth_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class DetaljiProfila extends StatefulWidget {
-  //final int? id;
   const DetaljiProfila({super.key});
 
   @override
@@ -10,13 +13,23 @@ class DetaljiProfila extends StatefulWidget {
 
 class _DetaljiProfilaState extends State<DetaljiProfila> {
   final formKey = GlobalKey<FormState>();
-  String? ime;
-  String? prezime;
-  String? korisnickoIme;
-  String? email;
-  String? brTelefona;
-  String? lozinka;
-  String? lozinkaProvjera;
+  // AuthProvider? _authProvider;
+  KorisnikProvider? _korisnikProvider;
+  Korisnik? korisnik;
+
+  @override
+  void initState() {
+    super.initState();
+    _korisnikProvider = context.read<KorisnikProvider>();
+    loadUser();
+  }
+
+  void loadUser() async {
+    var data = await _korisnikProvider!.getUser(1); // dodati id
+    setState(() {
+      korisnik = data;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +40,7 @@ class _DetaljiProfilaState extends State<DetaljiProfila> {
         automaticallyImplyLeading: false,
         backgroundColor: const Color.fromARGB(255, 57, 53, 53),
         title: const Text(
-          'Ime korisnika',
+          'Profil',
           style: TextStyle(color: Color.fromARGB(225, 195, 178, 178)),
         ),
       ),
@@ -45,7 +58,8 @@ class _DetaljiProfilaState extends State<DetaljiProfila> {
                 ),
                 const SizedBox(height: 5),
                 TextFormField(
-                  onSaved: (newValue) => korisnickoIme = newValue,
+                  onSaved: (newValue) => korisnik!.korisnickoIme = newValue!,
+                  initialValue: korisnik!.korisnickoIme,
                   style: const TextStyle(
                     color: Color.fromARGB(225, 195, 178, 178),
                   ),
@@ -57,6 +71,12 @@ class _DetaljiProfilaState extends State<DetaljiProfila> {
                       color: Color.fromARGB(225, 195, 178, 178),
                     ),
                   ),
+                  validator: (newValue) {
+                    if (newValue!.isEmpty) {
+                      return 'Ovo polje je obavezno!';
+                    }
+                    return null;
+                  },
                 ),
                 const SizedBox(height: 10),
                 const Text(
@@ -67,7 +87,8 @@ class _DetaljiProfilaState extends State<DetaljiProfila> {
                 ),
                 const SizedBox(height: 5),
                 TextFormField(
-                  onSaved: (newValue) => email = newValue,
+                  onSaved: (newValue) => korisnik!.email = newValue!,
+                  initialValue: korisnik!.email,
                   style: const TextStyle(
                       color: Color.fromARGB(225, 195, 178, 178)),
                   decoration: InputDecoration(
@@ -86,7 +107,8 @@ class _DetaljiProfilaState extends State<DetaljiProfila> {
                 ),
                 const SizedBox(height: 5),
                 TextFormField(
-                  onSaved: (newValue) => ime = newValue,
+                  onSaved: (newValue) => korisnik!.ime = newValue!,
+                  initialValue: korisnik!.ime,
                   style: const TextStyle(
                       color: Color.fromARGB(225, 195, 178, 178)),
                   decoration: InputDecoration(
@@ -95,6 +117,12 @@ class _DetaljiProfilaState extends State<DetaljiProfila> {
                     labelStyle: const TextStyle(
                         color: Color.fromARGB(225, 195, 178, 178)),
                   ),
+                  validator: (newValue) {
+                    if (newValue!.isEmpty) {
+                      return 'Ovo polje je obavezno!';
+                    }
+                    return null;
+                  },
                 ),
                 const Text(
                   'Prezime:',
@@ -105,7 +133,8 @@ class _DetaljiProfilaState extends State<DetaljiProfila> {
                 const SizedBox(height: 5),
                 const SizedBox(height: 10),
                 TextFormField(
-                  onSaved: (newValue) => prezime = newValue,
+                  onSaved: (newValue) => korisnik!.prezime = newValue!,
+                  initialValue: korisnik!.prezime,
                   style: const TextStyle(
                       color: Color.fromARGB(225, 195, 178, 178)),
                   decoration: InputDecoration(
@@ -114,6 +143,12 @@ class _DetaljiProfilaState extends State<DetaljiProfila> {
                     labelStyle: const TextStyle(
                         color: Color.fromARGB(225, 195, 178, 178)),
                   ),
+                  validator: (newValue) {
+                    if (newValue!.isEmpty) {
+                      return 'Ovo polje je obavezno!';
+                    }
+                    return null;
+                  },
                 ),
                 const SizedBox(height: 10),
                 const Text(
@@ -124,7 +159,8 @@ class _DetaljiProfilaState extends State<DetaljiProfila> {
                 ),
                 const SizedBox(height: 5),
                 TextFormField(
-                  onSaved: (newValue) => brTelefona = newValue,
+                  onSaved: (newValue) => korisnik!.brTelefona = newValue!,
+                  initialValue: korisnik!.brTelefona,
                   style: const TextStyle(
                       color: Color.fromARGB(225, 195, 178, 178)),
                   decoration: InputDecoration(
@@ -133,6 +169,12 @@ class _DetaljiProfilaState extends State<DetaljiProfila> {
                     labelStyle: const TextStyle(
                         color: Color.fromARGB(225, 195, 178, 178)),
                   ),
+                  validator: (newValue) {
+                    if (newValue!.isEmpty) {
+                      return 'Ovo polje je obavezno!';
+                    }
+                    return null;
+                  },
                 ),
                 const SizedBox(height: 10),
                 InkWell(
@@ -164,14 +206,23 @@ class _DetaljiProfilaState extends State<DetaljiProfila> {
                 const SizedBox(height: 10),
                 InkWell(
                   onTap: () async {
-                    /*if(formKey.currentState!.validate()){
-                          formKey.currentState!.save();
-                        }*/
-                    try {
-                      Navigator.pushNamed(context, '/');
-                    } on Exception catch (err) {
-                      print(err.toString());
-                      //formKey.currentState!.validate();
+                    if (formKey.currentState!.validate()) {
+                      formKey.currentState!.save();
+                      Map<String, dynamic> data = {
+                        "korisnickoIme": korisnik!.korisnickoIme,
+                        "ime": korisnik!.ime,
+                        "prezime": korisnik!.prezime,
+                        "email": korisnik!.email,
+                        "brTelefona": korisnik!.brTelefona
+                      };
+                      print(data);
+                      try {
+                        await _korisnikProvider!
+                            .updateProfile(korisnik!.korisnikId, data);
+                      } on Exception catch (err) {
+                        print(err.toString());
+                        formKey.currentState!.validate();
+                      }
                     }
                   },
                   child: Container(

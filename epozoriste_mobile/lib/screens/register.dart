@@ -168,6 +168,8 @@ class _RegisterState extends State<Register> {
                             return "Ovo polje je obavezno";
                           }
                         },
+                        obscureText: true,
+                        autocorrect: false,
                         style: const TextStyle(
                             color: Color.fromARGB(225, 195, 178, 178)),
                         decoration: InputDecoration(
@@ -187,6 +189,8 @@ class _RegisterState extends State<Register> {
                             return "Ovo polje je obavezno";
                           }
                         },
+                        obscureText: true,
+                        autocorrect: false,
                         style: const TextStyle(
                             color: Color.fromARGB(225, 195, 178, 178)),
                         decoration: InputDecoration(
