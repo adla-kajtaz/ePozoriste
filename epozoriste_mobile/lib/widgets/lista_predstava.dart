@@ -52,9 +52,7 @@ class ListaPredstava extends StatelessWidget {
                                 fontWeight: FontWeight.bold, fontSize: 16),
                           ),
                           Text(
-                            termin.datumOdrzavanja.toString().substring(0, 10) +
-                                ', ' +
-                                termin.vrijemeOdrzavanja,
+                            '${termin.datumOdrzavanja.toString().substring(0, 10)}, ${termin.vrijemeOdrzavanja}',
                             style: const TextStyle(fontSize: 12),
                           ),
                           const SizedBox(height: 30),

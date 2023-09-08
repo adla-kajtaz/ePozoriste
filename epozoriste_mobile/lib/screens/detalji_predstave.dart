@@ -1,3 +1,4 @@
+import 'package:epozoriste_mobile/screens/sjedista.dart';
 import 'package:flutter/material.dart';
 import '../models/termin.dart';
 
@@ -77,9 +78,8 @@ class _DetaljiPredstaveState extends State<DetaljiPredstave> {
                       const SizedBox(
                         height: 7,
                       ),
-                      Text(_termin.datumOdrzavanja.toString().substring(0, 10) +
-                          ', ' +
-                          _termin.vrijemeOdrzavanja),
+                      Text(
+                          '${_termin.datumOdrzavanja.toString().substring(0, 10)}, ${_termin.vrijemeOdrzavanja}'),
                       Text(_termin.sala.pozoriste.naziv),
                       Text(_termin.sala.naziv),
                       Text('Cijena karte: ${_termin.cijenaKarte} KM'),
@@ -96,7 +96,14 @@ class _DetaljiPredstaveState extends State<DetaljiPredstave> {
                         child: InkWell(
                           onTap: () async {
                             try {
-                              Navigator.pushNamed(context, '/sjedista');
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) =>
+                                      Sjedista(termin: _termin),
+                                ),
+                              );
+                              // Navigator.pushNamed(context, '/sjedista');
                             } catch (e) {
                               print(e.toString());
                             }
