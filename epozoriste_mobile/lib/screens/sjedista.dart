@@ -1,9 +1,7 @@
 import 'package:provider/provider.dart';
-
 import '../models/karta.dart';
 import '../models/termin.dart';
 import 'package:flutter/material.dart';
-
 import '../providers/karta_provider.dart';
 import '../widgets/prikaz_sjedista.dart';
 
@@ -30,6 +28,9 @@ class _SjedistaState extends State<Sjedista> {
     setState(() {
       karte = tempData!;
     });
+    for (Karta karta in karte) {
+      print(karta.sjediste);
+    }
   }
 
   @override
@@ -68,9 +69,9 @@ class _SjedistaState extends State<Sjedista> {
                 const SizedBox(
                   height: 10,
                 ),
-                /*PrikazSjedista(
+                PrikazSjedista(
                   karte: karte,
-                ),*/
+                ),
               ],
             ),
           ),
