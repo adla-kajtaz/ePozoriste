@@ -1,6 +1,7 @@
 ﻿using ePozoriste.Model.Requests;
 using ePozoriste.Model.SearchObjects;
 using ePozoriste.Services;
+using Microsoft.AspNetCore.Mvc;
 
 namespace ePozoriste.Controllers
 {
@@ -10,6 +11,12 @@ namespace ePozoriste.Controllers
         public KartaController(IKartaService service) : base(service)
         {
             _service = service;
+        }
+
+        [HttpPatch("{id}")]
+        public Model.Karta changeStatus(int id)
+        {
+            return _service.ChangeStatus(id);
         }
     }
 }

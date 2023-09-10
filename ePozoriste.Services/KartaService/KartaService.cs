@@ -57,19 +57,17 @@ namespace ePozoriste.Services
             _context.SaveChanges();
             return _mapper.Map<Model.Karta>(entity);
         }
+
         public Model.Karta ChangeStatus(int id)
         {
             var entity = _context.Karta.Find(id);
-            if (entity != null)
-            {
-                entity.Aktivna = false;
-                return _mapper.Map<Model.Karta>(entity);
-            }
+            if (entity == null)
                 return null;
 
+            entity.Aktivna = false;
+          
             _context.SaveChanges();
             return _mapper.Map<Model.Karta>(entity);
         }
-
     }
 }
