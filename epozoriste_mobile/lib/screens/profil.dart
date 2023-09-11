@@ -1,3 +1,4 @@
+// import 'package:epozoriste_mobile/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 
 class Profil extends StatefulWidget {
@@ -26,7 +27,7 @@ class _ProfilState extends State<Profil> {
           child: Padding(
             padding: const EdgeInsets.all(50),
             child: Column(children: [
-              // ucitati historiju kupovine
+              // Historija(),
               Container(
                 height: 50,
                 width: double.infinity,

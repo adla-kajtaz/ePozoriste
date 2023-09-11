@@ -115,7 +115,7 @@ class _LoginState extends State<Login> {
                                             _authProvider._username = data.korisnickoIme;
                     _authProvider._loggedUserId =data.korisnikId
                         if (context.mounted) {*/
-                        Navigator.popAndPushNamed(context, '/test');
+                        Navigator.popAndPushNamed(context, '/');
                         // }
                       } on Exception catch (error) {
                         print(error.toString());
