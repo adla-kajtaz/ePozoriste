@@ -3,7 +3,6 @@ import '../models/karta.dart';
 import '../models/termin.dart';
 import 'package:flutter/material.dart';
 import '../providers/karta_provider.dart';
-import '../widgets/prikaz_sjedista.dart';
 
 class Sjedista extends StatefulWidget {
   final Termin? termin;
@@ -69,11 +68,112 @@ class _SjedistaState extends State<Sjedista> {
                 const SizedBox(
                   height: 10,
                 ),
-                PrikazSjedista(
-                  karte: karte,
+                Row(
+                  children: [
+                    Column(
+                      children: [
+                        Padding(
+                            padding: const EdgeInsets.all(8),
+                            child: Container(
+                                decoration: BoxDecoration(
+                                    color: Colors.white,
+                                    border: Border.all(
+                                        color: Colors.grey,
+                                        width: 1.0,
+                                        style: BorderStyle.solid),
+                                    borderRadius: BorderRadius.circular(4)),
+                                width: 20,
+                                height: 20)),
+                        const Text("Slobodno"),
+                      ],
+                    ),
+                    const SizedBox(
+                      width: 10,
+                    ),
+                    Column(
+                      children: [
+                        Padding(
+                            padding: const EdgeInsets.all(8),
+                            child: Container(
+                                decoration: BoxDecoration(
+                                    color: const Color.fromARGB(
+                                        255, 172, 168, 168),
+                                    border: Border.all(
+                                        color: Colors.grey,
+                                        width: 1.0,
+                                        style: BorderStyle.solid),
+                                    borderRadius: BorderRadius.circular(4)),
+                                width: 20,
+                                height: 20)),
+                        const Text("Izabrano"),
+                      ],
+                    ),
+                    const SizedBox(
+                      width: 10,
+                    ),
+                    Column(
+                      children: [
+                        Padding(
+                            padding: const EdgeInsets.all(8),
+                            child: Container(
+                                decoration: BoxDecoration(
+                                    color: const Color.fromARGB(
+                                        255, 195, 178, 178),
+                                    border: Border.all(
+                                        color: Colors.grey,
+                                        width: 1.0,
+                                        style: BorderStyle.solid),
+                                    borderRadius: BorderRadius.circular(4)),
+                                width: 20,
+                                height: 20)),
+                        const Text("Rasprodano"),
+                      ],
+                    ),
+                  ],
+                ),
+                Expanded(
+                  child: ListView.builder(
+                    itemCount: _termin.sala.brRedova,
+                    scrollDirection: Axis.vertical,
+                    itemBuilder: (context, index) {
+                      final seat = karte[index];
+                      final seatColor = seat.aktivna
+                          ? Colors.white
+                          : const Color.fromARGB(255, 195, 178, 178);
+
+                      return Container(
+                        margin: const EdgeInsets.all(8.0),
+                        color: seatColor,
+                        child: Center(
+                          child: Text(seat.sjediste),
+                        ),
+                      );
+                    },
+                  ),
                 ),
               ],
             ),
+            /*GridView.builder(
+                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount:
+                        4, // Number of seats per row //_termin.sala.brSjedistaPoRedu
+                  ),
+                  itemCount: karte.length,
+                  itemBuilder: (context, index) {
+                    final seat = karte[index];
+                    final seatColor = seat.aktivna
+                        ? Colors.white
+                        : const Color.fromARGB(255, 195, 178, 178);
+
+                    return Container(
+                      margin: const EdgeInsets.all(8.0),
+                      color: seatColor,
+                      child: Center(
+                        child: Text(seat.sjediste),
+                      ),
+                    );
+                  },
+                ),*/
           ),
         ),
       ),

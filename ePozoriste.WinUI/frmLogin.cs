@@ -28,42 +28,47 @@ namespace ePozoriste.WinUI
             APIService.Lozinka = txtLozinka.Text;
             bool admin = false;
 
-            try
-            {
-                var korisnici = await _korisnikService.Get<List<Korisnik>>();
+             try
+             {
+                 var korisnici = await _korisnikService.Get<List<Korisnik>>();
 
-                var korisnik = korisnici.First(x => x.KorisnickoIme == txtKorisnickoIme.Text);
+                 var korisnik = korisnici.First(x => x.KorisnickoIme == txtKorisnickoIme.Text);
 
-                var korisnikUlogeSearchObject = new KorisnikUlogeSearchObject
-                {
-                    KorisnikId = korisnik.KorisnikId
-                };
-                var uloge = await _korisnikUlogeService.Get<List<KorisnikUloge>>(korisnikUlogeSearchObject);
+                 var korisnikUlogeSearchObject = new KorisnikUlogeSearchObject
+                 {
+                     KorisnikId = korisnik.KorisnikId
+                 };
+                 var uloge = await _korisnikUlogeService.Get<List<KorisnikUloge>>(korisnikUlogeSearchObject);
 
-                foreach (var uloga in uloge)
-                {
-                    if (uloga.Uloga.Naziv == "Admin")
-                    {
-                        admin = true;
-                    }
-                }
-                if (admin)
-                {
-                    APIService.LogiraniKorisnikId = korisnik.KorisnikId;
-                    frmMeni frmMeni = new frmMeni();
-                    frmMeni.Show();
-                    this.Hide();
-                }
+                 foreach (var uloga in uloge)
+                 {
+                     if (uloga.Uloga.Naziv == "Admin")
+                     {
+                         admin = true;
+                     }
+                 }
 
-                else
-                {
-                    MessageBox.Show("Nemate permisije");
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Pogrešan email ili lozinka");
-            }
+                 if (admin)
+                 {
+                     APIService.LogiraniKorisnikId = korisnik.KorisnikId;
+                     frmMeni frmMeni = new frmMeni();
+                     frmMeni.Show();
+                     this.Hide();
+                 }
+
+                 else
+                 {
+                     MessageBox.Show("Nemate permisije");
+                 } 
+             }
+             catch (Exception ex)
+             {
+                 MessageBox.Show("Pogrešan email ili lozinka");
+             }
+        }
+        private void frmLogin_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
         }
     }
 }
