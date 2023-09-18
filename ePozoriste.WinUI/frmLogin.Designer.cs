@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmLogin));
             this.label4 = new System.Windows.Forms.Label();
             this.lblNaziv = new System.Windows.Forms.Label();
@@ -37,7 +38,11 @@
             this.lblKorisnickoIme = new System.Windows.Forms.Label();
             this.txtLozinka = new System.Windows.Forms.TextBox();
             this.txtKorisnickoIme = new System.Windows.Forms.TextBox();
+            this.errKorisnickoIme = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errLozinka = new System.Windows.Forms.ErrorProvider(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errKorisnickoIme)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errLozinka)).BeginInit();
             this.SuspendLayout();
             // 
             // label4
@@ -115,12 +120,20 @@
             this.txtKorisnickoIme.Size = new System.Drawing.Size(310, 27);
             this.txtKorisnickoIme.TabIndex = 8;
             // 
+            // errKorisnickoIme
+            // 
+            this.errKorisnickoIme.ContainerControl = this;
+            // 
+            // errLozinka
+            // 
+            this.errLozinka.ContainerControl = this;
+            // 
             // frmLogin
             // 
             this.AcceptButton = this.btnPrijava;
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(601, 237);
+            this.ClientSize = new System.Drawing.Size(615, 237);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.lblNaziv);
             this.Controls.Add(this.pictureBox1);
@@ -132,6 +145,8 @@
             this.Name = "frmLogin";
             this.Text = "frmLogin";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errKorisnickoIme)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errLozinka)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -147,5 +162,7 @@
         private Label lblKorisnickoIme;
         private TextBox txtLozinka;
         private TextBox txtKorisnickoIme;
+        private ErrorProvider errKorisnickoIme;
+        private ErrorProvider errLozinka;
     }
 }

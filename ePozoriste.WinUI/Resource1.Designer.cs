@@ -70,6 +70,15 @@ namespace ePozoriste.WinUI {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Lozinka mora sadržavati najmanje 8 karaktera..
+        /// </summary>
+        internal static string DuzinaLozinke {
+            get {
+                return ResourceManager.GetString("DuzinaLozinke", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Došlo je do greške..
         /// </summary>
         internal static string Greska {

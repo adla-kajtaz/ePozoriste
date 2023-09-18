@@ -1,6 +1,7 @@
 ﻿using ePozoriste.Model;
 using ePozoriste.Model.SearchObjects;
 using ePozoriste.Services.Helper;
+using ePozoriste.WinUI.Helper;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -31,37 +32,44 @@ namespace ePozoriste.WinUI
 
              try
              {
-                 var korisnici = await _korisnikService.Get<List<Korisnik>>();
-
-                 var korisnik = korisnici.First(x => x.KorisnickoIme == txtKorisnickoIme.Text);
-
-                 var korisnikUlogeSearchObject = new KorisnikUlogeSearchObject
-                 {
-                     KorisnikId = korisnik.KorisnikId
-                 };
-                 var uloge = await _korisnikUlogeService.Get<List<KorisnikUloge>>(korisnikUlogeSearchObject);
-
-                 foreach (var uloga in uloge)
-                 {
-                     if (uloga.Uloga.Naziv == "Admin")
-                     {
-                         admin = true;
-                     }
-                 }
-
-                var hash = PasswordHelper.GenerateHash(korisnik.LozinkaSalt, txtLozinka.Text);
-                if (hash == korisnik.LozinkaHash)
+                if (ValidanUnos())
                 {
-                   if (admin)
+                    var korisnici = await _korisnikService.Get<List<Korisnik>>();
+
+                    var korisnik = korisnici.First(x => x.KorisnickoIme == txtKorisnickoIme.Text);
+
+                    var korisnikUlogeSearchObject = new KorisnikUlogeSearchObject
                     {
-                        APIService.LogiraniKorisnikId = korisnik.KorisnikId;
-                        frmMeni frmMeni = new frmMeni();
-                        frmMeni.Show();
-                        this.Hide();
+                        KorisnikId = korisnik.KorisnikId
+                    };
+                    var uloge = await _korisnikUlogeService.Get<List<KorisnikUloge>>(korisnikUlogeSearchObject);
+
+                    foreach (var uloga in uloge)
+                    {
+                        if (uloga.Uloga.Naziv == "Admin")
+                        {
+                            admin = true;
+                        }
+                    }
+
+                    var hash = PasswordHelper.GenerateHash(korisnik.LozinkaSalt, txtLozinka.Text);
+                    if (hash == korisnik.LozinkaHash)
+                    {
+                        if (admin)
+                        {
+                            APIService.LogiraniKorisnikId = korisnik.KorisnikId;
+                            frmMeni frmMeni = new frmMeni();
+                            frmMeni.Show();
+                            this.Hide();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Nemate permisije");
+                        }
                     }
                     else
                     {
-                        MessageBox.Show("Nemate permisije");
+                        MessageBox.Show("Pogrešan email ili lozinka");
                     }
                 }
              }
@@ -70,6 +78,13 @@ namespace ePozoriste.WinUI
                  MessageBox.Show("Pogrešan email ili lozinka");
              }
         }
+
+        private bool ValidanUnos()
+        {
+            return Validator.ValidirajKontrolu(txtKorisnickoIme, errKorisnickoIme, Kljucevi.ObaveznaVrijednost)
+                && Validator.ValidirajLozinku(txtLozinka, errLozinka, Kljucevi.DuzinaLozinke);
+        }
+
         private void frmLogin_FormClosed(object sender, FormClosedEventArgs e)
         {
             Application.Exit();

@@ -120,6 +120,9 @@
   <data name="DobroDosli" xml:space="preserve">
     <value>Dobro nam došli</value>
   </data>
+  <data name="DuzinaLozinke" xml:space="preserve">
+    <value>Lozinka mora sadržavati najmanje 8 karaktera.</value>
+  </data>
   <data name="Greska" xml:space="preserve">
     <value>Došlo je do greške.</value>
   </data>

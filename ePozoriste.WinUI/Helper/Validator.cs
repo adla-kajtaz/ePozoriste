@@ -54,5 +54,18 @@ namespace ePozoriste.WinUI.Helper
                 return true;
             }
         }
+
+        public static bool ValidirajLozinku(Control kontrola, ErrorProvider err, string kljuc)
+        {
+            if (string.IsNullOrWhiteSpace(kontrola.Text.ToString()) || kontrola.Text.Length < 8)
+            {
+                err.SetError(kontrola, Resursi.Get(kljuc));
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
     }
 }
