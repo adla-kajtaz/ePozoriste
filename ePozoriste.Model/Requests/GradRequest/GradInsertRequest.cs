@@ -15,6 +15,7 @@ namespace ePozoriste.Model.Requests
         [Required(AllowEmptyStrings = false)]
         public string PostanskiBr { get; set; }
 
+        [Required]
         public int DrzavaId { get; set; }
     }
 }

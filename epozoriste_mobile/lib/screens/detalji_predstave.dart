@@ -28,8 +28,9 @@ class _DetaljiPredstaveState extends State<DetaljiPredstave> {
       body: SingleChildScrollView(
         child: SafeArea(
           child: Padding(
-              padding: const EdgeInsets.all(50),
+              padding: const EdgeInsets.all(30),
               child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   Container(
                     height: 50,
@@ -44,22 +45,19 @@ class _DetaljiPredstaveState extends State<DetaljiPredstave> {
                     height: 60,
                   ),
                   Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.start,
                     children: [
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            _termin!.predstava.naziv,
-                            style: const TextStyle(
-                                fontWeight: FontWeight.bold, fontSize: 25),
-                          ), //dodati atribute za sve
-                          Text("Režija: ${_termin.predstava.rezija}"),
-                          Text(
-                              "Kostimografija: ${_termin.predstava.kostimografija}"),
-                          Text(
-                              "Scenografija: ${_termin.predstava.scenografija}"),
-                        ],
-                      ),
+                      Text(
+                        _termin!.predstava.naziv,
+                        style: const TextStyle(
+                            fontWeight: FontWeight.bold, fontSize: 25),
+                      ), //dodati atribute za sve
+                      Text("Režija: ${_termin.predstava.rezija}"),
+                      Text(
+                          "Kostimografija: ${_termin.predstava.kostimografija}"),
+                      Text("Scenografija: ${_termin.predstava.scenografija}"),
+
                       const SizedBox(height: 5),
                       Text(_termin.predstava.sadrzaj),
                     ],
@@ -103,7 +101,6 @@ class _DetaljiPredstaveState extends State<DetaljiPredstave> {
                                       Sjedista(termin: _termin),
                                 ),
                               );
-                              // Navigator.pushNamed(context, '/sjedista');
                             } catch (e) {
                               print(e.toString());
                             }

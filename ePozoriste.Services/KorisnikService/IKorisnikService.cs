@@ -12,6 +12,7 @@ namespace ePozoriste.Services
     public interface IKorisnikService : IBaseCRUDService<Model.Korisnik, BaseSearchObject, KorisnikInsertRequest, KorisnikInsertRequest>
     {
         Task<Model.Korisnik> Login(string korisnickoIme, string lozinka);
+        Task<Model.Korisnik> LoginAdmin(string korisnickoIme, string lozinka)
         Model.Korisnik GetByUsername(string korisnickoIme);
     }
 }

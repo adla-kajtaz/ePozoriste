@@ -131,7 +131,8 @@ class _SjedistaState extends State<Sjedista> {
                     ),
                   ],
                 ),
-                Expanded(
+                SizedBox(
+                  height: 400,
                   child: ListView.builder(
                     itemCount: _termin.sala.brRedova,
                     scrollDirection: Axis.vertical,

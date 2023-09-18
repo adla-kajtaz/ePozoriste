@@ -14,8 +14,6 @@ namespace ePozoriste.Model
         public string KorisnickoIme { get; set; }
         public string Email { get; set; }
         public string BrTelefona { get; set; }
-        public string? LozinkaHash { get; set; }
-        public string? LozinkaSalt { get; set; }
         public bool Aktivan { get; set; }
         public string ImePrezime => $"{Ime} {Prezime}";
 

@@ -13,9 +13,6 @@ namespace ePozoriste.Model
         public int? Cijena { get; set; }
         public DateTime? DatumKupovine { get; set; }
         public int? KorisnikId { get; set; }
-        public int? KartaId { get; set; }
-
-        public virtual Karta? Karta { get; set; }
         public virtual Korisnik? Korisnik { get; set; }
     }
 }

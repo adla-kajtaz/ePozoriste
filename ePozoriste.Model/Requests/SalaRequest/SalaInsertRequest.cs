@@ -12,9 +12,16 @@ namespace ePozoriste.Model.Requests
         [Required(AllowEmptyStrings = false)]
         public string Naziv { get; set; }
 
+        [Required]
         public int BrSjedista { get; set; }
+
+        [Required]
         public int BrRedova { get; set; }
+
+        [Required]
         public int BrSjedistaPoRedu { get; set; }
+
+        [Required]
         public int PozoristeId { get; set; }
     }
 }

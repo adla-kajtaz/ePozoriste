@@ -5,7 +5,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ePozoriste.WinUI.Helper
+namespace ePozoriste.Services.Helper
 {
     public class PasswordHelper
     {

@@ -57,7 +57,7 @@ class _PocetnaState extends State<Pocetna> {
             child: TabBarView(
               children: [
                 ListaPredstava(
-                    termini: [...termini, ...termini, ...termini, ...termini]),
+                    termini: [...termini]),
                 ListaPredstava(
                     termini: [...termini, ...termini, ...termini, ...termini]),
               ],

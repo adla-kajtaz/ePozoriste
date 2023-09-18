@@ -104,11 +104,6 @@ namespace ePozoriste.Services.Database
 
                 entity.Property(e => e.DatumKupovine).HasColumnType("datetime");
 
-                entity.HasOne(d => d.Karta)
-                    .WithMany(p => p.Kupovinas)
-                    .HasForeignKey(d => d.KartaId)
-                    .HasConstraintName("FK__Kupovina__KartaI__5165187F");
-
                 entity.HasOne(d => d.Korisnik)
                     .WithMany(p => p.Kupovinas)
                     .HasForeignKey(d => d.KorisnikId)

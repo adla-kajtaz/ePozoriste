@@ -23,10 +23,15 @@ namespace ePozoriste.Model.Requests
         public string Email { get; set; }
 
         [RegularExpression("^\\d{3}-\\d{3}-(\\d{4}|\\d{3})$")]
+        [Required]
         public string BrTelefona { get; set; }
 
         public string? Logo { get; set; }
+
+        [Required]
         public bool Aktivan { get; set; }
+
+        [Required]
         public int GradId { get; set; }
     }
 }

@@ -7,7 +7,7 @@ namespace ePozoriste.Services.Database
     {
         public Kartum()
         {
-            Kupovinas = new HashSet<Kupovina>();
+            
         }
 
         public int KartaId { get; set; }
@@ -16,9 +16,9 @@ namespace ePozoriste.Services.Database
         public int? BrojSjedista { get; set; }
         public string? BrojReda { get; set; }
         public string? Sjediste { get; set; }
-
+        public int? KupovinaId { get; set; }
+        public virtual Kupovina? Kupovina { get; set; }
 
         public virtual Termin? Termin { get; set; }
-        public virtual ICollection<Kupovina> Kupovinas { get; set; }
     }
 }

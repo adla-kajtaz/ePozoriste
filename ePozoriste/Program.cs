@@ -55,7 +55,6 @@ app.MapControllers();
 using(var scope = app.Services.CreateScope())
 {
     string? connection = app.Configuration.GetConnectionString("DefaultConnection");
-    Console.WriteLine(connection);
     var dataContext = scope.ServiceProvider.GetRequiredService<ePozoristeContext>();
     dataContext.Database.Migrate();
 }

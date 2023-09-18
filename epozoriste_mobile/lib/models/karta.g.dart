@@ -14,6 +14,10 @@ Karta _$KartaFromJson(Map<String, dynamic> json) => Karta(
       sjediste: json['sjediste'] as String,
       terminId: json['terminId'] as int?,
       termin: Termin.fromJson(json['termin'] as Map<String, dynamic>),
+      kupovinaId: json['kupovinaId'] as int?,
+      kupovina: json['kupovina'] == null
+          ? null
+          : Kupovina.fromJson(json['kupovina'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$KartaToJson(Karta instance) => <String, dynamic>{
@@ -24,4 +28,6 @@ Map<String, dynamic> _$KartaToJson(Karta instance) => <String, dynamic>{
       'sjediste': instance.sjediste,
       'terminId': instance.terminId,
       'termin': instance.termin,
+      'kupovinaId': instance.kupovinaId,
+      'kupovina': instance.kupovina,
     };

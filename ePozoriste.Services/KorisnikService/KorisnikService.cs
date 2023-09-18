@@ -16,7 +16,6 @@ namespace ePozoriste.Services
 {
     public class KorisnikService : BaseCRUDService<Model.Korisnik, Database.Korisnik, BaseSearchObject, KorisnikInsertRequest, KorisnikInsertRequest>, IKorisnikService
     {
-
         public KorisnikService(ePozoristeContext context, IMapper mapper) : base(context, mapper)
         {
 
@@ -54,8 +53,8 @@ namespace ePozoriste.Services
                 return null;
             }
 
-            entity.LozinkaSalt = GenerateSalt();
-            entity.LozinkaHash = GenerateHash(entity.LozinkaSalt, request.Lozinka);
+            entity.LozinkaSalt = Helper.PasswordHelper.GenerateSalt();
+            entity.LozinkaHash = Helper.PasswordHelper.GenerateHash(entity.LozinkaSalt, request.Lozinka);
             _context.SaveChanges();
 
             foreach (var role in request.Uloge)
@@ -87,8 +86,8 @@ namespace ePozoriste.Services
             }
             else
             {
-                entity.LozinkaSalt = GenerateSalt();
-                entity.LozinkaHash = GenerateHash(entity.LozinkaSalt, request.Lozinka);
+                entity.LozinkaSalt = Helper.PasswordHelper.GenerateSalt();
+                entity.LozinkaHash = Helper.PasswordHelper.GenerateHash(entity.LozinkaSalt, request.Lozinka);
             }
             _context.Korisniks.Update(entity);
             _context.SaveChanges();
@@ -102,9 +101,11 @@ namespace ePozoriste.Services
             return _mapper.Map<Model.Korisnik>(korisnik);
         }
 
+
+
         public async Task<Model.Korisnik> Login(string korisnickoIme, string lozinka)
         {
-            var entity = await _context.Korisniks.Include(x=>x.KorisnikUloges).FirstOrDefaultAsync(x => x.KorisnickoIme == korisnickoIme);
+            var entity = await _context.Korisniks.Include(x => x.KorisnikUloges).FirstOrDefaultAsync(x => x.KorisnickoIme == korisnickoIme);
 
             if (entity == null)
             {
@@ -112,7 +113,7 @@ namespace ePozoriste.Services
                 //throw new UserException("Kredencijali nisu ispravni");
             }
 
-            var hash = GenerateHash(entity.LozinkaSalt, lozinka);
+            var hash = Helper.PasswordHelper.GenerateHash(entity.LozinkaSalt, lozinka);
 
             if (hash != entity.LozinkaHash)
             {
@@ -147,27 +148,6 @@ namespace ePozoriste.Services
            
             _context.SaveChanges();
             return _mapper.Map<Model.Korisnik>(entity);
-        }
-
-        public string GenerateHash(string salt, string lozinka)
-        {
-            byte[] src = Convert.FromBase64String(salt);
-            byte[] bytes = Encoding.Unicode.GetBytes(lozinka);
-            byte[] dst = new byte[src.Length + bytes.Length];
-
-            System.Buffer.BlockCopy(src, 0, dst, 0, src.Length);
-            System.Buffer.BlockCopy(bytes, 0, dst, src.Length, bytes.Length);
-
-            HashAlgorithm algorithm = HashAlgorithm.Create("SHA1");
-            byte[] inArray = algorithm.ComputeHash(dst);
-            return Convert.ToBase64String(inArray);
-        }
-
-        public string GenerateSalt()
-        {
-            var buf = new byte[16];
-            (new RNGCryptoServiceProvider()).GetBytes(buf);
-            return Convert.ToBase64String(buf);
         }
     }
 }

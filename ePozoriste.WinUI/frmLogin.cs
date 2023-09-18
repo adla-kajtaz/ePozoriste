@@ -1,5 +1,6 @@
 ﻿using ePozoriste.Model;
 using ePozoriste.Model.SearchObjects;
+using ePozoriste.Services.Helper;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -48,18 +49,21 @@ namespace ePozoriste.WinUI
                      }
                  }
 
-                 if (admin)
-                 {
-                     APIService.LogiraniKorisnikId = korisnik.KorisnikId;
-                     frmMeni frmMeni = new frmMeni();
-                     frmMeni.Show();
-                     this.Hide();
-                 }
-
-                 else
-                 {
-                     MessageBox.Show("Nemate permisije");
-                 } 
+                var hash = PasswordHelper.GenerateHash(korisnik.LozinkaSalt, txtLozinka.Text);
+                if (hash == korisnik.LozinkaHash)
+                {
+                    if (admin)
+                    {
+                        APIService.LogiraniKorisnikId = korisnik.KorisnikId;
+                        frmMeni frmMeni = new frmMeni();
+                        frmMeni.Show();
+                        this.Hide();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Nemate permisije");
+                    }
+                }
              }
              catch (Exception ex)
              {

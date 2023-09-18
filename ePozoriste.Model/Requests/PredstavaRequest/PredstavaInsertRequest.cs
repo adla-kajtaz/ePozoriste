@@ -16,9 +16,17 @@ namespace ePozoriste.Model.Requests
         public string Sadrzaj { get; set; }
 
         public string? Slika { get; set; }
+
+        [Required]
         public int VrijemeTrajanje { get; set; }
+
+        [Required]
         public string Rezija { get; set; }
+
+        [Required]
         public string Scenografija { get; set; }
+        
+        [Required]
         public string Kostimografija { get; set; }
     }
 }

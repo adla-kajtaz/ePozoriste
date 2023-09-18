@@ -11,7 +11,7 @@ namespace ePozoriste.Services
 {
     public interface IKorisnikUlogeService : IBaseCRUDService<Model.KorisnikUloge, KorisnikUlogeSearchObject, KorisnikUlogeInsertRequest, KorisnikUlogeInsertRequest>
     {
-        
+
     }
     
 }

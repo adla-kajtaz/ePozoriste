@@ -27,6 +27,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\ePozoriste.Model\ePozoriste.Model.csproj" />
+    <ProjectReference Include="..\ePozoriste.Services\ePozoriste.Services.csproj" />
   </ItemGroup>
 
   <ItemGroup>

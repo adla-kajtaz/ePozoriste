@@ -18,5 +18,11 @@ namespace ePozoriste.Controllers
         {
             return _service.ChangeStatus(id);
         }
+
+        [HttpGet("{id}")]
+        public IEnumerable<Model.Karta> GetByTerminId(int id)
+        {
+            return _service.GetByTerminId(id);
+        }
     }
 }

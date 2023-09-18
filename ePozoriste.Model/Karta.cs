@@ -16,6 +16,7 @@ namespace ePozoriste.Model
         public string BrojReda { get; set; }
         public string Sjediste { get; set; }
 
-
+        public int? KupovinaId { get; set; }
+        public virtual Kupovina? Kupovina { get; set; }
     }
 }

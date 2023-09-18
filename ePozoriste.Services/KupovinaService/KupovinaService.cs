@@ -3,6 +3,7 @@ using ePozoriste.Model.Requests;
 using ePozoriste.Model.SearchObjects;
 using ePozoriste.Services.BaseService;
 using ePozoriste.Services.Database;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,15 +21,16 @@ namespace ePozoriste.Services
 
         public override IEnumerable<Model.Kupovina> GetAll(KupovinaSearchObject search = null)
         {
-            var entity = _context.Set<Database.Kupovina>().AsQueryable();
+  
+            var entity = _context.Kupovinas.Include(x => x.Korisnik).AsQueryable();
 
             if (search.KartaId != null && search.KorisnikId != null)
             {
-                entity = entity.Where(e => e.KartaId == search.KartaId && e.KorisnikId == search.KorisnikId);
+                entity = entity.Where(e => e.KorisnikId == search.KorisnikId);
             }
             else if (search.KartaId != null || search.KorisnikId != null)
             {
-                entity = entity.Where(e => e.KartaId == search.KartaId || e.KorisnikId == search.KorisnikId);
+                entity = entity.Where(e => e.KorisnikId == search.KorisnikId);
             }
 
             var list = entity.ToList();

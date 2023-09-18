@@ -21,7 +21,7 @@ namespace ePozoriste.Services
 
         public override IEnumerable<Model.Karta> GetAll(KartaSearchObject search = null)
         {
-            var entity = _context.Karta.Include(x=>x.Termin).Include(x => x.Termin.Predstava).Include(x => x.Termin.Sala).Include(x => x.Termin.Sala.Pozoriste).Include(x => x.Termin.Sala.Pozoriste.Grad).Include(x => x.Termin.Sala.Pozoriste.Grad.Drzava).AsQueryable();
+            var entity = _context.Karta.Include(x=>x.Termin).Include(x => x.Termin.Predstava).Include(x => x.Termin.Sala).Include(x => x.Termin.Sala.Pozoriste).Include(x => x.Termin.Sala.Pozoriste.Grad).Include(x => x.Termin.Sala.Pozoriste.Grad.Drzava).Include(x=>x.Kupovina).AsQueryable();
 
             if (!string.IsNullOrWhiteSpace(search.Tekst) && search.TerminId != null && search.Aktivan != null)
             {
@@ -39,13 +39,8 @@ namespace ePozoriste.Services
         public override Model.Karta Delete(int id)
         {
             var entity = _context.Karta.Find(id);
-            var kupovine = _context.Kupovinas.Where(e => e.KartaId == id).ToList();
 
-            if (kupovine != null && kupovine.Any())
-            {
-                return null;
-            }
-            else if (entity == null)
+            if (entity == null)
             {
                 return null;
             }
@@ -69,5 +64,13 @@ namespace ePozoriste.Services
             _context.SaveChanges();
             return _mapper.Map<Model.Karta>(entity);
         }
+
+        public IEnumerable<Model.Karta> GetByTerminId(int id)
+        {
+            var entity = _context.Karta.Include(x => x.Termin).Include(x => x.Termin.Predstava).Include(x => x.Termin.Sala).Include(x => x.Termin.Sala.Pozoriste).Include(x => x.Termin.Sala.Pozoriste.Grad).Include(x => x.Termin.Sala.Pozoriste.Grad.Drzava).Include(x => x.Kupovina).Where(x=>x.TerminId == id).AsQueryable();
+            var list = entity.ToList();
+            return _mapper.Map<IList<Model.Karta>>(list);
+        }
+
     }
 }
