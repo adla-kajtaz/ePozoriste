@@ -21,17 +21,5 @@ namespace ePozoriste.Controllers
         {
             return base.Update(id, request);
         }
-
-        [HttpPost("login")]
-        public Task<Model.Korisnik> Login(string korisnickoIme, string lozinka)
-        {
-            return _service.Login(korisnickoIme, lozinka);
-        }
-
-        [HttpPost("register")]
-        public Model.Korisnik Register([FromBody] KorisnikInsertRequest request)
-        {
-            return _service.Insert(request);
-        }
     }
 }

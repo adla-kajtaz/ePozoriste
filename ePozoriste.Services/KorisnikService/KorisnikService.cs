@@ -95,28 +95,6 @@ namespace ePozoriste.Services
             return _mapper.Map<Model.Korisnik>(korisnik);
         }
 
-
-
-        public async Task<Model.Korisnik> Login(string korisnickoIme, string lozinka)
-        {
-            var entity = await _context.Korisniks.Include(x => x.KorisnikUloges).FirstOrDefaultAsync(x => x.KorisnickoIme == korisnickoIme);
-
-            if (entity == null)
-            {
-                return null;
-                //throw new UserException("Kredencijali nisu ispravni");
-            }
-
-            var hash = Helper.PasswordHelper.GenerateHash(entity.LozinkaSalt, lozinka);
-
-            if (hash != entity.LozinkaHash)
-            {
-                return null;
-                //throw new UserException("Kredencijali nisu ispravni");
-            }
-            return _mapper.Map<Model.Korisnik>(entity);
-        }
-
         public override Model.Korisnik Delete(int id)
         {
             var entity = _context.Korisniks.Find(id);

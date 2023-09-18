@@ -17,6 +17,7 @@ builder.Services.AddDbContext<ePozoristeContext>(options =>
 
 builder.Services.AddSwaggerGen();
 
+builder.Services.AddTransient<IAuthService, AuthService>();
 builder.Services.AddTransient<IDrzavaService, DrzavaService>();
 builder.Services.AddTransient<IGradService, GradService>();
 builder.Services.AddTransient<IUlogaService, UlogaService>();

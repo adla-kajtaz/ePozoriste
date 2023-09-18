@@ -1,6 +1,4 @@
-﻿using ePozoriste.Model;
-using ePozoriste.Model.SearchObjects;
-using ePozoriste.Services.Helper;
+﻿using ePozoriste.Model.Requests;
 using ePozoriste.WinUI.Helper;
 using System;
 using System.Collections.Generic;
@@ -16,9 +14,8 @@ namespace ePozoriste.WinUI
 {
     public partial class frmLogin : Form
     {
-        private readonly APIService _korisnikService  = new APIService("Korisnik");
-        private readonly APIService _korisnikUlogeService   = new APIService("KorisnikUloge");
-
+        AuthService authService { get; set; } = new AuthService();
+        
         public frmLogin()
         {
             InitializeComponent();
@@ -28,54 +25,36 @@ namespace ePozoriste.WinUI
         {
             APIService.KorisnickoIme = txtKorisnickoIme.Text;
             APIService.Lozinka = txtLozinka.Text;
-            bool admin = false;
-
+      
              try
              {
                 if (ValidanUnos())
                 {
-                    var korisnici = await _korisnikService.Get<List<Korisnik>>();
-
-                    var korisnik = korisnici.First(x => x.KorisnickoIme == txtKorisnickoIme.Text);
-
-                    var korisnikUlogeSearchObject = new KorisnikUlogeSearchObject
+                    var loginRequest = new LoginRequest
                     {
-                        KorisnikId = korisnik.KorisnikId
+                        KorisnickoIme = txtKorisnickoIme.Text.ToString(),
+                        Lozinka = txtLozinka.Text.ToString()
                     };
-                    var uloge = await _korisnikUlogeService.Get<List<KorisnikUloge>>(korisnikUlogeSearchObject);
 
-                    foreach (var uloga in uloge)
+                    var korisnik = await authService.LoginAdmin(loginRequest);
+                    if (korisnik != null)
                     {
-                        if (uloga.Uloga.Naziv == "Admin")
-                        {
-                            admin = true;
-                        }
-                    }
 
-                    var hash = PasswordHelper.GenerateHash(korisnik.LozinkaSalt, txtLozinka.Text);
-                    if (hash == korisnik.LozinkaHash)
-                    {
-                        if (admin)
-                        {
-                            APIService.LogiraniKorisnikId = korisnik.KorisnikId;
-                            frmMeni frmMeni = new frmMeni();
-                            frmMeni.Show();
-                            this.Hide();
-                        }
-                        else
-                        {
-                            MessageBox.Show("Nemate permisije");
-                        }
+                        APIService.LogiraniKorisnikId = korisnik.KorisnikId;
+                        frmMeni frmMeni = new frmMeni();
+                        frmMeni.Show();
+                        this.Hide();
                     }
                     else
                     {
-                        MessageBox.Show("Pogrešan email ili lozinka");
+                        MessageBox.Show("Pogrešano korisničko ime ili lozinka");
                     }
+                   
                 }
              }
              catch (Exception ex)
              {
-                 MessageBox.Show("Pogrešan email ili lozinka");
+                 MessageBox.Show("Pogrešano korisničko ime ili lozinka");
              }
         }
 
