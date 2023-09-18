@@ -18,17 +18,13 @@ namespace ePozoriste.Services
 
         }
 
-        public override IEnumerable<Model.Predstava> GetAll(BaseSearchObject search = null)
+        public override IQueryable<ePozoriste.Services.Database.Predstava> AddFilter(IQueryable<ePozoriste.Services.Database.Predstava> query, BaseSearchObject search = null)
         {
-            var entity = _context.Set<Database.Predstava>().AsQueryable();
+            var filteredQuery = base.AddFilter(query, search);
 
-            if (!string.IsNullOrWhiteSpace(search.Tekst))
-            {
-                entity = entity.Where(e => e.Naziv.ToLower().Contains(search.Tekst.ToLower()));
-            }
-
-            var list = entity.ToList();
-            return _mapper.Map<IList<Model.Predstava>>(list);
+            if (!string.IsNullOrWhiteSpace(search?.Tekst))
+                filteredQuery = filteredQuery.Where(x => x.Naziv.ToLower().Contains(search.Tekst.ToLower()));
+            return filteredQuery;
         }
 
         public override Model.Predstava Delete(int id)

@@ -19,23 +19,23 @@ namespace ePozoriste.Services
 
         }
 
-        public override IEnumerable<Model.Pozoriste> GetAll(PozoristeSearchObject search = null)
+        public override IQueryable<ePozoriste.Services.Database.Pozoriste> AddInclude(IQueryable<ePozoriste.Services.Database.Pozoriste> query, PozoristeSearchObject search = null)
         {
-            var entity = _context.Pozoristes.Include(x => x.Grad).Include(x=>x.Grad.Drzava).AsQueryable();
-
-            if (!string.IsNullOrWhiteSpace(search.Tekst) && search.GradId != null)
-            {
-                entity = entity.Where(e => e.Naziv.Contains(search.Tekst) && e.GradId == search.GradId);
-            }
-            else if (!string.IsNullOrWhiteSpace(search.Tekst) || search.GradId != null)
-            {
-                entity = entity.Where(e => e.GradId == search.GradId || e.Naziv.Contains(search.Tekst));
-            }
-
-            var list = entity.ToList();
-            return _mapper.Map<IList<Model.Pozoriste>>(list);
+            query = query.Include(x => x.Grad).Include(x => x.Grad.Drzava);
+            return base.AddInclude(query, search);
         }
 
+        public override IQueryable<ePozoriste.Services.Database.Pozoriste> AddFilter(IQueryable<ePozoriste.Services.Database.Pozoriste> query, PozoristeSearchObject search = null)
+        {
+            var filteredQuery = base.AddFilter(query, search);
+
+            if (!string.IsNullOrWhiteSpace(search?.Tekst))
+                filteredQuery = filteredQuery.Where(x => x.Naziv.ToLower().Contains(search.Tekst.ToLower()));
+            if (search.GradId != null)
+                filteredQuery = filteredQuery.Where(x => x.GradId == search.GradId);
+            return filteredQuery;
+        }
+       
         public override Model.Pozoriste Delete(int id)
         {
             var entity = _context.Pozoristes.Find(id);

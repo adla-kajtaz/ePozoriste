@@ -18,18 +18,13 @@ namespace ePozoriste.Services
 
         }
 
-        public override IEnumerable<Model.Glumac> GetAll(BaseSearchObject search = null)
+        public override IQueryable<ePozoriste.Services.Database.Glumac> AddFilter(IQueryable<ePozoriste.Services.Database.Glumac> query, BaseSearchObject search = null)
         {
-            var entity = _context.Set<Database.Glumac>().AsQueryable();
+            var filteredQuery = base.AddFilter(query, search);
 
-            if (!string.IsNullOrWhiteSpace(search.Tekst))
-            {
-                entity = entity.Where(e => e.Ime.ToLower().Contains(search.Tekst.ToLower()) 
-                                        || e.Prezime.ToLower().Contains(search.Tekst.ToLower()));
-            }
-
-            var list = entity.ToList();
-            return _mapper.Map<IList<Model.Glumac>>(list);
+            if (!string.IsNullOrWhiteSpace(search?.Tekst))
+                filteredQuery = filteredQuery.Where(x => x.Ime.ToLower().Contains(search.Tekst.ToLower()) || x.Prezime.ToLower().Contains(search.Tekst.ToLower()));
+            return filteredQuery;
         }
 
         public override Model.Glumac Delete(int id)

@@ -19,23 +19,27 @@ namespace ePozoriste.Services
 
         }
 
-        public override IEnumerable<Model.Termin> GetAll(TerminSearchObject search = null)
+        public override IQueryable<ePozoriste.Services.Database.Termin> AddInclude(IQueryable<ePozoriste.Services.Database.Termin> query, TerminSearchObject search = null)
         {
-            var entity = _context.Termins.Include(x=>x.Predstava).Include(x=>x.Sala).Include(x=>x.Sala.Pozoriste).Include(x=>x.Sala.Pozoriste.Grad).Include(x => x.Sala.Pozoriste.Grad.Drzava).AsQueryable();
+            query = query.Include(x => x.Predstava).Include(x=>x.Sala).Include(x => x.Sala.Pozoriste).Include(x => x.Sala.Pozoriste.Grad).Include(x => x.Sala.Pozoriste.Grad.Drzava);
+            return base.AddInclude(query, search);
+        }
 
-            if (search.SalaId != null && search.PredstavaId != null && search.Premijera != null && search.Predpremijera != null && search.DatumOdrzavanja != null)
-            {
-                entity = entity.Where(e => e.SalaId == search.SalaId && e.PredstavaId == search.PredstavaId 
-                                        && e.Premijera == search.Premijera && e.Predpremijera == search.Predpremijera && e.DatumOdrzavanja == search.DatumOdrzavanja);
-            }
-            else if (search.SalaId != null || search.PredstavaId != null || search.Premijera != null || search.Predpremijera != null || search.DatumOdrzavanja != null)
-            {
-                entity = entity.Where(e => e.SalaId == search.SalaId || e.PredstavaId == search.PredstavaId
-                                        || e.Premijera == search.Premijera || e.Predpremijera == search.Predpremijera || e.DatumOdrzavanja == search.DatumOdrzavanja);
-            }
+        public override IQueryable<ePozoriste.Services.Database.Termin> AddFilter(IQueryable<ePozoriste.Services.Database.Termin> query, TerminSearchObject search = null)
+        {
+            var filteredQuery = base.AddFilter(query, search);
 
-            var list = entity.ToList();
-            return _mapper.Map<IList<Model.Termin>>(list);
+            if (search.PredstavaId != null)
+                filteredQuery = filteredQuery.Where(x => x.PredstavaId == search.PredstavaId);
+            if (search.SalaId != null)
+                filteredQuery = filteredQuery.Where(x => x.SalaId == search.SalaId);
+            if (search.Premijera != null)
+                filteredQuery = filteredQuery.Where(x => x.Premijera == search.Premijera);
+            if (search.Predpremijera != null)
+                filteredQuery = filteredQuery.Where(x => x.Predpremijera == search.Predpremijera);
+            if (search.DatumOdrzavanja != null)
+                filteredQuery = filteredQuery.Where(x => x.DatumOdrzavanja == search.DatumOdrzavanja);
+            return filteredQuery;
         }
 
         public override Model.Termin Delete(int id)

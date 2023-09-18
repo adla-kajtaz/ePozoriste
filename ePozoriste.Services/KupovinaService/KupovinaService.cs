@@ -19,22 +19,19 @@ namespace ePozoriste.Services
 
         }
 
-        public override IEnumerable<Model.Kupovina> GetAll(KupovinaSearchObject search = null)
+        public override IQueryable<ePozoriste.Services.Database.Kupovina> AddInclude(IQueryable<ePozoriste.Services.Database.Kupovina> query, KupovinaSearchObject search = null)
         {
-  
-            var entity = _context.Kupovinas.Include(x => x.Korisnik).AsQueryable();
+            query = query.Include(x => x.Korisnik);
+            return base.AddInclude(query, search);
+        }
 
-            if (search.KartaId != null && search.KorisnikId != null)
-            {
-                entity = entity.Where(e => e.KorisnikId == search.KorisnikId);
-            }
-            else if (search.KartaId != null || search.KorisnikId != null)
-            {
-                entity = entity.Where(e => e.KorisnikId == search.KorisnikId);
-            }
+        public override IQueryable<ePozoriste.Services.Database.Kupovina> AddFilter(IQueryable<ePozoriste.Services.Database.Kupovina> query, KupovinaSearchObject search = null)
+        {
+            var filteredQuery = base.AddFilter(query, search);
 
-            var list = entity.ToList();
-            return _mapper.Map<IList<Model.Kupovina>>(list);
+            if (search.KorisnikId != null)
+                filteredQuery = filteredQuery.Where(x => x.KorisnikId == search.KorisnikId);
+            return filteredQuery;
         }
     }
 }

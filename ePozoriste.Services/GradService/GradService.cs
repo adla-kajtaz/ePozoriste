@@ -19,21 +19,21 @@ namespace ePozoriste.Services
 
         }
 
-        public override IEnumerable<Model.Grad> GetAll(GradSearchObject search = null)
+        public override IQueryable<ePozoriste.Services.Database.Grad> AddInclude(IQueryable<ePozoriste.Services.Database.Grad> query, GradSearchObject search = null)
         {
-            var entity = _context.Grads.Include(x=>x.Drzava).AsQueryable();
+            query = query.Include(x => x.Drzava);
+            return base.AddInclude(query, search);
+        }
 
-            if (!string.IsNullOrWhiteSpace(search.Tekst) && search.DrzavaId != null)
-            {
-                entity = entity.Where(e => e.Naziv.Contains(search.Tekst) && e.DrzavaId == search.DrzavaId);
-            }
-            else if (!string.IsNullOrWhiteSpace(search.Tekst) || search.DrzavaId != null)
-            {
-                entity = entity.Where(e => e.DrzavaId == search.DrzavaId || e.Naziv.Contains(search.Tekst));
-            }
+        public override IQueryable<ePozoriste.Services.Database.Grad> AddFilter(IQueryable<ePozoriste.Services.Database.Grad> query, GradSearchObject search = null)
+        {
+            var filteredQuery = base.AddFilter(query, search);
 
-            var list = entity.ToList();
-            return _mapper.Map<IList<Model.Grad>>(list);
+            if (!string.IsNullOrWhiteSpace(search?.Tekst))
+                filteredQuery = filteredQuery.Where(x => x.Naziv.ToLower().Contains(search.Tekst.ToLower()));
+            if (search.DrzavaId != null)
+                filteredQuery = filteredQuery.Where(x => x.DrzavaId == search.DrzavaId);
+            return filteredQuery;
         }
 
         public override Model.Grad Delete(int id)

@@ -20,21 +20,21 @@ namespace ePozoriste.Services
 
         }
 
-        public override IEnumerable<Model.PredstavaVrstaPredstave> GetAll(PredstavaVrstaPredstaveSearchObject search = null)
+        public override IQueryable<ePozoriste.Services.Database.PredstavaVrstaPredstave> AddInclude(IQueryable<ePozoriste.Services.Database.PredstavaVrstaPredstave> query, PredstavaVrstaPredstaveSearchObject search = null)
         {
-            var entity = _context.PredstavaVrstaPredstaves.Include(x=>x.Predstava).Include(x=>x.VrstaPredstave).AsQueryable();
+            query = query.Include(x => x.Predstava).Include(x => x.VrstaPredstave);
+            return base.AddInclude(query, search);
+        }
 
-            if (search.PredstavaId != null && search.VrstaPredstaveId != null)
-            {
-                entity = entity.Where(e=> e.PredstavaId == search.PredstavaId && e.VrstaPredstaveId == search.VrstaPredstaveId);
-            }
-            else if (search.PredstavaId != null || search.VrstaPredstaveId != null)
-            {
-                entity = entity.Where(e => e.PredstavaId == search.PredstavaId || e.VrstaPredstaveId == search.VrstaPredstaveId);
-            }
+        public override IQueryable<ePozoriste.Services.Database.PredstavaVrstaPredstave> AddFilter(IQueryable<ePozoriste.Services.Database.PredstavaVrstaPredstave> query, PredstavaVrstaPredstaveSearchObject search = null)
+        {
+            var filteredQuery = base.AddFilter(query, search);
 
-            var list = entity.ToList();
-            return _mapper.Map<IList<Model.PredstavaVrstaPredstave>>(list);
+            if (search.PredstavaId != null)
+                filteredQuery = filteredQuery.Where(x => x.PredstavaId == search.PredstavaId);
+            if (search.VrstaPredstaveId != null)
+                filteredQuery = filteredQuery.Where(x => x.VrstaPredstaveId == search.VrstaPredstaveId);
+            return filteredQuery;
         }
     }
 }

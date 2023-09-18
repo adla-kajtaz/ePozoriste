@@ -19,24 +19,23 @@ namespace ePozoriste.Services
 
         }
 
-        public override IEnumerable<Model.PredstavaGlumac> GetAll(PredstavaGlumacSearchObject search = null)
+        public override IQueryable<ePozoriste.Services.Database.PredstavaGlumac> AddInclude(IQueryable<ePozoriste.Services.Database.PredstavaGlumac> query, PredstavaGlumacSearchObject search = null)
         {
-            var entity = _context.PredstavaGlumacs.Include(x=>x.Glumac).Include(x=>x.Predstava).AsQueryable();
-
-            if (!string.IsNullOrWhiteSpace(search.Tekst) && search.PredstavaId != null && search.GlumacId != null)
-            {
-                entity = entity.Where(e => e.NazivUloge.Contains(search.Tekst) && e.PredstavaId == search.PredstavaId && e.GlumacId == search.GlumacId);
-            }
-            else if (!string.IsNullOrWhiteSpace(search.Tekst) || search.PredstavaId != null || search.GlumacId != null)
-            {
-                entity = entity.Where(e => e.PredstavaId == search.PredstavaId || e.GlumacId == search.GlumacId || e.NazivUloge.Contains(search.Tekst));
-            }
-
-            var list = entity.ToList();
-            return _mapper.Map<IList<Model.PredstavaGlumac>>(list);
+            query = query.Include(x => x.Predstava).Include(x=>x.Glumac);
+            return base.AddInclude(query, search);
         }
 
+        public override IQueryable<ePozoriste.Services.Database.PredstavaGlumac> AddFilter(IQueryable<ePozoriste.Services.Database.PredstavaGlumac> query, PredstavaGlumacSearchObject search = null)
+        {
+            var filteredQuery = base.AddFilter(query, search);
 
-
+            if (!string.IsNullOrWhiteSpace(search?.Tekst))
+                filteredQuery = filteredQuery.Where(x => x.NazivUloge.ToLower().Contains(search.Tekst.ToLower()));
+            if (search.PredstavaId != null)
+                filteredQuery = filteredQuery.Where(x => x.PredstavaId == search.PredstavaId);
+            if (search.GlumacId != null)
+                filteredQuery = filteredQuery.Where(x => x.GlumacId == search.GlumacId);
+            return filteredQuery;
+        }
     }
 }

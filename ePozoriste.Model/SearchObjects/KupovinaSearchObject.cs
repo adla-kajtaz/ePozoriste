@@ -9,6 +9,5 @@ namespace ePozoriste.Model.SearchObjects
     public class KupovinaSearchObject : BaseSearchObject
     {
         public int? KorisnikId { get; set; }
-        public int? KartaId { get; set; }
     }
 }

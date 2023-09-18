@@ -19,21 +19,21 @@ namespace ePozoriste.Services
 
         }
 
-        public override IEnumerable<Model.KorisnikUloge> GetAll(KorisnikUlogeSearchObject search = null)
+        public override IQueryable<ePozoriste.Services.Database.KorisnikUloge> AddInclude(IQueryable<ePozoriste.Services.Database.KorisnikUloge> query,KorisnikUlogeSearchObject search = null)
         {
-            var entity = _context.KorisnikUloges.Include(x => x.Uloga).Include(x=>x.Korisnik).AsQueryable();
+            query = query.Include(x => x.Uloga).Include(x => x.Korisnik);
+            return base.AddInclude(query, search);
+        }
 
-            if (search.KorisnikId != null && search.UlogaId != null)
-            {
-                entity = entity.Where(e => e.KorisnikId == search.KorisnikId && e.UlogaId == search.UlogaId);
-            }
-            else if (search.KorisnikId != null || search.UlogaId != null)
-            {
-                entity = entity.Where(e => e.UlogaId == search.UlogaId || e.KorisnikId == search.KorisnikId);
-            }
+        public override IQueryable<ePozoriste.Services.Database.KorisnikUloge> AddFilter(IQueryable<ePozoriste.Services.Database.KorisnikUloge> query, KorisnikUlogeSearchObject search = null)
+        {
+            var filteredQuery = base.AddFilter(query, search);
 
-            var list = entity.ToList();
-            return _mapper.Map<IList<Model.KorisnikUloge>>(list);
+            if (search.KorisnikId != null)
+                filteredQuery = filteredQuery.Where(x => x.KorisnikId == search.KorisnikId);
+            if(search.UlogaId != null)
+                filteredQuery = filteredQuery.Where(x=>x.UlogaId == search.UlogaId);
+            return filteredQuery;
         }
     }
 }

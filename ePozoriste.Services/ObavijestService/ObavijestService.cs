@@ -19,23 +19,21 @@ namespace ePozoriste.Services
 
         }
 
-        public override IEnumerable<Model.Obavijest> GetAll(ObavijestSearchObject search = null)
+        public override IQueryable<ePozoriste.Services.Database.Obavijest> AddInclude(IQueryable<ePozoriste.Services.Database.Obavijest> query, ObavijestSearchObject search = null)
         {
-            var entity = _context.Obavijests.Include(x=>x.ObavijestKategorija).Include(x=>x.Korisnik).AsQueryable();
+            query = query.Include(x => x.ObavijestKategorija).Include(x => x.Korisnik);
+            return base.AddInclude(query, search);
+        }
 
-            if (!string.IsNullOrWhiteSpace(search.Tekst) && search.ObavijestKategorijaId != null)
-            {
-                entity = entity.Where(e => e.Naslov.Contains(search.Tekst) && e.Podnaslov.Contains(search.Tekst)
-                         && e.Sadrzaj.Contains(search.Tekst) && e.ObavijestKategorijaId == search.ObavijestKategorijaId);
-            }
-            else if (!string.IsNullOrWhiteSpace(search.Tekst) || search.ObavijestKategorijaId != null)
-            {
-                entity = entity.Where(e => e.ObavijestKategorijaId == search.ObavijestKategorijaId || e.Naslov.Contains(search.Tekst)
-                         || e.Podnaslov.Contains(search.Tekst) || e.Sadrzaj.Contains(search.Tekst));
-            }
+        public override IQueryable<ePozoriste.Services.Database.Obavijest> AddFilter(IQueryable<ePozoriste.Services.Database.Obavijest> query, ObavijestSearchObject search = null)
+        {
+            var filteredQuery = base.AddFilter(query, search);
 
-            var list = entity.ToList();
-            return _mapper.Map<IList<Model.Obavijest>>(list);
+            if (!string.IsNullOrWhiteSpace(search?.Tekst))
+                filteredQuery = filteredQuery.Where(x => x.Naslov.ToLower().Contains(search.Tekst.ToLower()));
+            if (search.ObavijestKategorijaId != null)
+                filteredQuery = filteredQuery.Where(x => x.ObavijestKategorijaId == search.ObavijestKategorijaId);
+            return filteredQuery;
         }
     }
 }

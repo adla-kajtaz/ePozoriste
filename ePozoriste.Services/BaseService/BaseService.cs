@@ -21,12 +21,22 @@ namespace ePozoriste.Services.BaseService
 
         public virtual IEnumerable<T> GetAll(TSearch search = null)
         {
-            var entity = _context.Set<TDb>();
-
+            var entity = _context.Set<TDb>().AsQueryable();
+            entity = AddFilter(entity, search);
+            entity = AddInclude(entity, search);
             var list = entity.ToList();
             return _mapper.Map<IList<T>>(list);
         }
-        
+
+        public virtual IQueryable<TDb> AddInclude(IQueryable<TDb> query, TSearch search = null)
+        {
+            return query;
+        }
+
+        public virtual IQueryable<TDb> AddFilter(IQueryable<TDb> query, TSearch search = null)
+        {
+            return query;
+        }
 
         public virtual T GetById(int id)
         {

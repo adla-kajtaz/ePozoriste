@@ -18,17 +18,13 @@ namespace ePozoriste.Services
 
         }
 
-        public override IEnumerable<Model.ObavijestKategorija> GetAll(BaseSearchObject search = null)
+        public override IQueryable<ePozoriste.Services.Database.ObavijestKategorija> AddFilter(IQueryable<ePozoriste.Services.Database.ObavijestKategorija> query, BaseSearchObject search = null)
         {
-            var entity = _context.Set<Database.ObavijestKategorija>().AsQueryable();
+            var filteredQuery = base.AddFilter(query, search);
 
-            if (!string.IsNullOrWhiteSpace(search.Tekst))
-            {
-                entity = entity.Where(e => e.Naziv.ToLower().Contains(search.Tekst.ToLower()));
-            }
-
-            var list = entity.ToList();
-            return _mapper.Map<IList<Model.ObavijestKategorija>>(list);
+            if (!string.IsNullOrWhiteSpace(search?.Tekst))
+                filteredQuery = filteredQuery.Where(x => x.Naziv.ToLower().Contains(search.Tekst.ToLower()));
+            return filteredQuery;
         }
 
         public override Model.ObavijestKategorija Delete(int id)

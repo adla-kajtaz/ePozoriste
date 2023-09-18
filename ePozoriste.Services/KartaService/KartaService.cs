@@ -19,21 +19,23 @@ namespace ePozoriste.Services
 
         }
 
-        public override IEnumerable<Model.Karta> GetAll(KartaSearchObject search = null)
+        public override IQueryable<ePozoriste.Services.Database.Kartum> AddInclude(IQueryable<ePozoriste.Services.Database.Kartum> query, KartaSearchObject search = null)
         {
-            var entity = _context.Karta.Include(x=>x.Termin).Include(x => x.Termin.Predstava).Include(x => x.Termin.Sala).Include(x => x.Termin.Sala.Pozoriste).Include(x => x.Termin.Sala.Pozoriste.Grad).Include(x => x.Termin.Sala.Pozoriste.Grad.Drzava).Include(x=>x.Kupovina).AsQueryable();
+            query = query.Include(x => x.Termin).Include(x=>x.Termin.Sala).Include(x=>x.Termin.Sala.Pozoriste).Include(x => x.Termin.Sala.Pozoriste.Grad).Include(x => x.Termin.Sala.Pozoriste.Grad.Drzava).Include(x=>x.Termin.Predstava).Include(x => x.Kupovina);
+            return base.AddInclude(query, search);
+        }
 
-            if (!string.IsNullOrWhiteSpace(search.Tekst) && search.TerminId != null && search.Aktivan != null)
-            {
-                entity = entity.Where(e => e.Sjediste.Contains(search.Tekst) && e.TerminId == search.TerminId && e.Aktivna == search.Aktivan);
-            }
-            else if (!string.IsNullOrWhiteSpace(search.Tekst) || search.TerminId != null)
-            {
-                entity = entity.Where(e => e.TerminId == search.TerminId || e.Aktivna == search.Aktivan || e.Sjediste.Contains(search.Tekst));
-            }
+        public override IQueryable<ePozoriste.Services.Database.Kartum> AddFilter(IQueryable<ePozoriste.Services.Database.Kartum> query, KartaSearchObject search = null)
+        {
+            var filteredQuery = base.AddFilter(query, search);
 
-            var list = entity.ToList();
-            return _mapper.Map<IList<Model.Karta>>(list);
+            if (!string.IsNullOrWhiteSpace(search?.Tekst))
+                filteredQuery = filteredQuery.Where(x => x.Sjediste.Contains(search.Tekst));
+            if (search.TerminId != null)
+                filteredQuery = filteredQuery.Where(x => x.TerminId == search.TerminId);
+            if (search.Aktivan != null)
+                filteredQuery = filteredQuery.Where(x => x.Aktivna == search.Aktivan);
+            return filteredQuery;
         }
 
         public override Model.Karta Delete(int id)

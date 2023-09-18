@@ -21,19 +21,13 @@ namespace ePozoriste.Services
 
         }
 
-        public override IEnumerable<Model.Korisnik> GetAll(BaseSearchObject search = null)
+        public override IQueryable<ePozoriste.Services.Database.Korisnik> AddFilter(IQueryable<ePozoriste.Services.Database.Korisnik> query, BaseSearchObject search = null)
         {
-            var entity = _context.Set<Database.Korisnik>().AsQueryable();
+            var filteredQuery = base.AddFilter(query, search);
 
-            if (!string.IsNullOrWhiteSpace(search.Tekst))
-            {
-                entity = entity.Where(x => x.Ime.Contains(search.Tekst)
-                 || x.Prezime.Contains(search.Tekst)
-                 || x.KorisnickoIme.Contains(search.Tekst));
-            }
-
-            var list = entity.ToList();
-            return _mapper.Map<List<Model.Korisnik>>(list);
+            if (!string.IsNullOrWhiteSpace(search?.Tekst))
+                filteredQuery = filteredQuery.Where(x => x.Ime.ToLower().Contains(search.Tekst.ToLower()) || x.Prezime.ToLower().Contains(search.Tekst.ToLower()) || x.KorisnickoIme.ToLower().Contains(search.Tekst.ToLower()));
+            return filteredQuery;
         }
 
         public override Model.Korisnik Insert(KorisnikInsertRequest request)
