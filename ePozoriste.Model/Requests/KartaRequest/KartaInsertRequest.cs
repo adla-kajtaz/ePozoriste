@@ -26,7 +26,6 @@ namespace ePozoriste.Model.Requests
         [Required]
         public string Sjediste { get; set; }
 
-        [Required]
         public int? KupovinaId { get; set; }    
 
     }
