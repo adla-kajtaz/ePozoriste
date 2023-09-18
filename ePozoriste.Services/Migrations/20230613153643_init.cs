@@ -384,7 +384,7 @@ namespace ePozoriste.Services.Migrations
             migrationBuilder.InsertData(
                 table: "Korisnik",
                 columns: new[] { "KorisnikId", "Aktivan", "BrTelefona", "Email", "Ime", "KorisnickoIme", "LozinkaHash", "LozinkaSalt", "Prezime" },
-                values: new object[] { 1, true, "062 045-456", "admin@epozoriste.ba", "Admin", "admin", "/jgjzf1nC8YDuZMV5q0kYrRqIarjCDgWjBERaZiyyO0=", "DFQVcTkMv8qWjq/5ars8Eg==", "Admin" });
+                values: new object[] { 1, true, "062 045-456", "admin@epozoriste.ba", "Admin", "admin", "523l3SXvXt/OIGacFmI0PUlXkJM=", "ORNOSgr59Nd5PGJx/GNMKg==", "Admin" });
 
             migrationBuilder.InsertData(
                 table: "ObavijestKategorija",

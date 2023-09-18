@@ -215,8 +215,8 @@ namespace ePozoriste.Services.Migrations
                             Email = "admin@epozoriste.ba",
                             Ime = "Admin",
                             KorisnickoIme = "admin",
-                            LozinkaHash = "/jgjzf1nC8YDuZMV5q0kYrRqIarjCDgWjBERaZiyyO0=",
-                            LozinkaSalt = "DFQVcTkMv8qWjq/5ars8Eg==",
+                            LozinkaHash = "523l3SXvXt/OIGacFmI0PUlXkJM=",
+                            LozinkaSalt = "ORNOSgr59Nd5PGJx/GNMKg==",
                             Prezime = "Admin"
                         });
                 });

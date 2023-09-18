@@ -70,8 +70,8 @@ namespace ePozoriste.Services.Database
                     Email = "admin@epozoriste.ba",
                     BrTelefona = "062 045-456",
                     Aktivan = true,
-                    LozinkaHash = "MPX3Ttn7Rk4sttT6b1I2HMOaGSE=",
-                    LozinkaSalt = "IV+jt12lgBfCr7c/bY9ahw=="
+                    LozinkaHash = "523l3SXvXt/OIGacFmI0PUlXkJM=",
+                    LozinkaSalt = "ORNOSgr59Nd5PGJx/GNMKg=="
                 }
             });;
 

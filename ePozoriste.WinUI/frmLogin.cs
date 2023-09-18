@@ -52,7 +52,7 @@ namespace ePozoriste.WinUI
                 var hash = PasswordHelper.GenerateHash(korisnik.LozinkaSalt, txtLozinka.Text);
                 if (hash == korisnik.LozinkaHash)
                 {
-                    if (admin)
+                   if (admin)
                     {
                         APIService.LogiraniKorisnikId = korisnik.KorisnikId;
                         frmMeni frmMeni = new frmMeni();
