@@ -53,11 +53,6 @@ namespace ePozoriste.Services
             var entity = _mapper.Map<Database.Korisnik>(request);
             _context.Add(entity);
 
-            if (request.Lozinka != request.LozinkaProvjera)
-            {
-                return null;
-            }
-
             entity.LozinkaSalt = Helper.PasswordHelper.GenerateSalt();
             entity.LozinkaHash = Helper.PasswordHelper.GenerateHash(entity.LozinkaSalt, request.Lozinka);
             _context.SaveChanges();

@@ -70,13 +70,12 @@ namespace ePozoriste.WinUI
                         Prezime = txtPrezime.Text,
                         BrTelefona = txtBrTelefona.Text,
                         Email = txtEmail.Text,
-                        Lozinka = txtLozinka.Text,
-                        LozinkaProvjera = txtLozinkaProvjera.Text
+                        Lozinka = txtLozinka.Text
                     };
 
                     var update = await _korisnikService.Update<Korisnik>(_korisnik.KorisnikId, korisnikInsertRequest);
                     if (_korisnik.KorisnikId == APIService.LogiraniKorisnikId &&
-                                !string.IsNullOrWhiteSpace(korisnikInsertRequest.Lozinka) && !string.IsNullOrWhiteSpace(korisnikInsertRequest.LozinkaProvjera))
+                                !string.IsNullOrWhiteSpace(korisnikInsertRequest.Lozinka))
                     {
                         APIService.Lozinka = korisnikInsertRequest.Lozinka;
                     }

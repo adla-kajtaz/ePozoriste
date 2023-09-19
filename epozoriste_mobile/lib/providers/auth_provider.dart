@@ -6,7 +6,7 @@ import 'package:http/io_client.dart';
 import 'package:http/src/response.dart';
 
 class AuthProvider extends BaseProvider<Korisnik> {
-  static String? _username = "";
+  // static String _username = "";
   static int? _loggedUserId = 0;
 
   HttpClient client = HttpClient();
@@ -27,15 +27,13 @@ class AuthProvider extends BaseProvider<Korisnik> {
   }
 
   void setParameters(
-    String username,
     int loggedUserId,
   ) {
-    _username = username;
     _loggedUserId = loggedUserId;
   }
 
   Future<Korisnik?> login(dynamic request) async {
-    var url = "$_baseUrl" + "Korisnik/login";
+    var url = "$_baseUrl" + "/login";
     var headers = createHeaders();
     var uri = Uri.parse(url);
     var jsonRequest = jsonEncode(request);
@@ -49,7 +47,7 @@ class AuthProvider extends BaseProvider<Korisnik> {
   }
 
   Future<Korisnik?> register(dynamic request) async {
-    var url = "$_baseUrl" + "Korisnik/register";
+    var url = "$_baseUrl" + "register";
     var headers = createHeaders();
     var uri = Uri.parse(url);
     var jsonRequest = jsonEncode(request);
@@ -63,7 +61,7 @@ class AuthProvider extends BaseProvider<Korisnik> {
   }
 
   static void logout() {
-    _username = "";
+    //_username = "";
     _loggedUserId = 0;
   }
 

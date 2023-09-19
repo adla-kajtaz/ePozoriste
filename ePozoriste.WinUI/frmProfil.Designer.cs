@@ -43,8 +43,6 @@
             this.label7 = new System.Windows.Forms.Label();
             this.btnSpremi = new System.Windows.Forms.Button();
             this.btnOdjaviSe = new System.Windows.Forms.Button();
-            this.txtLozinkaProvjera = new System.Windows.Forms.TextBox();
-            this.label8 = new System.Windows.Forms.Label();
             this.txtLozinka = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
@@ -178,22 +176,6 @@
             this.btnOdjaviSe.UseVisualStyleBackColor = true;
             this.btnOdjaviSe.Click += new System.EventHandler(this.btnOdjaviSe_Click);
             // 
-            // txtLozinkaProvjera
-            // 
-            this.txtLozinkaProvjera.Location = new System.Drawing.Point(338, 288);
-            this.txtLozinkaProvjera.Name = "txtLozinkaProvjera";
-            this.txtLozinkaProvjera.Size = new System.Drawing.Size(225, 27);
-            this.txtLozinkaProvjera.TabIndex = 36;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(338, 265);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(121, 20);
-            this.label8.TabIndex = 35;
-            this.label8.Text = "Lozinka provjera:";
-            // 
             // txtLozinka
             // 
             this.txtLozinka.Location = new System.Drawing.Point(12, 288);
@@ -246,8 +228,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(590, 398);
             this.Controls.Add(this.label10);
-            this.Controls.Add(this.txtLozinkaProvjera);
-            this.Controls.Add(this.label8);
             this.Controls.Add(this.txtLozinka);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.btnOdjaviSe);
@@ -293,8 +273,6 @@
         private Label label7;
         private Button btnSpremi;
         private Button btnOdjaviSe;
-        private TextBox txtLozinkaProvjera;
-        private Label label8;
         private TextBox txtLozinka;
         private Label label9;
         private Label label10;

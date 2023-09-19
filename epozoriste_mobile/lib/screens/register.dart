@@ -24,7 +24,6 @@ class _RegisterState extends State<Register> {
   String? email;
   String? brTelefona;
   String? lozinka;
-  String? lozinkaProvjera;
   List<int> uloge = [2];
   List<String> errors = [];
   @override
@@ -167,26 +166,8 @@ class _RegisterState extends State<Register> {
                           if (value!.isEmpty) {
                             return "Ovo polje je obavezno";
                           }
-                        },
-                        obscureText: true,
-                        autocorrect: false,
-                        style: const TextStyle(
-                            color: Color.fromARGB(225, 195, 178, 178)),
-                        decoration: InputDecoration(
-                          border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(15)),
-                          labelText: 'Lozinka',
-                          hintText: '********',
-                          labelStyle: const TextStyle(
-                              color: Color.fromARGB(225, 195, 178, 178)),
-                        ),
-                      ),
-                      const SizedBox(height: 10),
-                      TextFormField(
-                        onSaved: (newValue) => lozinkaProvjera = newValue,
-                        validator: (value) {
-                          if (value!.isEmpty) {
-                            return "Ovo polje je obavezno";
+                          if (!isPasswordValid(value!)) {
+                            return "Lozinka mora sadržavati 8 karaktera.";
                           }
                         },
                         obscureText: true,
@@ -196,7 +177,7 @@ class _RegisterState extends State<Register> {
                         decoration: InputDecoration(
                           border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(15)),
-                          labelText: 'Provjera lozinke',
+                          labelText: 'Lozinka',
                           hintText: '********',
                           labelStyle: const TextStyle(
                               color: Color.fromARGB(225, 195, 178, 178)),
@@ -216,13 +197,12 @@ class _RegisterState extends State<Register> {
                             'brTelefona': brTelefona,
                             'aktivan': true,
                             'lozinka': lozinka,
-                            'lozinkaProvjera': lozinkaProvjera,
                             'uloge': [2]
                           };
                           try {
                             var data = await _authProvider!.register(newUser);
                             if (context.mounted) {
-                              Navigator.popAndPushNamed(context, '/');
+                              Navigator.popAndPushNamed(context, '/login');
                             }
                           } on Exception catch (err) {
                             print(err.toString());
