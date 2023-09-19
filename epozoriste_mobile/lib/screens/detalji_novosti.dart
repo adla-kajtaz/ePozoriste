@@ -19,6 +19,11 @@ class _DetaljiNovostiState extends State<DetaljiNovosti> {
       appBar: AppBar(
         automaticallyImplyLeading: false,
         backgroundColor: const Color.fromARGB(255, 57, 53, 53),
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back_ios_new_rounded,
+              color: Color.fromARGB(225, 195, 178, 178)),
+          onPressed: () => Navigator.of(context).pop(),
+        ),
         title: const Text(
           'ePozorište',
           style: TextStyle(color: Color.fromARGB(225, 195, 178, 178)),
@@ -28,7 +33,8 @@ class _DetaljiNovostiState extends State<DetaljiNovosti> {
         child: SafeArea(
           child: Padding(
             padding: const EdgeInsets.all(50),
-            child: Column(children: [
+            child:
+                Column(mainAxisAlignment: MainAxisAlignment.start, children: [
               Container(
                 height: 50,
                 width: double.infinity,
@@ -43,25 +49,49 @@ class _DetaljiNovostiState extends State<DetaljiNovosti> {
                 children: [
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       Text(
                         _obavijest!.naslov,
                         style: const TextStyle(
-                            fontWeight: FontWeight.bold, fontSize: 20),
+                          fontWeight: FontWeight.bold,
+                          fontSize: 20,
+                          color: Color.fromARGB(225, 195, 178, 178),
+                        ),
                       ),
                       Row(
                         children: [
-                          Text(_obavijest.korisnik.korisnickoIme.toString()),
-                          const Text(" | "),
-                          Text(_obavijest.datumKreiranja
-                              .toString()
-                              .substring(0, 10)),
+                          Text(
+                            _obavijest.korisnik.korisnickoIme.toString(),
+                            style: const TextStyle(
+                                color: Color.fromARGB(255, 219, 217, 217)),
+                          ),
+                          const Text(
+                            " | ",
+                            style: TextStyle(
+                                color: Color.fromARGB(255, 219, 217, 217)),
+                          ),
+                          Text(
+                            _obavijest.datumKreiranja
+                                .toString()
+                                .substring(0, 10),
+                            style: const TextStyle(
+                                color: Color.fromARGB(255, 219, 217, 217)),
+                          ),
                         ],
                       ),
                       const SizedBox(height: 5),
-                      Text(_obavijest.podnaslov),
+                      Text(
+                        _obavijest.podnaslov,
+                        style: const TextStyle(
+                            color: Color.fromARGB(225, 195, 178, 178)),
+                      ),
                       const SizedBox(height: 10),
-                      Text(_obavijest.sadrzaj),
+                      Text(
+                        _obavijest.sadrzaj,
+                        style: const TextStyle(
+                            color: Color.fromARGB(225, 195, 178, 178)),
+                      ),
                     ],
                   ),
                   const SizedBox(

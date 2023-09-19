@@ -47,17 +47,16 @@ class _PocetnaState extends State<Pocetna> {
               style: TextStyle(color: Color.fromARGB(225, 195, 178, 178)),
             ),
             bottom: TabBar(
-                labelColor: const Color.fromARGB(225, 195, 178, 178),
-                unselectedLabelColor: Colors.white,
-                indicatorColor: const Color.fromARGB(255, 116, 108, 108),
+                labelColor: Colors.white,
+                unselectedLabelColor: const Color.fromARGB(225, 195, 178, 178),
+                indicatorColor: Colors.white,
                 tabs: myTabs),
           ),
           body: Padding(
             padding: const EdgeInsets.all(16),
             child: TabBarView(
               children: [
-                ListaPredstava(
-                    termini: [...termini]),
+                ListaPredstava(termini: [...termini]),
                 ListaPredstava(
                     termini: [...termini, ...termini, ...termini, ...termini]),
               ],

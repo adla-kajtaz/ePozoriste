@@ -232,14 +232,15 @@ class _RegisterState extends State<Register> {
                         child: Container(
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(10),
-                            color: const Color.fromARGB(223, 117, 117, 98),
+                            color: const Color.fromARGB(225, 217, 217, 217),
                           ),
                           height: 50,
                           child: const Center(
                             child: Text(
                               'Registruj se',
-                              style:
-                                  TextStyle(color: Colors.white, fontSize: 20),
+                              style: TextStyle(
+                                  color: Color.fromARGB(225, 86, 81, 81),
+                                  fontSize: 20),
                             ),
                           ),
                         ),

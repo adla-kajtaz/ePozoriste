@@ -33,12 +33,44 @@ class _DetaljiProfilaState extends State<DetaljiProfila> {
 
   @override
   Widget build(BuildContext context) {
+    if (korisnik == null) {
+      return Scaffold(
+        backgroundColor: const Color.fromARGB(255, 86, 81, 81),
+        resizeToAvoidBottomInset: false,
+        appBar: AppBar(
+          automaticallyImplyLeading: false,
+          backgroundColor: const Color.fromARGB(255, 57, 53, 53),
+          leading: IconButton(
+            icon: const Icon(Icons.arrow_back_ios_new_rounded,
+                color: Color.fromARGB(225, 195, 178, 178)),
+            onPressed: () => Navigator.of(context).pop(),
+          ),
+          title: const Text(
+            'Profil',
+            style: TextStyle(color: Color.fromARGB(225, 195, 178, 178)),
+          ),
+        ),
+        body: const Center(
+          child: Text(
+            'Učitavanje ...',
+            style: TextStyle(
+              color: Color.fromARGB(225, 195, 178, 178),
+            ),
+          ),
+        ),
+      );
+    }
     return Scaffold(
       backgroundColor: const Color.fromARGB(255, 86, 81, 81),
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
         automaticallyImplyLeading: false,
         backgroundColor: const Color.fromARGB(255, 57, 53, 53),
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back_ios_new_rounded,
+              color: Color.fromARGB(225, 195, 178, 178)),
+          onPressed: () => Navigator.of(context).pop(),
+        ),
         title: const Text(
           'Profil',
           style: TextStyle(color: Color.fromARGB(225, 195, 178, 178)),
@@ -179,33 +211,6 @@ class _DetaljiProfilaState extends State<DetaljiProfila> {
                 const SizedBox(height: 10),
                 InkWell(
                   onTap: () async {
-                    /*if(formKey.currentState!.validate()){
-                          formKey.currentState!.save();
-                        }*/
-                    try {
-                      Navigator.pushNamed(context, '/login');
-                    } on Exception catch (err) {
-                      print(err.toString());
-                      //formKey.currentState!.validate();
-                    }
-                  },
-                  child: Container(
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10),
-                      color: const Color.fromARGB(223, 117, 117, 98),
-                    ),
-                    height: 50,
-                    child: const Center(
-                      child: Text(
-                        'Odjavi se',
-                        style: TextStyle(color: Colors.white, fontSize: 20),
-                      ),
-                    ),
-                  ),
-                ),
-                const SizedBox(height: 10),
-                InkWell(
-                  onTap: () async {
                     if (formKey.currentState!.validate()) {
                       formKey.currentState!.save();
                       Map<String, dynamic> data = {
@@ -228,13 +233,44 @@ class _DetaljiProfilaState extends State<DetaljiProfila> {
                   child: Container(
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
-                      color: const Color.fromARGB(223, 117, 117, 98),
+                      color: const Color.fromARGB(225, 217, 217, 217),
                     ),
                     height: 50,
                     child: const Center(
                       child: Text(
                         'Sačuvaj promjene',
-                        style: TextStyle(color: Colors.white, fontSize: 20),
+                        style: TextStyle(
+                            color: Color.fromARGB(225, 86, 81, 81),
+                            fontSize: 20),
+                      ),
+                    ),
+                  ),
+                ),
+                const SizedBox(height: 10),
+                InkWell(
+                  onTap: () async {
+                    /*if(formKey.currentState!.validate()){
+                          formKey.currentState!.save();
+                        }*/
+                    try {
+                      Navigator.pushNamed(context, '/login');
+                    } on Exception catch (err) {
+                      print(err.toString());
+                      //formKey.currentState!.validate();
+                    }
+                  },
+                  child: Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10),
+                      color: const Color.fromARGB(225, 217, 217, 217),
+                    ),
+                    height: 50,
+                    child: const Center(
+                      child: Text(
+                        'Odjavi se',
+                        style: TextStyle(
+                            color: Color.fromARGB(225, 86, 81, 81),
+                            fontSize: 20),
                       ),
                     ),
                   ),

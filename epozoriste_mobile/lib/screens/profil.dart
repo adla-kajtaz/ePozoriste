@@ -32,7 +32,7 @@ class _ProfilState extends State<Profil> {
                 height: 50,
                 width: double.infinity,
                 decoration: BoxDecoration(
-                  color: const Color.fromARGB(223, 117, 117, 98),
+                  color: const Color.fromARGB(225, 217, 217, 217),
                   borderRadius: BorderRadius.circular(10),
                 ),
                 child: InkWell(
@@ -47,7 +47,7 @@ class _ProfilState extends State<Profil> {
                     child: Text(
                       'Postavke profila',
                       style: TextStyle(
-                        color: Colors.white,
+                        color: Color.fromARGB(225, 86, 81, 81),
                         fontSize: 20,
                       ),
                     ),

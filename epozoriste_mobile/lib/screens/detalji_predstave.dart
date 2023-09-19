@@ -20,6 +20,11 @@ class _DetaljiPredstaveState extends State<DetaljiPredstave> {
       appBar: AppBar(
         automaticallyImplyLeading: false,
         backgroundColor: const Color.fromARGB(255, 57, 53, 53),
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back_ios_new_rounded,
+              color: Color.fromARGB(225, 195, 178, 178)),
+          onPressed: () => Navigator.of(context).pop(),
+        ),
         title: const Text(
           'ePozorište',
           style: TextStyle(color: Color.fromARGB(225, 195, 178, 178)),
@@ -51,15 +56,33 @@ class _DetaljiPredstaveState extends State<DetaljiPredstave> {
                       Text(
                         _termin!.predstava.naziv,
                         style: const TextStyle(
-                            fontWeight: FontWeight.bold, fontSize: 25),
+                          fontWeight: FontWeight.bold,
+                          fontSize: 25,
+                          color: Color.fromARGB(225, 195, 178, 178),
+                        ),
                       ), //dodati atribute za sve
-                      Text("Režija: ${_termin.predstava.rezija}"),
                       Text(
-                          "Kostimografija: ${_termin.predstava.kostimografija}"),
-                      Text("Scenografija: ${_termin.predstava.scenografija}"),
+                        "Režija: ${_termin.predstava.rezija}",
+                        style: const TextStyle(
+                            color: Color.fromARGB(225, 195, 178, 178)),
+                      ),
+                      Text(
+                        "Kostimografija: ${_termin.predstava.kostimografija}",
+                        style: const TextStyle(
+                            color: Color.fromARGB(225, 195, 178, 178)),
+                      ),
+                      Text(
+                        "Scenografija: ${_termin.predstava.scenografija}",
+                        style: const TextStyle(
+                            color: Color.fromARGB(225, 195, 178, 178)),
+                      ),
 
                       const SizedBox(height: 5),
-                      Text(_termin.predstava.sadrzaj),
+                      Text(
+                        _termin.predstava.sadrzaj,
+                        style: const TextStyle(
+                            color: Color.fromARGB(225, 195, 178, 178)),
+                      ),
                     ],
                   ),
                   const SizedBox(
@@ -69,7 +92,7 @@ class _DetaljiPredstaveState extends State<DetaljiPredstave> {
                     height: 170,
                     width: double.infinity,
                     decoration: BoxDecoration(
-                      color: const Color.fromARGB(255, 102, 98, 98),
+                      color: const Color.fromARGB(255, 103, 103, 103),
                       borderRadius: BorderRadius.circular(10),
                     ),
                     child: Column(children: [
@@ -77,10 +100,21 @@ class _DetaljiPredstaveState extends State<DetaljiPredstave> {
                         height: 7,
                       ),
                       Text(
-                          '${_termin.datumOdrzavanja.toString().substring(0, 10)}, ${_termin.vrijemeOdrzavanja}'),
-                      Text(_termin.sala.pozoriste.naziv),
-                      Text(_termin.sala.naziv),
-                      Text('Cijena karte: ${_termin.cijenaKarte} KM'),
+                        '${_termin.datumOdrzavanja.toString().substring(0, 10)}, ${_termin.vrijemeOdrzavanja}',
+                        style: const TextStyle(color: Colors.white),
+                      ),
+                      Text(
+                        _termin.sala.pozoriste.naziv,
+                        style: const TextStyle(color: Colors.white),
+                      ),
+                      Text(
+                        _termin.sala.naziv,
+                        style: const TextStyle(color: Colors.white),
+                      ),
+                      Text(
+                        'Cijena karte: ${_termin.cijenaKarte} KM',
+                        style: const TextStyle(color: Colors.white),
+                      ),
                       const SizedBox(
                         height: 10,
                       ),
@@ -88,7 +122,7 @@ class _DetaljiPredstaveState extends State<DetaljiPredstave> {
                         height: 50,
                         width: 200,
                         decoration: BoxDecoration(
-                          color: const Color.fromARGB(223, 117, 117, 98),
+                          color: const Color.fromARGB(223, 217, 217, 217),
                           borderRadius: BorderRadius.circular(10),
                         ),
                         child: InkWell(
@@ -109,7 +143,7 @@ class _DetaljiPredstaveState extends State<DetaljiPredstave> {
                             child: Text(
                               'Kupi',
                               style: TextStyle(
-                                color: Colors.white,
+                                color: Color.fromARGB(225, 86, 81, 81),
                                 fontSize: 20,
                               ),
                             ),

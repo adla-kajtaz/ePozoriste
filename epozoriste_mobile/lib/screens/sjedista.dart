@@ -41,6 +41,11 @@ class _SjedistaState extends State<Sjedista> {
       appBar: AppBar(
         automaticallyImplyLeading: false,
         backgroundColor: const Color.fromARGB(255, 57, 53, 53),
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back_ios_new_rounded,
+              color: Color.fromARGB(225, 195, 178, 178)),
+          onPressed: () => Navigator.of(context).pop(),
+        ),
         title: const Text(
           'ePozorište',
           style: TextStyle(color: Color.fromARGB(225, 195, 178, 178)),
