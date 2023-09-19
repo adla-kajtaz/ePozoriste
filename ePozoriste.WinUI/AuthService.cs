@@ -18,11 +18,11 @@ namespace ePozoriste.WinUI
 
         public async Task<Model.Korisnik> LoginAdmin(LoginRequest request)
         {
-            string endpoint = $"{Properties.Settings.Default.ApiURL}/{API_ROUTE}/login/admin";
+            string endpoint = $"{Properties.Settings.Default.ApiURL}/login/admin";
             try
             {
 
-                var result = await endpoint.PostJsonAsync(request).ReceiveJson<Model.Korisnik>(); ;
+                var result = await endpoint.PostJsonAsync(request).ReceiveJson<Model.Korisnik>();
                 return result;
             }
             catch
