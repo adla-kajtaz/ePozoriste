@@ -14,6 +14,9 @@ class Sjedista extends StatefulWidget {
 
 class _SjedistaState extends State<Sjedista> {
   List<Karta> karte = [];
+  List<Karta>? izabranaSjedista = [];
+  // List<int> kolone = [];
+  // List<int> redovi = [];
   KartaProvider? _kartaProvider;
   @override
   void initState() {
@@ -23,9 +26,13 @@ class _SjedistaState extends State<Sjedista> {
   }
 
   Future loadData() async {
+    Termin? _termin = widget.termin;
+
     var tempData = await _kartaProvider?.get();
     setState(() {
       karte = tempData!;
+      /* kolone = List<int>.generate(_termin!.sala.brSjedistaPoRedu, (i) => i + 1);
+      redovi = List<int>.generate(_termin!.sala.brRedova, (i) => i + 1); */
     });
     for (Karta karta in karte) {
       print(karta.sjediste);
@@ -35,6 +42,33 @@ class _SjedistaState extends State<Sjedista> {
   @override
   Widget build(BuildContext context) {
     Termin? _termin = widget.termin;
+    if (karte.length == 0) {
+      return Scaffold(
+        backgroundColor: const Color.fromARGB(255, 86, 81, 81),
+        resizeToAvoidBottomInset: false,
+        appBar: AppBar(
+          automaticallyImplyLeading: false,
+          backgroundColor: const Color.fromARGB(255, 57, 53, 53),
+          leading: IconButton(
+            icon: const Icon(Icons.arrow_back_ios_new_rounded,
+                color: Color.fromARGB(225, 195, 178, 178)),
+            onPressed: () => Navigator.of(context).pop(),
+          ),
+          title: const Text(
+            'Profil',
+            style: TextStyle(color: Color.fromARGB(225, 195, 178, 178)),
+          ),
+        ),
+        body: const Center(
+          child: Text(
+            'Učitavanje ...',
+            style: TextStyle(
+              color: Color.fromARGB(225, 195, 178, 178),
+            ),
+          ),
+        ),
+      );
+    }
     return Scaffold(
       backgroundColor: const Color.fromARGB(255, 86, 81, 81),
       resizeToAvoidBottomInset: false,
@@ -55,134 +89,171 @@ class _SjedistaState extends State<Sjedista> {
         child: SafeArea(
           child: Padding(
             padding: const EdgeInsets.all(50),
-            child: Column(
-              children: [
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      _termin!.predstava.naziv,
-                      style: const TextStyle(
-                          fontWeight: FontWeight.bold, fontSize: 25),
-                    ),
-                    Text(
-                        '${_termin.datumOdrzavanja.toString().substring(0, 10)}, ${_termin.vrijemeOdrzavanja}'),
-                    Text(_termin.sala.naziv),
-                  ],
-                ),
-                const SizedBox(
-                  height: 10,
-                ),
-                Row(
-                  children: [
-                    Column(
-                      children: [
-                        Padding(
-                            padding: const EdgeInsets.all(8),
-                            child: Container(
-                                decoration: BoxDecoration(
-                                    color: Colors.white,
-                                    border: Border.all(
-                                        color: Colors.grey,
-                                        width: 1.0,
-                                        style: BorderStyle.solid),
-                                    borderRadius: BorderRadius.circular(4)),
-                                width: 20,
-                                height: 20)),
-                        const Text("Slobodno"),
-                      ],
-                    ),
-                    const SizedBox(
-                      width: 10,
-                    ),
-                    Column(
-                      children: [
-                        Padding(
-                            padding: const EdgeInsets.all(8),
-                            child: Container(
-                                decoration: BoxDecoration(
-                                    color: const Color.fromARGB(
-                                        255, 172, 168, 168),
-                                    border: Border.all(
-                                        color: Colors.grey,
-                                        width: 1.0,
-                                        style: BorderStyle.solid),
-                                    borderRadius: BorderRadius.circular(4)),
-                                width: 20,
-                                height: 20)),
-                        const Text("Izabrano"),
-                      ],
-                    ),
-                    const SizedBox(
-                      width: 10,
-                    ),
-                    Column(
-                      children: [
-                        Padding(
-                            padding: const EdgeInsets.all(8),
-                            child: Container(
-                                decoration: BoxDecoration(
-                                    color: const Color.fromARGB(
-                                        255, 195, 178, 178),
-                                    border: Border.all(
-                                        color: Colors.grey,
-                                        width: 1.0,
-                                        style: BorderStyle.solid),
-                                    borderRadius: BorderRadius.circular(4)),
-                                width: 20,
-                                height: 20)),
-                        const Text("Rasprodano"),
-                      ],
-                    ),
-                  ],
-                ),
-                SizedBox(
-                  height: 400,
-                  child: ListView.builder(
-                    itemCount: _termin.sala.brRedova,
-                    scrollDirection: Axis.vertical,
-                    itemBuilder: (context, index) {
-                      final seat = karte[index];
-                      final seatColor = seat.aktivna
-                          ? Colors.white
-                          : const Color.fromARGB(255, 195, 178, 178);
-
-                      return Container(
-                        margin: const EdgeInsets.all(8.0),
-                        color: seatColor,
-                        child: Center(
-                          child: Text(seat.sjediste),
+            child: Column(children: [
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    _termin!.predstava.naziv,
+                    style: const TextStyle(
+                        fontWeight: FontWeight.bold, fontSize: 25),
+                  ),
+                  Text(
+                      '${_termin.datumOdrzavanja.toString().substring(0, 10)}, ${_termin.vrijemeOdrzavanja}'),
+                  Text(_termin.sala.naziv),
+                ],
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              Row(
+                children: [
+                  Column(
+                    children: [
+                      Padding(
+                          padding: const EdgeInsets.all(8),
+                          child: Container(
+                              decoration: BoxDecoration(
+                                  color: Colors.white,
+                                  border: Border.all(
+                                      color: Colors.grey,
+                                      width: 1.0,
+                                      style: BorderStyle.solid),
+                                  borderRadius: BorderRadius.circular(4)),
+                              width: 20,
+                              height: 20)),
+                      const Text("Slobodno"),
+                    ],
+                  ),
+                  const SizedBox(
+                    width: 10,
+                  ),
+                  Column(
+                    children: [
+                      Padding(
+                          padding: const EdgeInsets.all(8),
+                          child: Container(
+                              decoration: BoxDecoration(
+                                  color:
+                                      const Color.fromARGB(255, 172, 168, 168),
+                                  border: Border.all(
+                                      color: Colors.grey,
+                                      width: 1.0,
+                                      style: BorderStyle.solid),
+                                  borderRadius: BorderRadius.circular(4)),
+                              width: 20,
+                              height: 20)),
+                      const Text("Izabrano"),
+                    ],
+                  ),
+                  const SizedBox(
+                    width: 10,
+                  ),
+                  Column(
+                    children: [
+                      Padding(
+                          padding: const EdgeInsets.all(8),
+                          child: Container(
+                              decoration: BoxDecoration(
+                                  color:
+                                      const Color.fromARGB(255, 195, 178, 178),
+                                  border: Border.all(
+                                      color: Colors.grey,
+                                      width: 1.0,
+                                      style: BorderStyle.solid),
+                                  borderRadius: BorderRadius.circular(4)),
+                              width: 20,
+                              height: 20)),
+                      const Text("Rasprodano"),
+                    ],
+                  ),
+                ],
+              ),
+              SizedBox(
+                height: 600,
+                width: double.infinity,
+                child: Padding(
+                  padding: const EdgeInsets.all(5.0),
+                  child: Row(
+                    children: [
+                      Expanded(
+                        child: Container(
+                          child: GridView.count(
+                            crossAxisCount: 10,
+                            children: List.generate(karte!.length, (index) {
+                              final seat = karte[index];
+                              return InkWell(
+                                  onTap: () {
+                                    if (!seat.aktivna) {
+                                      showMessage("Seat already taken");
+                                    } else if (izabranaSjedista!
+                                        .contains(karte![index])) {
+                                      setState(() {
+                                        izabranaSjedista!.remove(karte![index]);
+                                      });
+                                    } else {
+                                      setState(() {
+                                        izabranaSjedista!.add(karte![index]);
+                                      });
+                                    }
+                                  },
+                                  child: Container(
+                                    width: 80,
+                                    height: 80,
+                                    decoration: BoxDecoration(
+                                        border: Border.all(
+                                            color: Colors.grey,
+                                            width: 1.0,
+                                            style: BorderStyle.solid),
+                                        borderRadius: BorderRadius.circular(4),
+                                        color: (izabranaSjedista!
+                                                .contains(karte![index]))
+                                            ? const Color.fromARGB(
+                                                255, 172, 168, 168)
+                                            : (seat.aktivna)
+                                                ? Colors.white
+                                                : const Color.fromARGB(
+                                                    255, 195, 178, 178)),
+                                    margin: const EdgeInsets.all(5),
+                                    child: Center(
+                                      child: Text(
+                                        seat.sjediste,
+                                        style: const TextStyle(fontSize: 6),
+                                      ),
+                                    ),
+                                  ));
+                            }),
+                          ),
                         ),
-                      );
-                    },
+                      ),
+                    ],
                   ),
                 ),
-              ],
-            ),
-            /*GridView.builder(
-                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount:
-                        4, // Number of seats per row //_termin.sala.brSjedistaPoRedu
-                  ),
-                  itemCount: karte.length,
-                  itemBuilder: (context, index) {
-                    final seat = karte[index];
-                    final seatColor = seat.aktivna
-                        ? Colors.white
-                        : const Color.fromARGB(255, 195, 178, 178);
-
-                    return Container(
-                      margin: const EdgeInsets.all(8.0),
-                      color: seatColor,
-                      child: Center(
-                        child: Text(seat.sjediste),
-                      ),
-                    );
-                  },
-                ),*/
+              ),
+            ]),
           ),
         ),
       ),
     );
+  }
+
+  showMessage(String message) {
+    return showDialog(
+        context: context,
+        builder: (BuildContext context) => AlertDialog(
+              title: const Text("Message"),
+              content: Text(message),
+              actions: [
+                TextButton(
+                    child: const Text("Ok"),
+                    onPressed: () => Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) =>
+                                Sjedista(termin: widget.termin),
+                          ),
+                        ))
+              ],
+            ));
   }
 }
