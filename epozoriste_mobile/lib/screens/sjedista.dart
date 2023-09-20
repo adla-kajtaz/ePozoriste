@@ -42,7 +42,7 @@ class _SjedistaState extends State<Sjedista> {
   @override
   Widget build(BuildContext context) {
     Termin? _termin = widget.termin;
-    if (karte.length == 0) {
+    if (karte.isEmpty) {
       return Scaffold(
         backgroundColor: const Color.fromARGB(255, 86, 81, 81),
         resizeToAvoidBottomInset: false,
@@ -177,53 +177,51 @@ class _SjedistaState extends State<Sjedista> {
                   child: Row(
                     children: [
                       Expanded(
-                        child: Container(
-                          child: GridView.count(
-                            crossAxisCount: 10,
-                            children: List.generate(karte!.length, (index) {
-                              final seat = karte[index];
-                              return InkWell(
-                                  onTap: () {
-                                    if (!seat.aktivna) {
-                                      showMessage("Seat already taken");
-                                    } else if (izabranaSjedista!
-                                        .contains(karte![index])) {
-                                      setState(() {
-                                        izabranaSjedista!.remove(karte![index]);
-                                      });
-                                    } else {
-                                      setState(() {
-                                        izabranaSjedista!.add(karte![index]);
-                                      });
-                                    }
-                                  },
-                                  child: Container(
-                                    width: 80,
-                                    height: 80,
-                                    decoration: BoxDecoration(
-                                        border: Border.all(
-                                            color: Colors.grey,
-                                            width: 1.0,
-                                            style: BorderStyle.solid),
-                                        borderRadius: BorderRadius.circular(4),
-                                        color: (izabranaSjedista!
-                                                .contains(karte![index]))
-                                            ? const Color.fromARGB(
-                                                255, 172, 168, 168)
-                                            : (seat.aktivna)
-                                                ? Colors.white
-                                                : const Color.fromARGB(
-                                                    255, 195, 178, 178)),
-                                    margin: const EdgeInsets.all(5),
-                                    child: Center(
-                                      child: Text(
-                                        seat.sjediste,
-                                        style: const TextStyle(fontSize: 6),
-                                      ),
+                        child: GridView.count(
+                          crossAxisCount: 10,
+                          children: List.generate(karte!.length, (index) {
+                            final seat = karte[index];
+                            return InkWell(
+                                onTap: () {
+                                  if (!seat.aktivna) {
+                                    showMessage("Seat already taken");
+                                  } else if (izabranaSjedista!
+                                      .contains(karte![index])) {
+                                    setState(() {
+                                      izabranaSjedista!.remove(karte![index]);
+                                    });
+                                  } else {
+                                    setState(() {
+                                      izabranaSjedista!.add(karte![index]);
+                                    });
+                                  }
+                                },
+                                child: Container(
+                                  width: 80,
+                                  height: 80,
+                                  decoration: BoxDecoration(
+                                      border: Border.all(
+                                          color: Colors.grey,
+                                          width: 1.0,
+                                          style: BorderStyle.solid),
+                                      borderRadius: BorderRadius.circular(4),
+                                      color: (izabranaSjedista!
+                                              .contains(karte![index]))
+                                          ? const Color.fromARGB(
+                                              255, 172, 168, 168)
+                                          : (seat.aktivna)
+                                              ? Colors.white
+                                              : const Color.fromARGB(
+                                                  255, 195, 178, 178)),
+                                  margin: const EdgeInsets.all(5),
+                                  child: Center(
+                                    child: Text(
+                                      seat.sjediste,
+                                      style: const TextStyle(fontSize: 6),
                                     ),
-                                  ));
-                            }),
-                          ),
+                                  ),
+                                ));
+                          }),
                         ),
                       ),
                     ],
