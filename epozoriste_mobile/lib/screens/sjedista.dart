@@ -228,6 +228,40 @@ class _SjedistaState extends State<Sjedista> {
                   ),
                 ),
               ),
+              /* const SizedBox(
+                height: 10,
+              ),
+              Container(
+                height: 50,
+                width: 200,
+                decoration: BoxDecoration(
+                  color: const Color.fromARGB(223, 217, 217, 217),
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                child: InkWell(
+                  onTap: () async {
+                    try {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => Sjedista(termin: _termin),
+                        ),
+                      );
+                    } catch (e) {
+                      print(e.toString());
+                    }
+                  },
+                  child: const Center(
+                    child: Text(
+                      'Dalje',
+                      style: TextStyle(
+                        color: Color.fromARGB(225, 86, 81, 81),
+                        fontSize: 20,
+                      ),
+                    ),
+                  ),
+                ),
+              ), */
             ]),
           ),
         ),

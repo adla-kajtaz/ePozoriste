@@ -55,13 +55,14 @@ namespace ePozoriste.Services
             return _mapper.Map<Model.Karta>(entity);
         }
 
-        public Model.Karta ChangeStatus(int id)
+        public Model.Karta ChangeStatus(int id, int KupovinaId)
         {
             var entity = _context.Karta.Find(id);
             if (entity == null)
                 return null;
 
             entity.Aktivna = false;
+            entity.KupovinaId = KupovinaId;
           
             _context.SaveChanges();
             return _mapper.Map<Model.Karta>(entity);

@@ -14,9 +14,9 @@ namespace ePozoriste.Controllers
         }
 
         [HttpPatch("{id}")]
-        public Model.Karta changeStatus(int id)
+        public Model.Karta changeStatus(int id, int KupovinaId)
         {
-            return _service.ChangeStatus(id);
+            return _service.ChangeStatus(id, KupovinaId);
         }
 
         [HttpGet("getByTerminId/{id}")]

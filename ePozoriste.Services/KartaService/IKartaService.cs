@@ -11,7 +11,7 @@ namespace ePozoriste.Services
 {
     public interface IKartaService : IBaseCRUDService<Model.Karta, KartaSearchObject, KartaInsertRequest, KartaInsertRequest>
     {
-        Model.Karta ChangeStatus(int id);
+        Model.Karta ChangeStatus(int id, int KupovinaId);
         IEnumerable<Model.Karta> GetByTerminId(int id);
     }
 }

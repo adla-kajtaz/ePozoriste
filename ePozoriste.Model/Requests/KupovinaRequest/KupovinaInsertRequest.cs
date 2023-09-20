@@ -21,5 +21,10 @@ namespace ePozoriste.Model.Requests
 
         [Required]
         public int? KorisnikId { get; set; }
+
+        [Required]
+        public int? TerminId { get; set; }
+
+        public List<int> Karte { get; set; }
     }
 }

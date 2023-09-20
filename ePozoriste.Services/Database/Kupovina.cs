@@ -11,5 +11,7 @@ namespace ePozoriste.Services.Database
         public DateTime? DatumKupovine { get; set; }
         public int? KorisnikId { get; set; }
         public virtual Korisnik? Korisnik { get; set; }
+        public int? TerminId { get; set; }
+        public virtual Termin? Termin { get; set; }
     }
 }
