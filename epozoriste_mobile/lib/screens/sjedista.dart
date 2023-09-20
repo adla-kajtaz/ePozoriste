@@ -28,7 +28,7 @@ class _SjedistaState extends State<Sjedista> {
   Future loadData() async {
     Termin? _termin = widget.termin;
 
-    var tempData = await _kartaProvider?.get();
+    var tempData = await _kartaProvider?.getByTerminId(_termin!.terminId);
     setState(() {
       karte = tempData!;
       /* kolone = List<int>.generate(_termin!.sala.brSjedistaPoRedu, (i) => i + 1);
