@@ -96,11 +96,15 @@ class _SjedistaState extends State<Sjedista> {
                   Text(
                     _termin!.predstava.naziv,
                     style: const TextStyle(
-                        fontWeight: FontWeight.bold, fontSize: 25),
+                        fontWeight: FontWeight.bold,
+                        fontSize: 25,
+                        color: Color.fromARGB(225, 195, 178, 178)),
                   ),
                   Text(
-                      '${_termin.datumOdrzavanja.toString().substring(0, 10)}, ${_termin.vrijemeOdrzavanja}'),
-                  Text(_termin.sala.naziv),
+                      '${_termin.datumOdrzavanja.toString().substring(0, 10)}, ${_termin.vrijemeOdrzavanja}',
+                      style: const TextStyle(color: Colors.white)),
+                  Text(_termin.sala.naziv,
+                      style: const TextStyle(color: Colors.white)),
                 ],
               ),
               const SizedBox(
@@ -122,7 +126,8 @@ class _SjedistaState extends State<Sjedista> {
                                   borderRadius: BorderRadius.circular(4)),
                               width: 20,
                               height: 20)),
-                      const Text("Slobodno"),
+                      const Text("Slobodno",
+                          style: TextStyle(color: Colors.white)),
                     ],
                   ),
                   const SizedBox(
@@ -143,7 +148,8 @@ class _SjedistaState extends State<Sjedista> {
                                   borderRadius: BorderRadius.circular(4)),
                               width: 20,
                               height: 20)),
-                      const Text("Izabrano"),
+                      const Text("Izabrano",
+                          style: TextStyle(color: Colors.white)),
                     ],
                   ),
                   const SizedBox(
@@ -164,13 +170,14 @@ class _SjedistaState extends State<Sjedista> {
                                   borderRadius: BorderRadius.circular(4)),
                               width: 20,
                               height: 20)),
-                      const Text("Rasprodano"),
+                      const Text("Rasprodano",
+                          style: TextStyle(color: Colors.white)),
                     ],
                   ),
                 ],
               ),
               SizedBox(
-                height: 600,
+                height: 500,
                 width: double.infinity,
                 child: Padding(
                   padding: const EdgeInsets.all(5.0),
@@ -228,9 +235,6 @@ class _SjedistaState extends State<Sjedista> {
                   ),
                 ),
               ),
-              /* const SizedBox(
-                height: 10,
-              ),
               Container(
                 height: 50,
                 width: 200,
@@ -261,7 +265,7 @@ class _SjedistaState extends State<Sjedista> {
                     ),
                   ),
                 ),
-              ), */
+              ),
             ]),
           ),
         ),

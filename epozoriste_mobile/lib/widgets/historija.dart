@@ -1,15 +1,17 @@
 import 'package:flutter/material.dart';
+import '../models/kupovina.dart';
 
 class Historija extends StatelessWidget {
-  const Historija({super.key});
+  final List<Kupovina> kupovine;
+  const Historija({super.key, required this.kupovine});
 
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
-        itemCount: 1,
+        itemCount: kupovine.length,
         scrollDirection: Axis.vertical,
         itemBuilder: (BuildContext context, int index) {
-          // final kupovina = kupovine[index];
+          final kupovina = kupovine[index];
           return GestureDetector(
             child: Container(
               margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
@@ -37,29 +39,29 @@ class Historija extends StatelessWidget {
                       //Image.network(termin.predstava.slika as String),
                     ),
                   ),
-                  const Expanded(
+                  Expanded(
                     child: Padding(
-                      padding: EdgeInsets.all(10.0),
+                      padding: const EdgeInsets.all(10.0),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          SizedBox(height: 10),
+                          // SizedBox(height: 10),
                           Text(
-                            "Bilo jednom",
-                            style: TextStyle(
+                            kupovina.termin!.predstava.naziv,
+                            style: const TextStyle(
                                 fontWeight: FontWeight.bold, fontSize: 16),
                           ),
                           Text(
-                            "19.09.2022., 20:00",
-                            style: TextStyle(fontSize: 12),
+                            '${kupovina.termin!.datumOdrzavanja.toString().substring(0, 10)}, ${kupovina.termin!.vrijemeOdrzavanja}',
+                            style: const TextStyle(fontSize: 12),
                           ),
                           Text(
-                            "Broj karata: 5",
-                            style: TextStyle(fontSize: 15),
+                            'Broj karata: ${kupovina.kolicina}',
+                            style: const TextStyle(fontSize: 15),
                           ),
                           Text(
-                            "Cijena: 250KM",
-                            style: TextStyle(fontSize: 15),
+                            'Cijena:  ${kupovina.cijena}KM',
+                            style: const TextStyle(fontSize: 15),
                           ),
                         ],
                       ),

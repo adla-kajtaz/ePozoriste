@@ -1,6 +1,7 @@
 import 'package:epozoriste_mobile/providers/auth_provider.dart';
 import 'package:epozoriste_mobile/providers/karta_provider.dart';
 import 'package:epozoriste_mobile/providers/korisnik_provider.dart';
+import 'package:epozoriste_mobile/providers/kupovina_provider.dart';
 import 'package:epozoriste_mobile/providers/obavijest_provider.dart';
 import 'package:epozoriste_mobile/providers/termin_provider.dart';
 import 'package:epozoriste_mobile/screens/screens.dart';
@@ -17,6 +18,7 @@ void main() {
         ChangeNotifierProvider(create: (_) => ObavijestProvider()),
         ChangeNotifierProvider(create: (_) => KorisnikProvider()),
         ChangeNotifierProvider(create: (_) => KartaProvider()),
+        ChangeNotifierProvider(create: (_) => KupovinaProvider()),
       ],
       child: const MyApp(),
     ),

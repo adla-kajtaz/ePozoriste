@@ -1,5 +1,8 @@
-// import 'package:epozoriste_mobile/widgets/widgets.dart';
+import 'package:epozoriste_mobile/widgets/widgets.dart';
+import 'package:epozoriste_mobile/models/kupovina.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import '../providers/kupovina_provider.dart';
 
 class Profil extends StatefulWidget {
   const Profil({super.key});
@@ -9,6 +12,23 @@ class Profil extends StatefulWidget {
 }
 
 class _ProfilState extends State<Profil> {
+  List<Kupovina> kupovine = [];
+  KupovinaProvider? _kupovinaProvider;
+
+  @override
+  void initState() {
+    super.initState();
+    _kupovinaProvider = context.read<KupovinaProvider>();
+    loadData();
+  }
+
+  Future loadData() async {
+    var tempData = await _kupovinaProvider?.get();
+    setState(() {
+      kupovine = tempData!;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,8 +47,11 @@ class _ProfilState extends State<Profil> {
           child: Padding(
             padding: const EdgeInsets.all(50),
             child: Column(children: [
-              // Historija(),
-              Container(
+              if (kupovine.isNotEmpty)
+                Historija(
+                  kupovine: [...kupovine],
+                ),
+              /*Container(
                 height: 50,
                 width: double.infinity,
                 decoration: BoxDecoration(
@@ -53,7 +76,7 @@ class _ProfilState extends State<Profil> {
                     ),
                   ),
                 ),
-              ),
+              ),*/
             ]),
           ),
         ),

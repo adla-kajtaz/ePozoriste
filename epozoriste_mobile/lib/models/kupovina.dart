@@ -11,15 +11,18 @@ class Kupovina {
   DateTime datumKupovine;
   int? korisnikId;
   Korisnik? korisnik;
+  int? terminId;
+  Termin? termin;
 
-  Kupovina({
-    required this.kupovinaId,
-    this.kolicina,
-    this.cijena,
-    required this.datumKupovine,
-    this.korisnikId,
-    this.korisnik,
-  });
+  Kupovina(
+      {required this.kupovinaId,
+      this.kolicina,
+      this.cijena,
+      required this.datumKupovine,
+      this.korisnikId,
+      this.korisnik,
+      this.terminId,
+      this.termin});
 
   factory Kupovina.fromJson(Map<String, dynamic> json) =>
       _$KupovinaFromJson(json);

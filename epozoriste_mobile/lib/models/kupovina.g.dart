@@ -15,6 +15,10 @@ Kupovina _$KupovinaFromJson(Map<String, dynamic> json) => Kupovina(
       korisnik: json['korisnik'] == null
           ? null
           : Korisnik.fromJson(json['korisnik'] as Map<String, dynamic>),
+      terminId: json['terminId'] as int?,
+      termin: json['termin'] == null
+          ? null
+          : Termin.fromJson(json['termin'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$KupovinaToJson(Kupovina instance) => <String, dynamic>{
@@ -24,4 +28,6 @@ Map<String, dynamic> _$KupovinaToJson(Kupovina instance) => <String, dynamic>{
       'datumKupovine': instance.datumKupovine.toIso8601String(),
       'korisnikId': instance.korisnikId,
       'korisnik': instance.korisnik,
+      'terminId': instance.terminId,
+      'termin': instance.termin,
     };
