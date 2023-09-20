@@ -19,5 +19,11 @@ namespace ePozoriste.Controllers
         {
             return base.Insert(request);
         }
+
+        [HttpGet("getByKorisnikId/{id}")]
+        public IEnumerable<Model.Kupovina> GetByKorisnikId(int id)
+        {
+            return _service.GetByKorisnikId(id);
+        }
     }
 }

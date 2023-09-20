@@ -11,6 +11,6 @@ namespace ePozoriste.Services
 {
     public interface IKupovinaService : IBaseCRUDService<Model.Kupovina, KupovinaSearchObject, KupovinaInsertRequest, KupovinaInsertRequest>
     {
-
+        IEnumerable<Model.Kupovina> GetByKorisnikId(int id);
     }
 }
