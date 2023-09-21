@@ -63,22 +63,16 @@ namespace ePozoriste.WinUI
             {
                 if (ValidanUnos())
                 {
-                    KorisnikInsertRequest korisnikInsertRequest = new KorisnikInsertRequest
+                    KorisnikUpdateRequest korisnikUpdateRequest = new KorisnikUpdateRequest
                     {
                         Ime = txtIme.Text,
                         KorisnickoIme = txtKorisnickoIme.Text,
                         Prezime = txtPrezime.Text,
                         BrTelefona = txtBrTelefona.Text,
-                        Email = txtEmail.Text,
-                        Lozinka = txtLozinka.Text
+                        Email = txtEmail.Text
                     };
 
-                    var update = await _korisnikService.Update<Korisnik>(_korisnik.KorisnikId, korisnikInsertRequest);
-                    if (_korisnik.KorisnikId == APIService.LogiraniKorisnikId &&
-                                !string.IsNullOrWhiteSpace(korisnikInsertRequest.Lozinka))
-                    {
-                        APIService.Lozinka = korisnikInsertRequest.Lozinka;
-                    }
+                    var update = await _korisnikService.Update<Korisnik>(_korisnik.KorisnikId, korisnikUpdateRequest);
 
                     MessageBox.Show(Resursi.Get(Kljucevi.PodaciUspjesnoModifikovani),
                                       Resursi.Get(Kljucevi.Informacija),

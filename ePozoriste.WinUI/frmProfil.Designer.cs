@@ -43,9 +43,6 @@
             this.label7 = new System.Windows.Forms.Label();
             this.btnSpremi = new System.Windows.Forms.Button();
             this.btnOdjaviSe = new System.Windows.Forms.Button();
-            this.txtLozinka = new System.Windows.Forms.TextBox();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
             this.errIme = new System.Windows.Forms.ErrorProvider(this.components);
             this.errPrezime = new System.Windows.Forms.ErrorProvider(this.components);
             this.errKorisnickoIme = new System.Windows.Forms.ErrorProvider(this.components);
@@ -158,7 +155,7 @@
             // 
             // btnSpremi
             // 
-            this.btnSpremi.Location = new System.Drawing.Point(338, 355);
+            this.btnSpremi.Location = new System.Drawing.Point(338, 289);
             this.btnSpremi.Name = "btnSpremi";
             this.btnSpremi.Size = new System.Drawing.Size(225, 29);
             this.btnSpremi.TabIndex = 31;
@@ -168,39 +165,13 @@
             // 
             // btnOdjaviSe
             // 
-            this.btnOdjaviSe.Location = new System.Drawing.Point(12, 355);
+            this.btnOdjaviSe.Location = new System.Drawing.Point(12, 289);
             this.btnOdjaviSe.Name = "btnOdjaviSe";
             this.btnOdjaviSe.Size = new System.Drawing.Size(204, 29);
             this.btnOdjaviSe.TabIndex = 32;
             this.btnOdjaviSe.Text = "Odjavi se";
             this.btnOdjaviSe.UseVisualStyleBackColor = true;
             this.btnOdjaviSe.Click += new System.EventHandler(this.btnOdjaviSe_Click);
-            // 
-            // txtLozinka
-            // 
-            this.txtLozinka.Location = new System.Drawing.Point(12, 288);
-            this.txtLozinka.Name = "txtLozinka";
-            this.txtLozinka.Size = new System.Drawing.Size(204, 27);
-            this.txtLozinka.TabIndex = 34;
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(12, 265);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(62, 20);
-            this.label9.TabIndex = 33;
-            this.label9.Text = "Lozinka:";
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.ForeColor = System.Drawing.Color.Red;
-            this.label10.Location = new System.Drawing.Point(12, 318);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(391, 20);
-            this.label10.TabIndex = 37;
-            this.label10.Text = "Napomena: Unesite lozinku samo ako je zelite promijeniti";
             // 
             // errIme
             // 
@@ -226,10 +197,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(590, 398);
-            this.Controls.Add(this.label10);
-            this.Controls.Add(this.txtLozinka);
-            this.Controls.Add(this.label9);
+            this.ClientSize = new System.Drawing.Size(590, 342);
             this.Controls.Add(this.btnOdjaviSe);
             this.Controls.Add(this.btnSpremi);
             this.Controls.Add(this.txtEmail);
@@ -273,9 +241,6 @@
         private Label label7;
         private Button btnSpremi;
         private Button btnOdjaviSe;
-        private TextBox txtLozinka;
-        private Label label9;
-        private Label label10;
         private ErrorProvider errIme;
         private ErrorProvider errPrezime;
         private ErrorProvider errKorisnickoIme;
