@@ -45,23 +45,33 @@ class Historija extends StatelessWidget {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          // SizedBox(height: 10),
                           Text(
                             kupovina.termin!.predstava.naziv,
                             style: const TextStyle(
-                                fontWeight: FontWeight.bold, fontSize: 16),
+                              fontWeight: FontWeight.bold,
+                              fontSize: 16,
+                            ),
                           ),
                           Text(
                             '${kupovina.termin!.datumOdrzavanja.toString().substring(0, 10)}, ${kupovina.termin!.vrijemeOdrzavanja}',
-                            style: const TextStyle(fontSize: 12),
+                            style: const TextStyle(
+                                fontSize: 12,
+                                color: Color.fromARGB(223, 40, 39, 39)),
+                          ),
+                          const SizedBox(
+                            height: 10,
                           ),
                           Text(
                             'Broj karata: ${kupovina.kolicina}',
-                            style: const TextStyle(fontSize: 15),
+                            style: const TextStyle(
+                              fontSize: 17,
+                            ),
                           ),
                           Text(
                             'Cijena:  ${kupovina.cijena}KM',
-                            style: const TextStyle(fontSize: 15),
+                            style: const TextStyle(
+                              fontSize: 17,
+                            ),
                           ),
                         ],
                       ),

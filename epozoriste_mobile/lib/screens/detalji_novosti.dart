@@ -35,7 +35,10 @@ class _DetaljiNovostiState extends State<DetaljiNovosti> {
             padding: const EdgeInsets.all(50),
             child:
                 Column(mainAxisAlignment: MainAxisAlignment.start, children: [
-              Container(
+              const SizedBox(
+                height: 5,
+              ),
+              SizedBox(
                 height: 50,
                 width: double.infinity,
                 child: Transform.scale(

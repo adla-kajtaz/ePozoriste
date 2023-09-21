@@ -1,6 +1,6 @@
 import 'package:epozoriste_mobile/models/korisnik.dart';
 import 'package:epozoriste_mobile/providers/korisnik_provider.dart';
-import '../providers/auth_provider.dart';
+// import '../providers/auth_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -13,7 +13,7 @@ class DetaljiProfila extends StatefulWidget {
 
 class _DetaljiProfilaState extends State<DetaljiProfila> {
   final formKey = GlobalKey<FormState>();
-  AuthProvider? _authProvider;
+  // AuthProvider? _authProvider;
   KorisnikProvider? _korisnikProvider;
   Korisnik? korisnik;
 
@@ -25,7 +25,7 @@ class _DetaljiProfilaState extends State<DetaljiProfila> {
   }
 
   void loadUser() async {
-    var data = await _korisnikProvider!.getUser(2); // dodati id
+    var data = await _korisnikProvider!.getUser(1); // dodati id
     setState(() {
       korisnik = data;
     });
@@ -81,6 +81,7 @@ class _DetaljiProfilaState extends State<DetaljiProfila> {
           child: Padding(
             padding: const EdgeInsets.all(20),
             child: Form(
+              key: formKey,
               child: Column(children: [
                 const Text(
                   'Korisničko ime:',
@@ -214,11 +215,11 @@ class _DetaljiProfilaState extends State<DetaljiProfila> {
                     if (formKey.currentState!.validate()) {
                       formKey.currentState!.save();
                       Map<String, dynamic> data = {
-                        "korisnickoIme": korisnik!.korisnickoIme,
                         "ime": korisnik!.ime,
                         "prezime": korisnik!.prezime,
+                        "korisnickoIme": korisnik!.korisnickoIme,
                         "email": korisnik!.email,
-                        "brTelefona": korisnik!.brTelefona
+                        "brTelefona": korisnik!.brTelefona,
                       };
                       print(data);
                       try {

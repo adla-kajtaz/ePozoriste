@@ -39,8 +39,8 @@ class _NavigacijaState extends State<Navigacija> {
             label: '', // Add labels if needed
           );
         }).toList(),
-        selectedItemColor: const Color.fromARGB(225, 195, 178, 178),
-        unselectedItemColor: Colors.white,
+        selectedItemColor: Colors.white,
+        unselectedItemColor: const Color.fromARGB(225, 195, 178, 178),
         backgroundColor: const Color.fromARGB(255, 57, 53, 53),
       ),
     );

@@ -37,7 +37,10 @@ class _DetaljiPredstaveState extends State<DetaljiPredstave> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  Container(
+                  const SizedBox(
+                    height: 25,
+                  ),
+                  SizedBox(
                     height: 50,
                     width: double.infinity,
                     child: Transform.scale(
@@ -60,7 +63,7 @@ class _DetaljiPredstaveState extends State<DetaljiPredstave> {
                           fontSize: 25,
                           color: Color.fromARGB(225, 195, 178, 178),
                         ),
-                      ), //dodati atribute za sve
+                      ),
                       Text(
                         "Režija: ${_termin.predstava.rezija}",
                         style: const TextStyle(
@@ -76,7 +79,6 @@ class _DetaljiPredstaveState extends State<DetaljiPredstave> {
                         style: const TextStyle(
                             color: Color.fromARGB(225, 195, 178, 178)),
                       ),
-
                       const SizedBox(height: 5),
                       Text(
                         _termin.predstava.sadrzaj,

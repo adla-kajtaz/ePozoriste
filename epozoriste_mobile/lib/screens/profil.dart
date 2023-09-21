@@ -23,7 +23,7 @@ class _ProfilState extends State<Profil> {
   }
 
   Future loadData() async {
-    var tempData = await _kupovinaProvider?.get();
+    var tempData = await _kupovinaProvider?.getByKorisnikId(1); // dodati id
     setState(() {
       kupovine = tempData!;
     });
@@ -45,13 +45,17 @@ class _ProfilState extends State<Profil> {
       body: SingleChildScrollView(
         child: SafeArea(
           child: Padding(
-            padding: const EdgeInsets.all(50),
+            padding: const EdgeInsets.all(16),
             child: Column(children: [
               if (kupovine.isNotEmpty)
-                Historija(
-                  kupovine: [...kupovine],
+                SizedBox(
+                  height: 200,
+                  width: double.infinity,
+                  child: Historija(
+                    kupovine: [...kupovine],
+                  ),
                 ),
-              /*Container(
+              Container(
                 height: 50,
                 width: double.infinity,
                 decoration: BoxDecoration(
@@ -76,7 +80,7 @@ class _ProfilState extends State<Profil> {
                     ),
                   ),
                 ),
-              ),*/
+              ),
             ]),
           ),
         ),

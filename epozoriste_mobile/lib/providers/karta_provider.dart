@@ -1,5 +1,4 @@
 import 'dart:convert';
-
 import 'package:epozoriste_mobile/providers/base_provider.dart';
 import '../models/models.dart';
 
