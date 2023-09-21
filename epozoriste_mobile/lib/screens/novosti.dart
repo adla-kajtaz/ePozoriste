@@ -46,12 +46,7 @@ class _NovostiState extends State<Novosti> {
           ),
           body: Padding(
             padding: const EdgeInsets.all(16),
-            child: ListaNovosti(obavijesti: [
-              ...obavijesti,
-              ...obavijesti,
-              ...obavijesti,
-              ...obavijesti
-            ]),
+            child: ListaNovosti(obavijesti: [...obavijesti]),
           ),
         ),
       ),

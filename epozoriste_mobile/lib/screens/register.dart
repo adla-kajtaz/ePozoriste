@@ -15,6 +15,17 @@ bool isPasswordValid(String value) {
   return regex.hasMatch(value);
 }
 
+bool isPhoneNumberValid(String value) {
+  RegExp regex = RegExp(r'^\d{3}-\d{3}-(\d{4}|\d{3})$');
+  return regex.hasMatch(value);
+}
+
+bool isEmailValid(String value) {
+  RegExp regex = RegExp(r'^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$',
+      caseSensitive: false);
+  return regex.hasMatch(value);
+}
+
 class _RegisterState extends State<Register> {
   AuthProvider? _authProvider;
   final formKey = GlobalKey<FormState>();
@@ -65,7 +76,7 @@ class _RegisterState extends State<Register> {
                             onSaved: (newValue) => ime = newValue,
                             validator: (value) {
                               if (value!.isEmpty) {
-                                return "Ovo polje je obavezno";
+                                return "Ovo polje je obavezno!";
                               }
                             },
                             style: const TextStyle(
@@ -86,7 +97,7 @@ class _RegisterState extends State<Register> {
                             onSaved: (newValue) => prezime = newValue,
                             validator: (value) {
                               if (value!.isEmpty) {
-                                return "Ovo polje je obavezno";
+                                return "Ovo polje je obavezno!";
                               }
                             },
                             style: const TextStyle(
@@ -107,7 +118,10 @@ class _RegisterState extends State<Register> {
                         onSaved: (newValue) => email = newValue,
                         validator: (value) {
                           if (value!.isEmpty) {
-                            return "Ovo polje je obavezno";
+                            return "Ovo polje je obavezno!";
+                          }
+                          if (!isEmailValid(value!)) {
+                            return "Unesite validnu email adresu!";
                           }
                         },
                         style: const TextStyle(
@@ -126,7 +140,10 @@ class _RegisterState extends State<Register> {
                         onSaved: (newValue) => brTelefona = newValue,
                         validator: (value) {
                           if (value!.isEmpty) {
-                            return "Ovo polje je obavezno";
+                            return "Ovo polje je obavezno!";
+                          }
+                          if (!isPhoneNumberValid(value!)) {
+                            return "Unesite broj telefona u formatu 06x-xxx-xxx!";
                           }
                         },
                         style: const TextStyle(
@@ -145,7 +162,7 @@ class _RegisterState extends State<Register> {
                         onSaved: (newValue) => korisnickoIme = newValue,
                         validator: (value) {
                           if (value!.isEmpty) {
-                            return "Ovo polje je obavezno";
+                            return "Ovo polje je obavezno!";
                           }
                         },
                         style: const TextStyle(
@@ -164,10 +181,10 @@ class _RegisterState extends State<Register> {
                         onSaved: (newValue) => lozinka = newValue,
                         validator: (value) {
                           if (value!.isEmpty) {
-                            return "Ovo polje je obavezno";
+                            return "Ovo polje je obavezno!";
                           }
                           if (!isPasswordValid(value!)) {
-                            return "Lozinka mora sadržavati 8 karaktera.";
+                            return "Lozinka mora sadržavati 8 karaktera!";
                           }
                         },
                         obscureText: true,

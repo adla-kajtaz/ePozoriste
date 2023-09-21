@@ -34,9 +34,6 @@ class _SjedistaState extends State<Sjedista> {
       /* kolone = List<int>.generate(_termin!.sala.brSjedistaPoRedu, (i) => i + 1);
       redovi = List<int>.generate(_termin!.sala.brRedova, (i) => i + 1); */
     });
-    for (Karta karta in karte) {
-      print(karta.sjediste);
-    }
   }
 
   @override
@@ -186,20 +183,20 @@ class _SjedistaState extends State<Sjedista> {
                       Expanded(
                         child: GridView.count(
                           crossAxisCount: 10,
-                          children: List.generate(karte!.length, (index) {
+                          children: List.generate(karte.length, (index) {
                             final seat = karte[index];
                             return InkWell(
                                 onTap: () {
                                   if (!seat.aktivna) {
                                     showMessage("Seat already taken");
                                   } else if (izabranaSjedista!
-                                      .contains(karte![index])) {
+                                      .contains(karte[index])) {
                                     setState(() {
-                                      izabranaSjedista!.remove(karte![index]);
+                                      izabranaSjedista!.remove(karte[index]);
                                     });
                                   } else {
                                     setState(() {
-                                      izabranaSjedista!.add(karte![index]);
+                                      izabranaSjedista!.add(karte[index]);
                                     });
                                   }
                                 },
@@ -213,7 +210,7 @@ class _SjedistaState extends State<Sjedista> {
                                           style: BorderStyle.solid),
                                       borderRadius: BorderRadius.circular(4),
                                       color: (izabranaSjedista!
-                                              .contains(karte![index]))
+                                              .contains(karte[index]))
                                           ? const Color.fromARGB(
                                               255, 172, 168, 168)
                                           : (seat.aktivna)
