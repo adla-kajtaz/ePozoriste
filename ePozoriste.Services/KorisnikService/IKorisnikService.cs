@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace ePozoriste.Services
 {
-    public interface IKorisnikService : IBaseCRUDService<Model.Korisnik, BaseSearchObject, KorisnikInsertRequest, KorisnikInsertRequest>
+    public interface IKorisnikService : IBaseCRUDService<Model.Korisnik, BaseSearchObject, KorisnikInsertRequest, KorisnikUpdateRequest>
     {
         Model.Korisnik GetByUsername(string korisnickoIme);
     }

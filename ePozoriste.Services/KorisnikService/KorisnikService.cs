@@ -14,7 +14,7 @@ using System.Threading.Tasks;
 
 namespace ePozoriste.Services
 {
-    public class KorisnikService : BaseCRUDService<Model.Korisnik, Database.Korisnik, BaseSearchObject, KorisnikInsertRequest, KorisnikInsertRequest>, IKorisnikService
+    public class KorisnikService : BaseCRUDService<Model.Korisnik, Database.Korisnik, BaseSearchObject, KorisnikInsertRequest, KorisnikUpdateRequest>, IKorisnikService
     {
         public KorisnikService(ePozoristeContext context, IMapper mapper) : base(context, mapper)
         {
@@ -57,28 +57,6 @@ namespace ePozoriste.Services
                 _context.KorisnikUloges.Add(korisnikUloge);
             }
 
-            _context.SaveChanges();
-
-            return _mapper.Map<Model.Korisnik>(entity);
-        }
-
-        public override Model.Korisnik Update(int id, KorisnikInsertRequest request)
-        {
-            var entity = _context.Korisniks.Include(x => x.KorisnikUloges).FirstOrDefault(x => x.KorisnikId == id);
-            var stariLozinkaHash = entity.LozinkaHash;
-            var stariLozinkaSalt = entity.LozinkaSalt;
-            _mapper.Map(request, entity);
-            if (string.IsNullOrEmpty(request.Lozinka))
-            {
-                entity.LozinkaSalt = stariLozinkaSalt;
-                entity.LozinkaHash = stariLozinkaHash;
-            }
-            else
-            {
-                entity.LozinkaSalt = Helper.PasswordHelper.GenerateSalt();
-                entity.LozinkaHash = Helper.PasswordHelper.GenerateHash(entity.LozinkaSalt, request.Lozinka);
-            }
-            _context.Korisniks.Update(entity);
             _context.SaveChanges();
 
             return _mapper.Map<Model.Korisnik>(entity);

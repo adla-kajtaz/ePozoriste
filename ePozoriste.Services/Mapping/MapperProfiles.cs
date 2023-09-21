@@ -47,6 +47,7 @@ namespace ePozoriste.Services.Mapping
             CreateMap<KartaInsertRequest, Database.Kartum>();
             CreateMap<KupovinaInsertRequest, Database.Kupovina>();
             CreateMap<KorisnikInsertRequest, Database.Korisnik>();
+            CreateMap<KorisnikUpdateRequest, Database.Korisnik>();
             CreateMap<KorisnikUlogeInsertRequest, Database.KorisnikUloge>();
 
 
