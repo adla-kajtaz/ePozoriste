@@ -68,7 +68,7 @@ namespace ePozoriste.Services.Database
                     Prezime = "Admin",
                     KorisnickoIme = "admin",
                     Email = "admin@epozoriste.ba",
-                    BrTelefona = "062 045-456",
+                    BrTelefona = "062-045-456",
                     Aktivan = true,
                     LozinkaHash = "523l3SXvXt/OIGacFmI0PUlXkJM=",
                     LozinkaSalt = "ORNOSgr59Nd5PGJx/GNMKg=="
@@ -117,7 +117,7 @@ namespace ePozoriste.Services.Database
                     Adresa = "Brkića br. 2",
                     Webstranica = "https://www.npm.ba/",
                     Email = "info@npm.ba",
-                    BrTelefona = "036 550-128",
+                    BrTelefona = "036-550-128",
                     Aktivan = true,
                     GradId = 1
                 }

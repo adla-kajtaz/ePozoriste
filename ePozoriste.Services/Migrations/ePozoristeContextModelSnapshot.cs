@@ -211,7 +211,7 @@ namespace ePozoriste.Services.Migrations
                         {
                             KorisnikId = 1,
                             Aktivan = true,
-                            BrTelefona = "062 045-456",
+                            BrTelefona = "062-045-456",
                             Email = "admin@epozoriste.ba",
                             Ime = "Admin",
                             KorisnickoIme = "admin",
@@ -401,7 +401,7 @@ namespace ePozoriste.Services.Migrations
                             PozoristeId = 1,
                             Adresa = "Brkića br. 2",
                             Aktivan = true,
-                            BrTelefona = "036 550-128",
+                            BrTelefona = "036-550-128",
                             Email = "info@npm.ba",
                             GradId = 1,
                             Naziv = "Narodno pozoriste Mostar",

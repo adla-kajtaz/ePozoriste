@@ -384,7 +384,7 @@ namespace ePozoriste.Services.Migrations
             migrationBuilder.InsertData(
                 table: "Korisnik",
                 columns: new[] { "KorisnikId", "Aktivan", "BrTelefona", "Email", "Ime", "KorisnickoIme", "LozinkaHash", "LozinkaSalt", "Prezime" },
-                values: new object[] { 1, true, "062 045-456", "admin@epozoriste.ba", "Admin", "admin", "523l3SXvXt/OIGacFmI0PUlXkJM=", "ORNOSgr59Nd5PGJx/GNMKg==", "Admin" });
+                values: new object[] { 1, true, "062-045-456", "admin@epozoriste.ba", "Admin", "admin", "523l3SXvXt/OIGacFmI0PUlXkJM=", "ORNOSgr59Nd5PGJx/GNMKg==", "Admin" });
 
             migrationBuilder.InsertData(
                 table: "ObavijestKategorija",
@@ -446,7 +446,7 @@ namespace ePozoriste.Services.Migrations
             migrationBuilder.InsertData(
                 table: "Pozoriste",
                 columns: new[] { "PozoristeId", "Adresa", "Aktivan", "BrTelefona", "Email", "GradId", "Logo", "Naziv", "Webstranica" },
-                values: new object[] { 1, "Brkića br. 2", true, "036 550-128", "info@npm.ba", 1, null, "Narodno pozoriste Mostar", "https://www.npm.ba/" });
+                values: new object[] { 1, "Brkića br. 2", true, "036-550-128", "info@npm.ba", 1, null, "Narodno pozoriste Mostar", "https://www.npm.ba/" });
 
             migrationBuilder.InsertData(
                 table: "Sala",

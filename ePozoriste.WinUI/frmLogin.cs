@@ -45,16 +45,11 @@ namespace ePozoriste.WinUI
                         frmMeni.Show();
                         this.Hide();
                     }
-                    else
-                    {
-                        MessageBox.Show("Pogrešano korisničko ime ili lozinka");
-                    }
-                   
                 }
              }
              catch (Exception ex)
              {
-                 MessageBox.Show("Pogrešano korisničko ime ili lozinka");
+                 MessageBox.Show(ex.Message);
              }
         }
 
