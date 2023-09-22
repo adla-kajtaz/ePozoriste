@@ -46,6 +46,7 @@ class MyApp extends StatelessWidget {
         '/detaljiNovosti': (context) => const DetaljiNovosti(),
         '/detaljiProfil': (context) => const DetaljiProfila(),
         '/sjedista': (context) => const Sjedista(),
+        '/uspjesnaKupovina': (context) => const UspjesnaKupovina(),
       },
       /*home: const MyHomePage(title: 'Flutter Demo Home Page'),*/
     );

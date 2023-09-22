@@ -1,3 +1,4 @@
+import 'package:epozoriste_mobile/screens/screens.dart';
 import 'package:provider/provider.dart';
 import '../models/karta.dart';
 import '../models/termin.dart';
@@ -100,7 +101,14 @@ class _SjedistaState extends State<Sjedista> {
                   Text(
                       '${_termin.datumOdrzavanja.toString().substring(0, 10)}, ${_termin.vrijemeOdrzavanja}',
                       style: const TextStyle(color: Colors.white)),
+                  Text(_termin.sala.pozoriste.naziv,
+                      style: const TextStyle(color: Colors.white)),
                   Text(_termin.sala.naziv,
+                      style: const TextStyle(color: Colors.white)),
+                  Text('Broj karata: ${izabranaSjedista!.length}',
+                      style: const TextStyle(color: Colors.white)),
+                  Text(
+                      'Ukupna cijena: ${(_termin.cijenaKarte * izabranaSjedista!.length)}KM',
                       style: const TextStyle(color: Colors.white)),
                 ],
               ),
@@ -242,12 +250,9 @@ class _SjedistaState extends State<Sjedista> {
                 child: InkWell(
                   onTap: () async {
                     try {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => Sjedista(termin: _termin),
-                        ),
-                      );
+                      if (context.mounted) {
+                        Navigator.pushNamed(context, '/uspjesnaKupovina');
+                      }
                     } catch (e) {
                       print(e.toString());
                     }
