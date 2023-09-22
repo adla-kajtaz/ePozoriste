@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using ePozoriste.Model;
 using ePozoriste.Model.Requests;
 using ePozoriste.Services.Database;
 using Microsoft.EntityFrameworkCore;
@@ -27,16 +28,14 @@ namespace ePozoriste.Services
 
             if (entity == null)
             {
-                return null;
-                //throw new UserException("Kredencijali nisu ispravni");
+               throw new UserException("Kredencijali nisu ispravni", "Netacno korisničko ime ili lozinka!");
             }
 
             var hash = Helper.PasswordHelper.GenerateHash(entity.LozinkaSalt, request.Lozinka);
 
             if (hash != entity.LozinkaHash)
             {
-                return null;
-                //throw new UserException("Kredencijali nisu ispravni");
+                throw new UserException("Kredencijali nisu ispravni", "Netacno korisničko ime ili lozinka!");
             }
             return _mapper.Map<Model.Korisnik>(entity);
         }
@@ -47,7 +46,7 @@ namespace ePozoriste.Services
 
             if (korisnici.Any(x => x.KorisnickoIme == request.KorisnickoIme))
             {
-                return null;
+                throw new UserException("Korisničko već ime postoji", "Postoji user sa tim korisničkim imenom!");
             }
 
             var entity = _mapper.Map<Database.Korisnik>(request);
@@ -89,8 +88,7 @@ namespace ePozoriste.Services
 
             if (entity == null)
             {
-                return null;
-                //throw new UserException("Kredencijali nisu ispravni");
+                throw new UserException("Kredencijali nisu ispravni", "Netacno korisničko ime ili lozinka!");
             }
 
             var hash = Helper.PasswordHelper.GenerateHash(entity.LozinkaSalt, request.Lozinka);
@@ -101,8 +99,7 @@ namespace ePozoriste.Services
                 return _mapper.Map<Model.Korisnik>(entity);
             }
            
-            return null;
-            //throw new UserException("Kredencijali nisu ispravni");
+            throw new UserException("Kredencijali nisu ispravni", "Netacno korisničko ime ili lozinka!");
         }
     }
 }
