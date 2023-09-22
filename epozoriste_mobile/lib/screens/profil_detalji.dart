@@ -1,6 +1,6 @@
 import 'package:epozoriste_mobile/models/korisnik.dart';
 import 'package:epozoriste_mobile/providers/korisnik_provider.dart';
-// import '../providers/auth_provider.dart';
+import '../providers/auth_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -13,7 +13,7 @@ class DetaljiProfila extends StatefulWidget {
 
 class _DetaljiProfilaState extends State<DetaljiProfila> {
   final formKey = GlobalKey<FormState>();
-  // AuthProvider? _authProvider;
+  AuthProvider? _authProvider;
   KorisnikProvider? _korisnikProvider;
   Korisnik? korisnik;
 
@@ -21,11 +21,13 @@ class _DetaljiProfilaState extends State<DetaljiProfila> {
   void initState() {
     super.initState();
     _korisnikProvider = context.read<KorisnikProvider>();
+    _authProvider = context.read<AuthProvider>();
     loadUser();
   }
 
   void loadUser() async {
-    var data = await _korisnikProvider!.getUser(1); // dodati id
+    var data = await _korisnikProvider!
+        .getUser(_authProvider!.getLoggedUserId()); // dodati id
     setState(() {
       korisnik = data;
     });

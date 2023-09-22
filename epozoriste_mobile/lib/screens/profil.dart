@@ -2,6 +2,7 @@ import 'package:epozoriste_mobile/widgets/widgets.dart';
 import 'package:epozoriste_mobile/models/kupovina.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import '../providers/auth_provider.dart';
 import '../providers/kupovina_provider.dart';
 
 class Profil extends StatefulWidget {
@@ -14,16 +15,19 @@ class Profil extends StatefulWidget {
 class _ProfilState extends State<Profil> {
   List<Kupovina> kupovine = [];
   KupovinaProvider? _kupovinaProvider;
+  AuthProvider? _authProvider;
 
   @override
   void initState() {
     super.initState();
     _kupovinaProvider = context.read<KupovinaProvider>();
+    _authProvider = context.read<AuthProvider>();
     loadData();
   }
 
   Future loadData() async {
-    var tempData = await _kupovinaProvider?.getByKorisnikId(1); // dodati id
+    var tempData = await _kupovinaProvider
+        ?.getByKorisnikId(_authProvider!.getLoggedUserId()); // dodati id
     setState(() {
       kupovine = tempData!;
     });

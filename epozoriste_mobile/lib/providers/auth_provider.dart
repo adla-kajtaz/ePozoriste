@@ -32,6 +32,10 @@ class AuthProvider extends BaseProvider<Korisnik> {
     _loggedUserId = loggedUserId;
   }
 
+  int getLoggedUserId() {
+    return _loggedUserId!.toInt();
+  }
+
   Future<Korisnik?> login(dynamic request) async {
     var url = "$_baseUrl" + "login";
     var headers = createHeaders();

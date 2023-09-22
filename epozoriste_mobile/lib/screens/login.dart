@@ -111,12 +111,12 @@ class _LoginState extends State<Login> {
                         'lozinka': lozinka
                       };
                       try {
-                        /* var data = await _authProvider!.login(user);
-                                            _authProvider._username = data.korisnickoIme;
-                    _authProvider._loggedUserId =data.korisnikId
-                        if (context.mounted) {*/
-                        Navigator.popAndPushNamed(context, '/');
-                        // }
+                        var data = await _authProvider!.login(user);
+                        if (context.mounted) {
+                          _authProvider!
+                              .setParameters(data!.korisnikId!.toInt());
+                          Navigator.popAndPushNamed(context, '/');
+                        }
                       } on Exception catch (error) {
                         print(error.toString());
                         if (error.toString().contains("Bad request")) {
