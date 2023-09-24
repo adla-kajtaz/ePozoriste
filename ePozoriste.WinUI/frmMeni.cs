@@ -86,5 +86,11 @@ namespace ePozoriste.WinUI
             frmLogin.Show();
             this.Hide();
         }
+
+        private void btnZarada_Click(object sender, EventArgs e)
+        {
+            frmZarada frmZarada = new frmZarada();
+            frmZarada.Show();
+        }
     }
 }

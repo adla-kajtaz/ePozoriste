@@ -40,6 +40,7 @@
             this.btnPredstave = new System.Windows.Forms.Button();
             this.btnVrstePredstave = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
+            this.btnZarada = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label4
@@ -161,11 +162,23 @@
             this.label1.TabIndex = 20;
             this.label1.Text = "ePozoriste";
             // 
+            // btnZarada
+            // 
+            this.btnZarada.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.btnZarada.Location = new System.Drawing.Point(221, 392);
+            this.btnZarada.Name = "btnZarada";
+            this.btnZarada.Size = new System.Drawing.Size(138, 67);
+            this.btnZarada.TabIndex = 21;
+            this.btnZarada.Text = "Zarada";
+            this.btnZarada.UseVisualStyleBackColor = true;
+            this.btnZarada.Click += new System.EventHandler(this.btnZarada_Click);
+            // 
             // frmMeni
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(639, 410);
+            this.ClientSize = new System.Drawing.Size(639, 473);
+            this.Controls.Add(this.btnZarada);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnVrstePredstave);
             this.Controls.Add(this.btnPredstave);
@@ -199,5 +212,6 @@
         private Button btnPredstave;
         private Button btnVrstePredstave;
         private Label label1;
+        private Button btnZarada;
     }
 }
