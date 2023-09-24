@@ -1,4 +1,5 @@
 import 'package:epozoriste_mobile/screens/screens.dart';
+import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:provider/provider.dart';
 import '../models/karta.dart';
 import '../models/termin.dart';
@@ -6,6 +7,8 @@ import 'package:flutter/material.dart';
 import '../providers/karta_provider.dart';
 
 class Sjedista extends StatefulWidget {
+  static const routeName = '/sjedista';
+
   final Termin? termin;
   const Sjedista({super.key, this.termin});
 
@@ -36,6 +39,22 @@ class _SjedistaState extends State<Sjedista> {
       redovi = List<int>.generate(_termin!.sala.brRedova, (i) => i + 1); */
     });
   }
+
+  /* void handlePay(BuildContext context, String paymentIntentId) async {
+    await Stripe.instance.initPaymentSheet(
+      paymentSheetParameters: SetupPaymentSheetParameters(
+        paymentIntentClientSecret: paymentIntentId,
+        style: ThemeMode.light,
+        merchantDisplayName: "ePozoriste",
+      ),
+    );
+    try {
+      var result = await Stripe.instance.presentPaymentSheet();
+      Navigator.pushNamed(context, UspjesnaKupovina.routeName);
+    } catch (e) {
+      print(e.toString());
+    }
+  } */
 
   @override
   Widget build(BuildContext context) {
@@ -251,7 +270,8 @@ class _SjedistaState extends State<Sjedista> {
                   onTap: () async {
                     try {
                       if (context.mounted) {
-                        Navigator.pushNamed(context, '/uspjesnaKupovina');
+                        Navigator.pushNamed(
+                            context, UspjesnaKupovina.routeName);
                       }
                     } catch (e) {
                       print(e.toString());
@@ -259,7 +279,7 @@ class _SjedistaState extends State<Sjedista> {
                   },
                   child: const Center(
                     child: Text(
-                      'Dalje',
+                      'Plati',
                       style: TextStyle(
                         color: Color.fromARGB(225, 86, 81, 81),
                         fontSize: 20,

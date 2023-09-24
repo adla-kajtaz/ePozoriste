@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'screens.dart';
 
 class Navigacija extends StatefulWidget {
+  static const routeName = '/home';
+
   const Navigacija({super.key});
 
   @override

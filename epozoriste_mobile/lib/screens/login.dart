@@ -1,8 +1,11 @@
+import 'package:epozoriste_mobile/screens/screens.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../providers/auth_provider.dart';
 
 class Login extends StatefulWidget {
+  static const routeName = '/login';
+
   const Login({super.key});
 
   @override
@@ -115,7 +118,8 @@ class _LoginState extends State<Login> {
                         if (context.mounted) {
                           _authProvider!
                               .setParameters(data!.korisnikId!.toInt());
-                          Navigator.popAndPushNamed(context, '/');
+                          Navigator.popAndPushNamed(
+                              context, Navigacija.routeName);
                         }
                       } on Exception catch (error) {
                         print(error.toString());
@@ -146,7 +150,8 @@ class _LoginState extends State<Login> {
                   ),
                   const SizedBox(width: 20),
                   InkWell(
-                    onTap: () => Navigator.pushNamed(context, '/register'),
+                    onTap: () =>
+                        Navigator.pushNamed(context, Register.routeName),
                     child: const Text(
                       'Registruj se ovdje.',
                       style: TextStyle(

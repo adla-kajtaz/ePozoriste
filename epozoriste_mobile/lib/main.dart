@@ -8,8 +8,15 @@ import 'package:epozoriste_mobile/screens/screens.dart';
 import 'package:epozoriste_mobile/screens/sjedista.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_stripe/flutter_stripe.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  Stripe.publishableKey =
+      "pk_test_51NtWjdEDYm8POibPT31r3QwFT9jr7oT1eT5yHSjnxyTGdtLs1FNm9ytNJwylIdvHRaJBOFL97AkkR53eeYPSHCDE00nrXcw0rp";
+  Stripe.merchantIdentifier = 'any string works';
+  Stripe.urlScheme = "flutterstripe";
+  await Stripe.instance.applySettings();
   runApp(
     MultiProvider(
       providers: [
@@ -39,14 +46,14 @@ class MyApp extends StatelessWidget {
       ),
       initialRoute: '/login',
       routes: {
-        '/login': (context) => const Login(),
-        '/register': (context) => const Register(),
-        '/': (context) => const Navigacija(),
-        '/detaljiPredstave': (context) => const DetaljiPredstave(),
-        '/detaljiNovosti': (context) => const DetaljiNovosti(),
-        '/detaljiProfil': (context) => const DetaljiProfila(),
-        '/sjedista': (context) => const Sjedista(),
-        '/uspjesnaKupovina': (context) => const UspjesnaKupovina(),
+        Login.routeName: (context) => const Login(),
+        Register.routeName: (context) => const Register(),
+        Navigacija.routeName: (context) => const Navigacija(),
+        DetaljiPredstave.routeName: (context) => const DetaljiPredstave(),
+        DetaljiNovosti.routeName: (context) => const DetaljiNovosti(),
+        DetaljiProfila.routeName: (context) => const DetaljiProfila(),
+        Sjedista.routeName: (context) => const Sjedista(),
+        UspjesnaKupovina.routeName: (context) => const UspjesnaKupovina(),
       },
       /*home: const MyHomePage(title: 'Flutter Demo Home Page'),*/
     );

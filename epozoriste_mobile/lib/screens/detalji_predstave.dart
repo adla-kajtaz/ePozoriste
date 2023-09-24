@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import '../models/termin.dart';
 
 class DetaljiPredstave extends StatefulWidget {
+  static const routeName = '/detaljiPredstave';
+
   final Termin? termin;
   const DetaljiPredstave({super.key, this.termin});
 

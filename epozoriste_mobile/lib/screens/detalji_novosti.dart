@@ -2,6 +2,8 @@ import 'package:epozoriste_mobile/models/obavijest.dart';
 import 'package:flutter/material.dart';
 
 class DetaljiNovosti extends StatefulWidget {
+  static const routeName = '/detaljiNovosti';
+
   final Obavijest? obavijest;
   const DetaljiNovosti({super.key, this.obavijest});
 

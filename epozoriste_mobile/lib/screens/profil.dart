@@ -1,3 +1,4 @@
+import 'package:epozoriste_mobile/screens/profil_detalji.dart';
 import 'package:epozoriste_mobile/widgets/widgets.dart';
 import 'package:epozoriste_mobile/models/kupovina.dart';
 import 'package:flutter/material.dart';
@@ -27,7 +28,7 @@ class _ProfilState extends State<Profil> {
 
   Future loadData() async {
     var tempData = await _kupovinaProvider
-        ?.getByKorisnikId(_authProvider!.getLoggedUserId()); // dodati id
+        ?.getByKorisnikId(_authProvider!.getLoggedUserId());
     setState(() {
       kupovine = tempData!;
     });
@@ -69,7 +70,7 @@ class _ProfilState extends State<Profil> {
                 child: InkWell(
                   onTap: () async {
                     try {
-                      Navigator.pushNamed(context, '/detaljiProfil');
+                      Navigator.pushNamed(context, DetaljiProfila.routeName);
                     } catch (e) {
                       print(e.toString());
                     }

@@ -1,10 +1,13 @@
 import 'package:epozoriste_mobile/models/korisnik.dart';
 import 'package:epozoriste_mobile/providers/korisnik_provider.dart';
+import 'package:epozoriste_mobile/screens/login.dart';
 import '../providers/auth_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class DetaljiProfila extends StatefulWidget {
+  static const routeName = '/detaljiProfil';
+
   const DetaljiProfila({super.key});
 
   @override
@@ -252,14 +255,14 @@ class _DetaljiProfilaState extends State<DetaljiProfila> {
                 const SizedBox(height: 10),
                 InkWell(
                   onTap: () async {
-                    /*if(formKey.currentState!.validate()){
-                          formKey.currentState!.save();
-                        }*/
+                    if (formKey.currentState!.validate()) {
+                      formKey.currentState!.save();
+                    }
                     try {
-                      Navigator.pushNamed(context, '/login');
+                      Navigator.pushNamed(context, Login.routeName);
                     } on Exception catch (err) {
                       print(err.toString());
-                      //formKey.currentState!.validate();
+                      formKey.currentState!.validate();
                     }
                   },
                   child: Container(

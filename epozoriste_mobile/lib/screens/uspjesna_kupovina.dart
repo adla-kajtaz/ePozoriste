@@ -1,6 +1,9 @@
+import 'package:epozoriste_mobile/screens/screens.dart';
 import 'package:flutter/material.dart';
 
 class UspjesnaKupovina extends StatelessWidget {
+  static const routeName = '/uspjesnaKupovina';
+
   const UspjesnaKupovina({super.key});
 
   final IconData _icon = Icons.check_circle_outlined;
@@ -42,8 +45,8 @@ class UspjesnaKupovina extends StatelessWidget {
                             padding:
                                 const EdgeInsets.symmetric(horizontal: 30.0),
                             child: InkWell(
-                              onTap: () =>
-                                  Navigator.popAndPushNamed(context, '/'),
+                              onTap: () => Navigator.popAndPushNamed(
+                                  context, Navigacija.routeName),
                               borderRadius: BorderRadius.circular(5.0),
                               child: Container(
                                 decoration: BoxDecoration(
