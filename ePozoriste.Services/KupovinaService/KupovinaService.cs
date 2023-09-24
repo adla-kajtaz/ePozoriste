@@ -15,10 +15,12 @@ namespace ePozoriste.Services
     public class KupovinaService : BaseCRUDService<Model.Kupovina, Database.Kupovina, KupovinaSearchObject, KupovinaInsertRequest, KupovinaInsertRequest>, IKupovinaService
     {
         IKartaService _kartaService { get; set; }
+        public StripeService _stripeService { get; set; }
 
-        public KupovinaService(ePozoristeContext context, IMapper mapper, IKartaService kartaService) : base(context, mapper)
+        public KupovinaService(ePozoristeContext context, IMapper mapper, IKartaService kartaService, StripeService stripeService) : base(context, mapper)
         {
             _kartaService = kartaService;
+            _stripeService = stripeService;
         }
 
         public override IQueryable<ePozoriste.Services.Database.Kupovina> AddInclude(IQueryable<ePozoriste.Services.Database.Kupovina> query, KupovinaSearchObject search = null)
@@ -58,7 +60,9 @@ namespace ePozoriste.Services
                     throw new Exception("Karta nije pronađena");
                 _kartaService.ChangeStatus(karta.KartaId, entity.KupovinaId);
             }
-            
+            /* var paymentId = _stripeService.KreirajKupoivnu(entity.Cijena, $"Kupovina za {termin.Predstava.Naziv}({entity.DatumKupovine})");
+            entity.PaymentIntentId = paymentId; 
+            _context.SaveChanges(); */
             return _mapper.Map<Model.Kupovina>(kupovina);
         }
 

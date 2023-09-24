@@ -9,9 +9,10 @@ namespace ePozoriste.Model
     public class Kupovina
     {
         public int KupovinaId { get; set; }
-        public int? Kolicina { get; set; }
-        public int? Cijena { get; set; }
+        public int Kolicina { get; set; }
+        public int Cijena { get; set; }
         public DateTime? DatumKupovine { get; set; }
+        public string PaymentIntentId { get; set; } = null;
         public int? KorisnikId { get; set; }
         public virtual Korisnik? Korisnik { get; set; }
         public int? TerminId { get; set; }
