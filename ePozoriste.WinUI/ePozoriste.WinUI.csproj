@@ -9,10 +9,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Reports\rptPrikazKarata.rdlc" />
     <None Remove="Reports\rptZarada.rdlc" />
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Include="Reports\rptPrikazKarata.rdlc" />
     <EmbeddedResource Include="Reports\rptZarada.rdlc" />
   </ItemGroup>
 
@@ -48,6 +50,11 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
+    <Compile Update="Reports\dsEPozoriste.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>dsEPozoriste.xsd</DependentUpon>
+    </Compile>
     <Compile Update="Resource1.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
@@ -70,6 +77,10 @@
     <None Update="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <None Update="Reports\dsEPozoriste.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsEPozoriste.Designer.cs</LastGenOutput>
     </None>
   </ItemGroup>
 

@@ -1,5 +1,6 @@
 ﻿using ePozoriste.Model;
 using ePozoriste.Model.SearchObjects;
+using ePozoriste.WinUI.Reports;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -77,6 +78,16 @@ namespace ePozoriste.WinUI
             MessageBox.Show("Uspjesno obrisano");
             DialogResult = DialogResult.OK;
             this.Close();
+        }
+
+        private void btnIzvjestaj_Click(object sender, EventArgs e)
+        {
+            frmGrafickiPrikazKarata frmGrafickiPrikazKarata = new frmGrafickiPrikazKarata(_termin);
+            if (frmGrafickiPrikazKarata.ShowDialog() == DialogResult.OK)
+            {
+                dgvKarte.DataSource = null;
+                frmPrikazKarata_Load(sender, e);
+            }
         }
     }
 }
