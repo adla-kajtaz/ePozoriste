@@ -1,5 +1,6 @@
 ﻿using ePozoriste.Model;
 using ePozoriste.Model.SearchObjects;
+using ePozoriste.WinUI.Reports;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -107,6 +108,15 @@ namespace ePozoriste.WinUI
             {
                 frmPrikazPredstavaVrstaPredstave frmPrikazPredstavaVrstaPredstave = new frmPrikazPredstavaVrstaPredstave(predstava);
                 if (frmPrikazPredstavaVrstaPredstave.ShowDialog() == DialogResult.OK)
+                {
+                    dgvPredstave.DataSource = null;
+                    frmPrikazPredstava_Load(sender, e);
+                }
+            }
+            else if (e.ColumnIndex == 8)
+            {
+                frmZaradaPoPredstavi frmZaradaPoPredstavi = new frmZaradaPoPredstavi(predstava);
+                if (frmZaradaPoPredstavi.ShowDialog() == DialogResult.OK)
                 {
                     dgvPredstave.DataSource = null;
                     frmPrikazPredstava_Load(sender, e);
