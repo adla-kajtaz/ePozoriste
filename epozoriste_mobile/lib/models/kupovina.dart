@@ -9,6 +9,7 @@ class Kupovina {
   int? kolicina;
   int? cijena;
   DateTime datumKupovine;
+  String? paymentIntentId;
   int? korisnikId;
   Korisnik? korisnik;
   int? terminId;
@@ -19,6 +20,7 @@ class Kupovina {
       this.kolicina,
       this.cijena,
       required this.datumKupovine,
+      this.paymentIntentId,
       this.korisnikId,
       this.korisnik,
       this.terminId,

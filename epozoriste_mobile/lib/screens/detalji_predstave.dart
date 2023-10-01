@@ -59,7 +59,7 @@ class _DetaljiPredstaveState extends State<DetaljiPredstave> {
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       Text(
-                        _termin!.predstava.naziv,
+                        _termin!.predstava!.naziv,
                         style: const TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 25,
@@ -67,23 +67,23 @@ class _DetaljiPredstaveState extends State<DetaljiPredstave> {
                         ),
                       ),
                       Text(
-                        "Režija: ${_termin.predstava.rezija}",
+                        "Režija: ${_termin.predstava!.rezija}",
                         style: const TextStyle(
                             color: Color.fromARGB(225, 195, 178, 178)),
                       ),
                       Text(
-                        "Kostimografija: ${_termin.predstava.kostimografija}",
+                        "Kostimografija: ${_termin.predstava!.kostimografija}",
                         style: const TextStyle(
                             color: Color.fromARGB(225, 195, 178, 178)),
                       ),
                       Text(
-                        "Scenografija: ${_termin.predstava.scenografija}",
+                        "Scenografija: ${_termin.predstava!.scenografija}",
                         style: const TextStyle(
                             color: Color.fromARGB(225, 195, 178, 178)),
                       ),
                       const SizedBox(height: 5),
                       Text(
-                        _termin.predstava.sadrzaj,
+                        _termin.predstava!.sadrzaj,
                         style: const TextStyle(
                             color: Color.fromARGB(225, 195, 178, 178)),
                       ),
@@ -108,11 +108,11 @@ class _DetaljiPredstaveState extends State<DetaljiPredstave> {
                         style: const TextStyle(color: Colors.white),
                       ),
                       Text(
-                        _termin.sala.pozoriste.naziv,
+                        _termin.sala!.pozoriste.naziv,
                         style: const TextStyle(color: Colors.white),
                       ),
                       Text(
-                        _termin.sala.naziv,
+                        _termin.sala!.naziv,
                         style: const TextStyle(color: Colors.white),
                       ),
                       Text(

@@ -14,9 +14,13 @@ Termin _$TerminFromJson(Map<String, dynamic> json) => Termin(
       datumOdrzavanja: DateTime.parse(json['datumOdrzavanja'] as String),
       vrijemeOdrzavanja: json['vrijemeOdrzavanja'] as String,
       salaId: json['salaId'] as int?,
-      sala: Sala.fromJson(json['sala'] as Map<String, dynamic>),
+      sala: json['sala'] == null
+          ? null
+          : Sala.fromJson(json['sala'] as Map<String, dynamic>),
       predstavaId: json['predstavaId'] as int?,
-      predstava: Predstava.fromJson(json['predstava'] as Map<String, dynamic>),
+      predstava: json['predstava'] == null
+          ? null
+          : Predstava.fromJson(json['predstava'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$TerminToJson(Termin instance) => <String, dynamic>{

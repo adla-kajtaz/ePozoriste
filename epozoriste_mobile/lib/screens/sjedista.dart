@@ -5,6 +5,7 @@ import '../models/karta.dart';
 import '../models/termin.dart';
 import 'package:flutter/material.dart';
 import '../providers/karta_provider.dart';
+import '../providers/kupovina_provider.dart';
 
 class Sjedista extends StatefulWidget {
   static const routeName = '/sjedista';
@@ -22,10 +23,12 @@ class _SjedistaState extends State<Sjedista> {
   // List<int> kolone = [];
   // List<int> redovi = [];
   KartaProvider? _kartaProvider;
+  KupovinaProvider? _kupovinaProvider;
   @override
   void initState() {
     super.initState();
     _kartaProvider = context.read<KartaProvider>();
+    _kupovinaProvider = context.read<KupovinaProvider>();
     loadData();
   }
 
@@ -40,7 +43,7 @@ class _SjedistaState extends State<Sjedista> {
     });
   }
 
-  /* void handlePay(BuildContext context, String paymentIntentId) async {
+  void handlePay(BuildContext context, String paymentIntentId) async {
     await Stripe.instance.initPaymentSheet(
       paymentSheetParameters: SetupPaymentSheetParameters(
         paymentIntentClientSecret: paymentIntentId,
@@ -50,11 +53,12 @@ class _SjedistaState extends State<Sjedista> {
     );
     try {
       var result = await Stripe.instance.presentPaymentSheet();
+
       Navigator.pushNamed(context, UspjesnaKupovina.routeName);
     } catch (e) {
       print(e.toString());
     }
-  } */
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -106,189 +110,211 @@ class _SjedistaState extends State<Sjedista> {
         child: SafeArea(
           child: Padding(
             padding: const EdgeInsets.all(50),
-            child: Column(children: [
-              Column(
+            child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    _termin!.predstava.naziv,
-                    style: const TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 25,
-                        color: Color.fromARGB(225, 195, 178, 178)),
-                  ),
-                  Text(
-                      '${_termin.datumOdrzavanja.toString().substring(0, 10)}, ${_termin.vrijemeOdrzavanja}',
-                      style: const TextStyle(color: Colors.white)),
-                  Text(_termin.sala.pozoriste.naziv,
-                      style: const TextStyle(color: Colors.white)),
-                  Text(_termin.sala.naziv,
-                      style: const TextStyle(color: Colors.white)),
-                  Text('Broj karata: ${izabranaSjedista!.length}',
-                      style: const TextStyle(color: Colors.white)),
-                  Text(
-                      'Ukupna cijena: ${(_termin.cijenaKarte * izabranaSjedista!.length)}KM',
-                      style: const TextStyle(color: Colors.white)),
-                ],
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-              Row(
+                mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Padding(
-                          padding: const EdgeInsets.all(8),
-                          child: Container(
-                              decoration: BoxDecoration(
-                                  color: Colors.white,
-                                  border: Border.all(
-                                      color: Colors.grey,
-                                      width: 1.0,
-                                      style: BorderStyle.solid),
-                                  borderRadius: BorderRadius.circular(4)),
-                              width: 20,
-                              height: 20)),
-                      const Text("Slobodno",
-                          style: TextStyle(color: Colors.white)),
+                      Text(
+                        _termin!.predstava!.naziv,
+                        style: const TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 25,
+                            color: Color.fromARGB(225, 195, 178, 178)),
+                      ),
+                      Text(
+                          '${_termin.datumOdrzavanja.toString().substring(0, 10)}, ${_termin.vrijemeOdrzavanja}',
+                          style: const TextStyle(color: Colors.white)),
+                      Text(_termin.sala!.pozoriste.naziv,
+                          style: const TextStyle(color: Colors.white)),
+                      Text(_termin.sala!.naziv,
+                          style: const TextStyle(color: Colors.white)),
+                      Text('Broj karata: ${izabranaSjedista!.length}',
+                          style: const TextStyle(color: Colors.white)),
+                      Text(
+                          'Ukupna cijena: ${(_termin.cijenaKarte * izabranaSjedista!.length)}KM',
+                          style: const TextStyle(color: Colors.white)),
                     ],
                   ),
                   const SizedBox(
-                    width: 10,
+                    height: 10,
                   ),
-                  Column(
+                  Row(
                     children: [
-                      Padding(
-                          padding: const EdgeInsets.all(8),
-                          child: Container(
-                              decoration: BoxDecoration(
-                                  color:
-                                      const Color.fromARGB(255, 172, 168, 168),
-                                  border: Border.all(
-                                      color: Colors.grey,
-                                      width: 1.0,
-                                      style: BorderStyle.solid),
-                                  borderRadius: BorderRadius.circular(4)),
-                              width: 20,
-                              height: 20)),
-                      const Text("Izabrano",
-                          style: TextStyle(color: Colors.white)),
-                    ],
-                  ),
-                  const SizedBox(
-                    width: 10,
-                  ),
-                  Column(
-                    children: [
-                      Padding(
-                          padding: const EdgeInsets.all(8),
-                          child: Container(
-                              decoration: BoxDecoration(
-                                  color:
-                                      const Color.fromARGB(255, 195, 178, 178),
-                                  border: Border.all(
-                                      color: Colors.grey,
-                                      width: 1.0,
-                                      style: BorderStyle.solid),
-                                  borderRadius: BorderRadius.circular(4)),
-                              width: 20,
-                              height: 20)),
-                      const Text("Rasprodano",
-                          style: TextStyle(color: Colors.white)),
-                    ],
-                  ),
-                ],
-              ),
-              SizedBox(
-                height: 500,
-                width: double.infinity,
-                child: Padding(
-                  padding: const EdgeInsets.all(5.0),
-                  child: Row(
-                    children: [
-                      Expanded(
-                        child: GridView.count(
-                          crossAxisCount: 10,
-                          children: List.generate(karte.length, (index) {
-                            final seat = karte[index];
-                            return InkWell(
-                                onTap: () {
-                                  if (!seat.aktivna) {
-                                    showMessage("Seat already taken");
-                                  } else if (izabranaSjedista!
-                                      .contains(karte[index])) {
-                                    setState(() {
-                                      izabranaSjedista!.remove(karte[index]);
-                                    });
-                                  } else {
-                                    setState(() {
-                                      izabranaSjedista!.add(karte[index]);
-                                    });
-                                  }
-                                },
-                                child: Container(
-                                  width: 80,
-                                  height: 80,
+                      Column(
+                        children: [
+                          Padding(
+                              padding: const EdgeInsets.all(8),
+                              child: Container(
                                   decoration: BoxDecoration(
+                                      color: Colors.white,
                                       border: Border.all(
                                           color: Colors.grey,
                                           width: 1.0,
                                           style: BorderStyle.solid),
-                                      borderRadius: BorderRadius.circular(4),
-                                      color: (izabranaSjedista!
-                                              .contains(karte[index]))
-                                          ? const Color.fromARGB(
-                                              255, 172, 168, 168)
-                                          : (seat.aktivna)
-                                              ? Colors.white
-                                              : const Color.fromARGB(
-                                                  255, 195, 178, 178)),
-                                  margin: const EdgeInsets.all(5),
-                                  child: Center(
-                                    child: Text(
-                                      seat.sjediste,
-                                      style: const TextStyle(fontSize: 6),
-                                    ),
-                                  ),
-                                ));
-                          }),
-                        ),
+                                      borderRadius: BorderRadius.circular(4)),
+                                  width: 20,
+                                  height: 20)),
+                          const Text("Slobodno",
+                              style: TextStyle(color: Colors.white)),
+                        ],
+                      ),
+                      const SizedBox(
+                        width: 10,
+                      ),
+                      Column(
+                        children: [
+                          Padding(
+                              padding: const EdgeInsets.all(8),
+                              child: Container(
+                                  decoration: BoxDecoration(
+                                      color: const Color.fromARGB(
+                                          255, 172, 168, 168),
+                                      border: Border.all(
+                                          color: Colors.grey,
+                                          width: 1.0,
+                                          style: BorderStyle.solid),
+                                      borderRadius: BorderRadius.circular(4)),
+                                  width: 20,
+                                  height: 20)),
+                          const Text("Izabrano",
+                              style: TextStyle(color: Colors.white)),
+                        ],
+                      ),
+                      const SizedBox(
+                        width: 10,
+                      ),
+                      Column(
+                        children: [
+                          Padding(
+                              padding: const EdgeInsets.all(8),
+                              child: Container(
+                                  decoration: BoxDecoration(
+                                      color: const Color.fromARGB(
+                                          255, 195, 178, 178),
+                                      border: Border.all(
+                                          color: Colors.grey,
+                                          width: 1.0,
+                                          style: BorderStyle.solid),
+                                      borderRadius: BorderRadius.circular(4)),
+                                  width: 20,
+                                  height: 20)),
+                          const Text("Rasprodano",
+                              style: TextStyle(color: Colors.white)),
+                        ],
                       ),
                     ],
                   ),
-                ),
-              ),
-              Container(
-                height: 50,
-                width: 200,
-                decoration: BoxDecoration(
-                  color: const Color.fromARGB(223, 217, 217, 217),
-                  borderRadius: BorderRadius.circular(10),
-                ),
-                child: InkWell(
-                  onTap: () async {
-                    try {
-                      if (context.mounted) {
-                        Navigator.pushNamed(
-                            context, UspjesnaKupovina.routeName);
-                      }
-                    } catch (e) {
-                      print(e.toString());
-                    }
-                  },
-                  child: const Center(
-                    child: Text(
-                      'Plati',
-                      style: TextStyle(
-                        color: Color.fromARGB(225, 86, 81, 81),
-                        fontSize: 20,
+                  SizedBox(
+                    height: 350,
+                    width: double.infinity,
+                    child: Padding(
+                      padding: const EdgeInsets.all(5.0),
+                      child: Row(
+                        children: [
+                          Expanded(
+                            child: GridView.count(
+                              crossAxisCount: 10,
+                              children: List.generate(karte.length, (index) {
+                                final seat = karte[index];
+                                return InkWell(
+                                    onTap: () {
+                                      if (!seat.aktivna) {
+                                        showMessage("Seat already taken");
+                                      } else if (izabranaSjedista!
+                                          .contains(karte[index])) {
+                                        setState(() {
+                                          izabranaSjedista!
+                                              .remove(karte[index]);
+                                        });
+                                      } else {
+                                        setState(() {
+                                          izabranaSjedista!.add(karte[index]);
+                                        });
+                                      }
+                                    },
+                                    child: Container(
+                                      width: 80,
+                                      height: 80,
+                                      decoration: BoxDecoration(
+                                          border: Border.all(
+                                              color: Colors.grey,
+                                              width: 1.0,
+                                              style: BorderStyle.solid),
+                                          borderRadius:
+                                              BorderRadius.circular(4),
+                                          color: (izabranaSjedista!
+                                                  .contains(karte[index]))
+                                              ? const Color.fromARGB(
+                                                  255, 172, 168, 168)
+                                              : (seat.aktivna)
+                                                  ? Colors.white
+                                                  : const Color.fromARGB(
+                                                      255, 195, 178, 178)),
+                                      margin: const EdgeInsets.all(5),
+                                      child: Center(
+                                        child: Text(
+                                          seat.sjediste,
+                                          style: const TextStyle(fontSize: 6),
+                                        ),
+                                      ),
+                                    ));
+                              }),
+                            ),
+                          ),
+                        ],
                       ),
                     ),
                   ),
-                ),
-              ),
-            ]),
+                  const SizedBox(height: 40),
+                  Center(
+                    child: Container(
+                      height: 50,
+                      width: 200,
+                      decoration: BoxDecoration(
+                        color: const Color.fromARGB(223, 217, 217, 217),
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      child: InkWell(
+                        onTap: () async {
+                          Map novaKupovina = {
+                            'kolicina': izabranaSjedista?.length,
+                            'cijena':
+                                _termin.cijenaKarte * izabranaSjedista!.length,
+                            "datumKupovine": "2023-10-01T10:57:10.439Z",
+                            "korisnikId": 2,
+                            "terminId": _termin.terminId,
+                            "karte":
+                                izabranaSjedista!.map((e) => e.kartaId).toList()
+                          };
+                          var data =
+                              await _kupovinaProvider?.insert(novaKupovina);
+                          handlePay(context, data!.paymentIntentId!);
+
+                          // try {
+                          //   if (context.mounted) {
+                          //     Navigator.pushNamed(
+                          //         context, UspjesnaKupovina.routeName);
+                          //   }
+                          // } catch (e) {
+                          //   print(e.toString());
+                          // }
+                        },
+                        child: const Center(
+                          child: Text(
+                            'Plati',
+                            style: TextStyle(
+                              color: Color.fromARGB(225, 86, 81, 81),
+                              fontSize: 20,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ]),
           ),
         ),
       ),

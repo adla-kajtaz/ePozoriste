@@ -47,7 +47,7 @@ class ListaPredstava extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            termin.predstava.naziv,
+                            termin.predstava!.naziv,
                             style: const TextStyle(
                                 fontWeight: FontWeight.bold, fontSize: 16),
                           ),

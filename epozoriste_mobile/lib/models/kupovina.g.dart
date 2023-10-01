@@ -11,6 +11,7 @@ Kupovina _$KupovinaFromJson(Map<String, dynamic> json) => Kupovina(
       kolicina: json['kolicina'] as int?,
       cijena: json['cijena'] as int?,
       datumKupovine: DateTime.parse(json['datumKupovine'] as String),
+      paymentIntentId: json['paymentIntentId'] as String?,
       korisnikId: json['korisnikId'] as int?,
       korisnik: json['korisnik'] == null
           ? null
@@ -26,6 +27,7 @@ Map<String, dynamic> _$KupovinaToJson(Kupovina instance) => <String, dynamic>{
       'kolicina': instance.kolicina,
       'cijena': instance.cijena,
       'datumKupovine': instance.datumKupovine.toIso8601String(),
+      'paymentIntentId': instance.paymentIntentId,
       'korisnikId': instance.korisnikId,
       'korisnik': instance.korisnik,
       'terminId': instance.terminId,

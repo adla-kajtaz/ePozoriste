@@ -12,9 +12,9 @@ class Termin {
   DateTime datumOdrzavanja;
   String vrijemeOdrzavanja;
   int? salaId;
-  Sala sala;
+  Sala? sala;
   int? predstavaId;
-  Predstava predstava;
+  Predstava? predstava;
 
   Termin(
       {required this.terminId,
@@ -24,9 +24,9 @@ class Termin {
       required this.datumOdrzavanja,
       required this.vrijemeOdrzavanja,
       this.salaId,
-      required this.sala,
+      this.sala,
       this.predstavaId,
-      required this.predstava});
+      this.predstava});
 
   factory Termin.fromJson(Map<String, dynamic> json) => _$TerminFromJson(json);
   Map<String, dynamic> toJson() => _$TerminToJson(this);

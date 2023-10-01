@@ -18,7 +18,7 @@ namespace ePozoriste.WinUI
 
         public async Task<Model.Korisnik> LoginAdmin(LoginRequest request)
         {
-            string endpoint = $"{Properties.Settings.Default.ApiURL}/login/admin";
+            string endpoint = $"{Properties.Settings.Default.ApiURL}/Auth/login/admin";
             try
             {
 

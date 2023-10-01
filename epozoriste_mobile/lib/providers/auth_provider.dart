@@ -37,7 +37,7 @@ class AuthProvider extends BaseProvider<Korisnik> {
   }
 
   Future<Korisnik?> login(dynamic request) async {
-    var url = "$_baseUrl" + "login";
+    var url = "$_baseUrl" + "Auth/login";
     var headers = createHeaders();
     var uri = Uri.parse(url);
     var jsonRequest = jsonEncode(request);
@@ -51,7 +51,7 @@ class AuthProvider extends BaseProvider<Korisnik> {
   }
 
   Future<Korisnik?> register(dynamic request) async {
-    var url = "$_baseUrl" + "register";
+    var url = "$_baseUrl" + "Auth/register";
     var headers = createHeaders();
     var uri = Uri.parse(url);
     var jsonRequest = jsonEncode(request);

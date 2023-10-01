@@ -46,7 +46,7 @@ class Historija extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            kupovina.termin!.predstava.naziv,
+                            kupovina.termin!.predstava!.naziv,
                             style: const TextStyle(
                               fontWeight: FontWeight.bold,
                               fontSize: 16,

@@ -46,20 +46,20 @@ namespace ePozoriste.Services
 
             Kupovina kupovina = new Kupovina();
             kupovina.KorisnikId = (int)request.KorisnikId;
-            kupovina.DatumKupovine = request.DatumKupovine;
+            kupovina.DatumKupovine = DateTime.Now;
             kupovina.Kolicina = request.Karte.Count();
             kupovina.Cijena = request.Cijena;
             kupovina.TerminId = request.TerminId;
             _context.Add(kupovina);
             _context.SaveChanges();
 
-            foreach (var item in request.Karte)
+           /* foreach (var item in request.Karte)
             {
                 var karta = _context.Karta.Find(item);
                 if(karta == null)
                     throw new Exception("Karta nije pronađena");
                 _kartaService.ChangeStatus(karta.KartaId, kupovina.KupovinaId);
-            }
+            } */
             var paymentId =  _stripeService.KreirajKupoivnu(kupovina.Cijena, $"Kupovina za ({kupovina.DatumKupovine})");
             kupovina.PaymentIntentId = paymentId; 
             _context.SaveChanges();

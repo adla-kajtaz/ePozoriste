@@ -54,12 +54,13 @@ class _ProfilState extends State<Profil> {
             child: Column(children: [
               if (kupovine.isNotEmpty)
                 SizedBox(
-                  height: 200,
+                  height: 350,
                   width: double.infinity,
                   child: Historija(
                     kupovine: [...kupovine],
                   ),
                 ),
+              const SizedBox(height: 40),
               Container(
                 height: 50,
                 width: double.infinity,

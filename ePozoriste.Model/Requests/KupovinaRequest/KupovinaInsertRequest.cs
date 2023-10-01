@@ -9,15 +9,8 @@ namespace ePozoriste.Model.Requests
 {
     public class KupovinaInsertRequest
     {
-
-        [Required] 
-        public int Kolicina { get; set; }
-
         [Required]
         public int Cijena { get; set; }
-
-        [Required]
-        public DateTime DatumKupovine { get; set; }
 
         [Required]
         public int? KorisnikId { get; set; }
