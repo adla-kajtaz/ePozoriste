@@ -16,7 +16,7 @@ namespace ePozoriste.Services
 			var options = new PaymentIntentCreateOptions
 			{
 				Amount = iznos * 100,
-				Currency = "BAM",
+				Currency = "EUR",
 				Description = opis,
 			};
 			var service = new PaymentIntentService();

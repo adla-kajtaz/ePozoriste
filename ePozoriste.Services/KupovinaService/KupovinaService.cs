@@ -52,17 +52,17 @@ namespace ePozoriste.Services
             kupovina.TerminId = request.TerminId;
             _context.Add(kupovina);
             _context.SaveChanges();
-            var entity = _mapper.Map<Model.Kupovina>(kupovina);
-            foreach(var item in request.Karte)
+
+            foreach (var item in request.Karte)
             {
                 var karta = _context.Karta.Find(item);
                 if(karta == null)
                     throw new Exception("Karta nije pronađena");
-                _kartaService.ChangeStatus(karta.KartaId, entity.KupovinaId);
+                _kartaService.ChangeStatus(karta.KartaId, kupovina.KupovinaId);
             }
-            /* var paymentId = _stripeService.KreirajKupoivnu(entity.Cijena, $"Kupovina za {termin.Predstava.Naziv}({entity.DatumKupovine})");
-            entity.PaymentIntentId = paymentId; 
-            _context.SaveChanges(); */
+            var paymentId =  _stripeService.KreirajKupoivnu(kupovina.Cijena, $"Kupovina za ({kupovina.DatumKupovine})");
+            kupovina.PaymentIntentId = paymentId; 
+            _context.SaveChanges();
             return _mapper.Map<Model.Kupovina>(kupovina);
         }
 

@@ -5,6 +5,8 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace ePozoriste.Controllers
 {
+    [ApiController]
+    [Route("[controller]")]
     public class AuthController : ControllerBase
     {
         private readonly IAuthService _authService;
