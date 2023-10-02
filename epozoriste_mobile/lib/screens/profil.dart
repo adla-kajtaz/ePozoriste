@@ -1,4 +1,5 @@
 import 'package:epozoriste_mobile/screens/profil_detalji.dart';
+import 'package:epozoriste_mobile/screens/screens.dart';
 import 'package:epozoriste_mobile/widgets/widgets.dart';
 import 'package:epozoriste_mobile/models/kupovina.dart';
 import 'package:flutter/material.dart';
@@ -52,15 +53,6 @@ class _ProfilState extends State<Profil> {
           child: Padding(
             padding: const EdgeInsets.all(16),
             child: Column(children: [
-              if (kupovine.isNotEmpty)
-                SizedBox(
-                  height: 350,
-                  width: double.infinity,
-                  child: Historija(
-                    kupovine: [...kupovine],
-                  ),
-                ),
-              const SizedBox(height: 40),
               Container(
                 height: 50,
                 width: double.infinity,
@@ -83,6 +75,34 @@ class _ProfilState extends State<Profil> {
                         color: Color.fromARGB(225, 86, 81, 81),
                         fontSize: 20,
                       ),
+                    ),
+                  ),
+                ),
+              ),
+              const SizedBox(height: 5),
+              if (kupovine.isNotEmpty)
+                SizedBox(
+                  height: 500,
+                  width: double.infinity,
+                  child: Historija(
+                    kupovine: [...kupovine],
+                  ),
+                ),
+              const SizedBox(height: 10),
+              InkWell(
+                onTap: () async {
+                  Navigator.pushNamed(context, Login.routeName);
+                },
+                child: Container(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10),
+                    color: const Color.fromARGB(223, 61, 41, 41),
+                  ),
+                  height: 50,
+                  child: const Center(
+                    child: Text(
+                      'Odjavi se',
+                      style: TextStyle(color: Colors.white, fontSize: 20),
                     ),
                   ),
                 ),

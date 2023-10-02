@@ -87,201 +87,176 @@ class _DetaljiProfilaState extends State<DetaljiProfila> {
             padding: const EdgeInsets.all(20),
             child: Form(
               key: formKey,
-              child: Column(children: [
-                const Text(
-                  'Korisničko ime:',
-                  style: TextStyle(
-                    color: Color.fromARGB(225, 195, 178, 178),
-                  ),
-                ),
-                const SizedBox(height: 5),
-                TextFormField(
-                  onSaved: (newValue) => korisnik!.korisnickoIme = newValue!,
-                  initialValue: korisnik!.korisnickoIme,
-                  style: const TextStyle(
-                    color: Color.fromARGB(225, 195, 178, 178),
-                  ),
-                  decoration: InputDecoration(
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(15),
-                    ),
-                    labelStyle: const TextStyle(
-                      color: Color.fromARGB(225, 195, 178, 178),
-                    ),
-                  ),
-                  validator: (newValue) {
-                    if (newValue!.isEmpty) {
-                      return 'Ovo polje je obavezno!';
-                    }
-                    return null;
-                  },
-                ),
-                const SizedBox(height: 10),
-                const Text(
-                  'Email:',
-                  style: TextStyle(
-                    color: Color.fromARGB(225, 195, 178, 178),
-                  ),
-                ),
-                const SizedBox(height: 5),
-                TextFormField(
-                  onSaved: (newValue) => korisnik!.email = newValue!,
-                  initialValue: korisnik!.email,
-                  style: const TextStyle(
-                      color: Color.fromARGB(225, 195, 178, 178)),
-                  decoration: InputDecoration(
-                    border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(15)),
-                    labelStyle: const TextStyle(
-                        color: Color.fromARGB(225, 195, 178, 178)),
-                  ),
-                ),
-                const SizedBox(height: 10),
-                const Text(
-                  'Ime:',
-                  style: TextStyle(
-                    color: Color.fromARGB(225, 195, 178, 178),
-                  ),
-                ),
-                const SizedBox(height: 5),
-                TextFormField(
-                  onSaved: (newValue) => korisnik!.ime = newValue!,
-                  initialValue: korisnik!.ime,
-                  style: const TextStyle(
-                      color: Color.fromARGB(225, 195, 178, 178)),
-                  decoration: InputDecoration(
-                    border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(15)),
-                    labelStyle: const TextStyle(
-                        color: Color.fromARGB(225, 195, 178, 178)),
-                  ),
-                  validator: (newValue) {
-                    if (newValue!.isEmpty) {
-                      return 'Ovo polje je obavezno!';
-                    }
-                    return null;
-                  },
-                ),
-                const Text(
-                  'Prezime:',
-                  style: TextStyle(
-                    color: Color.fromARGB(225, 195, 178, 178),
-                  ),
-                ),
-                const SizedBox(height: 5),
-                const SizedBox(height: 10),
-                TextFormField(
-                  onSaved: (newValue) => korisnik!.prezime = newValue!,
-                  initialValue: korisnik!.prezime,
-                  style: const TextStyle(
-                      color: Color.fromARGB(225, 195, 178, 178)),
-                  decoration: InputDecoration(
-                    border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(15)),
-                    labelStyle: const TextStyle(
-                        color: Color.fromARGB(225, 195, 178, 178)),
-                  ),
-                  validator: (newValue) {
-                    if (newValue!.isEmpty) {
-                      return 'Ovo polje je obavezno!';
-                    }
-                    return null;
-                  },
-                ),
-                const SizedBox(height: 10),
-                const Text(
-                  'Broj telefona:',
-                  style: TextStyle(
-                    color: Color.fromARGB(225, 195, 178, 178),
-                  ),
-                ),
-                const SizedBox(height: 5),
-                TextFormField(
-                  onSaved: (newValue) => korisnik!.brTelefona = newValue!,
-                  initialValue: korisnik!.brTelefona,
-                  style: const TextStyle(
-                      color: Color.fromARGB(225, 195, 178, 178)),
-                  decoration: InputDecoration(
-                    border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(15)),
-                    labelStyle: const TextStyle(
-                        color: Color.fromARGB(225, 195, 178, 178)),
-                  ),
-                  validator: (newValue) {
-                    if (newValue!.isEmpty) {
-                      return 'Ovo polje je obavezno!';
-                    }
-                    return null;
-                  },
-                ),
-                const SizedBox(height: 10),
-                InkWell(
-                  onTap: () async {
-                    if (formKey.currentState!.validate()) {
-                      formKey.currentState!.save();
-                      Map<String, dynamic> data = {
-                        "ime": korisnik!.ime,
-                        "prezime": korisnik!.prezime,
-                        "korisnickoIme": korisnik!.korisnickoIme,
-                        "email": korisnik!.email,
-                        "brTelefona": korisnik!.brTelefona,
-                      };
-                      print(data);
-                      try {
-                        await _korisnikProvider!
-                            .updateProfile(korisnik!.korisnikId, data);
-                      } on Exception catch (err) {
-                        print(err.toString());
-                        formKey.currentState!.validate();
-                      }
-                    }
-                  },
-                  child: Container(
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10),
-                      color: const Color.fromARGB(225, 217, 217, 217),
-                    ),
-                    height: 50,
-                    child: const Center(
-                      child: Text(
-                        'Sačuvaj promjene',
-                        style: TextStyle(
-                            color: Color.fromARGB(225, 86, 81, 81),
-                            fontSize: 20),
+              child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    const Text(
+                      'Korisničko ime:',
+                      style: TextStyle(
+                        color: Color.fromARGB(225, 195, 178, 178),
                       ),
                     ),
-                  ),
-                ),
-                const SizedBox(height: 10),
-                InkWell(
-                  onTap: () async {
-                    if (formKey.currentState!.validate()) {
-                      formKey.currentState!.save();
-                    }
-                    try {
-                      Navigator.pushNamed(context, Login.routeName);
-                    } on Exception catch (err) {
-                      print(err.toString());
-                      formKey.currentState!.validate();
-                    }
-                  },
-                  child: Container(
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10),
-                      color: const Color.fromARGB(225, 217, 217, 217),
+                    const SizedBox(height: 5),
+                    TextFormField(
+                      onSaved: (newValue) =>
+                          korisnik!.korisnickoIme = newValue!,
+                      initialValue: korisnik!.korisnickoIme,
+                      style: const TextStyle(
+                        color: Color.fromARGB(225, 195, 178, 178),
+                      ),
+                      decoration: InputDecoration(
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(15),
+                        ),
+                        labelStyle: const TextStyle(
+                          color: Color.fromARGB(225, 195, 178, 178),
+                        ),
+                      ),
+                      validator: (newValue) {
+                        if (newValue!.isEmpty) {
+                          return 'Ovo polje je obavezno!';
+                        }
+                        return null;
+                      },
                     ),
-                    height: 50,
-                    child: const Center(
-                      child: Text(
-                        'Odjavi se',
-                        style: TextStyle(
-                            color: Color.fromARGB(225, 86, 81, 81),
-                            fontSize: 20),
+                    const SizedBox(height: 10),
+                    const Text(
+                      'Email:',
+                      style: TextStyle(
+                        color: Color.fromARGB(225, 195, 178, 178),
                       ),
                     ),
-                  ),
-                ),
-              ]),
+                    const SizedBox(height: 5),
+                    TextFormField(
+                      onSaved: (newValue) => korisnik!.email = newValue!,
+                      initialValue: korisnik!.email,
+                      style: const TextStyle(
+                          color: Color.fromARGB(225, 195, 178, 178)),
+                      decoration: InputDecoration(
+                        border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(15)),
+                        labelStyle: const TextStyle(
+                            color: Color.fromARGB(225, 195, 178, 178)),
+                      ),
+                    ),
+                    const SizedBox(height: 10),
+                    const Text(
+                      'Ime:',
+                      style: TextStyle(
+                        color: Color.fromARGB(225, 195, 178, 178),
+                      ),
+                    ),
+                    const SizedBox(height: 5),
+                    TextFormField(
+                      onSaved: (newValue) => korisnik!.ime = newValue!,
+                      initialValue: korisnik!.ime,
+                      style: const TextStyle(
+                          color: Color.fromARGB(225, 195, 178, 178)),
+                      decoration: InputDecoration(
+                        border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(15)),
+                        labelStyle: const TextStyle(
+                            color: Color.fromARGB(225, 195, 178, 178)),
+                      ),
+                      validator: (newValue) {
+                        if (newValue!.isEmpty) {
+                          return 'Ovo polje je obavezno!';
+                        }
+                        return null;
+                      },
+                    ),
+                    const SizedBox(height: 10),
+                    const Text(
+                      'Prezime:',
+                      style: TextStyle(
+                        color: Color.fromARGB(225, 195, 178, 178),
+                      ),
+                    ),
+                    const SizedBox(height: 5),
+                    TextFormField(
+                      onSaved: (newValue) => korisnik!.prezime = newValue!,
+                      initialValue: korisnik!.prezime,
+                      style: const TextStyle(
+                          color: Color.fromARGB(225, 195, 178, 178)),
+                      decoration: InputDecoration(
+                        border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(15)),
+                        labelStyle: const TextStyle(
+                            color: Color.fromARGB(225, 195, 178, 178)),
+                      ),
+                      validator: (newValue) {
+                        if (newValue!.isEmpty) {
+                          return 'Ovo polje je obavezno!';
+                        }
+                        return null;
+                      },
+                    ),
+                    const SizedBox(height: 10),
+                    const Text(
+                      'Broj telefona:',
+                      style: TextStyle(
+                        color: Color.fromARGB(225, 195, 178, 178),
+                      ),
+                    ),
+                    const SizedBox(height: 5),
+                    TextFormField(
+                      onSaved: (newValue) => korisnik!.brTelefona = newValue!,
+                      initialValue: korisnik!.brTelefona,
+                      style: const TextStyle(
+                          color: Color.fromARGB(225, 195, 178, 178)),
+                      decoration: InputDecoration(
+                        border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(15)),
+                        labelStyle: const TextStyle(
+                            color: Color.fromARGB(225, 195, 178, 178)),
+                      ),
+                      validator: (newValue) {
+                        if (newValue!.isEmpty) {
+                          return 'Ovo polje je obavezno!';
+                        }
+                        return null;
+                      },
+                    ),
+                    const SizedBox(height: 15),
+                    InkWell(
+                      onTap: () async {
+                        if (formKey.currentState!.validate()) {
+                          formKey.currentState!.save();
+                          Map<String, dynamic> data = {
+                            "ime": korisnik!.ime,
+                            "prezime": korisnik!.prezime,
+                            "korisnickoIme": korisnik!.korisnickoIme,
+                            "email": korisnik!.email,
+                            "brTelefona": korisnik!.brTelefona,
+                          };
+                          print(data);
+                          try {
+                            await _korisnikProvider!
+                                .updateProfile(korisnik!.korisnikId, data);
+                          } on Exception catch (err) {
+                            print(err.toString());
+                            formKey.currentState!.validate();
+                          }
+                        }
+                      },
+                      child: Container(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10),
+                          color: const Color.fromARGB(225, 217, 217, 217),
+                        ),
+                        height: 50,
+                        child: const Center(
+                          child: Text(
+                            'Sačuvaj promjene',
+                            style: TextStyle(
+                                color: Color.fromARGB(225, 86, 81, 81),
+                                fontSize: 20),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ]),
             ),
           ),
         ),

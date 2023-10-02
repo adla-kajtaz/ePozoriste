@@ -192,10 +192,11 @@ class _SjedistaState extends State<Sjedista> {
                               padding: const EdgeInsets.all(8),
                               child: Container(
                                   decoration: BoxDecoration(
-                                      color: const Color.fromARGB(
-                                          255, 195, 178, 178),
+                                      color:
+                                          const Color.fromARGB(255, 56, 41, 41),
                                       border: Border.all(
-                                          color: Colors.grey,
+                                          color: const Color.fromARGB(
+                                              255, 56, 41, 41),
                                           width: 1.0,
                                           style: BorderStyle.solid),
                                       borderRadius: BorderRadius.circular(4)),
@@ -222,7 +223,7 @@ class _SjedistaState extends State<Sjedista> {
                                 return InkWell(
                                     onTap: () {
                                       if (!seat.aktivna) {
-                                        showMessage("Seat already taken");
+                                        showMessage("Sjedište je zauzeto");
                                       } else if (izabranaSjedista!
                                           .contains(karte[index])) {
                                         setState(() {
@@ -252,7 +253,7 @@ class _SjedistaState extends State<Sjedista> {
                                               : (seat.aktivna)
                                                   ? Colors.white
                                                   : const Color.fromARGB(
-                                                      255, 195, 178, 178)),
+                                                      255, 56, 41, 41)),
                                       margin: const EdgeInsets.all(5),
                                       child: Center(
                                         child: Text(
@@ -292,15 +293,6 @@ class _SjedistaState extends State<Sjedista> {
                           var data =
                               await _kupovinaProvider?.insert(novaKupovina);
                           handlePay(context, data!.paymentIntentId!);
-
-                          // try {
-                          //   if (context.mounted) {
-                          //     Navigator.pushNamed(
-                          //         context, UspjesnaKupovina.routeName);
-                          //   }
-                          // } catch (e) {
-                          //   print(e.toString());
-                          // }
                         },
                         child: const Center(
                           child: Text(
