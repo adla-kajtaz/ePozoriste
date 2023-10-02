@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 import '../models/karta.dart';
 import '../models/termin.dart';
 import 'package:flutter/material.dart';
+import '../providers/auth_provider.dart';
 import '../providers/karta_provider.dart';
 import '../providers/kupovina_provider.dart';
 
@@ -20,15 +21,16 @@ class Sjedista extends StatefulWidget {
 class _SjedistaState extends State<Sjedista> {
   List<Karta> karte = [];
   List<Karta>? izabranaSjedista = [];
-  // List<int> kolone = [];
-  // List<int> redovi = [];
   KartaProvider? _kartaProvider;
   KupovinaProvider? _kupovinaProvider;
+  AuthProvider? _authProvider;
+  int korisnikId = 0;
   @override
   void initState() {
     super.initState();
     _kartaProvider = context.read<KartaProvider>();
     _kupovinaProvider = context.read<KupovinaProvider>();
+    _authProvider = context.read<AuthProvider>();
     loadData();
   }
 
@@ -38,12 +40,12 @@ class _SjedistaState extends State<Sjedista> {
     var tempData = await _kartaProvider?.getByTerminId(_termin!.terminId);
     setState(() {
       karte = tempData!;
-      /* kolone = List<int>.generate(_termin!.sala.brSjedistaPoRedu, (i) => i + 1);
-      redovi = List<int>.generate(_termin!.sala.brRedova, (i) => i + 1); */
+      korisnikId = _authProvider!.getLoggedUserId();
     });
   }
 
-  void handlePay(BuildContext context, String paymentIntentId) async {
+  void handlePay(
+      BuildContext context, String paymentIntentId, int kupovinaId) async {
     await Stripe.instance.initPaymentSheet(
       paymentSheetParameters: SetupPaymentSheetParameters(
         paymentIntentClientSecret: paymentIntentId,
@@ -53,7 +55,9 @@ class _SjedistaState extends State<Sjedista> {
     );
     try {
       var result = await Stripe.instance.presentPaymentSheet();
-
+      for (Karta item in izabranaSjedista!) {
+        await _kartaProvider!.changeStatus(item.kartaId, kupovinaId);
+      }
       Navigator.pushNamed(context, UspjesnaKupovina.routeName);
     } catch (e) {
       print(e.toString());
@@ -127,7 +131,7 @@ class _SjedistaState extends State<Sjedista> {
                       Text(
                           '${_termin.datumOdrzavanja.toString().substring(0, 10)}, ${_termin.vrijemeOdrzavanja}',
                           style: const TextStyle(color: Colors.white)),
-                      Text(_termin.sala!.pozoriste.naziv,
+                      Text(_termin.sala!.pozoriste!.naziv,
                           style: const TextStyle(color: Colors.white)),
                       Text(_termin.sala!.naziv,
                           style: const TextStyle(color: Colors.white)),
@@ -285,14 +289,15 @@ class _SjedistaState extends State<Sjedista> {
                             'cijena':
                                 _termin.cijenaKarte * izabranaSjedista!.length,
                             "datumKupovine": "2023-10-01T10:57:10.439Z",
-                            "korisnikId": 2,
+                            "korisnikId": korisnikId,
                             "terminId": _termin.terminId,
                             "karte":
                                 izabranaSjedista!.map((e) => e.kartaId).toList()
                           };
                           var data =
                               await _kupovinaProvider?.insert(novaKupovina);
-                          handlePay(context, data!.paymentIntentId!);
+                          handlePay(
+                              context, data!.paymentIntentId!, data.kupovinaId);
                         },
                         child: const Center(
                           child: Text(

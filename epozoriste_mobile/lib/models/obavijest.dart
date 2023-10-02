@@ -12,7 +12,7 @@ class Obavijest {
   String? slika;
   DateTime datumKreiranja;
   int? obavijestKategorijaId;
-  ObavijestKategorija obavijestKategorija;
+  ObavijestKategorija? obavijestKategorija;
   int? korisnikId;
   Korisnik korisnik;
 
@@ -24,7 +24,7 @@ class Obavijest {
       this.slika,
       required this.datumKreiranja,
       this.obavijestKategorijaId,
-      required this.obavijestKategorija,
+      this.obavijestKategorija,
       this.korisnikId,
       required this.korisnik});
 

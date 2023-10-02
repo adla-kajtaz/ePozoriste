@@ -28,4 +28,21 @@ class KartaProvider extends BaseProvider<Karta> {
       throw Exception("Something went wrong");
     }
   }
+
+  Future<Karta> changeStatus(int id, int kupovinaId,
+      [dynamic additionalData]) async {
+    var url = "$_baseUrl" + "Karta/$id?KupovinaId=$kupovinaId";
+    var uri = Uri.parse(url);
+
+    Map<String, String> headers = createHeaders();
+
+    var response = await http!.patch(uri, headers: headers);
+
+    if (isValidResponseCode(response)) {
+      var data = jsonDecode(response.body);
+      return fromJson(data);
+    } else {
+      throw Exception("Something went wrong");
+    }
+  }
 }

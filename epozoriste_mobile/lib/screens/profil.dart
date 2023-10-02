@@ -1,4 +1,3 @@
-import 'package:epozoriste_mobile/screens/profil_detalji.dart';
 import 'package:epozoriste_mobile/screens/screens.dart';
 import 'package:epozoriste_mobile/widgets/widgets.dart';
 import 'package:epozoriste_mobile/models/kupovina.dart';

@@ -1,6 +1,5 @@
 import 'package:epozoriste_mobile/models/korisnik.dart';
 import 'package:epozoriste_mobile/providers/korisnik_provider.dart';
-import 'package:epozoriste_mobile/screens/login.dart';
 import '../providers/auth_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';

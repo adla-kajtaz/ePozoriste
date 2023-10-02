@@ -108,7 +108,7 @@ class _DetaljiPredstaveState extends State<DetaljiPredstave> {
                         style: const TextStyle(color: Colors.white),
                       ),
                       Text(
-                        _termin.sala!.pozoriste.naziv,
+                        _termin.sala!.pozoriste!.naziv,
                         style: const TextStyle(color: Colors.white),
                       ),
                       Text(

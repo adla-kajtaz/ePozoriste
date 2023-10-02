@@ -14,7 +14,7 @@ class Pozoriste {
   String? logo;
   bool aktivan;
   int? gradId;
-  Grad grad;
+  Grad? grad;
 
   Pozoriste(
       {required this.pozoristeId,
@@ -26,7 +26,7 @@ class Pozoriste {
       this.logo,
       required this.aktivan,
       this.gradId,
-      required this.grad});
+      this.grad});
 
   factory Pozoriste.fromJson(Map<String, dynamic> json) =>
       _$PozoristeFromJson(json);

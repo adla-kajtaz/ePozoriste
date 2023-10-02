@@ -11,7 +11,7 @@ class Sala {
   int brRedova;
   int brSjedistaPoRedu;
   int? pozoristeId;
-  Pozoriste pozoriste;
+  Pozoriste? pozoriste;
 
   Sala(
       {required this.salaId,
@@ -20,7 +20,7 @@ class Sala {
       required this.brRedova,
       required this.brSjedistaPoRedu,
       this.pozoristeId,
-      required this.pozoriste});
+      this.pozoriste});
 
   factory Sala.fromJson(Map<String, dynamic> json) => _$SalaFromJson(json);
   Map<String, dynamic> toJson() => _$SalaToJson(this);

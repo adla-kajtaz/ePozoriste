@@ -13,7 +13,9 @@ Sala _$SalaFromJson(Map<String, dynamic> json) => Sala(
       brRedova: json['brRedova'] as int,
       brSjedistaPoRedu: json['brSjedistaPoRedu'] as int,
       pozoristeId: json['pozoristeId'] as int?,
-      pozoriste: Pozoriste.fromJson(json['pozoriste'] as Map<String, dynamic>),
+      pozoriste: json['pozoriste'] == null
+          ? null
+          : Pozoriste.fromJson(json['pozoriste'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$SalaToJson(Sala instance) => <String, dynamic>{

@@ -9,14 +9,14 @@ class Grad {
   String naziv;
   String postanskiBr;
   int? drzavaId;
-  Drzava drzava;
+  Drzava? drzava;
 
   Grad(
       {required this.gradId,
       required this.naziv,
       required this.postanskiBr,
       this.drzavaId,
-      required this.drzava});
+      this.drzava});
 
   factory Grad.fromJson(Map<String, dynamic> json) => _$GradFromJson(json);
   Map<String, dynamic> toJson() => _$GradToJson(this);

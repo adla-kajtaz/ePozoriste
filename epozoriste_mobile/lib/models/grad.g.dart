@@ -11,7 +11,9 @@ Grad _$GradFromJson(Map<String, dynamic> json) => Grad(
       naziv: json['naziv'] as String,
       postanskiBr: json['postanskiBr'] as String,
       drzavaId: json['drzavaId'] as int?,
-      drzava: Drzava.fromJson(json['drzava'] as Map<String, dynamic>),
+      drzava: json['drzava'] == null
+          ? null
+          : Drzava.fromJson(json['drzava'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$GradToJson(Grad instance) => <String, dynamic>{

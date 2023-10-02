@@ -13,7 +13,9 @@ Karta _$KartaFromJson(Map<String, dynamic> json) => Karta(
       brojReda: json['brojReda'] as String,
       sjediste: json['sjediste'] as String,
       terminId: json['terminId'] as int?,
-      termin: Termin.fromJson(json['termin'] as Map<String, dynamic>),
+      termin: json['termin'] == null
+          ? null
+          : Termin.fromJson(json['termin'] as Map<String, dynamic>),
       kupovinaId: json['kupovinaId'] as int?,
       kupovina: json['kupovina'] == null
           ? null

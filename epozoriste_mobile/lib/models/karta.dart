@@ -13,7 +13,7 @@ class Karta {
   String brojReda;
   String sjediste;
   int? terminId;
-  Termin termin;
+  Termin? termin;
   int? kupovinaId;
   Kupovina? kupovina;
 
@@ -24,7 +24,7 @@ class Karta {
     required this.brojReda,
     required this.sjediste,
     this.terminId,
-    required this.termin,
+    this.termin,
     this.kupovinaId,
     required this.kupovina,
   });

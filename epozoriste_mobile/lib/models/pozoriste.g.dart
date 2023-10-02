@@ -16,7 +16,9 @@ Pozoriste _$PozoristeFromJson(Map<String, dynamic> json) => Pozoriste(
       logo: json['logo'] as String?,
       aktivan: json['aktivan'] as bool,
       gradId: json['gradId'] as int?,
-      grad: Grad.fromJson(json['grad'] as Map<String, dynamic>),
+      grad: json['grad'] == null
+          ? null
+          : Grad.fromJson(json['grad'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$PozoristeToJson(Pozoriste instance) => <String, dynamic>{
