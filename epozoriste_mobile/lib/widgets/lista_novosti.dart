@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../models/models.dart';
 import '../screens/detalji_novosti.dart';
+import '../utils/util.dart';
 
 class ListaNovosti extends StatelessWidget {
   final List<Obavijest> obavijesti;
@@ -34,10 +35,11 @@ class ListaNovosti extends StatelessWidget {
                         topLeft: Radius.circular(10),
                         bottomLeft: Radius.circular(10),
                       ),
-                      child: Image.network(
-                          "https://www.npm.ba/images/celavapjevacica/npm-celava-pjevacica-naslovna.jpg",
-                          fit: BoxFit.cover),
-                      //Image.network(termin.predstava.slika as String),
+                      child: Positioned.fill(
+                        child: imageFromBase64String(
+                          obavijest.slika!,
+                        ),
+                      ),
                     ),
                   ),
                   Expanded(

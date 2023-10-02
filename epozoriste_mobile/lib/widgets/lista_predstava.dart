@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../models/models.dart';
 import '../screens/detalji_predstave.dart';
+import '../utils/util.dart';
 
 class ListaPredstava extends StatelessWidget {
   final List<Termin> termini;
@@ -34,10 +35,11 @@ class ListaPredstava extends StatelessWidget {
                         topLeft: Radius.circular(10),
                         bottomLeft: Radius.circular(10),
                       ),
-                      child: Image.network(
-                          "https://www.npm.ba/images/celavapjevacica/npm-celava-pjevacica-naslovna.jpg",
-                          fit: BoxFit.cover),
-                      //Image.network(termin.predstava.slika as String),
+                      child: Positioned.fill(
+                        child: imageFromBase64String(
+                          termin.predstava!.slika!,
+                        ),
+                      ),
                     ),
                   ),
                   Expanded(
