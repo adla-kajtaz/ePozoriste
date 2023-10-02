@@ -28,7 +28,7 @@ class _DetaljiNovostiState extends State<DetaljiNovosti> {
         ),
         title: const Text(
           'ePozorište',
-          style: TextStyle(color: Color.fromARGB(225, 195, 178, 178)),
+          style: TextStyle(color: Colors.white),
         ),
       ),
       body: SingleChildScrollView(
@@ -61,7 +61,7 @@ class _DetaljiNovostiState extends State<DetaljiNovosti> {
                         style: const TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 20,
-                          color: Color.fromARGB(225, 195, 178, 178),
+                          color: Colors.white,
                         ),
                       ),
                       Row(

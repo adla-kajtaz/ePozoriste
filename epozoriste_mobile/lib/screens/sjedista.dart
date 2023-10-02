@@ -76,8 +76,8 @@ class _SjedistaState extends State<Sjedista> {
             onPressed: () => Navigator.of(context).pop(),
           ),
           title: const Text(
-            'Profil',
-            style: TextStyle(color: Color.fromARGB(225, 195, 178, 178)),
+            'ePozoriste',
+            style: TextStyle(color: Colors.white),
           ),
         ),
         body: const Center(
@@ -103,7 +103,7 @@ class _SjedistaState extends State<Sjedista> {
         ),
         title: const Text(
           'ePozorište',
-          style: TextStyle(color: Color.fromARGB(225, 195, 178, 178)),
+          style: TextStyle(color: Colors.white),
         ),
       ),
       body: SingleChildScrollView(

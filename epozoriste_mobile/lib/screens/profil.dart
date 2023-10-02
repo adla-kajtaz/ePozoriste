@@ -44,7 +44,7 @@ class _ProfilState extends State<Profil> {
         backgroundColor: const Color.fromARGB(255, 57, 53, 53),
         title: const Text(
           'ePozorište',
-          style: TextStyle(color: Color.fromARGB(225, 195, 178, 178)),
+          style: TextStyle(color: Colors.white),
         ),
       ),
       body: SingleChildScrollView(

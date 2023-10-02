@@ -29,7 +29,7 @@ class _DetaljiPredstaveState extends State<DetaljiPredstave> {
         ),
         title: const Text(
           'ePozorište',
-          style: TextStyle(color: Color.fromARGB(225, 195, 178, 178)),
+          style: TextStyle(color: Colors.white),
         ),
       ),
       body: SingleChildScrollView(
@@ -63,23 +63,23 @@ class _DetaljiPredstaveState extends State<DetaljiPredstave> {
                         style: const TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 25,
-                          color: Color.fromARGB(225, 195, 178, 178),
+                          color: Color.fromARGB(224, 255, 255, 255),
                         ),
                       ),
                       Text(
                         "Režija: ${_termin.predstava!.rezija}",
                         style: const TextStyle(
-                            color: Color.fromARGB(225, 195, 178, 178)),
+                            color: Color.fromARGB(223, 245, 245, 245)),
                       ),
                       Text(
                         "Kostimografija: ${_termin.predstava!.kostimografija}",
                         style: const TextStyle(
-                            color: Color.fromARGB(225, 195, 178, 178)),
+                            color: Color.fromARGB(223, 245, 245, 245)),
                       ),
                       Text(
                         "Scenografija: ${_termin.predstava!.scenografija}",
                         style: const TextStyle(
-                            color: Color.fromARGB(225, 195, 178, 178)),
+                            color: Color.fromARGB(223, 245, 245, 245)),
                       ),
                       const SizedBox(height: 5),
                       Text(

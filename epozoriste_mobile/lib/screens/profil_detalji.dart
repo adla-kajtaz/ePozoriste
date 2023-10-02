@@ -52,7 +52,7 @@ class _DetaljiProfilaState extends State<DetaljiProfila> {
           ),
           title: const Text(
             'Profil',
-            style: TextStyle(color: Color.fromARGB(225, 195, 178, 178)),
+            style: TextStyle(color: Colors.white),
           ),
         ),
         body: const Center(
@@ -78,7 +78,7 @@ class _DetaljiProfilaState extends State<DetaljiProfila> {
         ),
         title: const Text(
           'Profil',
-          style: TextStyle(color: Color.fromARGB(225, 195, 178, 178)),
+          style: TextStyle(color: Colors.white),
         ),
       ),
       body: SingleChildScrollView(

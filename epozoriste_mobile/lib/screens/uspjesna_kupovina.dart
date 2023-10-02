@@ -23,10 +23,6 @@ class UspjesnaKupovina extends StatelessWidget {
                     Container(
                       height: 200,
                       width: double.infinity,
-                      decoration: BoxDecoration(
-                        color: const Color.fromARGB(255, 103, 103, 103),
-                        borderRadius: BorderRadius.circular(10),
-                      ),
                       child: Column(
                         children: [
                           const SizedBox(height: 5),
