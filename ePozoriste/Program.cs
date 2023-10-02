@@ -2,12 +2,16 @@ using ePozoriste.Services.Database;
 using ePozoriste.Services;
 using ePozoriste.Services.Mapping;
 using Microsoft.EntityFrameworkCore;
+using ePozoriste;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
-builder.Services.AddControllers();
+builder.Services.AddControllers(x =>
+{
+    x.Filters.Add<ErrorFilter>();
+});
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 

@@ -28,14 +28,14 @@ namespace ePozoriste.Services
 
             if (entity == null)
             {
-               throw new UserException("Kredencijali nisu ispravni", "Netacno korisničko ime ili lozinka!");
+               throw new KorisnikException("Kredencijali nisu ispravni", "Netacno korisničko ime ili lozinka!");
             }
 
             var hash = Helper.PasswordHelper.GenerateHash(entity.LozinkaSalt, request.Lozinka);
 
             if (hash != entity.LozinkaHash)
             {
-                throw new UserException("Kredencijali nisu ispravni", "Netacno korisničko ime ili lozinka!");
+                throw new KorisnikException("Kredencijali nisu ispravni", "Netacno korisničko ime ili lozinka!");
             }
             return _mapper.Map<Model.Korisnik>(entity);
         }
@@ -46,7 +46,7 @@ namespace ePozoriste.Services
 
             if (korisnici.Any(x => x.KorisnickoIme == request.KorisnickoIme))
             {
-                throw new UserException("Korisničko već ime postoji", "Postoji user sa tim korisničkim imenom!");
+                throw new KorisnikException("Korisničko već ime postoji", "Postoji user sa tim korisničkim imenom!");
             }
 
             var entity = _mapper.Map<Database.Korisnik>(request);
@@ -88,7 +88,7 @@ namespace ePozoriste.Services
 
             if (entity == null)
             {
-                throw new UserException("Kredencijali nisu ispravni", "Netacno korisničko ime ili lozinka!");
+                throw new KorisnikException("Kredencijali nisu ispravni", "Netacno korisničko ime ili lozinka!");
             }
 
             var hash = Helper.PasswordHelper.GenerateHash(entity.LozinkaSalt, request.Lozinka);
@@ -99,7 +99,7 @@ namespace ePozoriste.Services
                 return _mapper.Map<Model.Korisnik>(entity);
             }
            
-            throw new UserException("Kredencijali nisu ispravni", "Netacno korisničko ime ili lozinka!");
+            throw new KorisnikException("Kredencijali nisu ispravni", "Netacno korisničko ime ili lozinka!");
         }
     }
 }

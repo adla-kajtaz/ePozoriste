@@ -44,7 +44,7 @@ class _SjedistaState extends State<Sjedista> {
     });
   }
 
-  void handlePay(
+  void plati(
       BuildContext context, String paymentIntentId, int kupovinaId) async {
     await Stripe.instance.initPaymentSheet(
       paymentSheetParameters: SetupPaymentSheetParameters(
@@ -296,7 +296,7 @@ class _SjedistaState extends State<Sjedista> {
                           };
                           var data =
                               await _kupovinaProvider?.insert(novaKupovina);
-                          handlePay(
+                          plati(
                               context, data!.paymentIntentId!, data.kupovinaId);
                         },
                         child: const Center(
