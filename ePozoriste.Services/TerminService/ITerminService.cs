@@ -11,6 +11,6 @@ namespace ePozoriste.Services
 {
     public interface ITerminService : IBaseCRUDService<Model.Termin, TerminSearchObject, TerminInsertRequest, TerminInsertRequest>
     {
-
+       
     }
 }

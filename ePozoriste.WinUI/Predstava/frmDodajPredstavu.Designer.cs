@@ -49,6 +49,8 @@
             this.errNaziv = new System.Windows.Forms.ErrorProvider(this.components);
             this.errSadrzaj = new System.Windows.Forms.ErrorProvider(this.components);
             this.errVrijemeTrajanja = new System.Windows.Forms.ErrorProvider(this.components);
+            this.lblGrad = new System.Windows.Forms.Label();
+            this.cmbVrstePredstave = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.pbSlikaPlakata)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errNaziv)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errSadrzaj)).BeginInit();
@@ -174,7 +176,7 @@
             // 
             // btnSpremi
             // 
-            this.btnSpremi.Location = new System.Drawing.Point(389, 268);
+            this.btnSpremi.Location = new System.Drawing.Point(389, 333);
             this.btnSpremi.Name = "btnSpremi";
             this.btnSpremi.Size = new System.Drawing.Size(332, 29);
             this.btnSpremi.TabIndex = 34;
@@ -208,11 +210,31 @@
             // 
             this.errVrijemeTrajanja.ContainerControl = this;
             // 
+            // lblGrad
+            // 
+            this.lblGrad.AutoSize = true;
+            this.lblGrad.Location = new System.Drawing.Point(389, 276);
+            this.lblGrad.Name = "lblGrad";
+            this.lblGrad.Size = new System.Drawing.Size(113, 20);
+            this.lblGrad.TabIndex = 37;
+            this.lblGrad.Text = "Vrsta predstave:";
+            // 
+            // cmbVrstePredstave
+            // 
+            this.cmbVrstePredstave.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbVrstePredstave.FormattingEnabled = true;
+            this.cmbVrstePredstave.Location = new System.Drawing.Point(389, 299);
+            this.cmbVrstePredstave.Name = "cmbVrstePredstave";
+            this.cmbVrstePredstave.Size = new System.Drawing.Size(332, 28);
+            this.cmbVrstePredstave.TabIndex = 36;
+            // 
             // frmDodajPredstavu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(747, 382);
+            this.Controls.Add(this.lblGrad);
+            this.Controls.Add(this.cmbVrstePredstave);
             this.Controls.Add(this.btnUcitajSliku);
             this.Controls.Add(this.btnSpremi);
             this.Controls.Add(this.lblKostimografija);
@@ -263,5 +285,7 @@
         private ErrorProvider errNaziv;
         private ErrorProvider errSadrzaj;
         private ErrorProvider errVrijemeTrajanja;
+        private Label lblGrad;
+        private ComboBox cmbVrstePredstave;
     }
 }

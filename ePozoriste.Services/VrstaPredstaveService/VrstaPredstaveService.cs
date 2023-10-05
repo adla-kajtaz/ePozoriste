@@ -30,13 +30,7 @@ namespace ePozoriste.Services
         public override Model.VrstaPredstave Delete(int id)
         {
             var entity = _context.VrstaPredstaves.Find(id);
-            var predstaveVrste = _context.PredstavaVrstaPredstaves.Where(e => e.VrstaPredstaveId == id).ToList();
-
-            if (predstaveVrste != null && predstaveVrste.Any())
-            {
-                return null;
-            }
-            else if (entity == null)
+            if (entity == null)
             {
                 return null;
             }

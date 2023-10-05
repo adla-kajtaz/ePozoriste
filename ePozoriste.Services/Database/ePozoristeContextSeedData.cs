@@ -312,7 +312,8 @@ namespace ePozoriste.Services.Database
                     Slika = predstavaSlika,
                     Rezija = "Lajla Kaikčija",
                     Scenografija = "Sabina Trnka",
-                    Kostimografija = "Sabina Trnka"
+                    Kostimografija = "Sabina Trnka",
+                    VrstaPredstaveId = 1
                 },
                 new Predstava()
                 {
@@ -323,7 +324,8 @@ namespace ePozoriste.Services.Database
                     Slika = predstavaSlika,
                     Rezija = "Jasmin Krpo",
                     Scenografija = "Emina Kovačević",
-                    Kostimografija = "Azra Trnka"
+                    Kostimografija = "Azra Trnka",
+                    VrstaPredstaveId = 1
                 },
                 new Predstava()
                 {
@@ -334,7 +336,8 @@ namespace ePozoriste.Services.Database
                     Slika= predstavaSlika,
                     Rezija = "Lajla Kaikčija",
                     Scenografija = "Sabina Trnka",
-                    Kostimografija = "Sabina Trnka"
+                    Kostimografija = "Sabina Trnka",
+                    VrstaPredstaveId = 1
                 },
                 new Predstava()
                 {
@@ -345,7 +348,8 @@ namespace ePozoriste.Services.Database
                     Slika = predstavaSlika,
                     Rezija = "Lajla Kaikčija",
                     Scenografija = "Sabina Trnka",
-                    Kostimografija = "Sabina Trnka"
+                    Kostimografija = "Sabina Trnka",
+                    VrstaPredstaveId = 1
                 },
                 new Predstava()
                 {
@@ -356,7 +360,8 @@ namespace ePozoriste.Services.Database
                     Slika = predstavaSlika,
                     Rezija = "Saša Oručević",
                     Scenografija = "Miran Krpo",
-                    Kostimografija = "Sabina Trnka"
+                    Kostimografija = "Sabina Trnka",
+                    VrstaPredstaveId = 2
                 },
                 new Predstava()
                 {
@@ -367,47 +372,8 @@ namespace ePozoriste.Services.Database
                     Slika = predstavaSlika,
                     Rezija = "Emir Spahić",
                     Scenografija = "Sabina Trnka",
-                    Kostimografija = "Sabina Trnka"
-                }
-           });
-
-            modelBuilder.Entity<PredstavaVrstaPredstave>().HasData(new PredstavaVrstaPredstave[]
-            {
-                new PredstavaVrstaPredstave()
-                {
-                    PredstavaVpid = 1,
-                    VrstaPredstaveId = 1,
-                    PredstavaId = 1
-                },
-                new PredstavaVrstaPredstave()
-                {
-                    PredstavaVpid = 2,
-                    VrstaPredstaveId = 2,
-                    PredstavaId = 2
-                },
-                new PredstavaVrstaPredstave()
-                {
-                    PredstavaVpid = 3,
-                    VrstaPredstaveId = 1,
-                    PredstavaId = 3
-                },
-                new PredstavaVrstaPredstave()
-                {
-                    PredstavaVpid = 4,
-                    VrstaPredstaveId = 1,
-                    PredstavaId = 4
-                },
-                new PredstavaVrstaPredstave()
-                {
-                    PredstavaVpid = 5,
-                    VrstaPredstaveId = 2,
-                    PredstavaId = 5
-                },
-                new PredstavaVrstaPredstave()
-                {
-                    PredstavaVpid = 6,
-                    VrstaPredstaveId = 2,
-                    PredstavaId = 6
+                    Kostimografija = "Sabina Trnka",
+                    VrstaPredstaveId = 2
                 }
            });
 

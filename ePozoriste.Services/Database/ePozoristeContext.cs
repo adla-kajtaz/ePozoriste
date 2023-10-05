@@ -28,7 +28,6 @@ namespace ePozoriste.Services.Database
         public virtual DbSet<Pozoriste> Pozoristes { get; set; } = null!;
         public virtual DbSet<Predstava> Predstavas { get; set; } = null!;
         public virtual DbSet<PredstavaGlumac> PredstavaGlumacs { get; set; } = null!;
-        public virtual DbSet<PredstavaVrstaPredstave> PredstavaVrstaPredstaves { get; set; } = null!;
         public virtual DbSet<Sala> Salas { get; set; } = null!;
         public virtual DbSet<Termin> Termins { get; set; } = null!;
         public virtual DbSet<Uloga> Ulogas { get; set; } = null!;
@@ -160,26 +159,6 @@ namespace ePozoriste.Services.Database
                     .WithMany(p => p.PredstavaGlumacs)
                     .HasForeignKey(d => d.PredstavaId)
                     .HasConstraintName("FK__Predstava__Preds__46E78A0C");
-            });
-
-            modelBuilder.Entity<PredstavaVrstaPredstave>(entity =>
-            {
-                entity.HasKey(e => e.PredstavaVpid)
-                    .HasName("PK__Predstav__D51F265A1B68304F");
-
-                entity.ToTable("PredstavaVrstaPredstave");
-
-                entity.Property(e => e.PredstavaVpid).HasColumnName("PredstavaVPId");
-
-                entity.HasOne(d => d.Predstava)
-                    .WithMany(p => p.PredstavaVrstaPredstaves)
-                    .HasForeignKey(d => d.PredstavaId)
-                    .HasConstraintName("FK__Predstava__Preds__4AB81AF0");
-
-                entity.HasOne(d => d.VrstaPredstave)
-                    .WithMany(p => p.PredstavaVrstaPredstaves)
-                    .HasForeignKey(d => d.VrstaPredstaveId)
-                    .HasConstraintName("FK__Predstava__Vrsta__49C3F6B7");
             });
 
             modelBuilder.Entity<Sala>(entity =>

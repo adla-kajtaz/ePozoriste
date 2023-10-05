@@ -42,12 +42,11 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.VrstaPredstave = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewButtonColumn1 = new System.Windows.Forms.DataGridViewButtonColumn();
             this.dataGridViewButtonColumn2 = new System.Windows.Forms.DataGridViewButtonColumn();
             this.dataGridViewButtonColumn3 = new System.Windows.Forms.DataGridViewButtonColumn();
             this.PrikazGlumaca = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.DodajVrstuPredstave = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.PrikazVrstaPredstave = new System.Windows.Forms.DataGridViewButtonColumn();
             this.Izvjestaj = new System.Windows.Forms.DataGridViewButtonColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPredstave)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -70,12 +69,11 @@
             this.dgvPredstave.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn2,
             this.dataGridViewTextBoxColumn3,
+            this.VrstaPredstave,
             this.dataGridViewButtonColumn1,
             this.dataGridViewButtonColumn2,
             this.dataGridViewButtonColumn3,
             this.PrikazGlumaca,
-            this.DodajVrstuPredstave,
-            this.PrikazVrstaPredstave,
             this.Izvjestaj});
             this.dgvPredstave.Location = new System.Drawing.Point(6, 26);
             this.dgvPredstave.Name = "dgvPredstave";
@@ -199,6 +197,15 @@
             this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
             this.dataGridViewTextBoxColumn3.ReadOnly = true;
             // 
+            // VrstaPredstave
+            // 
+            this.VrstaPredstave.DataPropertyName = "VrstaPredstave";
+            this.VrstaPredstave.HeaderText = "Vrsta Predstave";
+            this.VrstaPredstave.MinimumWidth = 6;
+            this.VrstaPredstave.Name = "VrstaPredstave";
+            this.VrstaPredstave.ReadOnly = true;
+            this.VrstaPredstave.Width = 125;
+            // 
             // dataGridViewButtonColumn1
             // 
             this.dataGridViewButtonColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
@@ -238,26 +245,6 @@
             this.PrikazGlumaca.ReadOnly = true;
             this.PrikazGlumaca.Text = "Prikaz glumaca";
             this.PrikazGlumaca.UseColumnTextForButtonValue = true;
-            // 
-            // DodajVrstuPredstave
-            // 
-            this.DodajVrstuPredstave.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.DodajVrstuPredstave.HeaderText = "Dodaj vrstu predstave";
-            this.DodajVrstuPredstave.MinimumWidth = 6;
-            this.DodajVrstuPredstave.Name = "DodajVrstuPredstave";
-            this.DodajVrstuPredstave.ReadOnly = true;
-            this.DodajVrstuPredstave.Text = "Dodaj vrstu predstave";
-            this.DodajVrstuPredstave.UseColumnTextForButtonValue = true;
-            // 
-            // PrikazVrstaPredstave
-            // 
-            this.PrikazVrstaPredstave.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.PrikazVrstaPredstave.HeaderText = "Prikaz vrsta predstave";
-            this.PrikazVrstaPredstave.MinimumWidth = 6;
-            this.PrikazVrstaPredstave.Name = "PrikazVrstaPredstave";
-            this.PrikazVrstaPredstave.ReadOnly = true;
-            this.PrikazVrstaPredstave.Text = "Prikaz vrsta predstave";
-            this.PrikazVrstaPredstave.UseColumnTextForButtonValue = true;
             // 
             // Izvjestaj
             // 
@@ -303,12 +290,11 @@
         private GroupBox groupBox2;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private DataGridViewTextBoxColumn VrstaPredstave;
         private DataGridViewButtonColumn dataGridViewButtonColumn1;
         private DataGridViewButtonColumn dataGridViewButtonColumn2;
         private DataGridViewButtonColumn dataGridViewButtonColumn3;
         private DataGridViewButtonColumn PrikazGlumaca;
-        private DataGridViewButtonColumn DodajVrstuPredstave;
-        private DataGridViewButtonColumn PrikazVrstaPredstave;
         private DataGridViewButtonColumn Izvjestaj;
     }
 }

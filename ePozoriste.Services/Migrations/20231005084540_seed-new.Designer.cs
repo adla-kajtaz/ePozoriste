@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ePozoriste.Services.Database;
 
@@ -11,9 +12,10 @@ using ePozoriste.Services.Database;
 namespace ePozoriste.Services.Migrations
 {
     [DbContext(typeof(ePozoristeContext))]
-    partial class ePozoristeContextModelSnapshot : ModelSnapshot
+    [Migration("20231005084540_seed-new")]
+    partial class seednew
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -6201,7 +6203,7 @@ namespace ePozoriste.Services.Migrations
                         {
                             KupovinaId = 1,
                             Cijena = 40,
-                            DatumKupovine = new DateTime(2023, 10, 5, 11, 24, 8, 270, DateTimeKind.Local).AddTicks(4736),
+                            DatumKupovine = new DateTime(2023, 10, 5, 10, 45, 38, 685, DateTimeKind.Local).AddTicks(6279),
                             Kolicina = 2,
                             KorisnikId = 2,
                             PaymentIntentId = "pi_3NwMiYEDYm8POibP1HZgAANw_secret_L1f7hpTvlCWjJJXmeJaTwZO06",
@@ -6211,7 +6213,7 @@ namespace ePozoriste.Services.Migrations
                         {
                             KupovinaId = 2,
                             Cijena = 30,
-                            DatumKupovine = new DateTime(2023, 10, 5, 11, 24, 8, 270, DateTimeKind.Local).AddTicks(4750),
+                            DatumKupovine = new DateTime(2023, 10, 5, 10, 45, 38, 685, DateTimeKind.Local).AddTicks(6291),
                             Kolicina = 3,
                             KorisnikId = 2,
                             PaymentIntentId = "pi_3NwMiYEDYm8POibP1HZgAANw_secret_L1f7hpTvlCWjJJXmeJaTwZO06",
@@ -6221,7 +6223,7 @@ namespace ePozoriste.Services.Migrations
                         {
                             KupovinaId = 3,
                             Cijena = 10,
-                            DatumKupovine = new DateTime(2023, 10, 5, 11, 24, 8, 270, DateTimeKind.Local).AddTicks(4753),
+                            DatumKupovine = new DateTime(2023, 10, 5, 10, 45, 38, 685, DateTimeKind.Local).AddTicks(6295),
                             Kolicina = 1,
                             KorisnikId = 2,
                             PaymentIntentId = "pi_3NwMiYEDYm8POibP1HZgAANw_secret_L1f7hpTvlCWjJJXmeJaTwZO06",
@@ -6231,7 +6233,7 @@ namespace ePozoriste.Services.Migrations
                         {
                             KupovinaId = 4,
                             Cijena = 20,
-                            DatumKupovine = new DateTime(2023, 10, 5, 11, 24, 8, 270, DateTimeKind.Local).AddTicks(4756),
+                            DatumKupovine = new DateTime(2023, 10, 5, 10, 45, 38, 685, DateTimeKind.Local).AddTicks(6297),
                             Kolicina = 2,
                             KorisnikId = 2,
                             PaymentIntentId = "pi_3NwMiYEDYm8POibP1HZgAANw_secret_L1f7hpTvlCWjJJXmeJaTwZO06",
@@ -6280,7 +6282,7 @@ namespace ePozoriste.Services.Migrations
                         new
                         {
                             ObavijestId = 1,
-                            DatumKreiranja = new DateTime(2023, 10, 5, 11, 24, 8, 270, DateTimeKind.Local).AddTicks(3408),
+                            DatumKreiranja = new DateTime(2023, 10, 5, 10, 45, 38, 685, DateTimeKind.Local).AddTicks(5189),
                             KorisnikId = 1,
                             Naslov = "Uskoro u prodaji karte za predstavu Ćelava pjevačica",
                             ObavijestKategorijaId = 1,
@@ -6291,7 +6293,7 @@ namespace ePozoriste.Services.Migrations
                         new
                         {
                             ObavijestId = 2,
-                            DatumKreiranja = new DateTime(2023, 10, 5, 11, 24, 8, 270, DateTimeKind.Local).AddTicks(3454),
+                            DatumKreiranja = new DateTime(2023, 10, 5, 10, 45, 38, 685, DateTimeKind.Local).AddTicks(5229),
                             KorisnikId = 1,
                             Naslov = "Uskoro u prodaji karte za Mostarsku lisku",
                             ObavijestKategorijaId = 1,
@@ -6302,7 +6304,7 @@ namespace ePozoriste.Services.Migrations
                         new
                         {
                             ObavijestId = 3,
-                            DatumKreiranja = new DateTime(2023, 10, 5, 11, 24, 8, 270, DateTimeKind.Local).AddTicks(3458),
+                            DatumKreiranja = new DateTime(2023, 10, 5, 10, 45, 38, 685, DateTimeKind.Local).AddTicks(5232),
                             KorisnikId = 1,
                             Naslov = "Posebna manifestacija 25.11.2023.",
                             ObavijestKategorijaId = 3,
@@ -6596,6 +6598,31 @@ namespace ePozoriste.Services.Migrations
                             NazivUloge = "G. Smit",
                             PredstavaId = 6
                         });
+                });
+
+            modelBuilder.Entity("ePozoriste.Services.Database.PredstavaVrstaPredstave", b =>
+                {
+                    b.Property<int>("PredstavaVpid")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasColumnName("PredstavaVPId");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("PredstavaVpid"), 1L, 1);
+
+                    b.Property<int?>("PredstavaId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("VrstaPredstaveId")
+                        .HasColumnType("int");
+
+                    b.HasKey("PredstavaVpid")
+                        .HasName("PK__Predstav__D51F265A1B68304F");
+
+                    b.HasIndex("PredstavaId");
+
+                    b.HasIndex("VrstaPredstaveId");
+
+                    b.ToTable("PredstavaVrstaPredstave", (string)null);
                 });
 
             modelBuilder.Entity("ePozoriste.Services.Database.Sala", b =>
@@ -6950,6 +6977,23 @@ namespace ePozoriste.Services.Migrations
                     b.Navigation("Predstava");
                 });
 
+            modelBuilder.Entity("ePozoriste.Services.Database.PredstavaVrstaPredstave", b =>
+                {
+                    b.HasOne("ePozoriste.Services.Database.Predstava", "Predstava")
+                        .WithMany("PredstavaVrstaPredstaves")
+                        .HasForeignKey("PredstavaId")
+                        .HasConstraintName("FK__Predstava__Preds__4AB81AF0");
+
+                    b.HasOne("ePozoriste.Services.Database.VrstaPredstave", "VrstaPredstave")
+                        .WithMany("PredstavaVrstaPredstaves")
+                        .HasForeignKey("VrstaPredstaveId")
+                        .HasConstraintName("FK__Predstava__Vrsta__49C3F6B7");
+
+                    b.Navigation("Predstava");
+
+                    b.Navigation("VrstaPredstave");
+                });
+
             modelBuilder.Entity("ePozoriste.Services.Database.Sala", b =>
                 {
                     b.HasOne("ePozoriste.Services.Database.Pozoriste", "Pozoriste")
@@ -7015,6 +7059,8 @@ namespace ePozoriste.Services.Migrations
                 {
                     b.Navigation("PredstavaGlumacs");
 
+                    b.Navigation("PredstavaVrstaPredstaves");
+
                     b.Navigation("Termins");
                 });
 
@@ -7031,6 +7077,11 @@ namespace ePozoriste.Services.Migrations
             modelBuilder.Entity("ePozoriste.Services.Database.Uloga", b =>
                 {
                     b.Navigation("KorisnikUloges");
+                });
+
+            modelBuilder.Entity("ePozoriste.Services.Database.VrstaPredstave", b =>
+                {
+                    b.Navigation("PredstavaVrstaPredstaves");
                 });
 #pragma warning restore 612, 618
         }

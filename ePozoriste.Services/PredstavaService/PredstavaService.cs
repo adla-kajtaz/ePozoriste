@@ -3,6 +3,7 @@ using ePozoriste.Model.Requests;
 using ePozoriste.Model.SearchObjects;
 using ePozoriste.Services.BaseService;
 using ePozoriste.Services.Database;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,6 +17,12 @@ namespace ePozoriste.Services
         public PredstavaService(ePozoristeContext context, IMapper mapper) : base(context, mapper)
         {
 
+        }
+
+        public override IQueryable<ePozoriste.Services.Database.Predstava> AddInclude(IQueryable<ePozoriste.Services.Database.Predstava> query, BaseSearchObject search = null)
+        {
+            query = query.Include(x => x.VrstaPredstave);
+            return base.AddInclude(query, search);
         }
 
         public override IQueryable<ePozoriste.Services.Database.Predstava> AddFilter(IQueryable<ePozoriste.Services.Database.Predstava> query, BaseSearchObject search = null)
@@ -32,9 +39,7 @@ namespace ePozoriste.Services
             var entity = _context.Predstavas.Find(id);
             var termini = _context.Termins.Where(e => e.PredstavaId == id).ToList();
             var predGlumac = _context.PredstavaGlumacs.Where(e => e.PredstavaId == id).ToList();
-            var predVrsta = _context.PredstavaVrstaPredstaves.Where(e => e.PredstavaId == id).ToList();
-
-            if ((termini != null && termini.Any()) || (predGlumac != null && predGlumac.Any()) || (predVrsta != null && predVrsta.Any()))
+            if ((termini != null && termini.Any()) || (predGlumac != null && predGlumac.Any()))
             {
                 return null;
             }

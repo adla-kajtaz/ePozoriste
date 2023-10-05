@@ -15,12 +15,14 @@ namespace ePozoriste.WinUI
 {
     public partial class frmDodajPredstavu : Form
     {
+        APIService _vrstaService { get; set; } = new APIService("VrstaPredstave");
         APIService _predstavaService { get; set; } = new APIService("Predstava");
         private Predstava _predstava;
         public frmDodajPredstavu(Predstava predstava = null)
         {
             InitializeComponent();
-            _predstava = predstava; 
+            _predstava = predstava;
+            UcitajVrste();
         }
 
         private async void frmDodajPredstavu_Load(object sender, EventArgs e)
@@ -35,7 +37,8 @@ namespace ePozoriste.WinUI
                     txtRezija.Text = _predstava.Rezija;
                     txtScenografija.Text = _predstava.Scenografija.ToString();
                     txtKostimografija.Text = _predstava.Kostimografija.ToString();
-                    if(_predstava.Slika != null)
+                    cmbVrstePredstave.SelectedValue = _predstava.VrstaPredstaveId;
+                    if (_predstava.Slika != null)
                         pbSlikaPlakata.Image = ImageHelper.ConvertStringToImage(_predstava.Slika);
                 }
             }
@@ -45,6 +48,20 @@ namespace ePozoriste.WinUI
             }
         }
 
+        private async void UcitajVrste()
+        {
+            try
+            {
+                var vrste = await _vrstaService.Get<List<VrstaPredstave>>() as IList<VrstaPredstave>;
+                cmbVrstePredstave.DataSource = vrste;
+                cmbVrstePredstave.DisplayMember = "Naziv";
+                cmbVrstePredstave.ValueMember = "VrstaPredstaveId";
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
         private async void btnSpremi_Click(object sender, EventArgs e)
         {
             try
@@ -59,6 +76,7 @@ namespace ePozoriste.WinUI
                         Rezija = txtRezija.Text,
                         Scenografija = txtScenografija.Text,
                         Kostimografija = txtKostimografija.Text,
+                        VrstaPredstaveId = (int)cmbVrstePredstave.SelectedValue,
                         Slika = pbSlikaPlakata.Image != null ? ImageHelper.ConvertImageToString(pbSlikaPlakata.Image) : null
                     };
 

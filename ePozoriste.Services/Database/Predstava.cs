@@ -8,7 +8,6 @@ namespace ePozoriste.Services.Database
         public Predstava()
         {
             PredstavaGlumacs = new HashSet<PredstavaGlumac>();
-            PredstavaVrstaPredstaves = new HashSet<PredstavaVrstaPredstave>();
             Termins = new HashSet<Termin>();
         }
 
@@ -21,8 +20,11 @@ namespace ePozoriste.Services.Database
         public string? Scenografija { get; set; }
         public string? Kostimografija { get; set; }
 
+        public int? VrstaPredstaveId { get; set; }
+        public VrstaPredstave? VrstaPredstave { get; set; }
+
+
         public virtual ICollection<PredstavaGlumac> PredstavaGlumacs { get; set; }
-        public virtual ICollection<PredstavaVrstaPredstave> PredstavaVrstaPredstaves { get; set; }
         public virtual ICollection<Termin> Termins { get; set; }
     }
 }

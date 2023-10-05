@@ -28,5 +28,8 @@ namespace ePozoriste.Model.Requests
         
         [Required]
         public string Kostimografija { get; set; }
+
+        [Required]
+        public int VrstaPredstaveId { get; set; }
     }
 }

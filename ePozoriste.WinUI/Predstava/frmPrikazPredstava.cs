@@ -60,14 +60,14 @@ namespace ePozoriste.WinUI
         private async void dgvPredstave_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             var predstava = dgvPredstave.SelectedRows[0].DataBoundItem as Predstava;
-            if (e.ColumnIndex == 3)
+            if (e.ColumnIndex == 4)
             {
                 await _predstavaService.Delete<Predstava>(predstava.PredstavaId);
                 dgvPredstave.DataSource = null;
                 frmPrikazPredstava_Load(sender, e);
               
             }
-            else if (e.ColumnIndex == 2)
+            else if (e.ColumnIndex == 3)
             {
                 frmDodajPredstavu frmDodajPredstavu = new frmDodajPredstavu(predstava);
                 if (frmDodajPredstavu.ShowDialog() == DialogResult.OK)
@@ -76,7 +76,7 @@ namespace ePozoriste.WinUI
                     frmPrikazPredstava_Load(sender, e);
                 }
             }
-            else if (e.ColumnIndex == 4)
+            else if (e.ColumnIndex == 5)
             {
                 frmGlumacPredstava frmGlumacPredstava = new frmGlumacPredstava(predstava);
                 if (frmGlumacPredstava.ShowDialog() == DialogResult.OK)
@@ -85,7 +85,7 @@ namespace ePozoriste.WinUI
                     frmPrikazPredstava_Load(sender, e);
                 }
             }
-            else if (e.ColumnIndex == 5)
+            else if (e.ColumnIndex == 6)
             {
                 frmPrikazPredstavaGlumac frmPrikazPredstavaGlumac = new frmPrikazPredstavaGlumac(predstava);
                 if (frmPrikazPredstavaGlumac.ShowDialog() == DialogResult.OK)
@@ -94,26 +94,7 @@ namespace ePozoriste.WinUI
                     frmPrikazPredstava_Load(sender, e);
                 }
             }
-            else if(e.ColumnIndex == 6)
-            {
-                frmPredstavaVrstaPredstave frmPredstavaVrstaPredstave = new frmPredstavaVrstaPredstave(predstava);
-                if (frmPredstavaVrstaPredstave.ShowDialog() == DialogResult.OK)
-                {
-                    dgvPredstave.DataSource = null;
-                    frmPrikazPredstava_Load(sender, e);
-                }
-
-            }
             else if (e.ColumnIndex == 7)
-            {
-                frmPrikazPredstavaVrstaPredstave frmPrikazPredstavaVrstaPredstave = new frmPrikazPredstavaVrstaPredstave(predstava);
-                if (frmPrikazPredstavaVrstaPredstave.ShowDialog() == DialogResult.OK)
-                {
-                    dgvPredstave.DataSource = null;
-                    frmPrikazPredstava_Load(sender, e);
-                }
-            }
-            else if (e.ColumnIndex == 8)
             {
                 frmZaradaPoPredstavi frmZaradaPoPredstavi = new frmZaradaPoPredstavi(predstava);
                 if (frmZaradaPoPredstavi.ShowDialog() == DialogResult.OK)
