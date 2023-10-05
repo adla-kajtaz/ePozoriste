@@ -17,7 +17,7 @@ namespace ePozoriste.Model
         public string Scenografija { get; set; }
         public string Kostimografija { get; set; }
         public int? VrstaPredstaveId { get; set; }
-        public VrstaPredstave VrstaPredstave { get; set; }
+        public VrstaPredstave? VrstaPredstave { get; set; }
 
         public override string ToString()
         {

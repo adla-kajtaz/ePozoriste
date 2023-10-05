@@ -14,6 +14,11 @@ namespace ePozoriste
                 context.ModelState.AddModelError(((KorisnikException)context.Exception).Title, context.Exception.Message);
                 context.HttpContext.Response.StatusCode = (int)HttpStatusCode.BadRequest;
             }
+            else if (context.Exception is RecommendationException)
+            {
+                context.ModelState.AddModelError("Recommendation", "Morate imati najmanje 3 kupovine da bismo vam nešto preporučili!");
+                context.HttpContext.Response.StatusCode = (int)HttpStatusCode.UnprocessableEntity;
+            }
             else
             {
                 context.ModelState.AddModelError("Server", "Greska na serveru");

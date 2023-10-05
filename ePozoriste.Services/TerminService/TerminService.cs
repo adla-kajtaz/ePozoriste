@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using ePozoriste.Model;
 using ePozoriste.Model.Requests;
 using ePozoriste.Model.SearchObjects;
 using ePozoriste.Services.BaseService;
@@ -24,7 +25,7 @@ namespace ePozoriste.Services
 
         public override IQueryable<ePozoriste.Services.Database.Termin> AddInclude(IQueryable<ePozoriste.Services.Database.Termin> query, TerminSearchObject search = null)
         {
-            query = query.Include(x => x.Predstava).Include(x=>x.Sala).Include(x => x.Sala.Pozoriste).Include(x => x.Sala.Pozoriste.Grad).Include(x => x.Sala.Pozoriste.Grad.Drzava);
+            query = query.Include(x => x.Predstava).Include(x=>x.Predstava.VrstaPredstave).Include(x=>x.Sala).Include(x => x.Sala.Pozoriste).Include(x => x.Sala.Pozoriste.Grad).Include(x => x.Sala.Pozoriste.Grad.Drzava);
             return base.AddInclude(query, search);
         }
 
@@ -65,6 +66,123 @@ namespace ePozoriste.Services
 
             _context.SaveChanges();
             return _mapper.Map<Model.Termin>(entity);
+        }
+
+        static object isLocked = new object();
+        static MLContext mlContext = null;
+        static ITransformer model = null;
+
+        public List<Model.Termin> TerminRecommenderSystem(int userId)
+        {
+            var kupovine = _context.Kupovinas
+                .Include(p => p.Termin)
+                .Include(p=>p.Termin.Sala)
+                .Include(p => p.Termin.Sala.Pozoriste)
+                .Include(p => p.Termin.Predstava)
+                .Include(p=>p.Termin.Predstava.VrstaPredstave)
+                .Where(p => p.KorisnikId == userId)
+                .ToList();
+
+            if (kupovine.Count < 3)
+            {
+                throw new RecommendationException("Morate imati najmanje 3 kupovine da bismo vam nešto preporučili!");
+            }
+
+            lock (isLocked)
+            {
+                if (mlContext == null)
+                {
+                    mlContext = new MLContext();
+
+                    var data = new List<VrstaPredstaveEntry>();
+
+                    var vrstaCounts = kupovine
+                        .GroupBy(p => p.Termin.Predstava.VrstaPredstaveId)
+                        .Select(group => new
+                        {
+                            VrstaId = group.Key.GetValueOrDefault(),
+                            Count = group.Count()
+                        }).ToList();
+
+                    foreach (var kupovina in kupovine)
+                    {
+                        var vrstaCount = vrstaCounts.FirstOrDefault(g => g.VrstaId == kupovina.Termin.Predstava.VrstaPredstaveId.GetValueOrDefault());
+                        data.Add(new VrstaPredstaveEntry
+                        {
+                            KorisnikId = (uint)userId,
+                            VrstaId = (uint)kupovina.Termin.Predstava.VrstaPredstaveId.GetValueOrDefault(),
+                            VrstaCount = vrstaCount.Count
+                        });
+                    }
+
+                    if (!data.Any())
+                    {
+                        throw new Exception("The training data is empty!");
+                    }
+
+                    var trainData = mlContext.Data.LoadFromEnumerable(data);
+                    var trainTestSplit = mlContext.Data.TrainTestSplit(trainData, testFraction: 0.2);
+
+                    var options = new MatrixFactorizationTrainer.Options
+                    {
+                        MatrixColumnIndexColumnName = nameof(VrstaPredstaveEntry.KorisnikId),
+                        MatrixRowIndexColumnName = nameof(VrstaPredstaveEntry.VrstaId),
+                        LabelColumnName = "VrstaCount",
+                        LossFunction = MatrixFactorizationTrainer.LossFunctionType.SquareLossOneClass,
+                        Alpha = 0.01,
+                        Lambda = 0.025
+                    };
+
+                    var trainer = mlContext.Recommendation().Trainers.MatrixFactorization(options);
+
+                    model = trainer.Fit(trainTestSplit.TrainSet);
+                    if (model == null)
+                    {
+                        throw new Exception("Model training failed, resulting model is null.");
+                    }
+                }
+            }
+
+            var predictionResult = new List<Tuple<Database.Termin, float>>();
+            var termini = _context.Termins.Include(s => s.Predstava).ToList();
+
+            foreach (var termin in termini)
+            {
+                var predictionEngine = mlContext.Model.CreatePredictionEngine<VrstaPredstaveEntry, VrstaPredstavePrediction>(model);
+                var prediction = predictionEngine.Predict(new VrstaPredstaveEntry()
+                {
+                    KorisnikId = (uint)userId,
+                    VrstaId = (uint)termin.Predstava.VrstaPredstaveId.GetValueOrDefault()
+                });
+
+                predictionResult.Add(new Tuple<Database.Termin, float>(termin, prediction.Score));
+            }
+
+            var finalResult = predictionResult.OrderByDescending(x => x.Item2)
+                .Select(x => x.Item1)
+                .ToList()
+                .Take(3);
+
+            return _mapper.Map<List<Model.Termin>>(finalResult);
+        }
+
+        public class VrstaPredstaveEntry
+        {
+            [KeyType(count: 10)]
+            public uint KorisnikId { get; set; }
+
+            [KeyType(count: 10)]
+            public uint VrstaId { get; set; }
+
+            public float VrstaCount { get; set; }
+        }
+
+        public class VrstaPredstavePrediction
+        {
+            [KeyType(count: 10)]
+            public uint VrstaId { get; set; }
+            public float Score { get; set; }
+            public float Label { get; set; }
         }
     }
 }
