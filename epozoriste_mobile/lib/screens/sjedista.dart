@@ -175,7 +175,7 @@ class _SjedistaState extends State<Sjedista> {
                               child: Container(
                                   decoration: BoxDecoration(
                                       color: const Color.fromARGB(
-                                          255, 172, 168, 168),
+                                          255, 113, 12, 12),
                                       border: Border.all(
                                           color: Colors.grey,
                                           width: 1.0,
@@ -253,7 +253,7 @@ class _SjedistaState extends State<Sjedista> {
                                           color: (izabranaSjedista!
                                                   .contains(karte[index]))
                                               ? const Color.fromARGB(
-                                                  255, 172, 168, 168)
+                                                  255, 113, 12, 12)
                                               : (seat.aktivna)
                                                   ? Colors.white
                                                   : const Color.fromARGB(
