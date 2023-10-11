@@ -4,6 +4,7 @@ import 'package:epozoriste_mobile/providers/korisnik_provider.dart';
 import 'package:epozoriste_mobile/providers/kupovina_provider.dart';
 import 'package:epozoriste_mobile/providers/obavijest_provider.dart';
 import 'package:epozoriste_mobile/providers/termin_provider.dart';
+import 'package:epozoriste_mobile/screens/preporuceni.dart';
 import 'package:epozoriste_mobile/screens/screens.dart';
 import 'package:epozoriste_mobile/screens/sjedista.dart';
 import 'package:flutter/material.dart';
@@ -54,6 +55,7 @@ class MyApp extends StatelessWidget {
         DetaljiProfila.routeName: (context) => const DetaljiProfila(),
         Sjedista.routeName: (context) => const Sjedista(),
         UspjesnaKupovina.routeName: (context) => const UspjesnaKupovina(),
+        Preporuceni.routeName: (context) => const Preporuceni(),
       },
       /*home: const MyHomePage(title: 'Flutter Demo Home Page'),*/
     );

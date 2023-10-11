@@ -39,7 +39,7 @@ class _RegisterState extends State<Register> {
   String? brTelefona;
   String? lozinka;
   List<int> uloge = [2];
-  List<String> errors = [];
+
   @override
   void initState() {
     super.initState();

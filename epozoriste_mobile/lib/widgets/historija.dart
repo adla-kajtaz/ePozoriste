@@ -34,10 +34,16 @@ class Historija extends StatelessWidget {
                         topLeft: Radius.circular(10),
                         bottomLeft: Radius.circular(10),
                       ),
-                      child: Positioned.fill(
-                        child: imageFromBase64String(
-                          kupovina.termin!.predstava!.slika!,
-                        ),
+                      child: Stack(
+                        children: [
+                          Positioned.fill(
+                            child: SizedBox.expand(
+                              child: imageFromBase64String(
+                                kupovina.termin!.predstava!.slika!,
+                              ),
+                            ),
+                          )
+                        ],
                       ),
                     ),
                   ),

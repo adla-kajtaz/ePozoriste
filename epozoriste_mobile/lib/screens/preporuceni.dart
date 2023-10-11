@@ -1,19 +1,68 @@
 import 'package:flutter/material.dart';
-import '../models/models.dart';
-import '../screens/detalji_novosti.dart';
+import 'package:provider/provider.dart';
+import '../models/termin.dart';
+import '../providers/auth_provider.dart';
+import '../providers/termin_provider.dart';
 import '../utils/util.dart';
+import 'detalji_predstave.dart';
 
-class ListaNovosti extends StatelessWidget {
-  final List<Obavijest> obavijesti;
-  const ListaNovosti({super.key, required this.obavijesti});
+class Preporuceni extends StatefulWidget {
+  static const routeName = '/preporuceni';
+  const Preporuceni({super.key});
+
+  @override
+  State<Preporuceni> createState() => _PreporuceniState();
+}
+
+class _PreporuceniState extends State<Preporuceni> {
+  List<Termin> termini = [];
+  AuthProvider? _authProvider;
+  TerminProvider? _terminProvider;
+  bool nemaDovoljno = false;
+
+  @override
+  void initState() {
+    super.initState();
+    _authProvider = context.read<AuthProvider>();
+    _terminProvider = context.read<TerminProvider>();
+    loadData();
+  }
+
+  Future loadData() async {
+    try {
+      print("fetching");
+      setState(() {
+        nemaDovoljno = false;
+      });
+      var tempData =
+          await _terminProvider!.recommend(_authProvider!.getLoggedUserId());
+      setState(() {
+        termini = tempData;
+      });
+    } catch (e) {
+      print("uslo u catch");
+      setState(() {
+        nemaDovoljno = true;
+      });
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
+    if (nemaDovoljno)
+      return const Center(
+        child: Text(
+          'Morate imati najmanje 3 kupovine da bismo vam nešto preporučili!',
+          style: TextStyle(
+            color: Color.fromARGB(255, 219, 209, 209),
+          ),
+        ),
+      );
     return ListView.builder(
-        itemCount: obavijesti.length,
+        itemCount: termini.length,
         scrollDirection: Axis.vertical,
         itemBuilder: (BuildContext context, int index) {
-          final obavijest = obavijesti[index];
+          final termin = termini[index];
           return GestureDetector(
             child: Container(
               margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
@@ -40,7 +89,7 @@ class ListaNovosti extends StatelessWidget {
                           Positioned.fill(
                             child: SizedBox.expand(
                               child: imageFromBase64String(
-                                obavijest.slika!,
+                                termin.predstava!.slika!,
                               ),
                             ),
                           )
@@ -55,16 +104,12 @@ class ListaNovosti extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            obavijest.naslov,
+                            termin.predstava!.naziv,
                             style: const TextStyle(
-                                fontWeight: FontWeight.bold, fontSize: 12),
+                                fontWeight: FontWeight.bold, fontSize: 16),
                           ),
                           Text(
-                            obavijest.korisnik.korisnickoIme.toString() +
-                                ', ' +
-                                obavijest.datumKreiranja
-                                    .toString()
-                                    .substring(0, 10),
+                            '${termin.datumOdrzavanja.toString().substring(0, 10)}, ${termin.vrijemeOdrzavanja}',
                             style: const TextStyle(fontSize: 12),
                           ),
                           const SizedBox(height: 30),
@@ -75,7 +120,7 @@ class ListaNovosti extends StatelessWidget {
                                   context,
                                   MaterialPageRoute(
                                     builder: (context) =>
-                                        DetaljiNovosti(obavijest: obavijest),
+                                        DetaljiPredstave(termin: termin),
                                   ),
                                 );
                               },

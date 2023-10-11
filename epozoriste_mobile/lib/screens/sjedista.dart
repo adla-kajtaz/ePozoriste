@@ -327,13 +327,7 @@ class _SjedistaState extends State<Sjedista> {
               actions: [
                 TextButton(
                     child: const Text("Ok"),
-                    onPressed: () => Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) =>
-                                Sjedista(termin: widget.termin),
-                          ),
-                        ))
+                    onPressed: () => Navigator.pop(context))
               ],
             ));
   }

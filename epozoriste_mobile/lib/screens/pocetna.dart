@@ -1,3 +1,4 @@
+import 'package:epozoriste_mobile/screens/preporuceni.dart';
 import 'package:epozoriste_mobile/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -13,6 +14,7 @@ class Pocetna extends StatefulWidget {
 class _PocetnaState extends State<Pocetna> {
   List<Termin> termini = [];
   TerminProvider? _terminProvider;
+
   final List<Tab> myTabs = <Tab>[
     const Tab(text: 'Trenutno se prikazuje'),
     const Tab(text: 'Preporučeno')
@@ -27,6 +29,7 @@ class _PocetnaState extends State<Pocetna> {
 
   Future loadData() async {
     var tempData = await _terminProvider?.get();
+
     setState(() {
       termini = tempData!;
     });
@@ -57,8 +60,8 @@ class _PocetnaState extends State<Pocetna> {
             child: TabBarView(
               children: [
                 ListaPredstava(termini: [...termini]),
-                ListaPredstava(
-                    termini: [...termini, ...termini, ...termini, ...termini]),
+                Preporuceni(),
+                // ListaPredstava(termini: [...termini]),
               ],
             ),
           ),

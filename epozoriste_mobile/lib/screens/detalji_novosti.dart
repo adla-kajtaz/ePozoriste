@@ -1,6 +1,8 @@
 import 'package:epozoriste_mobile/models/obavijest.dart';
 import 'package:flutter/material.dart';
 
+import '../utils/util.dart';
+
 class DetaljiNovosti extends StatefulWidget {
   static const routeName = '/detaljiNovosti';
 
@@ -33,24 +35,18 @@ class _DetaljiNovostiState extends State<DetaljiNovosti> {
       ),
       body: SingleChildScrollView(
         child: SafeArea(
-          child: Padding(
-            padding: const EdgeInsets.all(50),
-            child:
-                Column(mainAxisAlignment: MainAxisAlignment.start, children: [
-              const SizedBox(
-                height: 5,
+          child: Column(mainAxisAlignment: MainAxisAlignment.start, children: [
+            Container(
+              decoration: BoxDecoration(color: Colors.red),
+              height: 200,
+              width: double.infinity,
+              child: imageFromBase64String(
+                _obavijest!.slika!,
               ),
-              SizedBox(
-                height: 50,
-                width: double.infinity,
-                child: Transform.scale(
-                  scale: 3.0,
-                  child: Image.network(
-                      "https://www.npm.ba/images/celavapjevacica/npm-celava-pjevacica-naslovna.jpg"), //dodati atribut
-                ),
-              ),
-              const SizedBox(height: 60),
-              Column(
+            ),
+            Padding(
+              padding: const EdgeInsets.all(30.0),
+              child: Column(
                 children: [
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -69,19 +65,22 @@ class _DetaljiNovostiState extends State<DetaljiNovosti> {
                           Text(
                             _obavijest.korisnik.korisnickoIme.toString(),
                             style: const TextStyle(
-                                color: Color.fromARGB(255, 219, 217, 217)),
+                                color: Color.fromARGB(255, 219, 217, 217),
+                                fontSize: 10),
                           ),
                           const Text(
                             " | ",
                             style: TextStyle(
-                                color: Color.fromARGB(255, 219, 217, 217)),
+                                color: Color.fromARGB(255, 219, 217, 217),
+                                fontSize: 10),
                           ),
                           Text(
                             _obavijest.datumKreiranja
                                 .toString()
                                 .substring(0, 10),
                             style: const TextStyle(
-                                color: Color.fromARGB(255, 219, 217, 217)),
+                                color: Color.fromARGB(255, 219, 217, 217),
+                                fontSize: 10),
                           ),
                         ],
                       ),
@@ -104,8 +103,8 @@ class _DetaljiNovostiState extends State<DetaljiNovosti> {
                   ),
                 ],
               ),
-            ]),
-          ),
+            ),
+          ]),
         ),
       ),
     );
