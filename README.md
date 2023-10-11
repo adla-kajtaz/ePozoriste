@@ -15,9 +15,9 @@ korisnickoIme: adlaKaj
 lozinka: Test123!
 
 Testni podaci za Stripe:
-Broj kartice: 4242 4242 4242 4242
-Datum: Mozete ukucati bilo koji u buducnosti
-CVC: Mozete ukucati bilo koja 3 broja
+- Broj kartice: 4242 4242 4242 4242
+- Datum: Mozete ukucati bilo koji u buducnosti
+- CVC: Mozete ukucati bilo koja 3 broja
 
 ## Pokretanje aplikacija
 
