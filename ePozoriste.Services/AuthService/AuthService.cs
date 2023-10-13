@@ -46,7 +46,7 @@ namespace ePozoriste.Services
 
             if (korisnici.Any(x => x.KorisnickoIme == request.KorisnickoIme))
             {
-                throw new KorisnikException("Korisničko već ime postoji", "Postoji user sa tim korisničkim imenom!");
+                throw new KorisnikException("Korisničko ime već postoji", "Postoji korisnik sa tim korisničkim imenom!");
             }
 
             var entity = _mapper.Map<Database.Korisnik>(request);

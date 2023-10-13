@@ -39,6 +39,7 @@ class _RegisterState extends State<Register> {
   String? brTelefona;
   String? lozinka;
   List<int> uloge = [2];
+  bool registerFailed = false;
 
   @override
   void initState() {
@@ -167,6 +168,9 @@ class _RegisterState extends State<Register> {
                           if (value!.isEmpty) {
                             return "Ovo polje je obavezno!";
                           }
+                          if (registerFailed) {
+                            return "Postoji korisnik sa tim korisničkim imenom!";
+                          }
                         },
                         style: const TextStyle(
                             color: Color.fromARGB(225, 195, 178, 178)),
@@ -206,6 +210,7 @@ class _RegisterState extends State<Register> {
                       const SizedBox(height: 10),
                       InkWell(
                         onTap: () async {
+                          registerFailed = false;
                           if (formKey.currentState!.validate()) {
                             formKey.currentState!.save();
                           }
@@ -225,9 +230,12 @@ class _RegisterState extends State<Register> {
                               Navigator.popAndPushNamed(
                                   context, Login.routeName);
                             }
-                          } on Exception catch (err) {
-                            print(err.toString());
-                            formKey.currentState!.validate();
+                          } on Exception catch (error) {
+                            print(error.toString());
+                            if (error.toString().contains("Bad request")) {
+                              registerFailed = true;
+                              formKey.currentState!.validate();
+                            }
                           }
                         },
                         child: Container(

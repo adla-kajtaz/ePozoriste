@@ -57,7 +57,6 @@ class MyApp extends StatelessWidget {
         UspjesnaKupovina.routeName: (context) => const UspjesnaKupovina(),
         Preporuceni.routeName: (context) => const Preporuceni(),
       },
-      /*home: const MyHomePage(title: 'Flutter Demo Home Page'),*/
     );
   }
 }
