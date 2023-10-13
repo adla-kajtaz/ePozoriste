@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../providers/auth_provider.dart';
 
+RegExp regexLozinka = RegExp(r'^.{8,}$');
+
 class Login extends StatefulWidget {
   static const routeName = '/login';
 
@@ -17,6 +19,7 @@ class _LoginState extends State<Login> {
   String? korisnickoIme;
   String? lozinka;
   AuthProvider? _authProvider;
+  bool loginFailed = false;
 
   @override
   void initState() {
@@ -78,6 +81,12 @@ class _LoginState extends State<Login> {
                         if (value!.isEmpty) {
                           return "Ovo polje je obavezno";
                         }
+                        if (!regexLozinka.hasMatch(value)) {
+                          return 'Lozinka mora sadržavati 8 karaktera!';
+                        }
+                        if (loginFailed) {
+                          return "Pogrešno korisničko ime ili lozinka!";
+                        }
                       },
                       obscureText: true,
                       autocorrect: false,
@@ -107,6 +116,7 @@ class _LoginState extends State<Login> {
                 ),
                 child: InkWell(
                   onTap: () async {
+                    loginFailed = false;
                     if (formKey.currentState!.validate()) {
                       formKey.currentState!.save();
                       Map user = {
@@ -124,6 +134,7 @@ class _LoginState extends State<Login> {
                       } on Exception catch (error) {
                         print(error.toString());
                         if (error.toString().contains("Bad request")) {
+                          loginFailed = true;
                           formKey.currentState!.validate();
                         }
                       }
