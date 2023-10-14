@@ -39,6 +39,8 @@ builder.Services.AddTransient<IKupovinaService, KupovinaService>();
 builder.Services.AddTransient<IKorisnikService, KorisnikService>();
 builder.Services.AddTransient<IKorisnikUlogeService, KorisnikUlogeService>();
 builder.Services.AddTransient<StripeService>();
+builder.Services.AddTransient<PayPalService>();
+
 
 
 builder.Services.AddAutoMapper(typeof(Program), typeof(MapperProfiles));
