@@ -167,5 +167,14 @@ namespace ePozoriste.WinUI {
                 return ResourceManager.GetString("ValidacijaEmaila", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sala je zauzeta u tom terminu!.
+        /// </summary>
+        internal static string ZauzetaSala {
+            get {
+                return ResourceManager.GetString("ZauzetaSala", resourceCulture);
+            }
+        }
     }
 }

@@ -153,4 +153,7 @@
   <data name="ValidacijaEmaila" xml:space="preserve">
     <value>Email treba biti u formatu "naziv@emailadresa.domena".</value>
   </data>
+  <data name="ZauzetaSala" xml:space="preserve">
+    <value>Sala je zauzeta u tom terminu!</value>
+  </data>
 </root>

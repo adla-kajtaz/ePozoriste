@@ -23,6 +23,7 @@ namespace ePozoriste.WinUI
             InitializeComponent();
             dgvTermini.AutoGenerateColumns = false;
             _sala = sala;
+            dgvTermini.Columns["DatumIzvodjenja"].DefaultCellStyle.Format = "dd.MM.yyyy";
         }
 
         private async void frmPrikazTermina_Load(object sender, EventArgs e)
@@ -59,7 +60,7 @@ namespace ePozoriste.WinUI
 
         private void btnDodaj_Click(object sender, EventArgs e)
         {
-            frmDodavanjeTermina frmDodavanjeTermina = new frmDodavanjeTermina();
+            frmDodavanjeTermina frmDodavanjeTermina = new frmDodavanjeTermina(_sala);
             if (frmDodavanjeTermina.ShowDialog() == DialogResult.OK)
             {
                 dgvTermini.DataSource = null;
@@ -92,7 +93,7 @@ namespace ePozoriste.WinUI
             }
             else if (e.ColumnIndex == 8)
             {
-                frmDodavanjeTermina frmDodavanjeTermina = new frmDodavanjeTermina(termini);
+                frmDodavanjeTermina frmDodavanjeTermina = new frmDodavanjeTermina(_sala,termini);
                 if (frmDodavanjeTermina.ShowDialog() == DialogResult.OK)
                 {
                     dgvTermini.DataSource = null;

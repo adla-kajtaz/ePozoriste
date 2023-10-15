@@ -1,5 +1,6 @@
 ﻿using ePozoriste.Model;
 using ePozoriste.Model.Requests;
+using ePozoriste.Model.SearchObjects;
 using ePozoriste.WinUI.Helper;
 using System;
 using System.Collections.Generic;
@@ -21,31 +22,18 @@ namespace ePozoriste.WinUI
         APIService _kartaService { get; set; } = new APIService("Karta");
 
         private Termin _termin;
+        private Sala _sala;
 
-        public frmDodavanjeTermina(Termin termin = null)
+        public frmDodavanjeTermina(Sala sala,Termin termin = null)
         {
             InitializeComponent();
             _termin = termin;
-            UcitajSale();
-            UcitajPozorista();
+            _sala = sala;
+            txtSala.Text = _sala.Naziv;
+            UcitajPredstave();
         }
 
-        private async void UcitajSale()
-        {
-            try
-            {
-                var sale = await _salaService.Get<List<Sala>>() as IList<Sala>;
-                cmbSale.DataSource = sale;
-                cmbSale.DisplayMember = "Naziv";
-                cmbSale.ValueMember = "SalaId";
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-        }
-
-        private async void UcitajPozorista()
+        private async void UcitajPredstave()
         {
             try
             {
@@ -67,7 +55,6 @@ namespace ePozoriste.WinUI
                 if (_termin != null)
                 {
                     cmbPredstave.SelectedValue = _termin.PredstavaId;
-                    cmbSale.SelectedValue = _termin.SalaId;
                     txtCijenaKarte.Text = _termin.CijenaKarte.ToString();
                     dtpDatum.Value = _termin.DatumOdrzavanja;
                     txtVrijemeOdrzavanja.Text = _termin.VrijemeOdrzavanja;
@@ -90,53 +77,76 @@ namespace ePozoriste.WinUI
                     TerminInsertRequest terminInsertRequest = new TerminInsertRequest
                     {
                         PredstavaId = (int)cmbPredstave.SelectedValue,
-                        SalaId = (int)cmbSale.SelectedValue,
+                        SalaId = _sala.SalaId,
                         CijenaKarte = Int32.Parse(txtCijenaKarte.Text),
                         DatumOdrzavanja = dtpDatum.Value.Date,
                         VrijemeOdrzavanja = txtVrijemeOdrzavanja.Text,
                         Predpremijera = cbPredpremijera.Checked,
                         Premijera = cbPremijera.Checked
                     };
-
-                    if (_termin == null)
+                    var searchRequest = new TerminSearchObject
                     {
-                        var termin = await _terminService.Insert<Termin>(terminInsertRequest);
-                        //urediti dio sa kreiranjem karata
-                        if (termin != null)
-                        {
-                            var sala = await _salaService.GetById<Sala>(termin.SalaId);
-                            for (int i = 0; i < sala.BrRedova; i++)
-                            {
-                                var red = (char)(i + 65);
-                                for (int j = 0; j < sala.BrSjedistaPoRedu; j++)
-                                {
-                                    KartaInsertRequest kartaInsertRequest = new KartaInsertRequest
-                                    {
-                                        Aktivna = true,
-                                        TerminId = termin.TerminId,
-                                        BrojSjedista = j + 1,
-                                        BrojReda = red.ToString(),
-                                        Sjediste = $"{red.ToString()}{(j + 1).ToString()}"
-                                    };
+                        SalaId = terminInsertRequest.SalaId,
+                        DatumOdrzavanja = terminInsertRequest.DatumOdrzavanja
+                    };
+                    var termini = await _terminService.Get<List<Termin>>(searchRequest);
+                    bool postoji = false;
+                    foreach(Termin termin in termini)
+                    {
+                        if (termin.VrijemeOdrzavanja.ToLower().Contains(terminInsertRequest.VrijemeOdrzavanja.ToLower()))
+                            postoji = true;
+                    }
 
-                                    var karta = await _kartaService.Insert<Karta>(kartaInsertRequest);
+                    if (!postoji)
+                    {
+
+                        if (_termin == null)
+                        {
+                            var termin = await _terminService.Insert<Termin>(terminInsertRequest);
+
+                            if (termin != null)
+                            {
+                                for (int i = 0; i < _sala.BrRedova; i++)
+                                {
+                                    var red = (char)(i + 65);
+                                    for (int j = 0; j < _sala.BrSjedistaPoRedu; j++)
+                                    {
+                                        KartaInsertRequest kartaInsertRequest = new KartaInsertRequest
+                                        {
+                                            Aktivna = true,
+                                            TerminId = termin.TerminId,
+                                            BrojSjedista = j + 1,
+                                            BrojReda = red.ToString(),
+                                            Sjediste = $"{red.ToString()}{(j + 1).ToString()}"
+                                        };
+
+                                        var karta = await _kartaService.Insert<Karta>(kartaInsertRequest);
+                                    }
                                 }
+                                MessageBox.Show(Resursi.Get(Kljucevi.PodaciUspjesnoDodati),
+                                      Resursi.Get(Kljucevi.Informacija),
+                                      MessageBoxButtons.OK,
+                                      MessageBoxIcon.Information);
                             }
-                            MessageBox.Show(Resursi.Get(Kljucevi.PodaciUspjesnoDodati),
-                                  Resursi.Get(Kljucevi.Informacija),
-                                  MessageBoxButtons.OK,
-                                  MessageBoxIcon.Information);
                         }
+                        else
+                        {
+                            var termin = await _terminService.Update<Termin>(_termin.TerminId, terminInsertRequest);
+                            MessageBox.Show(Resursi.Get(Kljucevi.PodaciUspjesnoModifikovani),
+                                      Resursi.Get(Kljucevi.Informacija),
+                                      MessageBoxButtons.OK,
+                                      MessageBoxIcon.Information);
+                        }
+                        
                     }
                     else
                     {
-                        var termin = await _terminService.Update<Termin>(_termin.TerminId, terminInsertRequest);
-                        MessageBox.Show(Resursi.Get(Kljucevi.PodaciUspjesnoModifikovani),
-                                  Resursi.Get(Kljucevi.Informacija),
-                                  MessageBoxButtons.OK,
-                                  MessageBoxIcon.Information);
+                        MessageBox.Show(Resursi.Get(Kljucevi.ZauzetaSala),
+                                      Resursi.Get(Kljucevi.Informacija),
+                                      MessageBoxButtons.OK,
+                                      MessageBoxIcon.Error);
                     }
-                    
+
                     DialogResult = DialogResult.OK;
                     this.Close();
                 }
@@ -154,7 +164,6 @@ namespace ePozoriste.WinUI
         private bool ValidanUnos()
         {
             return Validator.ValidirajKontrolu(cmbPredstave, errPredstava, Kljucevi.ObaveznaVrijednost)
-                && Validator.ValidirajKontrolu(cmbSale, errSala, Kljucevi.ObaveznaVrijednost)
                 && Validator.ValidirajKontrolu(txtCijenaKarte,errCijena,Kljucevi.ObaveznaVrijednost)
                 && Validator.ValidirajKontrolu(txtVrijemeOdrzavanja,errVrijeme,Kljucevi.ObaveznaVrijednost);;
         }

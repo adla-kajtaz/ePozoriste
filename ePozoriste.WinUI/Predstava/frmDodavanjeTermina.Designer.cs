@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.cmbSale = new System.Windows.Forms.ComboBox();
             this.cmbPredstave = new System.Windows.Forms.ComboBox();
             this.lblPredstava = new System.Windows.Forms.Label();
             this.lblSala = new System.Windows.Forms.Label();
@@ -43,23 +42,13 @@
             this.label1 = new System.Windows.Forms.Label();
             this.txtVrijemeOdrzavanja = new System.Windows.Forms.TextBox();
             this.errPredstava = new System.Windows.Forms.ErrorProvider(this.components);
-            this.errSala = new System.Windows.Forms.ErrorProvider(this.components);
             this.errCijena = new System.Windows.Forms.ErrorProvider(this.components);
             this.errVrijeme = new System.Windows.Forms.ErrorProvider(this.components);
+            this.txtSala = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.errPredstava)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.errSala)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errCijena)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errVrijeme)).BeginInit();
             this.SuspendLayout();
-            // 
-            // cmbSale
-            // 
-            this.cmbSale.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbSale.FormattingEnabled = true;
-            this.cmbSale.Location = new System.Drawing.Point(12, 86);
-            this.cmbSale.Name = "cmbSale";
-            this.cmbSale.Size = new System.Drawing.Size(250, 28);
-            this.cmbSale.TabIndex = 20;
             // 
             // cmbPredstave
             // 
@@ -170,10 +159,6 @@
             // 
             this.errPredstava.ContainerControl = this;
             // 
-            // errSala
-            // 
-            this.errSala.ContainerControl = this;
-            // 
             // errCijena
             // 
             this.errCijena.ContainerControl = this;
@@ -182,11 +167,20 @@
             // 
             this.errVrijeme.ContainerControl = this;
             // 
+            // txtSala
+            // 
+            this.txtSala.Location = new System.Drawing.Point(12, 87);
+            this.txtSala.Name = "txtSala";
+            this.txtSala.ReadOnly = true;
+            this.txtSala.Size = new System.Drawing.Size(250, 27);
+            this.txtSala.TabIndex = 32;
+            // 
             // frmDodavanjeTermina
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(301, 356);
+            this.Controls.Add(this.txtSala);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtVrijemeOdrzavanja);
             this.Controls.Add(this.btnDodaj);
@@ -198,13 +192,11 @@
             this.Controls.Add(this.txtCijenaKarte);
             this.Controls.Add(this.lblSala);
             this.Controls.Add(this.lblPredstava);
-            this.Controls.Add(this.cmbSale);
             this.Controls.Add(this.cmbPredstave);
             this.Name = "frmDodavanjeTermina";
             this.Text = "Dodavanje termina";
             this.Load += new System.EventHandler(this.frmDodavanjeTermina_Load);
             ((System.ComponentModel.ISupportInitialize)(this.errPredstava)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.errSala)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errCijena)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errVrijeme)).EndInit();
             this.ResumeLayout(false);
@@ -213,8 +205,6 @@
         }
 
         #endregion
-
-        private ComboBox cmbSale;
         private ComboBox cmbPredstave;
         private Label lblPredstava;
         private Label lblSala;
@@ -228,8 +218,8 @@
         private Label label1;
         private TextBox txtVrijemeOdrzavanja;
         private ErrorProvider errPredstava;
-        private ErrorProvider errSala;
         private ErrorProvider errCijena;
         private ErrorProvider errVrijeme;
+        private TextBox txtSala;
     }
 }

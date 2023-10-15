@@ -13,5 +13,6 @@ namespace ePozoriste.Model.SearchObjects
         public int? SalaId { get; set; }
         public int? PredstavaId { get; set; }
         public DateTime? DatumOdrzavanja { get; set; }
+        public string? VrijemeOdrzavanja { get; set; }
     }
 }
