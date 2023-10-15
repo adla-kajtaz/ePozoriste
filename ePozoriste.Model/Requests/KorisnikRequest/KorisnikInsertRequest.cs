@@ -16,7 +16,7 @@ namespace ePozoriste.Model.Requests
         public string Prezime { get; set; }
 
         [Required(AllowEmptyStrings = false)]
-        [MinLength(4)]
+        [MinLength(4, ErrorMessage = "Korisničko ime mora sadržavati najmanje 4 karaktera!")]
         public string KorisnickoIme { get; set; }
 
         [Required(AllowEmptyStrings = false)]

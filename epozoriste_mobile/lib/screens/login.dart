@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 import '../providers/auth_provider.dart';
 
 RegExp regexLozinka = RegExp(r'^.{8,}$');
+RegExp regexKorisnicko = RegExp(r'^.{4,}$');
 
 class Login extends StatefulWidget {
   static const routeName = '/login';
@@ -59,6 +60,9 @@ class _LoginState extends State<Login> {
                       validator: (value) {
                         if (value!.isEmpty) {
                           return "Ovo polje je obavezno";
+                        }
+                        if (!regexKorisnicko.hasMatch(value)) {
+                          return 'Korisničko ime mora sadržavati namjanje 4 karaktera!';
                         }
                       },
                       style: const TextStyle(

@@ -13,8 +13,13 @@ class Register extends StatefulWidget {
   _RegisterState createState() => _RegisterState();
 }
 
-bool isPasswordValid(String value) {
+bool isLozinkaValid(String value) {
   RegExp regex = RegExp(r'^.{8,}$');
+  return regex.hasMatch(value);
+}
+
+bool isKorisnickoImeValid(String value) {
+  RegExp regex = RegExp(r'^.{4,}$');
   return regex.hasMatch(value);
 }
 
@@ -168,6 +173,9 @@ class _RegisterState extends State<Register> {
                           if (value!.isEmpty) {
                             return "Ovo polje je obavezno!";
                           }
+                          if (!isKorisnickoImeValid(value!)) {
+                            return "Korisničko ime mora sadržavati najmanje 4 karaktera!";
+                          }
                           if (registerFailed) {
                             return "Postoji korisnik sa tim korisničkim imenom!";
                           }
@@ -190,7 +198,7 @@ class _RegisterState extends State<Register> {
                           if (value!.isEmpty) {
                             return "Ovo polje je obavezno!";
                           }
-                          if (!isPasswordValid(value!)) {
+                          if (!isLozinkaValid(value!)) {
                             return "Lozinka mora sadržavati 8 karaktera!";
                           }
                         },
