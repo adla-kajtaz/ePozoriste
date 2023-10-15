@@ -21,6 +21,8 @@ namespace ePozoriste.WinUI.Helper
         public const string ValidacijaBrTelefona = "ValidacijaBrTelefona";
         public const string DuzinaLozinke = "DuzinaLozinke";
         public const string ZauzetaSala = "ZauzetaSala";
+        public const string NeMozeteObrisati = "NeMozeteObrisati";
+
 
     }
 }

@@ -1,5 +1,6 @@
 ﻿using ePozoriste.Model;
 using ePozoriste.Model.SearchObjects;
+using ePozoriste.WinUI.Helper;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -80,7 +81,12 @@ namespace ePozoriste.WinUI
             if (e.ColumnIndex == 8)
             {
                 
-                await _pozoristeService.Delete<Pozoriste>(pozoriste.PozoristeId);
+                var _pozoriste = await _pozoristeService.Delete<Pozoriste>(pozoriste.PozoristeId);
+                if (_pozoriste == null)
+                    MessageBox.Show(Resursi.Get(Kljucevi.NeMozeteObrisati),
+                                          Resursi.Get(Kljucevi.Informacija),
+                                          MessageBoxButtons.OK,
+                                          MessageBoxIcon.Error);
                 dgvPozorista.DataSource = null;
                 frmPrikazPozorista_Load(sender, e);
             }

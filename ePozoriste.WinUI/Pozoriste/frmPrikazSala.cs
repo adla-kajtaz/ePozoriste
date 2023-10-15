@@ -1,5 +1,6 @@
 ﻿using ePozoriste.Model;
 using ePozoriste.Model.SearchObjects;
+using ePozoriste.WinUI.Helper;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -67,7 +68,12 @@ namespace ePozoriste.WinUI
             var sala = dgvSale.SelectedRows[0].DataBoundItem as Sala;
             if (e.ColumnIndex == 5)
             {
-                await _salaService.Delete<Sala>(sala.SalaId);
+                var _sala = await _salaService.Delete<Sala>(sala.SalaId);
+                if (_sala == null)
+                    MessageBox.Show(Resursi.Get(Kljucevi.NeMozeteObrisati),
+                                          Resursi.Get(Kljucevi.Informacija),
+                                          MessageBoxButtons.OK,
+                                          MessageBoxIcon.Error);
                 dgvSale.DataSource = null;
                 frmPrikazSala_Load(sender, e);
             }

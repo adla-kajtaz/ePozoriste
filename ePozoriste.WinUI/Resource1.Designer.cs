@@ -97,6 +97,15 @@ namespace ePozoriste.WinUI {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Ne mozete obrisati!.
+        /// </summary>
+        internal static string NeMozeteObrisati {
+            get {
+                return ResourceManager.GetString("NeMozeteObrisati", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Unos ove vrijednosti je obavezan..
         /// </summary>
         internal static string ObaveznaVrijednost {

@@ -1,5 +1,6 @@
 ﻿using ePozoriste.Model;
 using ePozoriste.Model.SearchObjects;
+using ePozoriste.WinUI.Helper;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -80,7 +81,12 @@ namespace ePozoriste.WinUI
             var grad = dgvGradovi.SelectedRows[0].DataBoundItem as Grad;
             if (e.ColumnIndex == 4)
             {
-                await _gradService.Delete<Grad>(grad.GradId);
+                var _grad = await _gradService.Delete<Grad>(grad.GradId);
+                if (_grad == null)
+                    MessageBox.Show(Resursi.Get(Kljucevi.NeMozeteObrisati),
+                                          Resursi.Get(Kljucevi.Informacija),
+                                          MessageBoxButtons.OK,
+                                          MessageBoxIcon.Error);
                 dgvGradovi.DataSource = null;
                 frmPrikazGradova_Load(sender, e);
             }

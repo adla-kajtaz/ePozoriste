@@ -1,5 +1,6 @@
 ﻿using ePozoriste.Model;
 using ePozoriste.Model.SearchObjects;
+using ePozoriste.WinUI.Helper;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -76,7 +77,7 @@ namespace ePozoriste.WinUI
                 Premijera = cbPremijera.Checked,
                 SalaId = _sala.SalaId,
                 PredstavaId = (int)cmbPredstave.SelectedValue,
-                DatumOdrzavanja = dtpDatumIzvodjenja.Value,
+                DatumOdrzavanja = dtpDatumIzvodjenja.Value.Date,
             };
             dgvTermini.DataSource = await _terminService.Get<List<Termin>>(terminSearchObject);
         }
@@ -86,7 +87,12 @@ namespace ePozoriste.WinUI
             var termini = dgvTermini.SelectedRows[0].DataBoundItem as Termin;
             if (e.ColumnIndex == 9)
             {
-                await _terminService.Delete<Termin>(termini.TerminId);
+               var termin =  await _terminService.Delete<Termin>(termini.TerminId);
+                if(termin == null)
+                MessageBox.Show(Resursi.Get(Kljucevi.NeMozeteObrisati),
+                                      Resursi.Get(Kljucevi.Informacija),
+                                      MessageBoxButtons.OK,
+                                      MessageBoxIcon.Error);
                 dgvTermini.DataSource = null;
                 frmPrikazTermina_Load(sender, e);
 

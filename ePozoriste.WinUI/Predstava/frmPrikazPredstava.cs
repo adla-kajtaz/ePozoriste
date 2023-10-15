@@ -1,5 +1,6 @@
 ﻿using ePozoriste.Model;
 using ePozoriste.Model.SearchObjects;
+using ePozoriste.WinUI.Helper;
 using ePozoriste.WinUI.Reports;
 using System;
 using System.Collections.Generic;
@@ -62,7 +63,12 @@ namespace ePozoriste.WinUI
             var predstava = dgvPredstave.SelectedRows[0].DataBoundItem as Predstava;
             if (e.ColumnIndex == 4)
             {
-                await _predstavaService.Delete<Predstava>(predstava.PredstavaId);
+                var _predstava =  await _predstavaService.Delete<Predstava>(predstava.PredstavaId);
+                if (_predstava == null)
+                    MessageBox.Show(Resursi.Get(Kljucevi.NeMozeteObrisati),
+                                          Resursi.Get(Kljucevi.Informacija),
+                                          MessageBoxButtons.OK,
+                                          MessageBoxIcon.Error);
                 dgvPredstave.DataSource = null;
                 frmPrikazPredstava_Load(sender, e);
               

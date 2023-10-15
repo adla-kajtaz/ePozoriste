@@ -129,6 +129,9 @@
   <data name="Informacija" xml:space="preserve">
     <value>Informacija</value>
   </data>
+  <data name="NeMozeteObrisati" xml:space="preserve">
+    <value>Ne mozete obrisati!</value>
+  </data>
   <data name="ObaveznaVrijednost" xml:space="preserve">
     <value>Unos ove vrijednosti je obavezan.</value>
   </data>

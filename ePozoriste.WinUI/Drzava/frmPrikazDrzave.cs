@@ -1,5 +1,6 @@
 using ePozoriste.Model;
 using ePozoriste.Model.SearchObjects;
+using ePozoriste.WinUI.Helper;
 
 namespace ePozoriste.WinUI
 {
@@ -52,7 +53,12 @@ namespace ePozoriste.WinUI
             if (e.ColumnIndex == 3)
             {
                 
-                await _drzavaService.Delete<Drzava>(drzava.DrzavaId);
+                var _drzava = await _drzavaService.Delete<Drzava>(drzava.DrzavaId);
+                if (_drzava == null)
+                    MessageBox.Show(Resursi.Get(Kljucevi.NeMozeteObrisati),
+                                          Resursi.Get(Kljucevi.Informacija),
+                                          MessageBoxButtons.OK,
+                                          MessageBoxIcon.Error);
                 dgvDrzave.DataSource = null;
                 frmPrikazDrzava_Load(sender, e);
             }

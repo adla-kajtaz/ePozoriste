@@ -1,5 +1,6 @@
 ﻿using ePozoriste.Model;
 using ePozoriste.Model.SearchObjects;
+using ePozoriste.WinUI.Helper;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -61,7 +62,12 @@ namespace ePozoriste.WinUI
             var glumac = dgvGlumci.SelectedRows[0].DataBoundItem as Glumac;
             if (e.ColumnIndex == 3)
             {
-                await _glumacService.Delete<Glumac>(glumac.GlumacId);
+                var _glumac = await _glumacService.Delete<Glumac>(glumac.GlumacId);
+                if (_glumac == null)
+                    MessageBox.Show(Resursi.Get(Kljucevi.NeMozeteObrisati),
+                                          Resursi.Get(Kljucevi.Informacija),
+                                          MessageBoxButtons.OK,
+                                          MessageBoxIcon.Error);
                 dgvGlumci.DataSource = null;
                 frmPrikazGlumaca_Load(sender, e);
             }
