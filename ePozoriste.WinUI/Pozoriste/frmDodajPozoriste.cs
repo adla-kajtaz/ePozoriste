@@ -24,7 +24,8 @@ namespace ePozoriste.WinUI
         {
             InitializeComponent();
             _pozoriste = pozoriste;
-            UcitajGradove();
+            if(_pozoriste == null)
+                UcitajGradove();
         }
 
         private async void frmDodajPozoriste_Load(object sender, EventArgs e)
@@ -39,6 +40,7 @@ namespace ePozoriste.WinUI
                     txtEmail.Text = _pozoriste.Email;
                     txtWebStranica.Text = _pozoriste.Webstranica;
                     cbAktivan.Checked = _pozoriste.Aktivan;
+                    await UcitajGradove();
                     cmbGradovi.SelectedValue = _pozoriste.GradId;
                     if(_pozoriste.Logo != null)
                         pbLogo.Image = ImageHelper.ConvertStringToImage(_pozoriste.Logo);
@@ -50,7 +52,7 @@ namespace ePozoriste.WinUI
             }
         }
 
-        private async void UcitajGradove()
+        private async Task UcitajGradove()
         {
             try
             {

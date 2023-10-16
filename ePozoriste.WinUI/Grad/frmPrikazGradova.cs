@@ -49,6 +49,7 @@ namespace ePozoriste.WinUI
                 cmbDrzave.DataSource = drzava;
                 cmbDrzave.DisplayMember = "Naziv";
                 cmbDrzave.ValueMember = "DrzavaId";
+                cmbDrzave.SelectedIndex = -1;
             }
             catch (Exception ex)
             {

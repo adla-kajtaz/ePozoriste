@@ -30,10 +30,11 @@ namespace ePozoriste.WinUI
             _termin = termin;
             _sala = sala;
             txtSala.Text = _sala.Naziv;
-            UcitajPredstave();
+            if(_termin == null)
+                UcitajPredstave();
         }
 
-        private async void UcitajPredstave()
+        private async Task UcitajPredstave()
         {
             try
             {
@@ -54,6 +55,7 @@ namespace ePozoriste.WinUI
             {
                 if (_termin != null)
                 {
+                    await UcitajPredstave();
                     cmbPredstave.SelectedValue = _termin.PredstavaId;
                     txtCijenaKarte.Text = _termin.CijenaKarte.ToString();
                     dtpDatum.Value = _termin.DatumOdrzavanja;

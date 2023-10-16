@@ -23,7 +23,8 @@ namespace ePozoriste.WinUI
         {
             InitializeComponent();
             _grad = grad;
-            UcitajDrzave();
+            if(_grad == null)
+                UcitajDrzave();
         }
 
         private async void frmDetaljiGrada_Load(object sender, EventArgs e)
@@ -34,9 +35,9 @@ namespace ePozoriste.WinUI
                 {
                     txtNaziv.Text = _grad.Naziv;
                     txtPostanskiBr.Text = _grad.PostanskiBr;
+                    await UcitajDrzave();
                     cmbDrzave.SelectedValue = _grad.DrzavaId;
-                }
-                //UcitajDrzave();
+                } 
             }
             catch (Exception ex)
             {
@@ -44,7 +45,7 @@ namespace ePozoriste.WinUI
             }
         }
 
-        private async void UcitajDrzave()
+        private async Task UcitajDrzave()
         {
             try
             {

@@ -192,7 +192,7 @@
             // 
             this.dataGridViewTextBoxColumn3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.dataGridViewTextBoxColumn3.DataPropertyName = "VrijemeTrajanje";
-            this.dataGridViewTextBoxColumn3.HeaderText = "Vrijeme Trajanja";
+            this.dataGridViewTextBoxColumn3.HeaderText = "Vrijeme trajanja";
             this.dataGridViewTextBoxColumn3.MinimumWidth = 6;
             this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
             this.dataGridViewTextBoxColumn3.ReadOnly = true;
@@ -200,7 +200,7 @@
             // VrstaPredstave
             // 
             this.VrstaPredstave.DataPropertyName = "VrstaPredstave";
-            this.VrstaPredstave.HeaderText = "Vrsta Predstave";
+            this.VrstaPredstave.HeaderText = "Vrsta predstave";
             this.VrstaPredstave.MinimumWidth = 6;
             this.VrstaPredstave.Name = "VrstaPredstave";
             this.VrstaPredstave.ReadOnly = true;

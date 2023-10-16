@@ -24,10 +24,11 @@ namespace ePozoriste.WinUI
         {
             InitializeComponent();
             _obavijest = obavijest;
-            UcitajKategorije();
+            if(_obavijest == null)
+                UcitajKategorije();
         }
 
-        private async void UcitajKategorije()
+        private async Task UcitajKategorije()
         {
             try
             {
@@ -51,6 +52,7 @@ namespace ePozoriste.WinUI
                     txtNaslov.Text = _obavijest.Naslov;
                     txtPodnaslov.Text = _obavijest.Podnaslov;
                     txtSadrzaj.Text = _obavijest.Sadrzaj;
+                    await UcitajKategorije();
                     cmbKategorije.SelectedValue = _obavijest.ObavijestKategorijaId;
                     if (_obavijest.Slika != null)
                         pbSlika.Image = ImageHelper.ConvertStringToImage(_obavijest.Slika);

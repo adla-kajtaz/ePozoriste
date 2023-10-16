@@ -17,7 +17,6 @@ namespace ePozoriste.WinUI
     {
         APIService _terminService { get; set; } = new APIService("Termin");
         APIService _predstavaService { get; set; } = new APIService("Predstava");
-        APIService _salaService { get; set; } = new APIService("Sala");
         private Sala _sala;
         public frmPrikazTermina(Sala sala = null)
         {
@@ -52,6 +51,7 @@ namespace ePozoriste.WinUI
                 cmbPredstave.DataSource = predstave;
                 cmbPredstave.DisplayMember = "Naziv";
                 cmbPredstave.ValueMember = "PredstavaId";
+                cmbPredstave.SelectedIndex = -1;
             }
             catch (Exception ex)
             {

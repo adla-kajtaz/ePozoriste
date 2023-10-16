@@ -48,6 +48,7 @@ namespace ePozoriste.WinUI
                 cmbGradovi.DataSource = gradovi;
                 cmbGradovi.DisplayMember = "Naziv";
                 cmbGradovi.ValueMember = "GradId";
+                cmbGradovi.SelectedIndex = -1;
             }
             catch (Exception ex)
             {

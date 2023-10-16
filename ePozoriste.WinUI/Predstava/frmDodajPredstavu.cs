@@ -18,11 +18,12 @@ namespace ePozoriste.WinUI
         APIService _vrstaService { get; set; } = new APIService("VrstaPredstave");
         APIService _predstavaService { get; set; } = new APIService("Predstava");
         private Predstava _predstava;
-        public frmDodajPredstavu(Predstava predstava = null)
+        public  frmDodajPredstavu(Predstava predstava = null)
         {
             InitializeComponent();
             _predstava = predstava;
-            UcitajVrste();
+            if (_predstava == null)
+                UcitajVrste();
         }
 
         private async void frmDodajPredstavu_Load(object sender, EventArgs e)
@@ -37,6 +38,7 @@ namespace ePozoriste.WinUI
                     txtRezija.Text = _predstava.Rezija;
                     txtScenografija.Text = _predstava.Scenografija.ToString();
                     txtKostimografija.Text = _predstava.Kostimografija.ToString();
+                    await UcitajVrste();
                     cmbVrstePredstave.SelectedValue = _predstava.VrstaPredstaveId;
                     if (_predstava.Slika != null)
                         pbSlikaPlakata.Image = ImageHelper.ConvertStringToImage(_predstava.Slika);
@@ -48,7 +50,7 @@ namespace ePozoriste.WinUI
             }
         }
 
-        private async void UcitajVrste()
+        private async Task UcitajVrste()
         {
             try
             {

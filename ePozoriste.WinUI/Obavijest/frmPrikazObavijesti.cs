@@ -48,6 +48,7 @@ namespace ePozoriste.WinUI
                 cmbKategorije.DataSource = kategorija;
                 cmbKategorije.DisplayMember = "Naziv";
                 cmbKategorije.ValueMember = "ObavijestKategorijaId";
+                cmbKategorije.SelectedIndex = -1;
             }
             catch (Exception ex)
             {

@@ -143,7 +143,7 @@
             this.Controls.Add(this.txtLozinka);
             this.Controls.Add(this.txtKorisnickoIme);
             this.Name = "frmLogin";
-            this.Text = "frmLogin";
+            this.Text = "Login";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errKorisnickoIme)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errLozinka)).EndInit();
