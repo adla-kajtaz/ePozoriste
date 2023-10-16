@@ -284,20 +284,25 @@ class _SjedistaState extends State<Sjedista> {
                       ),
                       child: InkWell(
                         onTap: () async {
-                          Map novaKupovina = {
-                            'kolicina': izabranaSjedista?.length,
-                            'cijena':
-                                _termin.cijenaKarte * izabranaSjedista!.length,
-                            "datumKupovine": "2023-10-01T10:57:10.439Z",
-                            "korisnikId": korisnikId,
-                            "terminId": _termin.terminId,
-                            "karte":
-                                izabranaSjedista!.map((e) => e.kartaId).toList()
-                          };
-                          var data =
-                              await _kupovinaProvider?.insert(novaKupovina);
-                          plati(
-                              context, data!.paymentIntentId!, data.kupovinaId);
+                          if (izabranaSjedista!.isEmpty)
+                            showMessage("Morate izabrati bar jedno sjediste");
+                          else {
+                            Map novaKupovina = {
+                              'kolicina': izabranaSjedista?.length,
+                              'cijena': _termin.cijenaKarte *
+                                  izabranaSjedista!.length,
+                              "datumKupovine": "2023-10-01T10:57:10.439Z",
+                              "korisnikId": korisnikId,
+                              "terminId": _termin.terminId,
+                              "karte": izabranaSjedista!
+                                  .map((e) => e.kartaId)
+                                  .toList()
+                            };
+                            var data =
+                                await _kupovinaProvider?.insert(novaKupovina);
+                            plati(context, data!.paymentIntentId!,
+                                data.kupovinaId);
+                          }
                         },
                         child: const Center(
                           child: Text(
