@@ -18,6 +18,7 @@ class _DetaljiProfilaState extends State<DetaljiProfila> {
   AuthProvider? _authProvider;
   KorisnikProvider? _korisnikProvider;
   Korisnik? korisnik;
+  bool updateFailed = false;
 
   @override
   void initState() {
@@ -33,6 +34,39 @@ class _DetaljiProfilaState extends State<DetaljiProfila> {
     setState(() {
       korisnik = data;
     });
+  }
+
+  bool isKorisnickoImeValid(String value) {
+    RegExp regex = RegExp(r'^.{4,}$');
+    return regex.hasMatch(value);
+  }
+
+  bool isPhoneNumberValid(String value) {
+    RegExp regex = RegExp(r'^\d{3}-\d{3}-(\d{4}|\d{3})$');
+    return regex.hasMatch(value);
+  }
+
+  bool isEmailValid(String value) {
+    RegExp regex = RegExp(r'^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$',
+        caseSensitive: false);
+    return regex.hasMatch(value);
+  }
+
+  void closeToast(context, scaffold) async {
+    scaffold.hideCurrentSnackBar;
+    await Future.delayed(const Duration(milliseconds: 400));
+    Navigator.pop(context);
+  }
+
+  void _showToast(BuildContext context) {
+    final scaffold = ScaffoldMessenger.of(context);
+    scaffold.showSnackBar(
+      SnackBar(
+        content: const Text('Profil je uspješno ažuriran!'),
+        action: SnackBarAction(
+            label: 'OK', onPressed: () => closeToast(context, scaffold)),
+      ),
+    );
   }
 
   @override
@@ -116,6 +150,12 @@ class _DetaljiProfilaState extends State<DetaljiProfila> {
                         if (newValue!.isEmpty) {
                           return 'Ovo polje je obavezno!';
                         }
+                        if (!isKorisnickoImeValid(newValue!)) {
+                          return "Korisničko ime mora sadržavati najmanje 4 karaktera!";
+                        }
+                        if (updateFailed) {
+                          return "Korisničko ime već postoji!";
+                        }
                         return null;
                       },
                     ),
@@ -138,6 +178,15 @@ class _DetaljiProfilaState extends State<DetaljiProfila> {
                         labelStyle: const TextStyle(
                             color: Color.fromARGB(225, 195, 178, 178)),
                       ),
+                      validator: (newValue) {
+                        if (newValue!.isEmpty) {
+                          return 'Ovo polje je obavezno!';
+                        }
+                        if (!isEmailValid(newValue!)) {
+                          return "Unesite validnu email adresu!";
+                        }
+                        return null;
+                      },
                     ),
                     const SizedBox(height: 10),
                     const Text(
@@ -214,12 +263,16 @@ class _DetaljiProfilaState extends State<DetaljiProfila> {
                         if (newValue!.isEmpty) {
                           return 'Ovo polje je obavezno!';
                         }
+                        if (!isPhoneNumberValid(newValue!)) {
+                          return "Unesite broj telefona u formatu 06x-xxx-xxx!";
+                        }
                         return null;
                       },
                     ),
                     const SizedBox(height: 15),
                     InkWell(
                       onTap: () async {
+                        updateFailed = false;
                         if (formKey.currentState!.validate()) {
                           formKey.currentState!.save();
                           Map<String, dynamic> data = {
@@ -233,9 +286,15 @@ class _DetaljiProfilaState extends State<DetaljiProfila> {
                           try {
                             await _korisnikProvider!
                                 .updateProfile(korisnik!.korisnikId, data);
+                            if (context.mounted) {
+                              _showToast(context);
+                            }
                           } on Exception catch (err) {
                             print(err.toString());
-                            formKey.currentState!.validate();
+                            if (err.toString().contains("Bad request")) {
+                              updateFailed = true;
+                              formKey.currentState!.validate();
+                            }
                           }
                         }
                       },

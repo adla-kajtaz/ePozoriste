@@ -30,7 +30,6 @@ class _PreporuceniState extends State<Preporuceni> {
 
   Future loadData() async {
     try {
-      print("fetching");
       setState(() {
         nemaDovoljno = false;
       });
@@ -40,7 +39,6 @@ class _PreporuceniState extends State<Preporuceni> {
         termini = tempData;
       });
     } catch (e) {
-      print("uslo u catch");
       setState(() {
         nemaDovoljno = true;
       });

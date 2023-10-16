@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using ePozoriste.Model;
 using ePozoriste.Model.Requests;
 using ePozoriste.Model.SearchObjects;
 using ePozoriste.Services.BaseService;
@@ -60,6 +61,17 @@ namespace ePozoriste.Services
             _context.SaveChanges();
 
             return _mapper.Map<Model.Korisnik>(entity);
+        }
+        
+        public override Model.Korisnik Update(int id, KorisnikUpdateRequest request)
+        {
+            var korisnikSaKorisnickimImenom = _context.Korisniks.Where(x=>x.KorisnikId != id && x.KorisnickoIme == request.KorisnickoIme).ToList();
+            if (korisnikSaKorisnickimImenom != null && korisnikSaKorisnickimImenom.Count > 0)
+            {
+                throw new KorisnikException("Korisničko ime", "Korisničko ime već postoji!");
+            }
+
+            return base.Update(id, request);
         }
 
         public Model.Korisnik GetByUsername(string korisnickoIme)

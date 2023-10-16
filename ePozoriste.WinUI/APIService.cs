@@ -97,6 +97,8 @@ namespace ePozoriste.WinUI
             }
         }
 
+        
+
         public async void GenerateMessage(FlurlHttpException ex)
         {
             //var errors = await ex.GetResponseJsonAsync<Dictionary<string, string[]>>();

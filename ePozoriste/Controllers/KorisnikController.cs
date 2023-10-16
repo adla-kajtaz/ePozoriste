@@ -16,5 +16,10 @@ namespace ePozoriste.Controllers
         {
             return base.Insert(request);
         }
+
+        public override Model.Korisnik Update(int id, [FromBody] KorisnikUpdateRequest request)
+        {
+            return base.Update(id,request);
+        }
     }
 }
