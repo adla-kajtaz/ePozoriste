@@ -20,6 +20,11 @@ namespace ePozoriste.Controllers
             return base.Insert(request);
         }
 
+        public override Model.Termin Update(int id, [FromBody] TerminInsertRequest request)
+        {
+            return base.Update(id, request);
+        }
+
         [HttpGet("recommend/{id}")]
         public List<Model.Termin> Recommend(int id)
         {

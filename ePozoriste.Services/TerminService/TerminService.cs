@@ -88,6 +88,14 @@ namespace ePozoriste.Services
             }
         }
 
+        public override Model.Termin Update(int id, TerminInsertRequest request)
+        {
+            var termini = _context.Termins.Where(e => e.TerminId != id && e.DatumOdrzavanja.Date == request.DatumOdrzavanja.Date && e.SalaId == request.SalaId && e.VrijemeOdrzavanja.ToLower().Equals(request.VrijemeOdrzavanja.ToLower())).ToList();
+            if (termini != null && termini.Count > 0)
+                throw new SalaException("Zauzeta sala", "Sala je zauzeta u tom terminu!");
+            return base.Update(id, request);
+        }
+
         public override Model.Termin Delete(int id)
         {
             var entity = _context.Termins.Find(id);
