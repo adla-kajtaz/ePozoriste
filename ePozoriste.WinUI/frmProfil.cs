@@ -73,8 +73,8 @@ namespace ePozoriste.WinUI
                     };
 
                     var update = await _korisnikService.Update<Korisnik>(_korisnik.KorisnikId, korisnikUpdateRequest);
-
-                    MessageBox.Show(Resursi.Get(Kljucevi.PodaciUspjesnoModifikovani),
+                    if(update != null)
+                        MessageBox.Show(Resursi.Get(Kljucevi.PodaciUspjesnoModifikovani),
                                       Resursi.Get(Kljucevi.Informacija),
                                       MessageBoxButtons.OK,
                                       MessageBoxIcon.Information);
