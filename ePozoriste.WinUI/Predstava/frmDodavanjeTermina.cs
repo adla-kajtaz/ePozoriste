@@ -18,8 +18,6 @@ namespace ePozoriste.WinUI
     {
         APIService _terminService { get; set; } = new APIService("Termin");
         APIService _predstavaService { get; set; } = new APIService("Predstava");
-        APIService _salaService { get; set; } = new APIService("Sala");
-        APIService _kartaService { get; set; } = new APIService("Karta");
 
         private Termin _termin;
         private Sala _sala;
@@ -86,69 +84,32 @@ namespace ePozoriste.WinUI
                         Predpremijera = cbPredpremijera.Checked,
                         Premijera = cbPremijera.Checked
                     };
-                    var searchRequest = new TerminSearchObject
-                    {
-                        SalaId = terminInsertRequest.SalaId,
-                        DatumOdrzavanja = terminInsertRequest.DatumOdrzavanja
-                    };
-                    var termini = await _terminService.Get<List<Termin>>(searchRequest);
-                    bool postoji = false;
-                    foreach(Termin termin in termini)
-                    {
-                        if (termin.VrijemeOdrzavanja.ToLower().Contains(terminInsertRequest.VrijemeOdrzavanja.ToLower()))
-                            postoji = true;
-                    }
+                   
 
-                    if (!postoji)
+                    if (_termin == null)
                     {
-
-                        if (_termin == null)
+                        try
                         {
                             var termin = await _terminService.Insert<Termin>(terminInsertRequest);
-
-                            if (termin != null)
-                            {
-                                for (int i = 0; i < _sala.BrRedova; i++)
-                                {
-                                    var red = (char)(i + 65);
-                                    for (int j = 0; j < _sala.BrSjedistaPoRedu; j++)
-                                    {
-                                        KartaInsertRequest kartaInsertRequest = new KartaInsertRequest
-                                        {
-                                            Aktivna = true,
-                                            TerminId = termin.TerminId,
-                                            BrojSjedista = j + 1,
-                                            BrojReda = red.ToString(),
-                                            Sjediste = $"{red.ToString()}{(j + 1).ToString()}"
-                                        };
-
-                                        var karta = await _kartaService.Insert<Karta>(kartaInsertRequest);
-                                    }
-                                }
-                                MessageBox.Show(Resursi.Get(Kljucevi.PodaciUspjesnoDodati),
-                                      Resursi.Get(Kljucevi.Informacija),
-                                      MessageBoxButtons.OK,
-                                      MessageBoxIcon.Information);
-                            }
+                            if(termin != null)
+                            MessageBox.Show(Resursi.Get(Kljucevi.PodaciUspjesnoDodati),
+                                          Resursi.Get(Kljucevi.Informacija),
+                                          MessageBoxButtons.OK,
+                                          MessageBoxIcon.Information);
                         }
-                        else
+                        catch(Exception ex)
                         {
-                            var termin = await _terminService.Update<Termin>(_termin.TerminId, terminInsertRequest);
-                            MessageBox.Show(Resursi.Get(Kljucevi.PodaciUspjesnoModifikovani),
-                                      Resursi.Get(Kljucevi.Informacija),
-                                      MessageBoxButtons.OK,
-                                      MessageBoxIcon.Information);
+                            MessageBox.Show(ex.Message);
                         }
-                        
                     }
                     else
                     {
-                        MessageBox.Show(Resursi.Get(Kljucevi.ZauzetaSala),
+                        var termin = await _terminService.Update<Termin>(_termin.TerminId, terminInsertRequest);
+                        MessageBox.Show(Resursi.Get(Kljucevi.PodaciUspjesnoModifikovani),
                                       Resursi.Get(Kljucevi.Informacija),
                                       MessageBoxButtons.OK,
-                                      MessageBoxIcon.Error);
+                                      MessageBoxIcon.Information);
                     }
-
                     DialogResult = DialogResult.OK;
                     this.Close();
                 }
@@ -156,12 +117,11 @@ namespace ePozoriste.WinUI
             catch (Exception ex)
             {
                 MessageBox.Show(Resursi.Get(Kljucevi.Greska),
-                                 Resursi.Get(Kljucevi.Informacija),
-                                 MessageBoxButtons.OK,
-                                 MessageBoxIcon.Error);
+                                    Resursi.Get(Kljucevi.Informacija),
+                                    MessageBoxButtons.OK,
+                                    MessageBoxIcon.Error);
             }
         }
-
 
         private bool ValidanUnos()
         {

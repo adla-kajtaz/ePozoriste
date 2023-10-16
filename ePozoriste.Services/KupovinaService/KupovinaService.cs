@@ -53,13 +53,6 @@ namespace ePozoriste.Services
             _context.Add(kupovina);
             _context.SaveChanges();
 
-           /* foreach (var item in request.Karte)
-            {
-                var karta = _context.Karta.Find(item);
-                if(karta == null)
-                    throw new Exception("Karta nije pronađena");
-                _kartaService.ChangeStatus(karta.KartaId, kupovina.KupovinaId);
-            } */
             var paymentId =  _stripeService.KreirajKupoivnu(kupovina.Cijena, $"Kupovina za ({kupovina.DatumKupovine})");
             kupovina.PaymentIntentId = paymentId; 
             _context.SaveChanges();

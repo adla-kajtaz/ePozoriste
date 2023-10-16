@@ -15,6 +15,11 @@ namespace ePozoriste.Controllers
             _service = service;
         }
 
+        public override Model.Termin Insert([FromBody] TerminInsertRequest request)
+        {
+            return base.Insert(request);
+        }
+
         [HttpGet("recommend/{id}")]
         public List<Model.Termin> Recommend(int id)
         {

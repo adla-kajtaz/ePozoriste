@@ -1,5 +1,7 @@
 ﻿using ePozoriste.Model;
 using Flurl.Http;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -97,17 +99,32 @@ namespace ePozoriste.WinUI
 
         public async void GenerateMessage(FlurlHttpException ex)
         {
-            var errors = await ex.GetResponseJsonAsync<Dictionary<string, string[]>>();
+            //var errors = await ex.GetResponseJsonAsync<Dictionary<string, string[]>>();
 
-            var stringBuilder = new StringBuilder();
-            foreach (var error in errors)
+            //var stringBuilder = new StringBuilder();
+            //foreach (var error in errors)
+            //{
+            //    stringBuilder.AppendLine($"{error.Key}, ${string.Join(",", error.Value)}");
+            //}
+            //MessageBox.Show(stringBuilder.ToString(), "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            try
             {
-                stringBuilder.AppendLine($"{error.Key}, ${string.Join(",", error.Value)}");
+                // Read the raw response as a string
+                string rawResponse = await ex.GetResponseStringAsync();
+
+                // Parse the response as a JObject
+                JObject responseJson = JObject.Parse(rawResponse);
+
+                // Serialize the JObject back to a formatted JSON string
+                string formattedJson = JsonConvert.SerializeObject(responseJson, Formatting.Indented);
+
+                MessageBox.Show(formattedJson, "Response JSON", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-
-            MessageBox.Show(stringBuilder.ToString(), "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            catch (JsonReaderException)
+            {
+                // Handle JSON parsing errors here
+                MessageBox.Show("Error parsing JSON response", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
-
-       
     }
 }

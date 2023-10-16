@@ -16,8 +16,13 @@ namespace ePozoriste
             }
             else if (context.Exception is RecommendationException)
             {
-                context.ModelState.AddModelError("Recommendation", "Morate imati najmanje 3 kupovine da bismo vam nešto preporučili!");
+                context.ModelState.AddModelError("Recommendation", context.Exception.Message);
                 context.HttpContext.Response.StatusCode = (int)HttpStatusCode.UnprocessableEntity;
+            }
+            else if (context.Exception is SalaException)
+            {
+                context.ModelState.AddModelError(((SalaException)context.Exception).Title, context.Exception.Message);
+                context.HttpContext.Response.StatusCode = (int)HttpStatusCode.BadRequest;
             }
             else
             {

@@ -18,9 +18,11 @@ namespace ePozoriste.Services
 {
     public class TerminService : BaseCRUDService<Model.Termin, Database.Termin, TerminSearchObject, TerminInsertRequest, TerminInsertRequest>, ITerminService
     {
-        public TerminService(ePozoristeContext context, IMapper mapper) : base(context, mapper)
-        {
+        IKartaService _kartaService { get; set; }
 
+        public TerminService(ePozoristeContext context, IMapper mapper, IKartaService kartaService) : base(context, mapper)
+        {
+            _kartaService = kartaService;
         }
 
         public override IQueryable<ePozoriste.Services.Database.Termin> AddInclude(IQueryable<ePozoriste.Services.Database.Termin> query, TerminSearchObject search = null)
@@ -46,6 +48,44 @@ namespace ePozoriste.Services
             if (!string.IsNullOrWhiteSpace(search?.VrijemeOdrzavanja))
                 filteredQuery = filteredQuery.Where(x => x.VrijemeOdrzavanja.ToLower().Contains(search.VrijemeOdrzavanja.ToLower()));
             return filteredQuery;
+        }
+        public override Model.Termin Insert(TerminInsertRequest request)
+        {
+            var predstava = _context.Predstavas.First(x => x.PredstavaId == request.PredstavaId);
+            if (predstava == null)
+                throw new Exception("Predstava nije pronađena");
+            var sala = _context.Salas.First(x => x.SalaId == request.SalaId); 
+            if (sala == null)
+                throw new Exception("Sala nije pronađena");
+
+            var termini = _context.Termins.Where(e => e.DatumOdrzavanja.Date == request.DatumOdrzavanja.Date && e.SalaId == request.SalaId && e.VrijemeOdrzavanja.ToLower().Equals(request.VrijemeOdrzavanja.ToLower())).ToList();
+            if (termini.Any())
+               throw new SalaException("Zauzeta sala", "Sala je zauzeta u tom terminu!");
+            else
+            {
+
+                var termin = base.Insert(request);
+                if (termin != null)
+                {
+                    for (int i = 0; i < sala.BrRedova; i++)
+                    {
+                        var red = (char)(i + 65);
+                        for (int j = 0; j < sala.BrSjedistaPoRedu; j++)
+                        {
+                            KartaInsertRequest kartaInsertRequest = new KartaInsertRequest
+                            {
+                                Aktivna = true,
+                                TerminId = termin.TerminId,
+                                BrojSjedista = j + 1,
+                                BrojReda = red.ToString(),
+                                Sjediste = $"{red.ToString()}{(j + 1).ToString()}"
+                            };
+                            var karta = _kartaService.Insert(kartaInsertRequest);
+                        }
+                    }
+                }
+                return termin;
+            }
         }
 
         public override Model.Termin Delete(int id)
