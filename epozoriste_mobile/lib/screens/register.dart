@@ -44,7 +44,7 @@ class _RegisterState extends State<Register> {
   String? brTelefona;
   String? lozinka;
   List<int> uloge = [2];
-  bool registerFailed = false;
+  List<String> errors = [];
 
   @override
   void initState() {
@@ -176,8 +176,11 @@ class _RegisterState extends State<Register> {
                           if (!isKorisnickoImeValid(value!)) {
                             return "Ovo polje mora imati najmanje 4 karaktera!";
                           }
-                          if (registerFailed) {
-                            return "Postoji korisnik sa tim korisničkim imenom!";
+                          if (errors.isNotEmpty &&
+                              errors.any((e) =>
+                                  e ==
+                                  "Postoji korisnik sa tim korisnickim imenom!")) {
+                            return 'Korisničko ime već postoji!';
                           }
                         },
                         style: const TextStyle(
@@ -218,7 +221,6 @@ class _RegisterState extends State<Register> {
                       const SizedBox(height: 10),
                       InkWell(
                         onTap: () async {
-                          registerFailed = false;
                           if (formKey.currentState!.validate()) {
                             formKey.currentState!.save();
                           }
@@ -241,7 +243,13 @@ class _RegisterState extends State<Register> {
                           } on Exception catch (error) {
                             print(error.toString());
                             if (error.toString().contains("Bad request")) {
-                              registerFailed = true;
+                              print(error.toString());
+                              if (error.toString().contains(
+                                  "Postoji korisnik sa tim korisnickim imenom!")) {
+                                errors.add(
+                                    "Postoji korisnik sa tim korisnickim imenom!");
+                              }
+
                               formKey.currentState!.validate();
                             }
                           }
