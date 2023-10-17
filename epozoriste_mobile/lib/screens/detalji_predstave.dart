@@ -120,7 +120,7 @@ class _DetaljiPredstaveState extends State<DetaljiPredstave> {
                     height: 10,
                   ),
                   Container(
-                    height: 50,
+                    height: 40,
                     width: 200,
                     decoration: BoxDecoration(
                       color: const Color.fromARGB(223, 217, 217, 217),

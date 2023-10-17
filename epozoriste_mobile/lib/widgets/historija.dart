@@ -8,6 +8,15 @@ class Historija extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    if (kupovine.isEmpty) {
+      return Text(
+        'Nemate nijednu kupovinu!',
+        style: TextStyle(
+          fontSize: 15,
+          color: Color.fromARGB(255, 219, 209, 209),
+        ),
+      );
+    }
     return ListView.builder(
         itemCount: kupovine.length,
         scrollDirection: Axis.vertical,

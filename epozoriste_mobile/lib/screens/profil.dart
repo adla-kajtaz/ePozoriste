@@ -40,13 +40,27 @@ class _ProfilState extends State<Profil> {
       backgroundColor: const Color.fromARGB(255, 86, 81, 81),
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
-        automaticallyImplyLeading: false,
-        backgroundColor: const Color.fromARGB(255, 57, 53, 53),
-        title: const Text(
-          'ePozorište',
-          style: TextStyle(color: Colors.white),
-        ),
-      ),
+          automaticallyImplyLeading: false,
+          backgroundColor: const Color.fromARGB(255, 57, 53, 53),
+          title: const Text(
+            'ePozorište',
+            style: TextStyle(color: Colors.white),
+          ),
+          actions: [
+            GestureDetector(
+              onTap: () {
+                Navigator.pushNamed(context, Login.routeName);
+              },
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Icon(
+                  Icons.logout_outlined,
+                  color: Colors.white,
+                  size: 40,
+                ),
+              ),
+            ),
+          ]),
       body: SingleChildScrollView(
         child: SafeArea(
           child: Padding(
@@ -78,32 +92,24 @@ class _ProfilState extends State<Profil> {
                   ),
                 ),
               ),
-              const SizedBox(height: 5),
-              if (kupovine.isNotEmpty)
-                SizedBox(
-                  height: 500,
-                  width: double.infinity,
-                  child: Historija(
-                    kupovine: [...kupovine],
+              const SizedBox(height: 15),
+              const Align(
+                alignment: Alignment.centerLeft,
+                child: Text(
+                  'Vaše kupovine',
+                  style: TextStyle(
+                    color: Color.fromARGB(255, 219, 209, 209),
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
                   ),
                 ),
-              const SizedBox(height: 10),
-              InkWell(
-                onTap: () async {
-                  Navigator.pushNamed(context, Login.routeName);
-                },
-                child: Container(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
-                    color: const Color.fromARGB(223, 61, 41, 41),
-                  ),
-                  height: 50,
-                  child: const Center(
-                    child: Text(
-                      'Odjavi se',
-                      style: TextStyle(color: Colors.white, fontSize: 20),
-                    ),
-                  ),
+              ),
+              const SizedBox(height: 5),
+              SizedBox(
+                height: 500,
+                width: double.infinity,
+                child: Historija(
+                  kupovine: [...kupovine],
                 ),
               ),
             ]),

@@ -42,7 +42,14 @@ class MyApp extends StatelessWidget {
       title: 'ePozoriste',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(
-            seedColor: const Color.fromARGB(255, 57, 53, 53)),
+            seedColor: const Color.fromARGB(255, 135, 127, 127)),
+        inputDecorationTheme: InputDecorationTheme(
+          focusedBorder: OutlineInputBorder(
+            borderSide:
+                const BorderSide(color: Color.fromARGB(255, 160, 174, 184)),
+            borderRadius: BorderRadius.circular(15),
+          ),
+        ),
         useMaterial3: true,
       ),
       initialRoute: '/login',

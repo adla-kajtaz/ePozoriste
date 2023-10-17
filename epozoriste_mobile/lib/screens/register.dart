@@ -174,7 +174,7 @@ class _RegisterState extends State<Register> {
                             return "Ovo polje je obavezno!";
                           }
                           if (!isKorisnickoImeValid(value!)) {
-                            return "Korisničko ime mora sadržavati najmanje 4 karaktera!";
+                            return "Ovo polje mora imati najmanje 4 karaktera!";
                           }
                           if (registerFailed) {
                             return "Postoji korisnik sa tim korisničkim imenom!";
@@ -235,8 +235,8 @@ class _RegisterState extends State<Register> {
                           try {
                             var data = await _authProvider!.register(newUser);
                             if (context.mounted) {
-                              Navigator.popAndPushNamed(
-                                  context, Login.routeName);
+                              showMessage(
+                                  "Uspješno ste se registrovali, prijavite se da bi ste pristupili aplikaciji!");
                             }
                           } on Exception catch (error) {
                             print(error.toString());
@@ -294,5 +294,20 @@ class _RegisterState extends State<Register> {
         ),
       ),
     );
+  }
+
+  showMessage(String message) {
+    return showDialog(
+        context: context,
+        builder: (BuildContext context) => AlertDialog(
+              title: const Text("Uspješna registracija"),
+              content: Text(message),
+              actions: [
+                TextButton(
+                    child: const Text("Ok"),
+                    onPressed: () =>
+                        Navigator.popAndPushNamed(context, Login.routeName))
+              ],
+            ));
   }
 }
