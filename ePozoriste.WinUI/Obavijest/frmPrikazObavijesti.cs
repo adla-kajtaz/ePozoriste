@@ -89,11 +89,12 @@ namespace ePozoriste.WinUI
 
         private async void btnPrikazi_Click(object sender, EventArgs e)
         {
-            ObavijestSearchObject obavijestSearchObject = new ObavijestSearchObject
-            {
-                Tekst = txtPretraga.Text,
-                ObavijestKategorijaId = (int)cmbKategorije.SelectedValue
-            };
+            ObavijestSearchObject obavijestSearchObject = new ObavijestSearchObject();
+            obavijestSearchObject.Tekst = txtPretraga.Text;
+
+            if (cmbKategorije.SelectedIndex != -1)
+                obavijestSearchObject.ObavijestKategorijaId = (int)cmbKategorije.SelectedValue;
+
             dgvObavijesti.DataSource = await _obavijestService.Get<List<Obavijest>>(obavijestSearchObject);
         }
     }

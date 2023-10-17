@@ -71,14 +71,15 @@ namespace ePozoriste.WinUI
 
         private async void btnPrikazi_Click(object sender, EventArgs e)
         {
-            TerminSearchObject terminSearchObject = new TerminSearchObject
-            {
-                Predpremijera = cbPredpremijera.Checked,
-                Premijera = cbPremijera.Checked,
-                SalaId = _sala.SalaId,
-                PredstavaId = (int)cmbPredstave.SelectedValue,
-                DatumOdrzavanja = dtpDatumIzvodjenja.Value.Date,
-            };
+            TerminSearchObject terminSearchObject = new TerminSearchObject();
+            terminSearchObject.Predpremijera = cbPredpremijera.Checked;
+            terminSearchObject.Premijera = cbPremijera.Checked;
+            terminSearchObject.SalaId = _sala.SalaId;
+            terminSearchObject.DatumOdrzavanja = dtpDatumIzvodjenja.Value.Date;
+
+            if (cmbPredstave.SelectedIndex != -1)
+                terminSearchObject.PredstavaId = (int)cmbPredstave.SelectedValue;
+              
             dgvTermini.DataSource = await _terminService.Get<List<Termin>>(terminSearchObject);
         }
 

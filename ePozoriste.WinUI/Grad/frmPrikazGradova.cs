@@ -69,11 +69,12 @@ namespace ePozoriste.WinUI
 
         private async void btnPrikazi_Click(object sender, EventArgs e)
         {
-            GradSearchObject gradSearchRequest = new GradSearchObject
-            {
-                Tekst = txtPretraga.Text,
-                DrzavaId = (int)cmbDrzave.SelectedValue
-            };
+            GradSearchObject gradSearchRequest = new GradSearchObject();
+            gradSearchRequest.Tekst = txtPretraga.Text;
+
+            if (cmbDrzave.SelectedIndex != -1)
+                gradSearchRequest.DrzavaId = (int)cmbDrzave.SelectedValue;
+          
             dgvGradovi.DataSource = await _gradService.Get<List<Grad>>(gradSearchRequest);
         }
 

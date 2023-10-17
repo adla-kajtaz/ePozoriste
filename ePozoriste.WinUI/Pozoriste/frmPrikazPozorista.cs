@@ -68,11 +68,12 @@ namespace ePozoriste.WinUI
 
         private async void btnPrikazi_Click(object sender, EventArgs e)
         {
-            PozoristeSearchObject pozoristeSearchRequest = new PozoristeSearchObject
-            {
-                Tekst = txtPretraga.Text,
-                GradId = (int)cmbGradovi.SelectedValue
-            };
+            PozoristeSearchObject pozoristeSearchRequest = new PozoristeSearchObject();
+            pozoristeSearchRequest.Tekst = txtPretraga.Text;
+
+            if (cmbGradovi.SelectedIndex != -1)
+                pozoristeSearchRequest.GradId = (int)cmbGradovi.SelectedValue;
+
             dgvPozorista.DataSource = await _pozoristeService.Get<List<Pozoriste>>(pozoristeSearchRequest);
         }
 
