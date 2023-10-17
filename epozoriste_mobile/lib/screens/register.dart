@@ -221,9 +221,12 @@ class _RegisterState extends State<Register> {
                       const SizedBox(height: 10),
                       InkWell(
                         onTap: () async {
-                          if (formKey.currentState!.validate()) {
-                            formKey.currentState!.save();
+                          errors = [];
+                          if (!formKey.currentState!.validate()) {
+                            return;
                           }
+
+                          formKey.currentState!.save();
                           Map newUser = {
                             'ime': ime,
                             'prezime': prezime,
@@ -235,6 +238,8 @@ class _RegisterState extends State<Register> {
                             'uloge': [2]
                           };
                           try {
+                            print(newUser);
+
                             var data = await _authProvider!.register(newUser);
                             if (context.mounted) {
                               showMessage(

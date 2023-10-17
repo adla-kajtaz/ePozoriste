@@ -60,7 +60,7 @@ class AuthProvider extends BaseProvider<Korisnik> {
       var data = jsonDecode(response.body);
       return fromJson(data);
     } else {
-      return null;
+      return jsonDecode(response.body);
     }
   }
 
@@ -83,7 +83,9 @@ class AuthProvider extends BaseProvider<Korisnik> {
       if (response.body.isNotEmpty) {
         var data = jsonDecode(response.body);
         if (data['errors'] != null && !data['errors'].isEmpty) {
-          var errorString = data['errors'][0];
+          var errorData = data["errors"] as Map<dynamic, dynamic>;
+          var firstKey = errorData.keys.toList().first;
+          var errorString = data['errors'][firstKey];
           print("Error string is $errorString");
           throw Exception("Bad request $errorString");
         }
