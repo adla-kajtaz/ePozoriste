@@ -18,10 +18,14 @@ namespace ePozoriste.WinUI
         APIService _glumciService { get; set; } = new APIService("Glumac");
         APIService _predstavaGlumacService { get; set; } = new APIService("PredstavaGlumac");
         private Predstava _predstava;
-        public frmGlumacPredstava(Predstava predstava = null)
+        private bool _obavezno = false;
+        private bool _dodanGlumac = false;
+
+        public frmGlumacPredstava(Predstava predstava = null, bool obavezno = false)
         {
             InitializeComponent();
             _predstava = predstava;
+            _obavezno = obavezno;
             txtNazivPredstave.Text = _predstava.Naziv;
             UcitajGlumce();
         }
@@ -59,7 +63,8 @@ namespace ePozoriste.WinUI
                                   Resursi.Get(Kljucevi.Informacija),
                                   MessageBoxButtons.OK,
                                   MessageBoxIcon.Information);
-
+                    if (predstavaGlumac != null)
+                        _dodanGlumac = true;
                     
                     DialogResult = DialogResult.OK;
                     this.Close();
@@ -78,6 +83,18 @@ namespace ePozoriste.WinUI
         {
             return Validator.ValidirajKontrolu(txtNazivUloge, errNaziv, Kljucevi.ObaveznaVrijednost)
                 && Validator.ValidirajKontrolu(cmbGlumac, errGlumac, Kljucevi.ObaveznaVrijednost);
+        }
+
+        private void frmGlumacPredstava_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (_obavezno && !_dodanGlumac)
+            {
+                MessageBox.Show("Morate dodati barem jednog glumca prije zatvaranja forme.",
+                    Resursi.Get(Kljucevi.Informacija),
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning);
+                e.Cancel = true; 
+            }
         }
     }
 }

@@ -125,6 +125,7 @@
             this.Controls.Add(this.txtNazivPredstave);
             this.Name = "frmGlumacPredstava";
             this.Text = "Glumac";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmGlumacPredstava_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.errNaziv)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errGlumac)).EndInit();
             this.ResumeLayout(false);

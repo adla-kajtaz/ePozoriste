@@ -85,10 +85,13 @@ namespace ePozoriste.WinUI
                     if (_predstava == null)
                     {
                         var predstava = await _predstavaService.Insert<Predstava>(predstavaInsertRequest);
-                        MessageBox.Show(Resursi.Get(Kljucevi.PodaciUspjesnoDodati),
+                        MessageBox.Show("Predstava je uspješno dodana! Molimo dodajte bar jednog glumca!",
                                   Resursi.Get(Kljucevi.Informacija),
                                   MessageBoxButtons.OK,
                                   MessageBoxIcon.Information);
+
+                        frmGlumacPredstava frmGlumacPredstava = new frmGlumacPredstava(predstava,true);
+                        frmGlumacPredstava.ShowDialog();
                     }
                     else
                     {
