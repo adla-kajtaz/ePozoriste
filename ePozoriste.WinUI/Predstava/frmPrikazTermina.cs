@@ -112,7 +112,7 @@ namespace ePozoriste.WinUI
             {
                var termin =  await _terminService.Delete<Termin>(termini.TerminId);
                 if(termin == null)
-                MessageBox.Show(Resursi.Get(Kljucevi.NeMozeteObrisati),
+                MessageBox.Show("Ne možete obrisati termin, jer postoje karte za njega!",
                                       Resursi.Get(Kljucevi.Informacija),
                                       MessageBoxButtons.OK,
                                       MessageBoxIcon.Error);

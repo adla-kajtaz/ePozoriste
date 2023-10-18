@@ -70,7 +70,7 @@ namespace ePozoriste.WinUI
             {
                 var _sala = await _salaService.Delete<Sala>(sala.SalaId);
                 if (_sala == null)
-                    MessageBox.Show(Resursi.Get(Kljucevi.NeMozeteObrisati),
+                    MessageBox.Show("Ne možete obrisati salu jer postoji predstava koja će se odigrati u njoj!",
                                           Resursi.Get(Kljucevi.Informacija),
                                           MessageBoxButtons.OK,
                                           MessageBoxIcon.Error);

@@ -93,7 +93,7 @@ namespace ePozoriste.WinUI
                 
                 var _pozoriste = await _pozoristeService.Delete<Pozoriste>(pozoriste.PozoristeId);
                 if (_pozoriste == null)
-                    MessageBox.Show(Resursi.Get(Kljucevi.NeMozeteObrisati),
+                    MessageBox.Show("Ne možete obrisati pozorište jer postoje sale u njemu!",
                                           Resursi.Get(Kljucevi.Informacija),
                                           MessageBoxButtons.OK,
                                           MessageBoxIcon.Error);

@@ -94,7 +94,7 @@ namespace ePozoriste.WinUI
             {
                 var _predstava =  await _predstavaService.Delete<Predstava>(predstava.PredstavaId);
                 if (_predstava == null)
-                    MessageBox.Show(Resursi.Get(Kljucevi.NeMozeteObrisati),
+                    MessageBox.Show("Ne možete obrisati predstavu jer postoji termin za nju!",
                                           Resursi.Get(Kljucevi.Informacija),
                                           MessageBoxButtons.OK,
                                           MessageBoxIcon.Error);

@@ -64,7 +64,7 @@ namespace ePozoriste.WinUI
             {
                var _vrsta = await _vrstaPredstaveService.Delete<VrstaPredstave>(vrstePredstave.VrstaPredstaveId);
                 if (_vrsta == null)
-                    MessageBox.Show(Resursi.Get(Kljucevi.NeMozeteObrisati),
+                    MessageBox.Show("Ne možete obrisati jer postoji predstava koja ima ovu vrstu!",
                                           Resursi.Get(Kljucevi.Informacija),
                                           MessageBoxButtons.OK,
                                           MessageBoxIcon.Error);

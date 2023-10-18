@@ -92,7 +92,7 @@ namespace ePozoriste.WinUI
             {
                 var _grad = await _gradService.Delete<Grad>(grad.GradId);
                 if (_grad == null)
-                    MessageBox.Show(Resursi.Get(Kljucevi.NeMozeteObrisati),
+                    MessageBox.Show("Grad se ne može obrisati jer postoji pozorište u njemu!",
                                           Resursi.Get(Kljucevi.Informacija),
                                           MessageBoxButtons.OK,
                                           MessageBoxIcon.Error);

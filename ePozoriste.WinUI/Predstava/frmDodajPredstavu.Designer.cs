@@ -51,10 +51,18 @@
             this.errVrijemeTrajanja = new System.Windows.Forms.ErrorProvider(this.components);
             this.lblGrad = new System.Windows.Forms.Label();
             this.cmbVrstePredstave = new System.Windows.Forms.ComboBox();
+            this.errRezija = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errScenografija = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errKostimografija = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errVrsta = new System.Windows.Forms.ErrorProvider(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pbSlikaPlakata)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errNaziv)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errSadrzaj)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errVrijemeTrajanja)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errRezija)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errScenografija)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errKostimografija)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errVrsta)).BeginInit();
             this.SuspendLayout();
             // 
             // lblSadrzaj
@@ -228,6 +236,22 @@
             this.cmbVrstePredstave.Size = new System.Drawing.Size(332, 28);
             this.cmbVrstePredstave.TabIndex = 36;
             // 
+            // errRezija
+            // 
+            this.errRezija.ContainerControl = this;
+            // 
+            // errScenografija
+            // 
+            this.errScenografija.ContainerControl = this;
+            // 
+            // errKostimografija
+            // 
+            this.errKostimografija.ContainerControl = this;
+            // 
+            // errVrsta
+            // 
+            this.errVrsta.ContainerControl = this;
+            // 
             // frmDodajPredstavu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -258,6 +282,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.errNaziv)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errSadrzaj)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errVrijemeTrajanja)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errRezija)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errScenografija)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errKostimografija)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errVrsta)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -287,5 +315,9 @@
         private ErrorProvider errVrijemeTrajanja;
         private Label lblGrad;
         private ComboBox cmbVrstePredstave;
+        private ErrorProvider errRezija;
+        private ErrorProvider errScenografija;
+        private ErrorProvider errKostimografija;
+        private ErrorProvider errVrsta;
     }
 }

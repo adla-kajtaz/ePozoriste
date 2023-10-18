@@ -64,7 +64,7 @@ namespace ePozoriste.WinUI
             {
                 var _glumac = await _glumacService.Delete<Glumac>(glumac.GlumacId);
                 if (_glumac == null)
-                    MessageBox.Show(Resursi.Get(Kljucevi.NeMozeteObrisati),
+                    MessageBox.Show("Glumac se ne može obrisati jer glumi u nekoj predstavi!",
                                           Resursi.Get(Kljucevi.Informacija),
                                           MessageBoxButtons.OK,
                                           MessageBoxIcon.Error);

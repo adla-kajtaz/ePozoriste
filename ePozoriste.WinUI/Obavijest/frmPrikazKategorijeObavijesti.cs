@@ -64,7 +64,7 @@ namespace ePozoriste.WinUI
             {  
                 var _obavijestKategorija = await _obavijestKategorijaService.Delete<ObavijestKategorija>(obavijestKategorija.ObavijestKategorijaId);
                 if (_obavijestKategorija == null)
-                    MessageBox.Show(Resursi.Get(Kljucevi.NeMozeteObrisati),
+                    MessageBox.Show("Ne možete obrisati kategoriju jer postoje obavijesti koje se vežu za nju!",
                                           Resursi.Get(Kljucevi.Informacija),
                                           MessageBoxButtons.OK,
                                           MessageBoxIcon.Error);

@@ -73,14 +73,17 @@ namespace ePozoriste.WinUI
                     };
 
                     var update = await _korisnikService.Update<Korisnik>(_korisnik.KorisnikId, korisnikUpdateRequest);
-                    if(update != null)
+                    if (update != null)
+                    {
                         MessageBox.Show(Resursi.Get(Kljucevi.PodaciUspjesnoModifikovani),
                                       Resursi.Get(Kljucevi.Informacija),
                                       MessageBoxButtons.OK,
                                       MessageBoxIcon.Information);
-                    DialogResult = DialogResult.OK;
-                    this.Close();
+                        DialogResult = DialogResult.OK;
+                        this.Close();
+                    }
                 }
+               
             }
             catch (Exception ex)
             {

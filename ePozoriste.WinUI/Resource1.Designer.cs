@@ -97,7 +97,7 @@ namespace ePozoriste.WinUI {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Ne mozete obrisati!.
+        ///   Looks up a localized string similar to Ne mozete obrisati jer se koristi!.
         /// </summary>
         internal static string NeMozeteObrisati {
             get {

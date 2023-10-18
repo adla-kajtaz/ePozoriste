@@ -41,13 +41,23 @@ namespace ePozoriste.Services
             var entity = _context.Predstavas.Find(id);
             var termini = _context.Termins.Where(e => e.PredstavaId == id).ToList();
             var predGlumac = _context.PredstavaGlumacs.Where(e => e.PredstavaId == id).ToList();
-            if ((termini != null && termini.Any()) || (predGlumac != null && predGlumac.Any()))
+
+            if (termini != null && termini.Any())
             {
                 return null;
             }
             else if (entity == null)
             {
                 return null;
+            }
+            else if (predGlumac != null && predGlumac.Any())
+            {
+
+                foreach (var uloga in predGlumac)
+                {
+                    _context.PredstavaGlumacs.Remove(uloga);
+                }
+                _context.Predstavas.Remove(entity);
             }
             else
             {

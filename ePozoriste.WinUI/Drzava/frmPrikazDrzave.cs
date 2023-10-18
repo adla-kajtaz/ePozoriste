@@ -55,7 +55,7 @@ namespace ePozoriste.WinUI
                 
                 var _drzava = await _drzavaService.Delete<Drzava>(drzava.DrzavaId);
                 if (_drzava == null)
-                    MessageBox.Show(Resursi.Get(Kljucevi.NeMozeteObrisati),
+                    MessageBox.Show("Ne možete obrisati državu jer postoji grad koji se veže za nju",
                                           Resursi.Get(Kljucevi.Informacija),
                                           MessageBoxButtons.OK,
                                           MessageBoxIcon.Error);
