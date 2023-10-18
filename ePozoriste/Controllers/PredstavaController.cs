@@ -4,7 +4,7 @@ using ePozoriste.Services;
 
 namespace ePozoriste.Controllers
 {
-    public class PredstavaController : BaseCRUDController<Model.Predstava, BaseSearchObject, PredstavaInsertRequest, PredstavaInsertRequest>
+    public class PredstavaController : BaseCRUDController<Model.Predstava, PredstavaSearchObject, PredstavaInsertRequest, PredstavaInsertRequest>
     {
         public IPredstavaService _service { get; set; }
         public PredstavaController(IPredstavaService service) : base(service)

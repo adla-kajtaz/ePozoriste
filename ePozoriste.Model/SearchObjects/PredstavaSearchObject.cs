@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace ePozoriste.Model.SearchObjects
 {
-    public class PredstavaVrstaPredstaveSearchObject : BaseSearchObject
+    public class PredstavaSearchObject : BaseSearchObject
     {
         public int? VrstaPredstaveId { get; set; }
-        public int? PredstavaId { get; set; }
     }
 }

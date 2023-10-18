@@ -12,25 +12,27 @@ using System.Threading.Tasks;
 
 namespace ePozoriste.Services
 {
-    public class PredstavaService : BaseCRUDService<Model.Predstava, Database.Predstava, BaseSearchObject, PredstavaInsertRequest, PredstavaInsertRequest>, IPredstavaService
+    public class PredstavaService : BaseCRUDService<Model.Predstava, Database.Predstava, PredstavaSearchObject, PredstavaInsertRequest, PredstavaInsertRequest>, IPredstavaService
     {
         public PredstavaService(ePozoristeContext context, IMapper mapper) : base(context, mapper)
         {
 
         }
 
-        public override IQueryable<ePozoriste.Services.Database.Predstava> AddInclude(IQueryable<ePozoriste.Services.Database.Predstava> query, BaseSearchObject search = null)
+        public override IQueryable<ePozoriste.Services.Database.Predstava> AddInclude(IQueryable<ePozoriste.Services.Database.Predstava> query, PredstavaSearchObject search = null)
         {
             query = query.Include(x => x.VrstaPredstave);
             return base.AddInclude(query, search);
         }
 
-        public override IQueryable<ePozoriste.Services.Database.Predstava> AddFilter(IQueryable<ePozoriste.Services.Database.Predstava> query, BaseSearchObject search = null)
+        public override IQueryable<ePozoriste.Services.Database.Predstava> AddFilter(IQueryable<ePozoriste.Services.Database.Predstava> query, PredstavaSearchObject search = null)
         {
             var filteredQuery = base.AddFilter(query, search);
 
             if (!string.IsNullOrWhiteSpace(search?.Tekst))
                 filteredQuery = filteredQuery.Where(x => x.Naziv.ToLower().Contains(search.Tekst.ToLower()));
+            if (search.VrstaPredstaveId != null)
+                filteredQuery = filteredQuery.Where(x => x.VrstaPredstaveId == search.VrstaPredstaveId);
             return filteredQuery;
         }
 

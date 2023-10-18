@@ -44,9 +44,9 @@ namespace ePozoriste.Services
             if (search.Predpremijera != null)
                 filteredQuery = filteredQuery.Where(x => x.Predpremijera == search.Predpremijera);
             if (search.DatumOdrzavanja != null)
-                filteredQuery = filteredQuery.Where(x => x.DatumOdrzavanja == search.DatumOdrzavanja);
+                filteredQuery = filteredQuery.Where(x => x.DatumOdrzavanja.Date == search.DatumOdrzavanja);
             if (!string.IsNullOrWhiteSpace(search?.VrijemeOdrzavanja))
-                filteredQuery = filteredQuery.Where(x => x.VrijemeOdrzavanja.ToLower().Contains(search.VrijemeOdrzavanja.ToLower()));
+                filteredQuery = filteredQuery.Where(x => x.VrijemeOdrzavanja.ToLower().Equals(search.VrijemeOdrzavanja.ToLower()));
             return filteredQuery;
         }
         public override Model.Termin Insert(TerminInsertRequest request)
@@ -167,7 +167,7 @@ namespace ePozoriste.Services
 
                     if (!data.Any())
                     {
-                        throw new Exception("The training data is empty!");
+                        throw new Exception("Podaci za treniranje su prazni!");
                     }
 
                     var trainData = mlContext.Data.LoadFromEnumerable(data);
@@ -188,7 +188,7 @@ namespace ePozoriste.Services
                     model = trainer.Fit(trainTestSplit.TrainSet);
                     if (model == null)
                     {
-                        throw new Exception("Model training failed, resulting model is null.");
+                        throw new Exception("Obuka modela nije uspjela, rezultirajući model je nul.");
                     }
                 }
             }

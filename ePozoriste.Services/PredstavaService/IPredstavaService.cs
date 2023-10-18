@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace ePozoriste.Services
 {
-    public interface IPredstavaService : IBaseCRUDService<Model.Predstava, BaseSearchObject, PredstavaInsertRequest, PredstavaInsertRequest>
+    public interface IPredstavaService : IBaseCRUDService<Model.Predstava, PredstavaSearchObject, PredstavaInsertRequest, PredstavaInsertRequest>
     {
 
     }
