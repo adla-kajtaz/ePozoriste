@@ -45,11 +45,18 @@ namespace ePozoriste.WinUI
         {
             try
             {
-                var drzava = await _drzavaService.Get<List<Drzava>>() as IList<Drzava>;
-                cmbDrzave.DataSource = drzava;
+                var drzave = await _drzavaService.Get<List<Drzava>>() as IList<Drzava>;
+
+                var allOption = new Drzava
+                {
+                    DrzavaId = -1,
+                    Naziv = "Sve"
+                };
+                drzave.Insert(0, allOption);
+
+                cmbDrzave.DataSource = drzave;
                 cmbDrzave.DisplayMember = "Naziv";
                 cmbDrzave.ValueMember = "DrzavaId";
-                cmbDrzave.SelectedIndex = -1;
             }
             catch (Exception ex)
             {
@@ -72,7 +79,7 @@ namespace ePozoriste.WinUI
             GradSearchObject gradSearchRequest = new GradSearchObject();
             gradSearchRequest.Tekst = txtPretraga.Text;
 
-            if (cmbDrzave.SelectedIndex != -1)
+            if ((int)cmbDrzave.SelectedValue != -1)
                 gradSearchRequest.DrzavaId = (int)cmbDrzave.SelectedValue;
           
             dgvGradovi.DataSource = await _gradService.Get<List<Grad>>(gradSearchRequest);

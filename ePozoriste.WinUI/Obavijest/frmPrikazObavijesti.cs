@@ -44,11 +44,19 @@ namespace ePozoriste.WinUI
         {
             try
             {
-                var kategorija = await _obavijestKategorijaService.Get<List<ObavijestKategorija>>() as IList<ObavijestKategorija>;
-                cmbKategorije.DataSource = kategorija;
+                var kategorije = await _obavijestKategorijaService.Get<List<ObavijestKategorija>>() as IList<ObavijestKategorija>;
+
+                var allOption = new ObavijestKategorija
+                {
+                    ObavijestKategorijaId = -1,
+                    Naziv = "Sve"
+                };
+
+                kategorije.Insert(0, allOption);
+
+                cmbKategorije.DataSource = kategorije;
                 cmbKategorije.DisplayMember = "Naziv";
                 cmbKategorije.ValueMember = "ObavijestKategorijaId";
-                cmbKategorije.SelectedIndex = -1;
             }
             catch (Exception ex)
             {
@@ -92,7 +100,7 @@ namespace ePozoriste.WinUI
             ObavijestSearchObject obavijestSearchObject = new ObavijestSearchObject();
             obavijestSearchObject.Tekst = txtPretraga.Text;
 
-            if (cmbKategorije.SelectedIndex != -1)
+            if ((int)cmbKategorije.SelectedValue != -1)
                 obavijestSearchObject.ObavijestKategorijaId = (int)cmbKategorije.SelectedValue;
 
             dgvObavijesti.DataSource = await _obavijestService.Get<List<Obavijest>>(obavijestSearchObject);

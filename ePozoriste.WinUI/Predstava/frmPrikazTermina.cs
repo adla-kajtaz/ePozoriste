@@ -48,10 +48,18 @@ namespace ePozoriste.WinUI
             try
             {
                 var predstave = await _predstavaService.Get<List<Predstava>>() as IList<Predstava>;
+
+                var allOption = new Predstava
+                {
+                    PredstavaId = -1, 
+                    Naziv = "Sve"
+                };
+
+                predstave.Insert(0, allOption);
+
                 cmbPredstave.DataSource = predstave;
                 cmbPredstave.DisplayMember = "Naziv";
                 cmbPredstave.ValueMember = "PredstavaId";
-                cmbPredstave.SelectedIndex = -1;
             }
             catch (Exception ex)
             {
@@ -77,7 +85,7 @@ namespace ePozoriste.WinUI
             terminSearchObject.SalaId = _sala.SalaId;
             terminSearchObject.DatumOdrzavanja = dtpDatumIzvodjenja.Value.Date;
 
-            if (cmbPredstave.SelectedIndex != -1)
+            if ((int)cmbPredstave.SelectedValue != -1)
                 terminSearchObject.PredstavaId = (int)cmbPredstave.SelectedValue;
               
             dgvTermini.DataSource = await _terminService.Get<List<Termin>>(terminSearchObject);

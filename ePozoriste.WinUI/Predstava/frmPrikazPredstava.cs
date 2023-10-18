@@ -47,10 +47,18 @@ namespace ePozoriste.WinUI
             try
             {
                 var vrste = await _vrstaPredstaveService.Get<List<VrstaPredstave>>() as IList<VrstaPredstave>;
+                
+                var allOption = new VrstaPredstave
+                {
+                    VrstaPredstaveId = -1,  
+                    Naziv = "Sve"
+                };
+
+                vrste.Insert(0, allOption);
+
                 cmbVrste.DataSource = vrste;
                 cmbVrste.DisplayMember = "Naziv";
                 cmbVrste.ValueMember = "VrstaPredstaveId";
-                cmbVrste.SelectedIndex = -1;
             }
             catch (Exception ex)
             {
@@ -73,7 +81,7 @@ namespace ePozoriste.WinUI
             PredstavaSearchObject predstavaSearchObject = new PredstavaSearchObject();
             predstavaSearchObject.Tekst = txtPretraga.Text;
            
-            if(cmbVrste.SelectedIndex != -1)
+            if((int)cmbVrste.SelectedValue != -1)
                 predstavaSearchObject.VrstaPredstaveId =(int)cmbVrste.SelectedValue;
 
             dgvPredstave.DataSource = await _predstavaService.Get<List<Predstava>>(predstavaSearchObject);

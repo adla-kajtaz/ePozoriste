@@ -45,10 +45,18 @@ namespace ePozoriste.WinUI
             try
             {
                 var gradovi = await _gradService.Get<List<Grad>>() as IList<Grad>;
+
+                var allOption = new Grad
+                {
+                    GradId = -1,
+                    Naziv = "Svi"
+                };
+
+                gradovi.Insert(0, allOption);
+
                 cmbGradovi.DataSource = gradovi;
                 cmbGradovi.DisplayMember = "Naziv";
                 cmbGradovi.ValueMember = "GradId";
-                cmbGradovi.SelectedIndex = -1;
             }
             catch (Exception ex)
             {
@@ -71,7 +79,7 @@ namespace ePozoriste.WinUI
             PozoristeSearchObject pozoristeSearchRequest = new PozoristeSearchObject();
             pozoristeSearchRequest.Tekst = txtPretraga.Text;
 
-            if (cmbGradovi.SelectedIndex != -1)
+            if ((int)cmbGradovi.SelectedValue != -1)
                 pozoristeSearchRequest.GradId = (int)cmbGradovi.SelectedValue;
 
             dgvPozorista.DataSource = await _pozoristeService.Get<List<Pozoriste>>(pozoristeSearchRequest);
