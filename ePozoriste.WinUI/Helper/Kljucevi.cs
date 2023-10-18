@@ -15,6 +15,7 @@ namespace ePozoriste.WinUI.Helper
         public const string PodaciUspjesnoModifikovani = "PodaciUspjesnoModifikovani";
         public const string PodatakVecPostoji = "PodatakVecPostoji";
         public const string Informacija = "Informacija";
+        public const string Upozorenje = "Upozorenje";
         public const string Greska = "Greska";
         public const string PogresnaLozinkaIliMail = "PogresnaLozinkaIliMail";
         public const string ValidacijaEmaila = "ValidacijaEmaila";

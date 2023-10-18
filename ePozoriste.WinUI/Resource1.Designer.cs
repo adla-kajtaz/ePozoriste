@@ -160,6 +160,15 @@ namespace ePozoriste.WinUI {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Upozorenje.
+        /// </summary>
+        internal static string Upozorenje {
+            get {
+                return ResourceManager.GetString("Upozorenje", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Broj telefona treba biti u formatu 000-000-000 ili 000-000-0000..
         /// </summary>
         internal static string ValidacijaBrTelefona {

@@ -1,5 +1,6 @@
 ﻿using ePozoriste.Model;
 using ePozoriste.Model.SearchObjects;
+using ePozoriste.WinUI.Helper;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -47,9 +48,19 @@ namespace ePozoriste.WinUI
             var predstavaGlumac = dgvPredstavaGlumci.SelectedRows[0].DataBoundItem as PredstavaGlumac;
             if (e.ColumnIndex == 2)
             {
-                await _predstavaGlumacService.Delete<PredstavaGlumac>(predstavaGlumac.PredstavaGlumacId);
-                dgvPredstavaGlumci.DataSource = null;
-                frmPrikazPredstavaGlumac_Load(sender, e);
+                if (dgvPredstavaGlumci.RowCount == 1)
+                {
+                    MessageBox.Show("Predstava mora imati barem jednog glumca.", 
+                        Resursi.Get(Kljucevi.Upozorenje), 
+                        MessageBoxButtons.OK, 
+                        MessageBoxIcon.Warning);
+                }
+                else
+                {
+                    await _predstavaGlumacService.Delete<PredstavaGlumac>(predstavaGlumac.PredstavaGlumacId);
+                    dgvPredstavaGlumci.DataSource = null;
+                    frmPrikazPredstavaGlumac_Load(sender, e);
+                }
             }
         }
     }
