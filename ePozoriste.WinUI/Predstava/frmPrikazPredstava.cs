@@ -17,6 +17,8 @@ namespace ePozoriste.WinUI
     public partial class frmPrikazPredstava : Form
     {
         APIService _predstavaService { get; set; } = new APIService("Predstava");
+        APIService _vrstaPredstaveService { get; set; } = new APIService("VrstaPredstave");
+
         public frmPrikazPredstava()
         {
             InitializeComponent();
@@ -32,6 +34,23 @@ namespace ePozoriste.WinUI
 
                 };
                 dgvPredstave.DataSource = await _predstavaService.Get<List<Predstava>>();
+                UcitajVrste();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private async void UcitajVrste()
+        {
+            try
+            {
+                var vrste = await _vrstaPredstaveService.Get<List<VrstaPredstave>>() as IList<VrstaPredstave>;
+                cmbVrste.DataSource = vrste;
+                cmbVrste.DisplayMember = "Naziv";
+                cmbVrste.ValueMember = "VrstaPredstaveId";
+                cmbVrste.SelectedIndex = -1;
             }
             catch (Exception ex)
             {
@@ -51,10 +70,12 @@ namespace ePozoriste.WinUI
 
         private async void btnPrikazi_Click(object sender, EventArgs e)
         {
-            BaseSearchObject predstavaSearchObject = new BaseSearchObject
-            {
-                Tekst = txtPretraga.Text
-            };
+            PredstavaSearchObject predstavaSearchObject = new PredstavaSearchObject();
+            predstavaSearchObject.Tekst = txtPretraga.Text;
+           
+            if(cmbVrste.SelectedIndex != -1)
+                predstavaSearchObject.VrstaPredstaveId =(int)cmbVrste.SelectedValue;
+
             dgvPredstave.DataSource = await _predstavaService.Get<List<Predstava>>(predstavaSearchObject);
         }
 

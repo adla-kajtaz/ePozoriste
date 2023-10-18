@@ -30,6 +30,14 @@
         {
             this.btnPrikazi = new System.Windows.Forms.Button();
             this.dgvPredstave = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.VrstaPredstave = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewButtonColumn1 = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.dataGridViewButtonColumn2 = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.dataGridViewButtonColumn3 = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.PrikazGlumaca = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.Izvjestaj = new System.Windows.Forms.DataGridViewButtonColumn();
             this.btnDodaj = new System.Windows.Forms.Button();
             this.txtPretraga = new System.Windows.Forms.TextBox();
             this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -40,14 +48,8 @@
             this.DodajGlumca = new System.Windows.Forms.DataGridViewButtonColumn();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.VrstaPredstave = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewButtonColumn1 = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.dataGridViewButtonColumn2 = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.dataGridViewButtonColumn3 = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.PrikazGlumaca = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.Izvjestaj = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.label1 = new System.Windows.Forms.Label();
+            this.cmbVrste = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPredstave)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -83,101 +85,6 @@
             this.dgvPredstave.Size = new System.Drawing.Size(1181, 572);
             this.dgvPredstave.TabIndex = 10;
             this.dgvPredstave.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPredstave_CellContentClick);
-            // 
-            // btnDodaj
-            // 
-            this.btnDodaj.Location = new System.Drawing.Point(1020, 39);
-            this.btnDodaj.Name = "btnDodaj";
-            this.btnDodaj.Size = new System.Drawing.Size(171, 29);
-            this.btnDodaj.TabIndex = 9;
-            this.btnDodaj.Text = "Nova predstava";
-            this.btnDodaj.UseVisualStyleBackColor = true;
-            this.btnDodaj.Click += new System.EventHandler(this.btnDodaj_Click);
-            // 
-            // txtPretraga
-            // 
-            this.txtPretraga.Location = new System.Drawing.Point(6, 41);
-            this.txtPretraga.Name = "txtPretraga";
-            this.txtPretraga.Size = new System.Drawing.Size(377, 27);
-            this.txtPretraga.TabIndex = 8;
-            // 
-            // ID
-            // 
-            this.ID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.ID.DataPropertyName = "PredstavaId";
-            this.ID.HeaderText = "ID";
-            this.ID.MinimumWidth = 6;
-            this.ID.Name = "ID";
-            this.ID.ReadOnly = true;
-            this.ID.Width = 125;
-            // 
-            // Naziv
-            // 
-            this.Naziv.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.Naziv.DataPropertyName = "Naziv";
-            this.Naziv.HeaderText = "Naziv";
-            this.Naziv.MinimumWidth = 6;
-            this.Naziv.Name = "Naziv";
-            this.Naziv.ReadOnly = true;
-            this.Naziv.Width = 125;
-            // 
-            // VrijemeTrajanja
-            // 
-            this.VrijemeTrajanja.DataPropertyName = "VrijemeTrajanje";
-            this.VrijemeTrajanja.HeaderText = "Vrijeme trajanja";
-            this.VrijemeTrajanja.MinimumWidth = 6;
-            this.VrijemeTrajanja.Name = "VrijemeTrajanja";
-            this.VrijemeTrajanja.ReadOnly = true;
-            this.VrijemeTrajanja.Width = 125;
-            // 
-            // Uredi
-            // 
-            this.Uredi.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Uredi.HeaderText = "Uredi";
-            this.Uredi.MinimumWidth = 6;
-            this.Uredi.Name = "Uredi";
-            this.Uredi.Text = "Uredi";
-            this.Uredi.UseColumnTextForButtonValue = true;
-            // 
-            // Obrisi
-            // 
-            this.Obrisi.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Obrisi.HeaderText = "Obrisi";
-            this.Obrisi.MinimumWidth = 6;
-            this.Obrisi.Name = "Obrisi";
-            this.Obrisi.Text = "Obrisi";
-            this.Obrisi.UseColumnTextForButtonValue = true;
-            // 
-            // DodajGlumca
-            // 
-            this.DodajGlumca.HeaderText = "Dodaj glumca";
-            this.DodajGlumca.MinimumWidth = 6;
-            this.DodajGlumca.Name = "DodajGlumca";
-            this.DodajGlumca.Text = "Dodaj glumca";
-            this.DodajGlumca.UseColumnTextForButtonValue = true;
-            this.DodajGlumca.Width = 125;
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.txtPretraga);
-            this.groupBox1.Controls.Add(this.btnPrikazi);
-            this.groupBox1.Controls.Add(this.btnDodaj);
-            this.groupBox1.Location = new System.Drawing.Point(12, 12);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1197, 90);
-            this.groupBox1.TabIndex = 12;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Pretraga predstava";
-            // 
-            // groupBox2
-            // 
-            this.groupBox2.Controls.Add(this.dgvPredstave);
-            this.groupBox2.Location = new System.Drawing.Point(12, 108);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(1197, 618);
-            this.groupBox2.TabIndex = 13;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Predstave";
             // 
             // dataGridViewTextBoxColumn2
             // 
@@ -256,6 +163,121 @@
             this.Izvjestaj.Text = "Izvjestaj";
             this.Izvjestaj.UseColumnTextForButtonValue = true;
             // 
+            // btnDodaj
+            // 
+            this.btnDodaj.Location = new System.Drawing.Point(1020, 39);
+            this.btnDodaj.Name = "btnDodaj";
+            this.btnDodaj.Size = new System.Drawing.Size(171, 29);
+            this.btnDodaj.TabIndex = 9;
+            this.btnDodaj.Text = "Nova predstava";
+            this.btnDodaj.UseVisualStyleBackColor = true;
+            this.btnDodaj.Click += new System.EventHandler(this.btnDodaj_Click);
+            // 
+            // txtPretraga
+            // 
+            this.txtPretraga.Location = new System.Drawing.Point(6, 41);
+            this.txtPretraga.Name = "txtPretraga";
+            this.txtPretraga.Size = new System.Drawing.Size(377, 27);
+            this.txtPretraga.TabIndex = 8;
+            // 
+            // ID
+            // 
+            this.ID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.ID.DataPropertyName = "PredstavaId";
+            this.ID.HeaderText = "ID";
+            this.ID.MinimumWidth = 6;
+            this.ID.Name = "ID";
+            this.ID.ReadOnly = true;
+            this.ID.Width = 125;
+            // 
+            // Naziv
+            // 
+            this.Naziv.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.Naziv.DataPropertyName = "Naziv";
+            this.Naziv.HeaderText = "Naziv";
+            this.Naziv.MinimumWidth = 6;
+            this.Naziv.Name = "Naziv";
+            this.Naziv.ReadOnly = true;
+            this.Naziv.Width = 125;
+            // 
+            // VrijemeTrajanja
+            // 
+            this.VrijemeTrajanja.DataPropertyName = "VrijemeTrajanje";
+            this.VrijemeTrajanja.HeaderText = "Vrijeme trajanja";
+            this.VrijemeTrajanja.MinimumWidth = 6;
+            this.VrijemeTrajanja.Name = "VrijemeTrajanja";
+            this.VrijemeTrajanja.ReadOnly = true;
+            this.VrijemeTrajanja.Width = 125;
+            // 
+            // Uredi
+            // 
+            this.Uredi.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Uredi.HeaderText = "Uredi";
+            this.Uredi.MinimumWidth = 6;
+            this.Uredi.Name = "Uredi";
+            this.Uredi.Text = "Uredi";
+            this.Uredi.UseColumnTextForButtonValue = true;
+            // 
+            // Obrisi
+            // 
+            this.Obrisi.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Obrisi.HeaderText = "Obrisi";
+            this.Obrisi.MinimumWidth = 6;
+            this.Obrisi.Name = "Obrisi";
+            this.Obrisi.Text = "Obrisi";
+            this.Obrisi.UseColumnTextForButtonValue = true;
+            // 
+            // DodajGlumca
+            // 
+            this.DodajGlumca.HeaderText = "Dodaj glumca";
+            this.DodajGlumca.MinimumWidth = 6;
+            this.DodajGlumca.Name = "DodajGlumca";
+            this.DodajGlumca.Text = "Dodaj glumca";
+            this.DodajGlumca.UseColumnTextForButtonValue = true;
+            this.DodajGlumca.Width = 125;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Controls.Add(this.cmbVrste);
+            this.groupBox1.Controls.Add(this.txtPretraga);
+            this.groupBox1.Controls.Add(this.btnPrikazi);
+            this.groupBox1.Controls.Add(this.btnDodaj);
+            this.groupBox1.Location = new System.Drawing.Point(12, 12);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(1197, 90);
+            this.groupBox1.TabIndex = 12;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Pretraga predstava";
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.dgvPredstave);
+            this.groupBox2.Location = new System.Drawing.Point(12, 108);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(1197, 618);
+            this.groupBox2.TabIndex = 13;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Predstave";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(399, 13);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(113, 20);
+            this.label1.TabIndex = 16;
+            this.label1.Text = "Vrsta predstave:";
+            // 
+            // cmbVrste
+            // 
+            this.cmbVrste.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbVrste.FormattingEnabled = true;
+            this.cmbVrste.Location = new System.Drawing.Point(400, 39);
+            this.cmbVrste.Name = "cmbVrste";
+            this.cmbVrste.Size = new System.Drawing.Size(256, 28);
+            this.cmbVrste.TabIndex = 15;
+            // 
             // frmPrikazPredstava
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -296,5 +318,7 @@
         private DataGridViewButtonColumn dataGridViewButtonColumn3;
         private DataGridViewButtonColumn PrikazGlumaca;
         private DataGridViewButtonColumn Izvjestaj;
+        private Label label1;
+        private ComboBox cmbVrste;
     }
 }
