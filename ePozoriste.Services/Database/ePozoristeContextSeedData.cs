@@ -468,7 +468,7 @@ namespace ePozoriste.Services.Database
                     Predpremijera = true,
                     Premijera = false,
                     CijenaKarte = 20,
-                    DatumOdrzavanja = DateTime.Now.Date.AddDays(1),
+                    DatumOdrzavanja = DateTime.Now.Date.AddDays(3),
                     VrijemeOdrzavanja = "20:00"
                 },new Termin()
                 {
@@ -500,7 +500,7 @@ namespace ePozoriste.Services.Database
                     Predpremijera = true,
                     Premijera = false,
                     CijenaKarte = 10,
-                    DatumOdrzavanja = DateTime.Now.Date.AddDays(1),
+                    DatumOdrzavanja = DateTime.Now.Date.AddDays(3),
                     VrijemeOdrzavanja = "18:00"
                 }
             });

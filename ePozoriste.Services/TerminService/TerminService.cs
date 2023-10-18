@@ -43,8 +43,8 @@ namespace ePozoriste.Services
                 filteredQuery = filteredQuery.Where(x => x.Premijera == search.Premijera);
             if (search.Predpremijera != null)
                 filteredQuery = filteredQuery.Where(x => x.Predpremijera == search.Predpremijera);
-            if (search.DatumOdrzavanja != null)
-                filteredQuery = filteredQuery.Where(x => x.DatumOdrzavanja.Date == search.DatumOdrzavanja);
+            if (search.DatumOdrzavanja.HasValue)
+                filteredQuery = filteredQuery.Where(x => x.DatumOdrzavanja.Date.Equals(search.DatumOdrzavanja.Value.Date));
             if (!string.IsNullOrWhiteSpace(search?.VrijemeOdrzavanja))
                 filteredQuery = filteredQuery.Where(x => x.VrijemeOdrzavanja.ToLower().Equals(search.VrijemeOdrzavanja.ToLower()));
             return filteredQuery;
