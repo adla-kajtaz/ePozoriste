@@ -144,7 +144,7 @@ namespace ePozoriste.Services.Database
                 new ObavijestKategorija()
                 {
                     ObavijestKategorijaId = 3,
-                    Naziv = "Obavijet"
+                    Naziv = "Obavijest"
                 }
             });
 
