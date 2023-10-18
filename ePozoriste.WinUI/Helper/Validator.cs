@@ -67,5 +67,39 @@ namespace ePozoriste.WinUI.Helper
                 return true;
             }
         }
+
+        public static bool ValidirajVrijemeTrajanja(Control kontrola, ErrorProvider err, string kljuc)
+        {
+            if (string.IsNullOrWhiteSpace(kontrola.Text))
+            {
+                err.SetError(kontrola, Resursi.Get(kljuc));
+                return false;
+            }
+
+            if (int.TryParse(kontrola.Text, out int vrijednost) && vrijednost > 10)
+            {
+                return true;
+            }
+
+            err.SetError(kontrola, "Vrijeme trajanja mora biti broj veći od 10.");
+            return false;
+        }
+
+        public static bool ValidirajBroj(Control kontrola, ErrorProvider err, string kljuc)
+        {
+            if (string.IsNullOrWhiteSpace(kontrola.Text))
+            {
+                err.SetError(kontrola, Resursi.Get(kljuc));
+                return false;
+            }
+
+            if (int.TryParse(kontrola.Text, out int vrijednost) && vrijednost > 0)
+            {
+                return true;
+            }
+
+            err.SetError(kontrola, "Morate unijeti broj veći od 0.");
+            return false;
+        }
     }
 }

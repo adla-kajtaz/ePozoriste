@@ -126,7 +126,7 @@ namespace ePozoriste.WinUI
         private bool ValidanUnos()
         {
             return Validator.ValidirajKontrolu(cmbPredstave, errPredstava, Kljucevi.ObaveznaVrijednost)
-                && Validator.ValidirajKontrolu(txtCijenaKarte,errCijena,Kljucevi.ObaveznaVrijednost)
+                && Validator.ValidirajBroj(txtCijenaKarte,errCijena,Kljucevi.ObaveznaVrijednost)
                 && Validator.ValidirajKontrolu(txtVrijemeOdrzavanja,errVrijeme,Kljucevi.ObaveznaVrijednost);;
         }
     }

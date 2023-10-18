@@ -124,7 +124,7 @@ namespace ePozoriste.WinUI
         {
             return Validator.ValidirajKontrolu(txtNaziv, errNaziv, Kljucevi.ObaveznaVrijednost)
                 && Validator.ValidirajKontrolu(txtSadrzaj, errSadrzaj, Kljucevi.ObaveznaVrijednost)
-                && Validator.ValidirajKontrolu(txtVrijemeTrajanja, errVrijemeTrajanja, Kljucevi.ObaveznaVrijednost)
+                && Validator.ValidirajVrijemeTrajanja(txtVrijemeTrajanja, errVrijemeTrajanja, Kljucevi.ObaveznaVrijednost)
                 && Validator.ValidirajKontrolu(txtRezija,errRezija,Kljucevi.ObaveznaVrijednost)
                 && Validator.ValidirajKontrolu(txtKostimografija,errKostimografija, Kljucevi.ObaveznaVrijednost)
                 && Validator.ValidirajKontrolu(txtScenografija,errScenografija,Kljucevi.ObaveznaVrijednost)
