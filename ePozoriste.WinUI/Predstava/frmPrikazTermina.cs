@@ -18,6 +18,10 @@ namespace ePozoriste.WinUI
         APIService _terminService { get; set; } = new APIService("Termin");
         APIService _predstavaService { get; set; } = new APIService("Predstava");
         private Sala _sala;
+        private bool datumPromijenjen = false;
+        private bool cbPremijeraPromijenjen = false;
+        private bool cbPredpremijeraPromijenjen = false;
+
         public frmPrikazTermina(Sala sala = null)
         {
             InitializeComponent();
@@ -28,17 +32,21 @@ namespace ePozoriste.WinUI
 
         private async void frmPrikazTermina_Load(object sender, EventArgs e)
         {
-            try
-            {
+            LoadData();
+            UcitajPredstave();
+           
+        }
+
+        private async Task LoadData()
+        {
+            try{
                 var searchRequest = new TerminSearchObject
                 {
                     SalaId = _sala.SalaId
                 };
                 dgvTermini.DataSource = await _terminService.Get<List<Termin>>(searchRequest);
-                UcitajPredstave();
             }
-            catch (Exception ex)
-            {
+            catch (Exception ex){
                 MessageBox.Show(ex.Message);
             }
         }
@@ -80,10 +88,16 @@ namespace ePozoriste.WinUI
         private async void btnPrikazi_Click(object sender, EventArgs e)
         {
             TerminSearchObject terminSearchObject = new TerminSearchObject();
-            terminSearchObject.Predpremijera = cbPredpremijera.Checked;
-            terminSearchObject.Premijera = cbPremijera.Checked;
             terminSearchObject.SalaId = _sala.SalaId;
-            terminSearchObject.DatumOdrzavanja = dtpDatumIzvodjenja.Value.Date;
+
+            if(cbPredpremijeraPromijenjen)
+                terminSearchObject.Predpremijera = cbPredpremijera.Checked;
+
+            if (cbPremijeraPromijenjen)
+                terminSearchObject.Premijera = cbPremijera.Checked;
+
+            if (datumPromijenjen)
+                terminSearchObject.DatumOdrzavanja = dtpDatumIzvodjenja.Value;
 
             if ((int)cmbPredstave.SelectedValue != -1)
                 terminSearchObject.PredstavaId = (int)cmbPredstave.SelectedValue;
@@ -124,6 +138,34 @@ namespace ePozoriste.WinUI
                     frmPrikazTermina_Load(sender, e);
                 }
             }
+        }
+
+        private void dtpDatumIzvodjenja_ValueChanged(object sender, EventArgs e)
+        {
+            datumPromijenjen = true;
+        }
+
+        private void cbPremijera_CheckedChanged(object sender, EventArgs e)
+        {
+            cbPremijeraPromijenjen = true;
+        }
+
+        private void cbPredpremijera_CheckedChanged(object sender, EventArgs e)
+        {
+            cbPredpremijeraPromijenjen = true;
+        }
+
+        private async void btnReset_Click(object sender, EventArgs e)
+        {
+            dtpDatumIzvodjenja.ResetText();
+            cbPremijera.Checked = false;
+            cbPredpremijera.Checked = false;
+
+            datumPromijenjen = false;
+            cbPremijeraPromijenjen = false;
+            cbPredpremijeraPromijenjen = false;
+
+            await LoadData();
         }
     }
 }

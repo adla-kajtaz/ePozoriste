@@ -30,14 +30,6 @@
         {
             this.btnPrikazi = new System.Windows.Forms.Button();
             this.dgvTermini = new System.Windows.Forms.DataGridView();
-            this.btnDodaj = new System.Windows.Forms.Button();
-            this.dtpDatumIzvodjenja = new System.Windows.Forms.DateTimePicker();
-            this.cmbPredstave = new System.Windows.Forms.ComboBox();
-            this.cbPremijera = new System.Windows.Forms.CheckBox();
-            this.cbPredpremijera = new System.Windows.Forms.CheckBox();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.Predstava = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Sala = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DatumIzvodjenja = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -48,6 +40,15 @@
             this.Karte = new System.Windows.Forms.DataGridViewButtonColumn();
             this.Uredi = new System.Windows.Forms.DataGridViewButtonColumn();
             this.Obrisi = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.btnDodaj = new System.Windows.Forms.Button();
+            this.dtpDatumIzvodjenja = new System.Windows.Forms.DateTimePicker();
+            this.cmbPredstave = new System.Windows.Forms.ComboBox();
+            this.cbPremijera = new System.Windows.Forms.CheckBox();
+            this.cbPredpremijera = new System.Windows.Forms.CheckBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnReset = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTermini)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -85,87 +86,6 @@
             this.dgvTermini.Size = new System.Drawing.Size(1309, 520);
             this.dgvTermini.TabIndex = 14;
             this.dgvTermini.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvTermini_CellContentClick);
-            // 
-            // btnDodaj
-            // 
-            this.btnDodaj.Location = new System.Drawing.Point(1164, 46);
-            this.btnDodaj.Name = "btnDodaj";
-            this.btnDodaj.Size = new System.Drawing.Size(151, 29);
-            this.btnDodaj.TabIndex = 13;
-            this.btnDodaj.Text = "Novi termin";
-            this.btnDodaj.UseVisualStyleBackColor = true;
-            this.btnDodaj.Click += new System.EventHandler(this.btnDodaj_Click);
-            // 
-            // dtpDatumIzvodjenja
-            // 
-            this.dtpDatumIzvodjenja.Location = new System.Drawing.Point(6, 45);
-            this.dtpDatumIzvodjenja.Name = "dtpDatumIzvodjenja";
-            this.dtpDatumIzvodjenja.Size = new System.Drawing.Size(305, 27);
-            this.dtpDatumIzvodjenja.TabIndex = 16;
-            // 
-            // cmbPredstave
-            // 
-            this.cmbPredstave.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbPredstave.FormattingEnabled = true;
-            this.cmbPredstave.Location = new System.Drawing.Point(330, 44);
-            this.cmbPredstave.Name = "cmbPredstave";
-            this.cmbPredstave.Size = new System.Drawing.Size(285, 28);
-            this.cmbPredstave.TabIndex = 17;
-            // 
-            // cbPremijera
-            // 
-            this.cbPremijera.AutoSize = true;
-            this.cbPremijera.Location = new System.Drawing.Point(684, 46);
-            this.cbPremijera.Name = "cbPremijera";
-            this.cbPremijera.Size = new System.Drawing.Size(94, 24);
-            this.cbPremijera.TabIndex = 19;
-            this.cbPremijera.Text = "Premijera";
-            this.cbPremijera.UseVisualStyleBackColor = true;
-            // 
-            // cbPredpremijera
-            // 
-            this.cbPredpremijera.AutoSize = true;
-            this.cbPredpremijera.Location = new System.Drawing.Point(784, 46);
-            this.cbPredpremijera.Name = "cbPredpremijera";
-            this.cbPredpremijera.Size = new System.Drawing.Size(125, 24);
-            this.cbPredpremijera.TabIndex = 20;
-            this.cbPredpremijera.Text = "Predpremijera";
-            this.cbPredpremijera.UseVisualStyleBackColor = true;
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Controls.Add(this.btnPrikazi);
-            this.groupBox1.Controls.Add(this.btnDodaj);
-            this.groupBox1.Controls.Add(this.cbPredpremijera);
-            this.groupBox1.Controls.Add(this.dtpDatumIzvodjenja);
-            this.groupBox1.Controls.Add(this.cbPremijera);
-            this.groupBox1.Controls.Add(this.cmbPredstave);
-            this.groupBox1.Location = new System.Drawing.Point(12, 12);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1334, 106);
-            this.groupBox1.TabIndex = 21;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Pretraga termina";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(330, 21);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(76, 20);
-            this.label1.TabIndex = 18;
-            this.label1.Text = "Predstava:";
-            // 
-            // groupBox2
-            // 
-            this.groupBox2.Controls.Add(this.dgvTermini);
-            this.groupBox2.Location = new System.Drawing.Point(12, 124);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(1334, 576);
-            this.groupBox2.TabIndex = 22;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Termini";
             // 
             // Predstava
             // 
@@ -260,6 +180,101 @@
             this.Obrisi.Text = "Obrisi";
             this.Obrisi.UseColumnTextForButtonValue = true;
             // 
+            // btnDodaj
+            // 
+            this.btnDodaj.Location = new System.Drawing.Point(1164, 46);
+            this.btnDodaj.Name = "btnDodaj";
+            this.btnDodaj.Size = new System.Drawing.Size(151, 29);
+            this.btnDodaj.TabIndex = 13;
+            this.btnDodaj.Text = "Novi termin";
+            this.btnDodaj.UseVisualStyleBackColor = true;
+            this.btnDodaj.Click += new System.EventHandler(this.btnDodaj_Click);
+            // 
+            // dtpDatumIzvodjenja
+            // 
+            this.dtpDatumIzvodjenja.Location = new System.Drawing.Point(6, 45);
+            this.dtpDatumIzvodjenja.Name = "dtpDatumIzvodjenja";
+            this.dtpDatumIzvodjenja.Size = new System.Drawing.Size(305, 27);
+            this.dtpDatumIzvodjenja.TabIndex = 16;
+            this.dtpDatumIzvodjenja.ValueChanged += new System.EventHandler(this.dtpDatumIzvodjenja_ValueChanged);
+            // 
+            // cmbPredstave
+            // 
+            this.cmbPredstave.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbPredstave.FormattingEnabled = true;
+            this.cmbPredstave.Location = new System.Drawing.Point(330, 44);
+            this.cmbPredstave.Name = "cmbPredstave";
+            this.cmbPredstave.Size = new System.Drawing.Size(285, 28);
+            this.cmbPredstave.TabIndex = 17;
+            // 
+            // cbPremijera
+            // 
+            this.cbPremijera.AutoSize = true;
+            this.cbPremijera.Location = new System.Drawing.Point(630, 44);
+            this.cbPremijera.Name = "cbPremijera";
+            this.cbPremijera.Size = new System.Drawing.Size(94, 24);
+            this.cbPremijera.TabIndex = 19;
+            this.cbPremijera.Text = "Premijera";
+            this.cbPremijera.UseVisualStyleBackColor = true;
+            this.cbPremijera.CheckedChanged += new System.EventHandler(this.cbPremijera_CheckedChanged);
+            // 
+            // cbPredpremijera
+            // 
+            this.cbPredpremijera.AutoSize = true;
+            this.cbPredpremijera.Location = new System.Drawing.Point(730, 44);
+            this.cbPredpremijera.Name = "cbPredpremijera";
+            this.cbPredpremijera.Size = new System.Drawing.Size(125, 24);
+            this.cbPredpremijera.TabIndex = 20;
+            this.cbPredpremijera.Text = "Predpremijera";
+            this.cbPredpremijera.UseVisualStyleBackColor = true;
+            this.cbPredpremijera.CheckedChanged += new System.EventHandler(this.cbPredpremijera_CheckedChanged);
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.btnReset);
+            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Controls.Add(this.btnPrikazi);
+            this.groupBox1.Controls.Add(this.btnDodaj);
+            this.groupBox1.Controls.Add(this.cbPredpremijera);
+            this.groupBox1.Controls.Add(this.dtpDatumIzvodjenja);
+            this.groupBox1.Controls.Add(this.cbPremijera);
+            this.groupBox1.Controls.Add(this.cmbPredstave);
+            this.groupBox1.Location = new System.Drawing.Point(12, 12);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(1334, 106);
+            this.groupBox1.TabIndex = 21;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Pretraga termina";
+            // 
+            // btnReset
+            // 
+            this.btnReset.Location = new System.Drawing.Point(876, 46);
+            this.btnReset.Name = "btnReset";
+            this.btnReset.Size = new System.Drawing.Size(138, 29);
+            this.btnReset.TabIndex = 21;
+            this.btnReset.Text = "Reset";
+            this.btnReset.UseVisualStyleBackColor = true;
+            this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(330, 21);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(76, 20);
+            this.label1.TabIndex = 18;
+            this.label1.Text = "Predstava:";
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.dgvTermini);
+            this.groupBox2.Location = new System.Drawing.Point(12, 124);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(1334, 576);
+            this.groupBox2.TabIndex = 22;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Termini";
+            // 
             // frmPrikazTermina
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -300,5 +315,6 @@
         private DataGridViewButtonColumn Karte;
         private DataGridViewButtonColumn Uredi;
         private DataGridViewButtonColumn Obrisi;
+        private Button btnReset;
     }
 }
