@@ -6376,7 +6376,8 @@ namespace ePozoriste.Services.Database
                    DatumKupovine = DateTime.Now,
                    PaymentIntentId = "pi_3NwMiYEDYm8POibP1HZgAANw_secret_L1f7hpTvlCWjJJXmeJaTwZO06",
                    KorisnikId = 2,
-                   TerminId = 1
+                   TerminId = 1,
+                   Placena = true
                 },
                 new Kupovina()
                 {
@@ -6386,7 +6387,8 @@ namespace ePozoriste.Services.Database
                    DatumKupovine = DateTime.Now,
                    PaymentIntentId = "pi_3NwMiYEDYm8POibP1HZgAANw_secret_L1f7hpTvlCWjJJXmeJaTwZO06",
                    KorisnikId = 2,
-                   TerminId = 6
+                   TerminId = 6,
+                   Placena = true
                 },
                 new Kupovina()
                 {
@@ -6396,7 +6398,8 @@ namespace ePozoriste.Services.Database
                    DatumKupovine = DateTime.Now,
                    PaymentIntentId = "pi_3NwMiYEDYm8POibP1HZgAANw_secret_L1f7hpTvlCWjJJXmeJaTwZO06",
                    KorisnikId = 2,
-                   TerminId = 5
+                   TerminId = 5,
+                   Placena = true
                 },
                 new Kupovina()
                 {
@@ -6406,7 +6409,8 @@ namespace ePozoriste.Services.Database
                    DatumKupovine = DateTime.Now,
                    PaymentIntentId = "pi_3NwMiYEDYm8POibP1HZgAANw_secret_L1f7hpTvlCWjJJXmeJaTwZO06",
                    KorisnikId = 2,
-                   TerminId = 2
+                   TerminId = 2,
+                   Placena = true
                 },
             });
         }

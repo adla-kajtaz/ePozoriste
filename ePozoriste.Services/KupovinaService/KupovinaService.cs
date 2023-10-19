@@ -35,6 +35,8 @@ namespace ePozoriste.Services
 
             if (search.KorisnikId != null)
                 filteredQuery = filteredQuery.Where(x => x.KorisnikId == search.KorisnikId);
+            if (search.Placena != null)
+                filteredQuery = filteredQuery.Where(x => x.Placena == search.Placena);
             return filteredQuery;
         }
 
@@ -50,6 +52,7 @@ namespace ePozoriste.Services
             kupovina.Kolicina = request.Karte.Count();
             kupovina.Cijena = request.Cijena;
             kupovina.TerminId = request.TerminId;
+            kupovina.Placena = false;
             _context.Add(kupovina);
             _context.SaveChanges();
 

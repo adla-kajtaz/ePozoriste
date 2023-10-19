@@ -58,12 +58,16 @@ namespace ePozoriste.Services
         public Model.Karta ChangeStatus(int id, int KupovinaId)
         {
             var entity = _context.Karta.Find(id);
+            var kupovina = _context.Kupovinas.Find(KupovinaId);
             if (entity == null)
                 return null;
-
-            entity.Aktivna = false;
-            entity.KupovinaId = KupovinaId;
-          
+            else
+            {
+                entity.Aktivna = false;
+                entity.KupovinaId = KupovinaId;
+                if (kupovina != null)
+                    kupovina.Placena = true;
+            }
             _context.SaveChanges();
             return _mapper.Map<Model.Karta>(entity);
         }

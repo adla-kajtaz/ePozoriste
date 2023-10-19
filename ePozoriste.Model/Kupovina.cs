@@ -13,6 +13,7 @@ namespace ePozoriste.Model
         public int Cijena { get; set; }
         public DateTime? DatumKupovine { get; set; }
         public string? PaymentIntentId { get; set; }
+        public bool? Placena { get; set; }
         public int? KorisnikId { get; set; }
         public virtual Korisnik? Korisnik { get; set; }
         public int? TerminId { get; set; }
