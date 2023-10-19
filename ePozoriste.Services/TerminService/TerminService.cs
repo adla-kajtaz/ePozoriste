@@ -130,7 +130,7 @@ namespace ePozoriste.Services
                 .Include(p => p.Termin.Sala.Pozoriste)
                 .Include(p => p.Termin.Predstava)
                 .Include(p=>p.Termin.Predstava.VrstaPredstave)
-                .Where(p => p.KorisnikId == userId)
+                .Where(p => p.KorisnikId == userId && p.Placena == true)
                 .ToList();
 
             if (kupovine.Count < 3)
