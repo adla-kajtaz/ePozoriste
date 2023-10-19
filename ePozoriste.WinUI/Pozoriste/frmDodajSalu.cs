@@ -92,9 +92,12 @@ namespace ePozoriste.WinUI
         private bool ValidanUnos()
         {
             return Validator.ValidirajKontrolu(txtNaziv, errNaziv, Kljucevi.ObaveznaVrijednost)
-                && Validator.ValidirajBroj(txtBrSjedista, errSjedista, Kljucevi.ObaveznaVrijednost)
-                && Validator.ValidirajBroj(txtBrRedova, errBrojRedova, Kljucevi.ObaveznaVrijednost)
-                && Validator.ValidirajBroj(txtBrSjedistaPoRedu, errSjPoRedu, Kljucevi.ObaveznaVrijednost);
+                && Validator.ValidirajKontrolu(txtBrSjedista, errSjedista, Kljucevi.ObaveznaVrijednost)
+                && Validator.ValidirajBroj(txtBrSjedista, errSjedista)
+                && Validator.ValidirajKontrolu(txtBrRedova, errBrojRedova, Kljucevi.ObaveznaVrijednost)
+                && Validator.ValidirajBroj(txtBrRedova, errBrojRedova)
+                && Validator.ValidirajKontrolu(txtBrSjedistaPoRedu, errSjPoRedu, Kljucevi.ObaveznaVrijednost)
+                && Validator.ValidirajBroj(txtBrSjedistaPoRedu, errSjPoRedu);
         }
     }
 }
