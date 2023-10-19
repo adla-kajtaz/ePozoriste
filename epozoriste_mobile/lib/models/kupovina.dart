@@ -14,6 +14,7 @@ class Kupovina {
   Korisnik? korisnik;
   int? terminId;
   Termin? termin;
+  bool? placena;
 
   Kupovina(
       {required this.kupovinaId,
@@ -24,7 +25,8 @@ class Kupovina {
       this.korisnikId,
       this.korisnik,
       this.terminId,
-      this.termin});
+      this.termin,
+      this.placena});
 
   factory Kupovina.fromJson(Map<String, dynamic> json) =>
       _$KupovinaFromJson(json);

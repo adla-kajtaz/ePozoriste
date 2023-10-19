@@ -9,7 +9,7 @@ class Historija extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     if (kupovine.isEmpty) {
-      return Text(
+      return const Text(
         'Nemate nijednu kupovinu!',
         style: TextStyle(
           fontSize: 15,

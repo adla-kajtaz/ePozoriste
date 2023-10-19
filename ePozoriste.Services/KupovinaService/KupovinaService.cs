@@ -64,7 +64,7 @@ namespace ePozoriste.Services
 
         public IEnumerable<Model.Kupovina> GetByKorisnikId(int id)
         {
-            var entity = _context.Kupovinas.Include(x => x.Termin).Include(x => x.Termin.Predstava).Include(x => x.Termin.Sala).Include(x => x.Termin.Sala.Pozoriste).Include(x => x.Termin.Sala.Pozoriste.Grad).Include(x => x.Termin.Sala.Pozoriste.Grad.Drzava).Include(x => x.Korisnik).Where(x => x.KorisnikId == id).AsQueryable();
+            var entity = _context.Kupovinas.Include(x => x.Termin).Include(x => x.Termin.Predstava).Include(x => x.Termin.Sala).Include(x => x.Termin.Sala.Pozoriste).Include(x => x.Termin.Sala.Pozoriste.Grad).Include(x => x.Termin.Sala.Pozoriste.Grad.Drzava).Include(x => x.Korisnik).Where(x => x.KorisnikId == id).Where(x=>x.Placena == true).AsQueryable();
             var list = entity.ToList();
             return _mapper.Map<IList<Model.Kupovina>>(list);
         }

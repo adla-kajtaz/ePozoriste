@@ -61,6 +61,11 @@ class _DetaljiPredstaveState extends State<DetaljiPredstave> {
                     ),
                   ),
                   Text(
+                    _termin.predstava!.vrstaPredstave!.naziv,
+                    style: const TextStyle(
+                        color: Color.fromARGB(223, 245, 245, 245)),
+                  ),
+                  Text(
                     "Režija: ${_termin.predstava!.rezija}",
                     style: const TextStyle(
                         color: Color.fromARGB(223, 245, 245, 245)),

@@ -51,8 +51,8 @@ class _ProfilState extends State<Profil> {
               onTap: () {
                 Navigator.pushNamed(context, Login.routeName);
               },
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
+              child: const Padding(
+                padding: EdgeInsets.all(8.0),
                 child: Icon(
                   Icons.logout_outlined,
                   color: Colors.white,
@@ -106,7 +106,7 @@ class _ProfilState extends State<Profil> {
               ),
               const SizedBox(height: 5),
               SizedBox(
-                height: 500,
+                height: 550,
                 width: double.infinity,
                 child: Historija(
                   kupovine: [...kupovine],

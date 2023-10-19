@@ -15,6 +15,11 @@ Predstava _$PredstavaFromJson(Map<String, dynamic> json) => Predstava(
       rezija: json['rezija'] as String,
       scenografija: json['scenografija'] as String,
       kostimografija: json['kostimografija'] as String,
+      vrstaPredstaveId: json['vrstaPredstaveId'] as int?,
+      vrstaPredstave: json['vrstaPredstave'] == null
+          ? null
+          : VrstaPredstave.fromJson(
+              json['vrstaPredstave'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$PredstavaToJson(Predstava instance) => <String, dynamic>{
@@ -26,4 +31,6 @@ Map<String, dynamic> _$PredstavaToJson(Predstava instance) => <String, dynamic>{
       'rezija': instance.rezija,
       'scenografija': instance.scenografija,
       'kostimografija': instance.kostimografija,
+      'vrstaPredstaveId': instance.vrstaPredstaveId,
+      'vrstaPredstave': instance.vrstaPredstave,
     };

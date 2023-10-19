@@ -20,6 +20,7 @@ Kupovina _$KupovinaFromJson(Map<String, dynamic> json) => Kupovina(
       termin: json['termin'] == null
           ? null
           : Termin.fromJson(json['termin'] as Map<String, dynamic>),
+      placena: json['placena'] as bool?,
     );
 
 Map<String, dynamic> _$KupovinaToJson(Kupovina instance) => <String, dynamic>{
@@ -32,4 +33,5 @@ Map<String, dynamic> _$KupovinaToJson(Kupovina instance) => <String, dynamic>{
       'korisnik': instance.korisnik,
       'terminId': instance.terminId,
       'termin': instance.termin,
+      'placena': instance.placena,
     };

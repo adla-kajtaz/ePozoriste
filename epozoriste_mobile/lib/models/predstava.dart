@@ -1,3 +1,4 @@
+import 'package:epozoriste_mobile/models/models.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'predstava.g.dart';
@@ -12,6 +13,8 @@ class Predstava {
   String rezija;
   String scenografija;
   String kostimografija;
+  int? vrstaPredstaveId;
+  VrstaPredstave? vrstaPredstave;
 
   Predstava(
       {required this.predstavaId,
@@ -21,7 +24,9 @@ class Predstava {
       required this.vrijemeTrajanje,
       required this.rezija,
       required this.scenografija,
-      required this.kostimografija});
+      required this.kostimografija,
+      this.vrstaPredstaveId,
+      this.vrstaPredstave});
 
   factory Predstava.fromJson(Map<String, dynamic> json) =>
       _$PredstavaFromJson(json);
