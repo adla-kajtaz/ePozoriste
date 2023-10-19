@@ -79,6 +79,7 @@ namespace ePozoriste.WinUI
                                       Resursi.Get(Kljucevi.Informacija),
                                       MessageBoxButtons.OK,
                                       MessageBoxIcon.Information);
+                        APIService.KorisnickoIme = update.KorisnickoIme;
                         DialogResult = DialogResult.OK;
                         this.Close();
                     }
