@@ -46,7 +46,7 @@ class _PocetnaState extends State<Pocetna> {
             automaticallyImplyLeading: false,
             backgroundColor: const Color.fromARGB(255, 57, 53, 53),
             title: const Text(
-              'ePozorište',
+              'Predstave',
               style: TextStyle(color: Colors.white),
             ),
             bottom: TabBar(
@@ -61,7 +61,6 @@ class _PocetnaState extends State<Pocetna> {
               children: [
                 ListaPredstava(termini: [...termini]),
                 Preporuceni(),
-                // ListaPredstava(termini: [...termini]),
               ],
             ),
           ),

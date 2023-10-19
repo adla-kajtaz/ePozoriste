@@ -43,7 +43,7 @@ class _ProfilState extends State<Profil> {
           automaticallyImplyLeading: false,
           backgroundColor: const Color.fromARGB(255, 57, 53, 53),
           title: const Text(
-            'ePozorište',
+            'Profil',
             style: TextStyle(color: Colors.white),
           ),
           actions: [

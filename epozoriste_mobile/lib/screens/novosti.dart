@@ -40,7 +40,7 @@ class _NovostiState extends State<Novosti> {
             automaticallyImplyLeading: false,
             backgroundColor: const Color.fromARGB(255, 57, 53, 53),
             title: const Text(
-              'ePozorište',
+              'Obavijesti',
               style: TextStyle(color: Colors.white),
             ),
           ),
