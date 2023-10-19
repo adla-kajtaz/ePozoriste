@@ -79,7 +79,7 @@ namespace ePozoriste.WinUI
                         PredstavaId = (int)cmbPredstave.SelectedValue,
                         SalaId = _sala.SalaId,
                         CijenaKarte = Int32.Parse(txtCijenaKarte.Text),
-                        DatumOdrzavanja = dtpDatum.Value.Date,
+                        DatumOdrzavanja = dtpDatum.Value.Date.AddDays(1).AddSeconds(-1),
                         VrijemeOdrzavanja = txtVrijemeOdrzavanja.Text,
                         Predpremijera = cbPredpremijera.Checked,
                         Premijera = cbPremijera.Checked

@@ -18,7 +18,9 @@ namespace ePozoriste.Model.Requests
         [Required(AllowEmptyStrings = false)]
         public string Sadrzaj { get; set; }
 
+        [Required]
         public string Slika { get; set; }
+
         public DateTime DatumKreiranja { get; set; }
 
         [Required]

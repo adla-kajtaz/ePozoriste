@@ -129,7 +129,8 @@ namespace ePozoriste.WinUI
                 && Validator.ValidirajKontrolu(txtRezija,errRezija,Kljucevi.ObaveznaVrijednost)
                 && Validator.ValidirajKontrolu(txtKostimografija,errKostimografija, Kljucevi.ObaveznaVrijednost)
                 && Validator.ValidirajKontrolu(txtScenografija,errScenografija,Kljucevi.ObaveznaVrijednost)
-                && Validator.ValidirajKontrolu(cmbVrstePredstave,errVrsta,Kljucevi.ObaveznaVrijednost);
+                && Validator.ValidirajKontrolu(cmbVrstePredstave,errVrsta,Kljucevi.ObaveznaVrijednost)
+                && Validator.ValidirajKontrolu(pbSlikaPlakata, errSlika, Kljucevi.ObaveznaVrijednost);
         }
     }
 }

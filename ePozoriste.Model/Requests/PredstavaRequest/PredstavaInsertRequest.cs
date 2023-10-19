@@ -15,7 +15,8 @@ namespace ePozoriste.Model.Requests
         [Required(AllowEmptyStrings = false)]
         public string Sadrzaj { get; set; }
 
-        public string? Slika { get; set; }
+        [Required]
+        public string Slika { get; set; }
 
         [Required]
         public int VrijemeTrajanje { get; set; }

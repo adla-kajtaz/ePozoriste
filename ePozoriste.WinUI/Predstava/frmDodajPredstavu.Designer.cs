@@ -55,6 +55,7 @@
             this.errScenografija = new System.Windows.Forms.ErrorProvider(this.components);
             this.errKostimografija = new System.Windows.Forms.ErrorProvider(this.components);
             this.errVrsta = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errSlika = new System.Windows.Forms.ErrorProvider(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pbSlikaPlakata)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errNaziv)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errSadrzaj)).BeginInit();
@@ -63,6 +64,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.errScenografija)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errKostimografija)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errVrsta)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errSlika)).BeginInit();
             this.SuspendLayout();
             // 
             // lblSadrzaj
@@ -252,6 +254,10 @@
             // 
             this.errVrsta.ContainerControl = this;
             // 
+            // errSlika
+            // 
+            this.errSlika.ContainerControl = this;
+            // 
             // frmDodajPredstavu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -286,6 +292,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.errScenografija)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errKostimografija)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errVrsta)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errSlika)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -319,5 +326,6 @@
         private ErrorProvider errScenografija;
         private ErrorProvider errKostimografija;
         private ErrorProvider errVrsta;
+        private ErrorProvider errSlika;
     }
 }
