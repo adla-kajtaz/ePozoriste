@@ -116,8 +116,20 @@ namespace ePozoriste.WinUI
 
         private void btnUcitajSliku_Click(object sender, EventArgs e)
         {
-            if (openFileDialog1.ShowDialog() == DialogResult.OK)
-                pbLogo.Image = Image.FromFile(openFileDialog1.FileName);
+            OpenFileDialog ofd = new OpenFileDialog();
+            ofd.Filter = "Image Files|*.jpg;*.jpeg;*.png;*.gif;*.bmp|All Files|*.*";
+            if (ofd.ShowDialog() == DialogResult.OK)
+            {
+                try
+                {
+                    pbLogo.Image = Image.FromFile(ofd.FileName);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Možete učitati samo slike", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                
+                }
+            }
         }
 
         private bool ValidanUnos()

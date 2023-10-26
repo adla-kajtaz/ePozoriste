@@ -46,7 +46,6 @@
             this.pbLogo = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.btnUcitajSliku = new System.Windows.Forms.Button();
-            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.errNaziv = new System.Windows.Forms.ErrorProvider(this.components);
             this.errAdresa = new System.Windows.Forms.ErrorProvider(this.components);
             this.errGrad = new System.Windows.Forms.ErrorProvider(this.components);
@@ -209,10 +208,6 @@
             this.btnUcitajSliku.UseVisualStyleBackColor = true;
             this.btnUcitajSliku.Click += new System.EventHandler(this.btnUcitajSliku_Click);
             // 
-            // openFileDialog1
-            // 
-            this.openFileDialog1.FileName = "openFileDialog1";
-            // 
             // errNaziv
             // 
             this.errNaziv.ContainerControl = this;
@@ -293,7 +288,6 @@
         private PictureBox pbLogo;
         private Label label1;
         private Button btnUcitajSliku;
-        private OpenFileDialog openFileDialog1;
         private ErrorProvider errNaziv;
         private ErrorProvider errAdresa;
         private ErrorProvider errGrad;

@@ -45,7 +45,6 @@
             this.txtKostimografija = new System.Windows.Forms.TextBox();
             this.btnSpremi = new System.Windows.Forms.Button();
             this.btnUcitajSliku = new System.Windows.Forms.Button();
-            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.errNaziv = new System.Windows.Forms.ErrorProvider(this.components);
             this.errSadrzaj = new System.Windows.Forms.ErrorProvider(this.components);
             this.errVrijemeTrajanja = new System.Windows.Forms.ErrorProvider(this.components);
@@ -204,10 +203,6 @@
             this.btnUcitajSliku.UseVisualStyleBackColor = true;
             this.btnUcitajSliku.Click += new System.EventHandler(this.btnUcitajSliku_Click);
             // 
-            // openFileDialog1
-            // 
-            this.openFileDialog1.FileName = "openFileDialog1";
-            // 
             // errNaziv
             // 
             this.errNaziv.ContainerControl = this;
@@ -316,7 +311,6 @@
         private TextBox txtKostimografija;
         private Button btnSpremi;
         private Button btnUcitajSliku;
-        private OpenFileDialog openFileDialog1;
         private ErrorProvider errNaziv;
         private ErrorProvider errSadrzaj;
         private ErrorProvider errVrijemeTrajanja;

@@ -41,7 +41,6 @@
             this.lblSlika = new System.Windows.Forms.Label();
             this.pbSlika = new System.Windows.Forms.PictureBox();
             this.btnSpremi = new System.Windows.Forms.Button();
-            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.errNaslov = new System.Windows.Forms.ErrorProvider(this.components);
             this.errPodnaslov = new System.Windows.Forms.ErrorProvider(this.components);
             this.errSadrzaj = new System.Windows.Forms.ErrorProvider(this.components);
@@ -162,10 +161,6 @@
             this.btnSpremi.UseVisualStyleBackColor = true;
             this.btnSpremi.Click += new System.EventHandler(this.btnSpremi_Click);
             // 
-            // openFileDialog1
-            // 
-            this.openFileDialog1.FileName = "openFileDialog1";
-            // 
             // errNaslov
             // 
             this.errNaslov.ContainerControl = this;
@@ -231,7 +226,6 @@
         private Label lblSlika;
         private PictureBox pbSlika;
         private Button btnSpremi;
-        private OpenFileDialog openFileDialog1;
         private ErrorProvider errNaslov;
         private ErrorProvider errPodnaslov;
         private ErrorProvider errSadrzaj;
