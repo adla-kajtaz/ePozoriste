@@ -3,6 +3,7 @@ using ePozoriste.Model.Requests;
 using ePozoriste.Model.SearchObjects;
 using ePozoriste.Services;
 using ePozoriste.Services.BaseService;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ePozoriste.Controllers
@@ -15,16 +16,19 @@ namespace ePozoriste.Controllers
             _service = service;
         }
 
+        [Authorize]
         public override Model.Termin Insert([FromBody] TerminInsertRequest request)
         {
             return base.Insert(request);
         }
 
+        [Authorize]
         public override Model.Termin Update(int id, [FromBody] TerminInsertRequest request)
         {
             return base.Update(id, request);
         }
 
+        [Authorize]
         [HttpGet("recommend/{id}")]
         public List<Model.Termin> Recommend(int id)
         {

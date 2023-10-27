@@ -22,6 +22,12 @@ namespace ePozoriste.Services
 
         }
 
+        public override IQueryable<ePozoriste.Services.Database.Korisnik> AddInclude(IQueryable<ePozoriste.Services.Database.Korisnik> query, BaseSearchObject search = null)
+        {
+            query = query.Include(x => x.KorisnikUloges);
+            return base.AddInclude(query, search);
+        }
+
         public override IQueryable<ePozoriste.Services.Database.Korisnik> AddFilter(IQueryable<ePozoriste.Services.Database.Korisnik> query, BaseSearchObject search = null)
         {
             var filteredQuery = base.AddFilter(query, search);
@@ -31,21 +37,24 @@ namespace ePozoriste.Services
             return filteredQuery;
         }
 
+        public override void BeforeInsert(KorisnikInsertRequest insert, Database.Korisnik entity)
+        {
+            var salt = Helper.PasswordHelper.GenerateSalt();
+            entity.LozinkaSalt = salt;
+            entity.LozinkaHash = Helper.PasswordHelper.GenerateHash(salt, insert.Lozinka);
+            base.BeforeInsert(insert, entity);
+        }
+
         public override Model.Korisnik Insert(KorisnikInsertRequest request)
         {
             var korisnici = _context.Set<Database.Korisnik>().AsQueryable();
 
             if (korisnici.Any(x => x.KorisnickoIme == request.KorisnickoIme))
             {
-                return null;
+                throw new KorisnikException("Korisnicko ime vec postoji", "Postoji korisnik sa tim korisnickim imenom!");
             }
 
-            var entity = _mapper.Map<Database.Korisnik>(request);
-            _context.Add(entity);
-
-            entity.LozinkaSalt = Helper.PasswordHelper.GenerateSalt();
-            entity.LozinkaHash = Helper.PasswordHelper.GenerateHash(entity.LozinkaSalt, request.Lozinka);
-            _context.SaveChanges();
+            var entity = base.Insert(request);
 
             foreach (var role in request.Uloge)
             {
@@ -54,13 +63,12 @@ namespace ePozoriste.Services
                     KorisnikId = entity.KorisnikId,
                     UlogaId = role
                 };
-
                 _context.KorisnikUloges.Add(korisnikUloge);
             }
 
             _context.SaveChanges();
 
-            return _mapper.Map<Model.Korisnik>(entity);
+            return entity;
         }
         
         public override Model.Korisnik Update(int id, KorisnikUpdateRequest request)

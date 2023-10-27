@@ -1,10 +1,12 @@
 ﻿using AutoMapper;
 using ePozoriste.Model.Requests;
 using ePozoriste.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ePozoriste.Controllers
 {
+    [AllowAnonymous]
     [ApiController]
     [Route("[controller]")]
     public class AuthController : ControllerBase

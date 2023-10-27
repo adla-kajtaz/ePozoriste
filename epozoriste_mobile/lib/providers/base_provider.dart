@@ -5,6 +5,8 @@ import 'package:http/http.dart';
 import 'package:http/io_client.dart';
 import 'package:flutter/foundation.dart';
 
+import '../utils/util.dart';
+
 abstract class BaseProvider<T> with ChangeNotifier {
   static String? _baseUrl;
   String? _endpoint;
@@ -97,8 +99,8 @@ abstract class BaseProvider<T> with ChangeNotifier {
   }
 
   Map<String, String> createHeaders() {
-    String? username = "";
-    String? password = "";
+    String? username = Authorization.username;
+    String? password = Authorization.password;
 
     String basicAuth =
         "Basic ${base64Encode(utf8.encode('$username:$password'))}";

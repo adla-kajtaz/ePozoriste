@@ -15,6 +15,7 @@ namespace ePozoriste.Model
         public string Email { get; set; }
         public string BrTelefona { get; set; }
         public bool Aktivan { get; set; }
+        public virtual ICollection<KorisnikUloge> KorisnikUloges { get; set; }
         public string ImePrezime => $"{Ime} {Prezime}";
 
         public override string ToString()

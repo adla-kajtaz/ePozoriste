@@ -24,9 +24,16 @@ namespace ePozoriste.Services.BaseService
 
             set.Add(entity);
 
+            BeforeInsert(insert, entity);
+
             _context.SaveChanges();
 
             return _mapper.Map<T>(entity);
+
+        }
+
+        public virtual void BeforeInsert(TInsert insert, TDb entity)
+        {
 
         }
 

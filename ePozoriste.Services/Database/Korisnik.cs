@@ -22,7 +22,7 @@ namespace ePozoriste.Services.Database
         public string? LozinkaSalt { get; set; }
         public bool? Aktivan { get; set; }
 
-        public virtual ICollection<KorisnikUloge> KorisnikUloges { get; set; }
+        public virtual ICollection<KorisnikUloge> KorisnikUloges { get; set; } 
         public virtual ICollection<Kupovina> Kupovinas { get; set; }
         public virtual ICollection<Obavijest> Obavijests { get; set; }
     }

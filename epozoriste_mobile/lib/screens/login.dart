@@ -2,6 +2,7 @@ import 'package:epozoriste_mobile/screens/screens.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../providers/auth_provider.dart';
+import '../utils/util.dart';
 
 RegExp regexLozinka = RegExp(r'^.{8,}$');
 RegExp regexKorisnicko = RegExp(r'^.{4,}$');
@@ -132,6 +133,8 @@ class _LoginState extends State<Login> {
                         if (context.mounted) {
                           _authProvider!
                               .setParameters(data!.korisnikId!.toInt());
+                          Authorization.username = korisnickoIme;
+                          Authorization.password = lozinka;
                           Navigator.popAndPushNamed(
                               context, Navigacija.routeName);
                         }

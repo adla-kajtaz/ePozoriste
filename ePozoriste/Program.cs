@@ -3,6 +3,8 @@ using ePozoriste.Services;
 using ePozoriste.Services.Mapping;
 using Microsoft.EntityFrameworkCore;
 using ePozoriste;
+using Microsoft.OpenApi.Models;
+using Microsoft.AspNetCore.Authentication;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -19,7 +21,27 @@ var connectionString = builder.Configuration.GetConnectionString("DefaultConnect
 builder.Services.AddDbContext<ePozoristeContext>(options =>
     options.UseSqlServer(connectionString));
 
-builder.Services.AddSwaggerGen();
+//builder.Services.AddSwaggerGen();
+
+builder.Services.AddSwaggerGen(c =>
+{
+    c.AddSecurityDefinition("basicAuth", new Microsoft.OpenApi.Models.OpenApiSecurityScheme
+    {
+        Type = Microsoft.OpenApi.Models.SecuritySchemeType.Http,
+        Scheme = "basic"
+    });
+
+    c.AddSecurityRequirement(new OpenApiSecurityRequirement
+    {
+        {
+            new OpenApiSecurityScheme
+            {
+                Reference = new OpenApiReference { Type = ReferenceType.SecurityScheme, Id = "basicAuth" }
+            },
+            new string[]{}
+        }
+    });
+});
 
 builder.Services.AddTransient<IAuthService, AuthService>();
 builder.Services.AddTransient<IDrzavaService, DrzavaService>();
@@ -41,8 +63,9 @@ builder.Services.AddTransient<IKorisnikUlogeService, KorisnikUlogeService>();
 builder.Services.AddTransient<StripeService>();
 
 
-
 builder.Services.AddAutoMapper(typeof(Program), typeof(MapperProfiles));
+builder.Services.AddAuthentication("BasicAuthentication")
+    .AddScheme<AuthenticationSchemeOptions, BasicAuthenticationHandler>("BasicAuthentication", null);
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -54,6 +77,7 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();

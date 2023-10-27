@@ -4,6 +4,8 @@ import '../providers/auth_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../utils/util.dart';
+
 class DetaljiProfila extends StatefulWidget {
   static const routeName = '/detaljiProfil';
 
@@ -287,6 +289,7 @@ class _DetaljiProfilaState extends State<DetaljiProfila> {
                             await _korisnikProvider!
                                 .updateProfile(korisnik!.korisnikId, data);
                             if (context.mounted) {
+                              Authorization.username = korisnik!.korisnickoIme;
                               _showToast(context);
                             }
                           } on Exception catch (err) {

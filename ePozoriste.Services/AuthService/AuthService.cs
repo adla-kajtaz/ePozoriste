@@ -15,7 +15,7 @@ namespace ePozoriste.Services
     {
         public ePozoristeContext _context { get; set; }
         public IMapper _mapper { get; set; }
-
+        
         public AuthService(ePozoristeContext context, IMapper mapper)
         {
             _context = context;
@@ -24,7 +24,7 @@ namespace ePozoriste.Services
 
         public async Task<Model.Korisnik> Login(LoginRequest request)
         {
-            var entity = await _context.Korisniks.Include(x => x.KorisnikUloges).FirstOrDefaultAsync(x => x.KorisnickoIme == request.KorisnickoIme);
+            var entity = await _context.Korisniks.Include("KorisnikUloges.Uloga").FirstOrDefaultAsync(x => x.KorisnickoIme == request.KorisnickoIme);
 
             if (entity == null)
             {
@@ -63,7 +63,6 @@ namespace ePozoriste.Services
                     KorisnikId = entity.KorisnikId,
                     UlogaId = role
                 };
-
                 _context.KorisnikUloges.Add(korisnikUloge);
             }
 
@@ -75,7 +74,7 @@ namespace ePozoriste.Services
         public async Task<Model.Korisnik> LoginAdmin(LoginRequest request)
         {
             bool admin = false;
-            var entity = await _context.Korisniks.Include(x => x.KorisnikUloges).FirstOrDefaultAsync(x => x.KorisnickoIme == request.KorisnickoIme);
+            var entity = await _context.Korisniks.Include("KorisnikUloges.Uloga").FirstOrDefaultAsync(x => x.KorisnickoIme == request.KorisnickoIme);
             var uloge =  _context.KorisnikUloges.Include(x => x.Uloga).Where(x => x.KorisnikId == entity.KorisnikId).ToList();
 
             foreach(var uloga in uloge)

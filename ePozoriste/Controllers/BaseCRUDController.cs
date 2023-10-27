@@ -1,4 +1,5 @@
 ﻿using ePozoriste.Services.BaseService;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ePozoriste.Controllers
@@ -13,18 +14,21 @@ namespace ePozoriste.Controllers
             _service = service;
         }
 
+        [Authorize]
         [HttpPost]
         public virtual T Insert([FromBody] TInsert insert)
         {
             return _service.Insert(insert);
         }
 
+        [Authorize]
         [HttpPut("{id}")]
         public virtual T Update(int id, [FromBody] TUpdate update)
         {
             return _service.Update(id, update);
         }
 
+        [Authorize]
         [HttpDelete("{id}")]
         public virtual T Delete(int id)
         {

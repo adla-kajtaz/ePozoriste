@@ -1,6 +1,7 @@
 ﻿using ePozoriste.Model.Requests;
 using ePozoriste.Model.SearchObjects;
 using ePozoriste.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ePozoriste.Controllers
@@ -16,11 +17,13 @@ namespace ePozoriste.Controllers
             _kartaService = kartaService;
         }
 
+        [Authorize]
         public override Model.Kupovina Insert([FromBody] KupovinaInsertRequest request)
         {
             return base.Insert(request);
         }
 
+        [Authorize]
         [HttpGet("getByKorisnikId/{id}")]
         public IEnumerable<Model.Kupovina> GetByKorisnikId(int id)
         {
