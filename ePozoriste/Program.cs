@@ -63,7 +63,7 @@ builder.Services.AddTransient<IKorisnikUlogeService, KorisnikUlogeService>();
 builder.Services.AddTransient<StripeService>();
 
 
-builder.Services.AddAutoMapper(typeof(Program), typeof(MapperProfiles));
+builder.Services.AddAutoMapper(typeof(IAuthService));
 builder.Services.AddAuthentication("BasicAuthentication")
     .AddScheme<AuthenticationSchemeOptions, BasicAuthenticationHandler>("BasicAuthentication", null);
 var app = builder.Build();

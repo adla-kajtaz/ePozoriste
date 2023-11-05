@@ -16,13 +16,13 @@ namespace ePozoriste.Controllers
             _service = service;
         }
 
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         public override Model.Termin Insert([FromBody] TerminInsertRequest request)
         {
             return base.Insert(request);
         }
 
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         public override Model.Termin Update(int id, [FromBody] TerminInsertRequest request)
         {
             return base.Update(id, request);
