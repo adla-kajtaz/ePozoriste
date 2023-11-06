@@ -159,7 +159,7 @@ namespace ePozoriste.Services
                         var vrstaCount = vrstaCounts.FirstOrDefault(g => g.VrstaId == kupovina.Termin.Predstava.VrstaPredstaveId.GetValueOrDefault());
                         data.Add(new VrstaPredstaveEntry
                         {
-                            KorisnikId = (uint)userId,
+                            KorisnikId = (uint)kupovina.KorisnikId.GetValueOrDefault(),
                             VrstaId = (uint)kupovina.Termin.Predstava.VrstaPredstaveId.GetValueOrDefault(),
                             VrstaCount = vrstaCount.Count
                         });
