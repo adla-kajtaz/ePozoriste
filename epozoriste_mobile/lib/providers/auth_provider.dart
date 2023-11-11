@@ -7,7 +7,7 @@ import 'package:http/src/response.dart';
 
 class AuthProvider extends BaseProvider<Korisnik> {
   // static String _username = "";
-  static int? _loggedUserId = 2;
+  static int? _loggedUserId = 0;
 
   HttpClient client = HttpClient();
   IOClient? http;
@@ -64,7 +64,7 @@ class AuthProvider extends BaseProvider<Korisnik> {
     }
   }
 
-  static void logout() {
+  void logout() {
     //_username = "";
     _loggedUserId = 0;
   }

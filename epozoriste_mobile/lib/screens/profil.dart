@@ -49,6 +49,7 @@ class _ProfilState extends State<Profil> {
           actions: [
             GestureDetector(
               onTap: () {
+                _authProvider!.logout();
                 Navigator.pushNamed(context, Login.routeName);
               },
               child: const Padding(
