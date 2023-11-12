@@ -73,30 +73,33 @@ namespace ePozoriste.WinUI
         }
         private async void btnObrisi_Click(object sender, EventArgs e)
         {
-            KartaSearchObject kartaSearchObject = new KartaSearchObject
+            DialogResult result = MessageBox.Show("Jeste li sigurni da želite izbrisati karte? Ne možete poništiti ovu radnju!", "Upozorenje", MessageBoxButtons.YesNo, MessageBoxIcon.Warning); ;
+            if (result == DialogResult.Yes) { 
+                KartaSearchObject kartaSearchObject = new KartaSearchObject
             {
                 TerminId = _termin.TerminId
             };
             var list = await _kartaService.Get<List<Karta>>(kartaSearchObject);
             var brojac = list.Where(e => e.Aktivna == false).Count();
-            if (brojac != 0)
-            {
-                MessageBox.Show("Ne možete obrisati karte, jer su neke već kupljene!",
-                                          Resursi.Get(Kljucevi.Informacija),
-                                          MessageBoxButtons.OK,
-                                          MessageBoxIcon.Error);
-            }
-            else
-            {
-                for (int i = 0; i < list.Count; i++)
+                if (brojac != 0)
                 {
-                    await _kartaService.Delete<Karta>(list[i].KartaId);
+                    MessageBox.Show("Ne možete obrisati karte, jer su neke već kupljene!",
+                                              Resursi.Get(Kljucevi.Informacija),
+                                              MessageBoxButtons.OK,
+                                              MessageBoxIcon.Error);
                 }
-                dgvKarte.DataSource = null;
-                frmPrikazKarata_Load(sender, e);
-                MessageBox.Show("Uspjesno obrisane!");
-                DialogResult = DialogResult.OK;
-                this.Close();
+                else
+                {
+                    for (int i = 0; i < list.Count; i++)
+                    {
+                        await _kartaService.Delete<Karta>(list[i].KartaId);
+                    }
+                    dgvKarte.DataSource = null;
+                    frmPrikazKarata_Load(sender, e);
+                    MessageBox.Show("Uspjesno obrisane!");
+                    DialogResult = DialogResult.OK;
+                    this.Close();
+                }
             }
         }
     }

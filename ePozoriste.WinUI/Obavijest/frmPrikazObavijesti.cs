@@ -79,10 +79,14 @@ namespace ePozoriste.WinUI
             var obavijest = dgvObavijesti.SelectedRows[0].DataBoundItem as Obavijest;
             if (e.ColumnIndex == 6)
             {
-                await _obavijestService.Delete<Obavijest>(obavijest.ObavijestId);
-                
-                dgvObavijesti.DataSource = null;
-                frmPrikazObavijesti_Load(sender, e);
+                DialogResult result = MessageBox.Show("Jeste li sigurni da želite izbrisati ovu obavijest? Ne možete poništiti ovu radnju!", "Upozorenje", MessageBoxButtons.YesNo, MessageBoxIcon.Warning); ;
+                if (result == DialogResult.Yes)
+                {
+                    await _obavijestService.Delete<Obavijest>(obavijest.ObavijestId);
+
+                    dgvObavijesti.DataSource = null;
+                    frmPrikazObavijesti_Load(sender, e);
+                }
             }
             else if (e.ColumnIndex == 5)
             {

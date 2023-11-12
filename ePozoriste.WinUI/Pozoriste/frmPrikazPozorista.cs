@@ -90,15 +90,18 @@ namespace ePozoriste.WinUI
             var pozoriste = dgvPozorista.SelectedRows[0].DataBoundItem as Pozoriste;
             if (e.ColumnIndex == 8)
             {
-                
-                var _pozoriste = await _pozoristeService.Delete<Pozoriste>(pozoriste.PozoristeId);
-                if (_pozoriste == null)
-                    MessageBox.Show("Ne možete obrisati pozorište jer postoje sale u njemu!",
-                                          Resursi.Get(Kljucevi.Informacija),
-                                          MessageBoxButtons.OK,
-                                          MessageBoxIcon.Error);
-                dgvPozorista.DataSource = null;
-                frmPrikazPozorista_Load(sender, e);
+                DialogResult result = MessageBox.Show("Jeste li sigurni da želite izbrisati ovo pozorište? Ne možete poništiti ovu radnju!", "Upozorenje", MessageBoxButtons.YesNo, MessageBoxIcon.Warning); ;
+                if (result == DialogResult.Yes)
+                {
+                    var _pozoriste = await _pozoristeService.Delete<Pozoriste>(pozoriste.PozoristeId);
+                    if (_pozoriste == null)
+                        MessageBox.Show("Ne možete obrisati pozorište jer postoje sale u njemu!",
+                                              Resursi.Get(Kljucevi.Informacija),
+                                              MessageBoxButtons.OK,
+                                              MessageBoxIcon.Error);
+                    dgvPozorista.DataSource = null;
+                    frmPrikazPozorista_Load(sender, e);
+                }
             }
             else if (e.ColumnIndex == 7)
             {

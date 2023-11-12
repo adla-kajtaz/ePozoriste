@@ -92,15 +92,18 @@ namespace ePozoriste.WinUI
             var predstava = dgvPredstave.SelectedRows[0].DataBoundItem as Predstava;
             if (e.ColumnIndex == 4)
             {
-                var _predstava =  await _predstavaService.Delete<Predstava>(predstava.PredstavaId);
-                if (_predstava == null)
-                    MessageBox.Show("Ne možete obrisati predstavu jer postoji termin za nju!",
-                                          Resursi.Get(Kljucevi.Informacija),
-                                          MessageBoxButtons.OK,
-                                          MessageBoxIcon.Error);
-                dgvPredstave.DataSource = null;
-                frmPrikazPredstava_Load(sender, e);
-              
+                DialogResult result = MessageBox.Show("Jeste li sigurni da želite izbrisati ovu predstavu? Ne možete poništiti ovu radnju!", "Upozorenje", MessageBoxButtons.YesNo, MessageBoxIcon.Warning); ;
+                if (result == DialogResult.Yes)
+                {
+                    var _predstava = await _predstavaService.Delete<Predstava>(predstava.PredstavaId);
+                    if (_predstava == null)
+                        MessageBox.Show("Ne možete obrisati predstavu jer postoji termin za nju!",
+                                              Resursi.Get(Kljucevi.Informacija),
+                                              MessageBoxButtons.OK,
+                                              MessageBoxIcon.Error);
+                    dgvPredstave.DataSource = null;
+                    frmPrikazPredstava_Load(sender, e);
+                }
             }
             else if (e.ColumnIndex == 3)
             {

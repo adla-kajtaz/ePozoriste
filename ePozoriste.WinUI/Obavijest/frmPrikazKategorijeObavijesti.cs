@@ -61,15 +61,19 @@ namespace ePozoriste.WinUI
         {
             var obavijestKategorija = dgvKategorijeObavijesti.SelectedRows[0].DataBoundItem as ObavijestKategorija;
             if (e.ColumnIndex == 2)
-            {  
-                var _obavijestKategorija = await _obavijestKategorijaService.Delete<ObavijestKategorija>(obavijestKategorija.ObavijestKategorijaId);
-                if (_obavijestKategorija == null)
-                    MessageBox.Show("Ne možete obrisati kategoriju jer postoje obavijesti koje se vežu za nju!",
-                                          Resursi.Get(Kljucevi.Informacija),
-                                          MessageBoxButtons.OK,
-                                          MessageBoxIcon.Error);
-                dgvKategorijeObavijesti.DataSource = null;
-                frmPrikazKategorijeObavijesti_Load(sender, e);
+            {
+                DialogResult result = MessageBox.Show("Jeste li sigurni da želite izbrisati ovu kategoriju? Ne možete poništiti ovu radnju!", "Upozorenje", MessageBoxButtons.YesNo, MessageBoxIcon.Warning); ;
+                if (result == DialogResult.Yes)
+                {
+                    var _obavijestKategorija = await _obavijestKategorijaService.Delete<ObavijestKategorija>(obavijestKategorija.ObavijestKategorijaId);
+                    if (_obavijestKategorija == null)
+                        MessageBox.Show("Ne možete obrisati kategoriju jer postoje obavijesti koje se vežu za nju!",
+                                              Resursi.Get(Kljucevi.Informacija),
+                                              MessageBoxButtons.OK,
+                                              MessageBoxIcon.Error);
+                    dgvKategorijeObavijesti.DataSource = null;
+                    frmPrikazKategorijeObavijesti_Load(sender, e);
+                }
             }
             else if (e.ColumnIndex == 1)
             {

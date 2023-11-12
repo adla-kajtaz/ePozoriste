@@ -110,15 +110,18 @@ namespace ePozoriste.WinUI
             var termini = dgvTermini.SelectedRows[0].DataBoundItem as Termin;
             if (e.ColumnIndex == 9)
             {
-               var termin =  await _terminService.Delete<Termin>(termini.TerminId);
-                if(termin == null)
-                MessageBox.Show("Ne možete obrisati termin, jer postoje karte za njega!",
-                                      Resursi.Get(Kljucevi.Informacija),
-                                      MessageBoxButtons.OK,
-                                      MessageBoxIcon.Error);
-                dgvTermini.DataSource = null;
-                frmPrikazTermina_Load(sender, e);
-
+                DialogResult result = MessageBox.Show("Jeste li sigurni da želite izbrisati ovaj termin? Ne možete poništiti ovu radnju!", "Upozorenje", MessageBoxButtons.YesNo, MessageBoxIcon.Warning); ;
+                if (result == DialogResult.Yes)
+                {
+                    var termin = await _terminService.Delete<Termin>(termini.TerminId);
+                    if (termin == null)
+                        MessageBox.Show("Ne možete obrisati termin, jer postoje karte za njega!",
+                                              Resursi.Get(Kljucevi.Informacija),
+                                              MessageBoxButtons.OK,
+                                              MessageBoxIcon.Error);
+                    dgvTermini.DataSource = null;
+                    frmPrikazTermina_Load(sender, e);
+                }
             }
             else if (e.ColumnIndex == 8)
             {

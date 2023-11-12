@@ -62,14 +62,18 @@ namespace ePozoriste.WinUI
             var vrstePredstave = dgvVrstePredstave.SelectedRows[0].DataBoundItem as VrstaPredstave;
             if (e.ColumnIndex == 2)
             {
-               var _vrsta = await _vrstaPredstaveService.Delete<VrstaPredstave>(vrstePredstave.VrstaPredstaveId);
-                if (_vrsta == null)
-                    MessageBox.Show("Ne možete obrisati jer postoji predstava koja ima ovu vrstu!",
-                                          Resursi.Get(Kljucevi.Informacija),
-                                          MessageBoxButtons.OK,
-                                          MessageBoxIcon.Error);
-                dgvVrstePredstave.DataSource = null;
-                frmPrikazVrstaPredstave_Load(sender, e);
+                DialogResult result = MessageBox.Show("Jeste li sigurni da želite izbrisati ovu vrstu? Ne možete poništiti ovu radnju!", "Upozorenje", MessageBoxButtons.YesNo, MessageBoxIcon.Warning); ;
+                if (result == DialogResult.Yes)
+                {
+                    var _vrsta = await _vrstaPredstaveService.Delete<VrstaPredstave>(vrstePredstave.VrstaPredstaveId);
+                    if (_vrsta == null)
+                        MessageBox.Show("Ne možete obrisati jer postoji predstava koja ima ovu vrstu!",
+                                              Resursi.Get(Kljucevi.Informacija),
+                                              MessageBoxButtons.OK,
+                                              MessageBoxIcon.Error);
+                    dgvVrstePredstave.DataSource = null;
+                    frmPrikazVrstaPredstave_Load(sender, e);
+                }
             }
             else if (e.ColumnIndex == 1)
             {

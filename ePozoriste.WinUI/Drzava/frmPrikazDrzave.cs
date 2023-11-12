@@ -52,15 +52,18 @@ namespace ePozoriste.WinUI
             var drzava = dgvDrzave.SelectedRows[0].DataBoundItem as Drzava;
             if (e.ColumnIndex == 3)
             {
-                
-                var _drzava = await _drzavaService.Delete<Drzava>(drzava.DrzavaId);
-                if (_drzava == null)
-                    MessageBox.Show("Ne možete obrisati državu jer postoji grad koji se veže za nju",
-                                          Resursi.Get(Kljucevi.Informacija),
-                                          MessageBoxButtons.OK,
-                                          MessageBoxIcon.Error);
-                dgvDrzave.DataSource = null;
-                frmPrikazDrzava_Load(sender, e);
+                DialogResult result = MessageBox.Show("Jeste li sigurni da želite izbrisati ovu državu? Ne možete poništiti ovu radnju!", "Upozorenje", MessageBoxButtons.YesNo, MessageBoxIcon.Warning); ;
+                if (result == DialogResult.Yes)
+                {
+                    var _drzava = await _drzavaService.Delete<Drzava>(drzava.DrzavaId);
+                    if (_drzava == null)
+                        MessageBox.Show("Ne možete obrisati državu jer postoji grad koji se veže za nju",
+                                              Resursi.Get(Kljucevi.Informacija),
+                                              MessageBoxButtons.OK,
+                                              MessageBoxIcon.Error);
+                    dgvDrzave.DataSource = null;
+                    frmPrikazDrzava_Load(sender, e);
+                }
             }
             else if (e.ColumnIndex == 2)
             {

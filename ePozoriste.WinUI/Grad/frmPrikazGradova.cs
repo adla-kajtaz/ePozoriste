@@ -90,14 +90,18 @@ namespace ePozoriste.WinUI
             var grad = dgvGradovi.SelectedRows[0].DataBoundItem as Grad;
             if (e.ColumnIndex == 4)
             {
-                var _grad = await _gradService.Delete<Grad>(grad.GradId);
-                if (_grad == null)
-                    MessageBox.Show("Grad se ne može obrisati jer postoji pozorište u njemu!",
-                                          Resursi.Get(Kljucevi.Informacija),
-                                          MessageBoxButtons.OK,
-                                          MessageBoxIcon.Error);
-                dgvGradovi.DataSource = null;
-                frmPrikazGradova_Load(sender, e);
+                DialogResult result = MessageBox.Show("Jeste li sigurni da želite izbrisati ovaj grad? Ne možete poništiti ovu radnju!", "Upozorenje", MessageBoxButtons.YesNo, MessageBoxIcon.Warning); ;
+                if (result == DialogResult.Yes)
+                {
+                    var _grad = await _gradService.Delete<Grad>(grad.GradId);
+                    if (_grad == null)
+                        MessageBox.Show("Grad se ne može obrisati jer postoji pozorište u njemu!",
+                                              Resursi.Get(Kljucevi.Informacija),
+                                              MessageBoxButtons.OK,
+                                              MessageBoxIcon.Error);
+                    dgvGradovi.DataSource = null;
+                    frmPrikazGradova_Load(sender, e);
+                }
             }
             else if (e.ColumnIndex == 3)
             {

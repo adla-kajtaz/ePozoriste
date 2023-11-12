@@ -62,14 +62,18 @@ namespace ePozoriste.WinUI
             var glumac = dgvGlumci.SelectedRows[0].DataBoundItem as Glumac;
             if (e.ColumnIndex == 3)
             {
-                var _glumac = await _glumacService.Delete<Glumac>(glumac.GlumacId);
-                if (_glumac == null)
-                    MessageBox.Show("Glumac se ne može obrisati jer glumi u nekoj predstavi!",
-                                          Resursi.Get(Kljucevi.Informacija),
-                                          MessageBoxButtons.OK,
-                                          MessageBoxIcon.Error);
-                dgvGlumci.DataSource = null;
-                frmPrikazGlumaca_Load(sender, e);
+                DialogResult result = MessageBox.Show("Jeste li sigurni da želite izbrisati ovog glumca? Ne možete poništiti ovu radnju!", "Upozorenje", MessageBoxButtons.YesNo, MessageBoxIcon.Warning); ;
+                if (result == DialogResult.Yes)
+                {
+                    var _glumac = await _glumacService.Delete<Glumac>(glumac.GlumacId);
+                    if (_glumac == null)
+                        MessageBox.Show("Glumac se ne može obrisati jer glumi u nekoj predstavi!",
+                                              Resursi.Get(Kljucevi.Informacija),
+                                              MessageBoxButtons.OK,
+                                              MessageBoxIcon.Error);
+                    dgvGlumci.DataSource = null;
+                    frmPrikazGlumaca_Load(sender, e);
+                }
             }
             else if (e.ColumnIndex == 2)
             {

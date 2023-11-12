@@ -68,14 +68,18 @@ namespace ePozoriste.WinUI
             var sala = dgvSale.SelectedRows[0].DataBoundItem as Sala;
             if (e.ColumnIndex == 5)
             {
-                var _sala = await _salaService.Delete<Sala>(sala.SalaId);
-                if (_sala == null)
-                    MessageBox.Show("Ne možete obrisati salu jer postoji predstava koja će se odigrati u njoj!",
-                                          Resursi.Get(Kljucevi.Informacija),
-                                          MessageBoxButtons.OK,
-                                          MessageBoxIcon.Error);
-                dgvSale.DataSource = null;
-                frmPrikazSala_Load(sender, e);
+                DialogResult result = MessageBox.Show("Jeste li sigurni da želite izbrisati ovu salu? Ne možete poništiti ovu radnju!", "Upozorenje", MessageBoxButtons.YesNo, MessageBoxIcon.Warning); ;
+                if (result == DialogResult.Yes)
+                {
+                    var _sala = await _salaService.Delete<Sala>(sala.SalaId);
+                    if (_sala == null)
+                        MessageBox.Show("Ne možete obrisati salu jer postoji predstava koja će se odigrati u njoj!",
+                                              Resursi.Get(Kljucevi.Informacija),
+                                              MessageBoxButtons.OK,
+                                              MessageBoxIcon.Error);
+                    dgvSale.DataSource = null;
+                    frmPrikazSala_Load(sender, e);
+                }
             }
             else if (e.ColumnIndex == 4)
             {

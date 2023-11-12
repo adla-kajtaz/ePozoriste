@@ -48,18 +48,22 @@ namespace ePozoriste.WinUI
             var predstavaGlumac = dgvPredstavaGlumci.SelectedRows[0].DataBoundItem as PredstavaGlumac;
             if (e.ColumnIndex == 2)
             {
-                if (dgvPredstavaGlumci.RowCount == 1)
+                DialogResult result = MessageBox.Show("Jeste li sigurni da želite izbrisati ovog glumca? Ne možete poništiti ovu radnju!", "Upozorenje", MessageBoxButtons.YesNo, MessageBoxIcon.Warning); ;
+                if (result == DialogResult.Yes)
                 {
-                    MessageBox.Show("Predstava mora imati barem jednog glumca.", 
-                        Resursi.Get(Kljucevi.Upozorenje), 
-                        MessageBoxButtons.OK, 
-                        MessageBoxIcon.Warning);
-                }
-                else
-                {
-                    await _predstavaGlumacService.Delete<PredstavaGlumac>(predstavaGlumac.PredstavaGlumacId);
-                    dgvPredstavaGlumci.DataSource = null;
-                    frmPrikazPredstavaGlumac_Load(sender, e);
+                    if (dgvPredstavaGlumci.RowCount == 1)
+                    {
+                        MessageBox.Show("Predstava mora imati barem jednog glumca.",
+                            Resursi.Get(Kljucevi.Upozorenje),
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Warning);
+                    }
+                    else
+                    {
+                        await _predstavaGlumacService.Delete<PredstavaGlumac>(predstavaGlumac.PredstavaGlumacId);
+                        dgvPredstavaGlumci.DataSource = null;
+                        frmPrikazPredstavaGlumac_Load(sender, e);
+                    }
                 }
             }
         }
