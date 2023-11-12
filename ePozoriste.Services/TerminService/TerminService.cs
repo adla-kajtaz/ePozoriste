@@ -126,10 +126,10 @@ namespace ePozoriste.Services
         {
             var kupovine = _context.Kupovinas
                 .Include(p => p.Termin)
-                .Include(p=>p.Termin.Sala)
-                .Include(p => p.Termin.Sala.Pozoriste)
+                .ThenInclude(p=>p.Sala)
+                .ThenInclude(p => p.Pozoriste)
                 .Include(p => p.Termin.Predstava)
-                .Include(p=>p.Termin.Predstava.VrstaPredstave)
+                .ThenInclude(p=>p.VrstaPredstave)
                 .Where(p => p.KorisnikId == userId && p.Placena == true)
                 .ToList();
 
