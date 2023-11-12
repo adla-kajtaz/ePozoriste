@@ -194,7 +194,7 @@ namespace ePozoriste.Services
             }
 
             var predictionResult = new List<Tuple<Database.Termin, float>>();
-            var termini = _context.Termins.Include(s => s.Predstava).ToList();
+            var termini = _context.Termins.Include(s => s.Predstava).Include(s=>s.Sala).ToList();
 
             foreach (var termin in termini)
             {
