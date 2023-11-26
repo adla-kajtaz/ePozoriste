@@ -1,7 +1,5 @@
 # ePozoriste
 
-Seminarski rad iz predmeta Razvoj softvera II
-
 ePozoriste je aplikacija za online kupovinu karata za pozoriste. Aplikacija se stastoji od desktop dijela koje je namijenjen za administratore, te mobilnog dijela koji je namijenjen krajnjim korisnicima. Deskrop dio sluzi za upravljanje predstavama, terminima, kao i za izvjestavanje, dok na mobilnom dijelu krajnji korisnici mogu pregledati trenutno aktivne predstave, kupiti karte, i online placati.
 
 ### Kredencijali
